@@ -7,7 +7,7 @@ To get started:
 
 **WARNING: The application file is almost 50mb as it contains all of the necessary shape and enrolment data. Ensure that your browser has enough free memory before opening.**
 
-================================================================================
+============================================================
 
 **Context**
 
@@ -39,4 +39,4 @@ The author of this tool has no political affiliation and has taken effort to ens
 
 **Contact**
 
-For bug reports, feature suggestions, or other feedback, please send an email to auredistribution@gmail.com# qld-state-redistribution
+For bug reports, feature suggestions, or other feedback, please send an email to auredistribution@gmail.com
