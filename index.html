@@ -923,9 +923,11 @@
         if(lines.length < 2) { alert('CSV appears empty'); return; }
         const header = lines[0].split(',').map(h => h.trim());
         const sa1Idx = header.indexOf('SA1');
-        // Accept either CurrentDivision or ProposedDivision as the target column name
+        // Accept either ProposedDivision, CurrentDivision, Division as the target column name
         let currIdx = header.indexOf('ProposedDivision');
-        if(sa1Idx === -1 || currIdx === -1) { alert('Header must include SA1 and ProposedDivision'); return; }
+        if(currIdx === -1) currIdx = header.indexOf('CurrentDivision');
+        if(currIdx === -1) currIdx = header.indexOf('Division');
+        if(sa1Idx === -1 || currIdx === -1) { alert('Header must include SA1 and either ProposedDivision, CurrentDivision, or Division'); return; }
 
         const updates = {};
         for(let i=1;i<lines.length;i++) {
