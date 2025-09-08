@@ -30,7 +30,8 @@
       }
 
       .summary-panel {
-        height: 800px;
+        height: 100%;
+        padding: 8px;
         overflow-y: scroll;
         min-width: 600px;
         flex: 1;
@@ -85,8 +86,17 @@
         background-color: #FFFFEE;
       }
 
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body > div {
+        height: 100%;
+        display: flex;
+      }
       #map {
-        height: 800px;
+        height: 100%;
         width: 100%;
       }
 
