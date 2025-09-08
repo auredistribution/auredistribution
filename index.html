@@ -118,41 +118,68 @@
   <body>
     <div style="display: flex">
       <div class="summary-panel">
-        <div class="header">
-          <h1>Queensland State Redistribution Tool</h1>
-          <div id="header-info" style="font-size: 14px; user-select: none"></div>
-          <hr>
-        </div>
-        <div class="instructions">
-          <h3>Context</h3>
-          <p>Queensland is divided into 93 state electoral districts, which must be drawn within 10% of the average district enrolment of 40,264 (ie. between 36,238 and 44,290).</p>
-          <p>Districts larger than 100,000km<sup>2</sup> are given additional 'virtual' electors equal to 2% of the total area of the district.</p>
-          <p>The Redistribution Commission may also consider projected district enrolments, with an aim for districts to also be within 10% of the average projected district enrolment of 44,679 in 2032 (ie. between 40,211 and 49,147).</p>
-          <p>The ABS divides Queensland into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
-          <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
-          <h3>Instructions</h3>
-          <p>1. Click any district in the left panel to select or unselect it</p>
-          <p>2. Click on any SA1 on the map to transfer it into the selected district</p>
-          <p>3. Click on any transferred SA1s to return them to their original district</p>
-          <p>4. Shift-click can be used to transfer or return whole SA2s</p>
-          <p>5. New divisions can be created by clicking the '+' symbol next to the group label</p>
-          <h3>Disclaimer</h3>
-          <p>The author of this tool has no political affiliation and has taken effort to ensure that no political bias has been introduced. All calculations are based on SA1 enrolment data provided by the Queensland Redistribution Commission, however no guarantee is made that aggregate enrolment calculations will be error-free. The tool is offered as-is, and any usage of the tool is made at the user's own risk.
-          <h3>Contact</h3>
-          <p>For bug reports, feature suggestions, or other feedback, please send an email to auredistribution@gmail.com<p>
-          <hr>
-        </div>
         <div>
-          <button class="button" type="button" onclick="resetDivisions()">Reset Districts</button>
-          <button class="button" type="button" onclick="toggleProjectedThresholds()">Toggle Projected Elector Threshold</button>
-				</div>
-				<div>
-          <button class="button" type="button" onclick="exportCSV()">Export SA1 CSV</button>
-          <button class="button" type="button" onclick="exportDivisionTotalsCSV()">Export District Totals CSV</button>
-           <button class="button" type="button" onclick="triggerImport()">Import SA1 CSV</button>
-           <input type="file" id="import-file" accept=".csv" style="display:none" />
+          <ul id="tab-nav" style="display: flex; list-style: none; padding: 0; margin: 0 0 8px 0; border-bottom: 1px solid #ccc;">
+            <li style="margin-right: 8px;">
+              <button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button>
+            </li>
+            <li>
+              <button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button>
+            </li>
+          </ul>
         </div>
-        <div id="divisions" style="font-size: 14px; user-select: none"></div>
+        <div id="header-tab" class="tab-content">
+          <div class="header">
+            <h1>Queensland State Redistribution Tool</h1>
+            <h3>Context</h3>
+            <p>Queensland is divided into 93 state electoral districts, which must be drawn within 10% of the average district enrolment of 40,264 (ie. between 36,238 and 44,290).</p>
+            <p>Districts larger than 100,000km<sup>2</sup> are given additional 'virtual' electors equal to 2% of the total area of the district.</p>
+            <p>The Redistribution Commission may also consider projected district enrolments, with an aim for districts to also be within 10% of the average projected district enrolment of 44,679 in 2032 (ie. between 40,211 and 49,147).</p>
+            <p>The ABS divides Queensland into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+            <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
+            <h3>Instructions</h3>
+            <p>1. Click any district in the left panel (within the Divisions tab) to select or unselect it</p>
+            <p>2. Click on any SA1 on the map to transfer it into the selected district</p>
+            <p>3. Click on any transferred SA1s to return them to their original district</p>
+            <p>4. Shift-click can be used to transfer or return whole SA2s</p>
+            <p>5. New divisions can be created by clicking the '+' symbol next to the group label</p>
+            <h3>Disclaimer</h3>
+            <p>The author of this tool has no political affiliation and has taken effort to ensure that no political bias has been introduced. All calculations are based on SA1 enrolment data provided by the Queensland Redistribution Commission, however no guarantee is made that aggregate enrolment calculations will be error-free. The tool is offered as-is, and any usage of the tool is made at the user's own risk.</p>
+            <h3>Contact</h3>
+            <p>For bug reports, feature suggestions, or other feedback, please send an email to auredistribution@gmail.com</p>
+          </div>
+        </div>
+        <div id="divisions-tab" class="tab-content" style="display:none">
+          <div>
+            <button class="button" type="button" onclick="resetDivisions()">Reset Districts</button>
+            <button class="button" type="button" onclick="toggleProjectedThresholds()">Toggle Projected Elector Threshold</button>
+          </div>
+          <div>
+            <button class="button" type="button" onclick="exportCSV()">Export SA1 CSV</button>
+            <button class="button" type="button" onclick="exportDivisionTotalsCSV()">Export District Totals CSV</button>
+            <button class="button" type="button" onclick="triggerImport()">Import SA1 CSV</button>
+            <input type="file" id="import-file" accept=".csv" style="display:none" />
+          </div>
+          <div id="header-info" style="font-size: 14px; user-select: none"></div>
+          <div id="divisions" style="font-size: 14px; user-select: none"></div>
+        </div>
+        <script>
+          function showTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+            // Remove highlight from all tab buttons
+            document.getElementById('tab-header-btn').classList.remove('button-grey');
+            document.getElementById('tab-divisions-btn').classList.remove('button-grey');
+            // Show selected tab
+            document.getElementById(tabId).style.display = '';
+            // Highlight selected tab button
+            if(tabId === 'header-tab') document.getElementById('tab-header-btn').classList.add('button-grey');
+            if(tabId === 'instructions-tab') document.getElementById('tab-instructions-btn').classList.add('button-grey');
+            if(tabId === 'divisions-tab') document.getElementById('tab-divisions-btn').classList.add('button-grey');
+          }
+          // Show header tab by default
+          showTab('header-tab');
+        </script>
       </div>
       <div id="map"></div>
     </div>
