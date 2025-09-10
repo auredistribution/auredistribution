@@ -10,54 +10,46 @@
   <link rel="stylesheet" href="css/shared.css" />
 </head>
 <body>
-  <div style="display:flex">
-    <div class="summary-panel">
-      <div>
-        <ul id="tab-nav" style="display:flex;list-style:none;padding:0;margin:0 0 8px 0;border-bottom:1px solid #ccc;">
-          <li style="margin-right:8px;">
-            <button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button>
-          </li>
-          <li>
-            <button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button>
-          </li>
-        </ul>
-      </div>
-      <div id="header-tab" class="tab-content">
+  <div style="display:flex; height:100%; width:100%;">
+    <aside class="summary-panel">
+      <ul id="tab-nav" style="list-style:none;display:flex;margin:0;">
+        <li><button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button></li>
+        <li><button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button></li>
+      </ul>
+      <section id="header-tab" class="tab-content">
         <div class="header">
           <h1>Queensland State Redistribution 2025</h1>
-            <h3>Context</h3>
-            <p>Queensland is divided into <span id="num-divisions"></span> state electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
-            <p>Districts larger than 100,000km<sup>2</sup> are given additional 'virtual' electors equal to 2% of the total area of the district.</p>
-            <p>The Redistribution Commission may also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2032 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
-            <p>The ABS divides Queensland into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
-            <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
-            <h3>Instructions</h3>
-            <p>1. Click any district in the left panel (within the Divisions tab) to select or unselect it</p>
-            <p>2. Click on any SA1 on the map to transfer it into the selected district</p>
-            <p>3. Click on any transferred SA1s to return them to their original district</p>
-            <p>4. Shift-click can be used to transfer or return whole SA2s</p>
-            <p>5. New divisions can be created by clicking the '+' symbol next to the group label</p>
-            <h3>Disclaimer</h3>
-            <p>This tool presents raw data provided by official sources. Calculations use published enrolment data; aggregated results are provided without warranty. No guarantee is made that aggregate enrolment calculations will be error-free. The tool is offered as-is, and any usage of the tool is made at the user's own risk.</p>
-            <h3>Attribution</h3>
-            <p>The original idea and project was developed by Angas, available <a href="https://auredistribution.neocities.org/">here</a> and <a href="https://github.com/auredistribution/qld-state-redistribution">on GitHub</a>.</p>
+          <h3>Context</h3>
+          <p>Queensland is divided into <span id="num-divisions"></span> state electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
+          <p>Districts larger than 100,000km<sup>2</sup> are given additional 'virtual' electors equal to 2% of the total area of the district.</p>
+          <p>The Redistribution Commission may also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2032 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
+          <p>The ABS divides Queensland into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+          <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
+          <h3>Instructions</h3>
+          <p>1. Click any district in the left panel (within the Divisions tab) to select or unselect it</p>
+          <p>2. Click on any SA1 on the map to transfer it into the selected district</p>
+          <p>3. Click on any transferred SA1s to return them to their original district</p>
+          <p>4. Shift-click can be used to transfer or return whole SA2s</p>
+          <p>5. New divisions can be created by clicking the 'New' button next to a group label</p>
+          <h3>Disclaimer</h3>
+          <p>This tool presents raw data provided by official sources. Calculations use published enrolment data; aggregated results are provided without warranty. No guarantee is made that aggregate enrolment calculations will be error-free. The tool is offered as-is, and any usage of the tool is made at the user's own risk.</p>
+          <h3>Attribution</h3>
+          <p>The original idea and project was developed by Angas, available <a href="https://auredistribution.neocities.org/" target="_blank" rel="noopener">here</a> and <a href="https://github.com/auredistribution/qld-state-redistribution" target="_blank" rel="noopener">on GitHub</a>.</p>
         </div>
-      </div>
-      <div id="divisions-tab" class="tab-content" style="display:none">
-        <div>
-          <button class="button" type="button" onclick="resetDivisions()">Reset Districts</button>
-          <button class="button" type="button" onclick="toggleProjectedThresholds()">Toggle Projected Elector Threshold</button>
-        </div>
-        <div>
-          <button class="button" type="button" onclick="exportCSV()">Export SA1 CSV</button>
-          <button class="button" type="button" onclick="exportDivisionTotalsCSV()">Export District Totals CSV</button>
-          <button class="button" type="button" onclick="triggerImport()">Import SA1 CSV</button>
+      </section>
+      <section id="divisions-tab" class="tab-content" style="display:none; padding:14px 14px 60px;">
+        <div class="division-toolbar" style="display:flex; flex-wrap:wrap; margin-bottom:6px;">
+          <button class="button button-ghost" type="button" onclick="resetDivisions()" title="Reset all districts to original configuration">Reset SA1s</button>
+          <button class="button button-ghost" type="button" onclick="toggleProjectedThresholds()" title="Toggle projected enrolment quota highlighting">Toggle Projected</button>
+          <button class="button button-ghost" type="button" onclick="exportCSV()" title="Download per-SA1 allocation CSV">Export SA1s</button>
+          <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
+          <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import</button>
           <input type="file" id="import-file" accept=".csv" style="display:none" />
         </div>
-        <div id="header-info" style="font-size:14px;user-select:none"></div>
-        <div id="divisions" style="font-size:14px;user-select:none"></div>
-      </div>
-    </div>
+        <div id="header-info"></div>
+        <div id="divisions" style="user-select:none;"></div>
+      </section>
+    </aside>
     <div id="map"></div>
   </div>
 

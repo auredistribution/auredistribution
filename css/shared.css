@@ -2,54 +2,95 @@ body {
   font-family: Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Modern palette + layout variables (aligned with index.html aesthetic) */
+:root {
+  --app-bg: #f5f7fa;
+  --panel-bg: #ffffff;
+  --panel-border: #d9e1ea;
+  --panel-border-soft: #e6edf3;
+  --text-color: #1f2d3d;
+  --text-muted: #5b6b7c;
+  --accent: #005ea5;
+  --accent-hover: #004777;
+  --danger: #c62828;
+  --danger-soft: #ffefef;
+  --positive-soft: #e8f9ef;
+  --warning-soft: #fff6e0;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 10px -2px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.08);
+}
+
+html, body {
+  background: var(--app-bg);
+  color: var(--text-color);
+}
+
 p {
   font-size: 14px;
 }
 
 .summary-panel {
   height: 100%;
-  padding: 8px;
-  overflow-y: scroll;
-  min-width: 600px;
-  flex: 1;
+  padding: 0 0 16px;
+  overflow-y: auto;
+  min-width: 520px;
+  max-width: 620px;
+  flex: 0 0 560px;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg);
+  border-right: 1px solid var(--panel-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .header {
-  position: sticky;
-  top: 0;
-  background: white;
-  margin-right: 8px;
+  position: relative;
+  background: linear-gradient(135deg,#ffffff,#f1f6fb 65%);
+  padding: 28px 28px 18px;
+  border-bottom: 1px solid var(--panel-border);
 }
+.header h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -.5px; }
+.header h3 { margin: 24px 0 8px; font-size: 16px; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); }
+.header p { margin: 0 0 10px; }
 
 .instructions {
   margin: 8px 8px 8px 0;
 }
 
+/* Buttons */
 .button {
-  border-radius: 8px;
+  --btn-bg: var(--accent);
+  --btn-bg-hover: var(--accent-hover);
+  --btn-color: #fff;
+  --btn-border: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--radius-sm);
   font: inherit;
-  font-weight: bold;
-  padding: 8px;
+  font-weight: 600;
+  padding: 8px 14px;
   cursor: pointer;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  font-size: 13px;
+  letter-spacing: .3px;
+  transition: background .15s, box-shadow .15s;
 }
+.button:hover { background: var(--btn-bg-hover); }
+.button:active { transform: translateY(1px); }
+.button-grey { --btn-bg: #e6ebf0; --btn-bg-hover: #d7dde3; --btn-border: #c9d1d8; --btn-color: #1f2d3d; }
+.button-red { --btn-bg: #d84343; --btn-bg-hover: #bb2e2e; --btn-border: #b52e2e; }
+.button-outline { --btn-bg: #fff; --btn-bg-hover: #f4f8fb; --btn-color: var(--accent); --btn-border: var(--panel-border); }
+.button-ghost { --btn-bg: #ffffff; --btn-bg-hover: #f2f5f8; --btn-color: var(--text-muted); --btn-border: #d5dde4; }
 
-.button-grey {
-  background-color: #CCCCCC;
-  border: 2px solid #BBBBBB;
-}
-
-.button-grey:hover {
-  background-color: #DDDDDD;
-}
-
-.button-grey:active {
-  background-color: #BBBBBB;
-}
-
-.button-red {
-  background-color: #FFCCCC;
-  border: 2px solid #EEBBBB;
-}
+/* Compact toolbar variant */
+.division-toolbar { gap:4px; }
+.division-toolbar .button { font-size:12px; padding:5px 10px; font-weight:500; }
+.division-toolbar .button-ghost { --btn-color: #4a5a67; }
 
 .button-red:hover {
   background-color: #FFDDDD;
@@ -59,9 +100,37 @@ p {
   background-color: #EEBBBB;
 }
 
-.division:hover {
-  background-color: #FFFFEE;
-}
+/* Division & group rows */
+.division-row, .group-row { display: flex; align-items: flex-start; gap: 4px; padding: 6px 10px 6px 4px; border-radius: var(--radius-sm); position: relative; }
+.division-row { cursor: pointer; }
+.division-row:hover { background: #fff9d8; }
+.division-row.is-selected { background: #fff4b3; box-shadow: inset 0 0 0 1px #f0ce4e; font-weight: 600; }
+.division-row p { margin: 0; line-height: 1.3; font-size: 12.5px; }
+.group-row { margin-top: 12px; padding: 4px 4px 4px 2px; border-left: 4px solid var(--accent); background: #f0f6fa; }
+.group-row p { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; color: var(--text-muted); }
+.group-row .button { margin-left: auto; font-size: 12px; padding: 4px 10px; }
+.division-status { flex: 0 0 auto; }
+.status-dot { height: 10px; width: 10px; border-radius: 50%; margin: 6px 6px 0 6px; box-shadow: 0 0 0 2px #fff; }
+.status-empty { height: 16px; width: 16px; margin: 4px 6px 0 4px; background: linear-gradient(135deg,#fafafa,#eef2f5); border: 1px dashed #c2ccd5; border-radius: 50%; }
+.status-over { background: #ff8a8a; }
+.status-under { background: #8aa6ff; }
+.status-ok { background: #8bd78b; }
+.large-flag { font-size: 10px; background: #ffe7a3; color:#7a5600; padding:2px 5px; border-radius: 4px; margin-left:6px; font-weight:600; letter-spacing:.5px; }
+.quota-metric { font-size: 11px; color: var(--text-muted); font-weight:500; }
+
+/* Header info metrics */
+#header-info { padding: 8px 20px 4px; border-top: 1px solid var(--panel-border-soft); margin-top: auto; background: #fafcfe; }
+#header-info p { margin: 4px 0; font-size: 12.5px; }
+
+/* Tab navigation */
+#tab-nav { background:#f1f6fb; border-bottom:1px solid var(--panel-border); padding: 0 12px; }
+#tab-nav li { margin:0; }
+#tab-nav .button { border: none; background: transparent; color: var(--text-muted); font-weight:500; border-bottom: 3px solid transparent; border-radius:0; padding:14px 16px 11px; }
+#tab-nav .button:hover { background: rgba(255,255,255,0.6); color: var(--text-color); }
+#tab-nav .button.button-grey { color: var(--accent); border-bottom-color: var(--accent); background: #fff; box-shadow: inset 0 1px 0 #fff; }
+
+/* Map container */
+#map { box-shadow: var(--shadow-md); }
 
 html, body {
   height: 100%;
@@ -79,12 +148,15 @@ body > div {
   width: 100%;
 }
 
+/* Map hover info */
 .info-panel {
-  padding: 6px 8px;
-  font: 14px/16px Arial, Helvetica, sans-serif;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  padding: 8px 10px;
+  font: 12.5px/15px Segoe UI, Arial, Helvetica, sans-serif;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+  backdrop-filter: blur(4px);
 }
 
 .info h4 {

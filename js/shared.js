@@ -347,85 +347,74 @@ function initSharedApp() {
     let outsideOfQuotaDivisions = 0;
 
     divisionsAndGroups.forEach(entry => {
-      if (entry.type == "division") {
-        const division = entry.name
+      if (entry.type === 'division') {
+        const division = entry.name;
+        const divisionSa1s = Object.keys(data).filter(sa1 => (data[sa1].currentDivision === division));
+        const area = divisionSa1s.map(sa1 => data[sa1].area).reduce((a, b) => a + b, 0);
+        const isLargeDistrict = (LARGE_DISTRICT_AREA_THRESHOLD > 0) && (area > LARGE_DISTRICT_AREA_THRESHOLD);
+        const largeAdj = isLargeDistrict ? area * LARGE_DISTRICT_VIRTUAL_ELECTOR_RATE : 0;
+        const startingTotal = divisionSa1s.map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => a + b, 0) + largeAdj;
+        const projectedTotal = divisionSa1s.map(sa1 => data[sa1].projectedEnrolment).reduce((a, b) => a + b, 0) + largeAdj;
+        const startingDeviation = 100 * startingTotal / (STATE_STARTING_TOTAL / NUM_DIVISIONS) - 100;
+        const projectedDeviation = 100 * projectedTotal / (STATE_PROJECTED_TOTAL / NUM_DIVISIONS) - 100;
 
-        const divisionSa1s = Object.keys(data).filter(sa1 => (data[sa1].currentDivision == division))
-
-        const area = divisionSa1s.map(sa1 => data[sa1].area).reduce((a, b) => (a + b), 0)
-
-        const isLargeDistrict = (LARGE_DISTRICT_AREA_THRESHOLD > 0) && (area > LARGE_DISTRICT_AREA_THRESHOLD)
-
-        const startingTotal = divisionSa1s.map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => (a + b), 0) + (isLargeDistrict ? area * 0.02 : 0)
-        const startingDeviation = 100 * startingTotal / (STATE_STARTING_TOTAL / NUM_DIVISIONS) - 100
-        const projectedTotal = divisionSa1s.map(sa1 => data[sa1].projectedEnrolment).reduce((a, b) => (a + b), 0) + (isLargeDistrict ? area * 0.02 : 0)
-        const projectedDeviation = 100 * projectedTotal / (STATE_PROJECTED_TOTAL / NUM_DIVISIONS) - 100
-
-        let statusIndicatorStyle = ""
-
-        if (startingTotal == 0 && projectedTotal == 0) {
-          statusIndicatorStyle = "height: 16px; width: 16px; margin: 8px; border-radius: 50%;"
+        let statusClass = 'status-ok';
+        if (startingTotal === 0 && projectedTotal === 0) {
+          statusClass = 'status-empty';
         } else if (startingDeviation > (ENROLMENT_THRESHOLD * 100) || (useProjectedThresholds && projectedDeviation > (PROJECTION_THRESHOLD * 100))) {
-          statusIndicatorStyle = "height: 16px; width: 16px; margin: 8px; border-radius: 50%; background-color: #FF9999;"
-          outsideOfQuotaDivisions++
+          statusClass = 'status-over';
+          outsideOfQuotaDivisions++;
         } else if (startingDeviation < -(ENROLMENT_THRESHOLD * 100) || (useProjectedThresholds && projectedDeviation < -(PROJECTION_THRESHOLD * 100))) {
-          statusIndicatorStyle = "height: 16px; width: 16px; margin: 8px; border-radius: 50%; background-color: #9999FF;"
-          outsideOfQuotaDivisions++
+          statusClass = 'status-under';
+          outsideOfQuotaDivisions++;
+        }
+
+        const row = document.createElement('div');
+        row.className = 'division-row' + (division === selectedDivision ? ' is-selected' : '');
+
+        // Status indicator
+        const status = document.createElement('div');
+        if (statusClass === 'status-empty') {
+          status.className = 'status-empty';
         } else {
-          statusIndicatorStyle = "height: 8px; width: 8px; margin: 12px; border-radius: 50%; background-color: #CCFFCC;"
+          status.className = 'status-dot ' + statusClass;
         }
+        row.appendChild(status);
 
-        var element = document.createElement("div")
-        element.style = `display: flex; align-items: center; line-height: 8px; cursor: pointer; ${((division == selectedDivision) ? " background-color: #FFFFCC; font-weight: bold;" : "")}`
-        element.className = "division"
+        // Text block
+        const text = document.createElement('p');
+        const startDevStr = `${startingDeviation.toFixed(2)}%`;
+        const projDevStr = `${projectedDeviation.toFixed(2)}%`;
+        const labelLarge = isLargeDistrict ? '<span class="large-flag">LARGE</span>' : '';
+        const strikeStyle = (division.slice(0, 4) !== '(new' && startingTotal === 0 && projectedTotal === 0) ? 'text-decoration:line-through;' : '';
+        text.style = strikeStyle;
+        text.innerHTML = `<b>${division}</b> ${formatNumber(startingTotal.toFixed(0))} current <span class="quota-metric">(${startDevStr})</span> / ${formatNumber(projectedTotal.toFixed(0))} projected <span class="quota-metric">(${projDevStr})</span> ${labelLarge}`;
+        row.appendChild(text);
 
-        var statusIndicator = document.createElement("div")
-        statusIndicator.style = statusIndicatorStyle
-        element.appendChild(statusIndicator)
+        row.onclick = () => {
+          selectedDivision = (selectedDivision === division) ? '' : division;
+          renderDivisionList();
+        };
 
-        var text = document.createElement("p")
-        text.innerHTML = `<b>${division}</b> ${formatNumber(startingTotal.toFixed(0))} current (${startingDeviation.toFixed(2)}%) / ${formatNumber(projectedTotal.toFixed(0))} projected (${projectedDeviation.toFixed(2)}%)${isLargeDistrict ? " <b>[LARGE DISTRICT]</b>" : ""}`
-        text.style = (division.slice(0, 4) != "(new" && startingTotal == 0 && projectedTotal == 0) ? "text-decoration: line-through;" : ""
-        text.onclick = () => {
-          if (selectedDivision == division) {
-            selectedDivision = ""
-          } else {
-            selectedDivision = division
-          }
-          renderDivisionList()
-        }
-        element.appendChild(text)
-
-        divisionList.appendChild(element)
-
-      } else if (entry.type == "group") {
-
-        var element = document.createElement("div")
-        element.style = "display: flex; align-items: center; line-height: 8px;"
-
-        var text = document.createElement("p")
-
-        const groupStartingTotal = Object.keys(data).filter(sa1 => entry.divisions.includes(data[sa1].currentDivision)).map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => (a + b), 0)
-
-        text.innerHTML = `${entry.name} (${(groupStartingTotal / (STATE_STARTING_TOTAL / NUM_DIVISIONS)).toFixed(2)} current quotas / ${entry.divisions.length} districts)`
-        text.style = "line-height: 8px; font-weight: bold;"
-
-        element.appendChild(text)
-
-        var newDivisionButton = document.createElement("button")
-        newDivisionButton.innerHTML = "+"
-        newDivisionButton.className = "button"
-        newDivisionButton.style = "margin: 8px"
-        newDivisionButton.type = "button"
-        newDivisionButton.onclick = () => {
-          createNewDivision(entry.name)
-        }
-
-        element.appendChild(newDivisionButton)
-
-        divisionList.appendChild(element)
+        divisionList.appendChild(row);
+      } else if (entry.type === 'group') {
+        const groupRow = document.createElement('div');
+        groupRow.className = 'group-row';
+        const groupStartingTotal = Object.keys(data)
+          .filter(sa1 => entry.divisions.includes(data[sa1].currentDivision))
+          .map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => a + b, 0);
+        const text = document.createElement('p');
+        text.innerHTML = `${entry.name} · ${(groupStartingTotal / (STATE_STARTING_TOTAL / NUM_DIVISIONS)).toFixed(2)} quotas · ${entry.divisions.length} districts`;
+        groupRow.appendChild(text);
+        const newBtn = document.createElement('button');
+        newBtn.type = 'button';
+        newBtn.className = 'button button-outline';
+        newBtn.textContent = '+ New';
+        newBtn.onclick = () => createNewDivision(entry.name);
+        groupRow.appendChild(newBtn);
+        divisionList.appendChild(groupRow);
       }
-    })
+    });
 
     //====================//
     // RENDER HEADER INFO //
