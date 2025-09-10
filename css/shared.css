@@ -2,6 +2,9 @@ body {
   font-family: Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Ensure padding/borders don't inflate 100% height containers */
+* { box-sizing: border-box; }
+
 /* Modern palette + layout variables (aligned with index.html aesthetic) */
 :root {
   --app-bg: #f5f7fa;
@@ -136,6 +139,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden; /* prevent tiny vertical scroll gap */
 }
 
 body > div {

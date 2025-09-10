@@ -307,6 +307,8 @@ function initSharedApp() {
   function onEachElectorate(feature, layer) { layer.on({ mouseover: highlightElectorate, mouseout: resetHighlight, click: zoomToFeature }); layer.bindTooltip(feature.properties.name, { permanent: true, direction: 'center', className: 'countryLabel' }); }
 
   const features = L.geoJSON(sa1s, { style: f => ({ fillColor: getColor(f.properties.division).color, fillOpacity: 0.5, weight: 0.5, color: '#333' }), onEachFeature }).addTo(map);
+  // Expose for external helpers (import routine defined outside init)
+  window._featuresLayer = features;
 
   // Info panel control
   const infoPanel = L.control();
@@ -560,7 +562,9 @@ function initSharedApp() {
       }
 
       let applied = 0, skipped = 0;
-      features.getLayers().forEach(layer => {
+      const layerCollection = window._featuresLayer || (window._sharedMapCtx && window._sharedMapCtx.features);
+      if(!layerCollection){ alert('Map not initialised yet; please try import again after the map loads.'); return; }
+      layerCollection.getLayers().forEach(layer => {
         const sa1Name = layer.feature.properties['SA1_CODE21'];
         if (updates.hasOwnProperty(sa1Name) && data[sa1Name]) {
           const newDiv = updates[sa1Name];
