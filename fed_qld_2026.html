@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Queensland Federal Redistribution 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.css" />
+  <script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.js"></script>
+  <link rel="stylesheet" href="css/shared.css" />
+</head>
+<body>
+  <div style="display:flex">
+    <div class="summary-panel">
+      <div>
+        <ul id="tab-nav" style="display:flex;list-style:none;padding:0;margin:0 0 8px 0;border-bottom:1px solid #ccc;">
+          <li style="margin-right:8px;">
+            <button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button>
+          </li>
+          <li>
+            <button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button>
+          </li>
+        </ul>
+      </div>
+      <div id="header-tab" class="tab-content">
+        <div class="header">
+          <h1>Queensland Federal Redistribution 2026</h1>
+            <h3>Context</h3>
+            <p>Queensland is divided into <span id="num-divisions"></span> federal electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
+            <p>The Redistribution Commission will also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2032 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
+            <p>The ABS divides Queensland into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+            <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
+            <h3>Instructions</h3>
+            <p>1. Click any district in the left panel (within the Divisions tab) to select or unselect it</p>
+            <p>2. Click on any SA1 on the map to transfer it into the selected district</p>
+            <p>3. Click on any transferred SA1s to return them to their original district</p>
+            <p>4. Shift-click can be used to transfer or return whole SA2s</p>
+            <p>5. New divisions can be created by clicking the '+' symbol next to the group label</p>
+            <h3>Disclaimer</h3>
+            <p>This tool strives to avoid any political bias and presents raw data provided by official sources. Calculations use published enrolment data; aggregate results are provided without warranty. no guarantee is made that aggregate enrolment calculations will be error-free. The tool is offered as-is, and any usage of the tool is made at the user's own risk.</p>
+            <h3>Contact</h3>
+            <p>For bug reports, feature suggestions, or other feedback, please send an email to auredistribution@gmail.com</p>
+        </div>
+      </div>
+      <div id="divisions-tab" class="tab-content" style="display:none">
+        <div>
+          <button class="button" type="button" onclick="resetDivisions()">Reset Districts</button>
+          <button class="button" type="button" onclick="toggleProjectedThresholds()">Toggle Projected Elector Threshold</button>
+        </div>
+        <div>
+          <button class="button" type="button" onclick="exportCSV()">Export SA1 CSV</button>
+          <button class="button" type="button" onclick="exportDivisionTotalsCSV()">Export District Totals CSV</button>
+          <button class="button" type="button" onclick="triggerImport()">Import SA1 CSV</button>
+          <input type="file" id="import-file" accept=".csv" style="display:none" />
+        </div>
+        <div id="header-info" style="font-size:14px;user-select:none"></div>
+        <div id="divisions" style="font-size:14px;user-select:none"></div>
+      </div>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <script>
+    // Event-specific divisions & groups setup
+    window.divisionsAndGroups = [
+      { type: "group", name: "NORTHERN QUEENSLAND", divisions: ["Capricornia", "Herbert", "Kennedy", "Leichhardt"] },
+      { type: "division", name: "Capricornia" },
+      { type: "division", name: "Herbert" },
+      { type: "division", name: "Kennedy" },
+      { type: "division", name: "Leichhardt" },
+      { type: "group", name: "BURNETT & WIDE BAY", divisions: ["Flynn", "Hinkler", "Wide Bay", "Dawson"] },
+      { type: "division", name: "Dawson" },
+      { type: "division", name: "Flynn" },
+      { type: "division", name: "Hinkler" },
+      { type: "division", name: "Wide Bay" },
+      { type: "group", name: "SOUTHERN QUEENSLAND", divisions: ["Groom", "Maranoa", "Wright"] },
+      { type: "division", name: "Groom" },
+      { type: "division", name: "Maranoa" },
+      { type: "division", name: "Wright" },
+      { type: "group", name: "SUNSHINE COAST", divisions: ["Fisher", "Fairfax"] },
+      { type: "division", name: "Fisher" },
+      { type: "division", name: "Fairfax" },
+      { type: "group", name: "BRISBANE NORTH", divisions: ["Brisbane", "Lilley", "Petrie", "Ryan", "Dickson", "Longman"] },
+      { type: "division", name: "Brisbane" },
+      { type: "division", name: "Lilley" },
+      { type: "division", name: "Petrie" },
+      { type: "division", name: "Ryan" },
+      { type: "division", name: "Dickson" },
+      { type: "division", name: "Longman" },
+      { type: "group", name: "BRISBANE SOUTH", divisions: ["Bonner", "Griffith", "Moreton", "Bowman", "Forde", "Rankin", "Blair", "Oxley"] },
+      { type: "division", name: "Blair" },
+      { type: "division", name: "Oxley" },
+      { type: "division", name: "Bonner" },
+      { type: "division", name: "Griffith" },
+      { type: "division", name: "Moreton" },
+      { type: "division", name: "Bowman" },
+      { type: "division", name: "Forde" },
+      { type: "division", name: "Rankin" },
+      { type: "group", name: "GOLD COAST", divisions: ["Fadden", "McPherson", "Moncrieff"] },
+      { type: "division", name: "Fadden" },
+      { type: "division", name: "McPherson" },
+      { type: "division", name: "Moncrieff" }
+    ];
+    window.EVENT_NAME = 'fed_qld_2026';
+    window.NUM_DIVISIONS = 30;
+    window.STATE_STARTING_TOTAL = 3744585;
+    window.STATE_PROJECTED_TOTAL = 4155112;
+    window.PROJECTION_THRESHOLD = 0.035;
+  </script>
+  <script src="data/sa1_2021.js"></script>
+  <script src="data/fed_qld_2018.js"></script>
+  <script src="data/sa1_2021_fed_qld_2018.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    const current_boundaries_data = fed_qld_2018;
+    showTab('header-tab');
+    initSharedApp();
+  </script>
+</body>
+</html>

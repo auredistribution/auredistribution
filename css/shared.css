@@ -1,0 +1,93 @@
+body {
+  font-family: Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+p {
+  font-size: 14px;
+}
+
+.summary-panel {
+  height: 100%;
+  padding: 8px;
+  overflow-y: scroll;
+  min-width: 600px;
+  flex: 1;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  background: white;
+  margin-right: 8px;
+}
+
+.instructions {
+  margin: 8px 8px 8px 0;
+}
+
+.button {
+  border-radius: 8px;
+  font: inherit;
+  font-weight: bold;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.button-grey {
+  background-color: #CCCCCC;
+  border: 2px solid #BBBBBB;
+}
+
+.button-grey:hover {
+  background-color: #DDDDDD;
+}
+
+.button-grey:active {
+  background-color: #BBBBBB;
+}
+
+.button-red {
+  background-color: #FFCCCC;
+  border: 2px solid #EEBBBB;
+}
+
+.button-red:hover {
+  background-color: #FFDDDD;
+}
+
+.button-red:active {
+  background-color: #EEBBBB;
+}
+
+.division:hover {
+  background-color: #FFFFEE;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body > div {
+  height: 100%;
+  display: flex;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+.info-panel {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
