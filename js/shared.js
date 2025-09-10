@@ -263,14 +263,17 @@ function initSharedApp() {
   });
 
   // Map setup
-  const map = L.map("map").setView(window.DEFAULT_STARTING_COORDS, 6);
+  // Performance: prefer Canvas rendering (faster for thousands of polygons, esp. Safari)
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  const map = L.map("map", { preferCanvas: true }).setView(window.DEFAULT_STARTING_COORDS, 6);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: "&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>"
   }).addTo(map);
   map.zoomControl.setPosition('bottomright');
 
-  const current_boundaries = new L.GeoJSON(current_boundaries_data, { style: () => ({ weight: 2, color: 'blue' }), onEachFeature: onEachElectorate });
+  const sharedCanvasRenderer = L.canvas({ padding: 0.5 });
+  const current_boundaries = new L.GeoJSON(current_boundaries_data, { renderer: sharedCanvasRenderer, style: () => ({ weight: 1.2, color: '#2b62c6' }), onEachFeature: onEachElectorate });
   const overlayMaps = { "Current Boundaries": current_boundaries };
   const current_boundaries_search = new L.Control.Search({ layer: current_boundaries, propertyName: 'name', position: 'bottomleft' });
   L.control.layers(null, overlayMaps, { collapsed: false, position: 'bottomleft' }).addTo(map);
@@ -304,9 +307,13 @@ function initSharedApp() {
   function highlightElectorate(e) { const layer = e.target; layer.setStyle({ weight: 4, color: 'green' }); if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) layer.bringToFront(); info.update(layer.feature.properties); }
   function resetHighlight(e) { e.target.setStyle({ weight: 2, color: 'blue' }); }
   function zoomToFeature(e) { map.fitBounds(e.target.getBounds()); }
-  function onEachElectorate(feature, layer) { layer.on({ mouseover: highlightElectorate, mouseout: resetHighlight, click: zoomToFeature }); layer.bindTooltip(feature.properties.name, { permanent: true, direction: 'center', className: 'countryLabel' }); }
+  function onEachElectorate(feature, layer) { layer.on({ mouseover: highlightElectorate, mouseout: resetHighlight, click: zoomToFeature }); if(!isSafari){ layer.bindTooltip(feature.properties.name, { permanent: true, direction: 'center', className: 'countryLabel' }); } }
 
-  const features = L.geoJSON(sa1s, { style: f => ({ fillColor: getColor(f.properties.division).color, fillOpacity: 0.5, weight: 0.5, color: '#333' }), onEachFeature }).addTo(map);
+  const features = L.geoJSON(sa1s, {
+    renderer: sharedCanvasRenderer,
+    style: f => ({ fillColor: getColor(f.properties.division).color, fillOpacity: 0.5, weight: 0.4, color: '#333' }),
+    onEachFeature
+  }).addTo(map);
   // Expose for external helpers (import routine defined outside init)
   window._featuresLayer = features;
 
