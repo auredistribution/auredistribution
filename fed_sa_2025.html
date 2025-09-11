@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>South Australia Federal Redistribution 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.css" />
+  <script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.js"></script>
+  <link rel="stylesheet" href="css/shared.css" />
+</head>
+<body>
+  <div style="display:flex; height:100%; width:100%;">
+    <aside class="summary-panel">
+      <ul id="tab-nav" style="list-style:none;display:flex;margin:0;">
+        <li><button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button></li>
+        <li><button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button></li>
+        <li style="margin-left:auto;"><a id="home-nav-link" href="index.html" class="button" style="text-decoration:none; display:inline-block;">Home</a></li>
+      </ul>
+      <section id="header-tab" class="tab-content">
+        <div class="header">
+          <h1>South Australian Federal Redistribution 2025</h1>
+          <h3>Context</h3>
+          <p>South Australia is divided into <span id="num-divisions"></span> federal electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
+          <p>The Redistribution Commission will also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2032 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
+          <p>The ABS divides South Australia into 174 named Statistical Areas Level 2 (SA2s) which are divided into 4,325 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+          <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
+          <h3>Instructions</h3>
+          <p>1. Click any district in the left panel (within the Divisions tab) to select or unselect it</p>
+          <p>2. Click on any SA1 on the map to transfer it into the selected district</p>
+          <p>3. Click on any transferred SA1s to return them to their original district</p>
+          <p>4. Shift-click can be used to transfer or return whole SA2s</p>
+          <p>5. New divisions can be created by clicking the 'New' button next to a group label</p>
+          <h3>Disclaimer</h3>
+          <p>This tool presents raw data provided by official sources. Calculations use published enrolment data; aggregated results are provided without warranty. No guarantee is made that aggregate enrolment calculations will be error-free. The tool is offered as-is, and any usage of the tool is made at the user's own risk.</p>
+          <h3>Attribution</h3>
+          <p>The original idea and project was developed by Angas, available <a href="https://auredistribution.neocities.org/" target="_blank" rel="noopener">here</a> and <a href="https://github.com/auredistribution/qld-state-redistribution" target="_blank" rel="noopener">on GitHub</a>.</p>
+        </div>
+      </section>
+      <section id="divisions-tab" class="tab-content" style="display:none; padding:14px 14px 60px;">
+        <div class="division-toolbar" style="display:flex; flex-wrap:wrap; margin-bottom:6px;">
+          <button class="button button-ghost" type="button" onclick="resetDivisions()" title="Reset all districts to original configuration">Reset SA1s</button>
+          <button class="button button-ghost" type="button" onclick="toggleProjectedThresholds()" title="Toggle projected enrolment quota highlighting">Toggle Projected</button>
+          <button class="button button-ghost" type="button" onclick="exportCSV()" title="Download per-SA1 allocation CSV">Export SA1s</button>
+          <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
+          <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import</button>
+          <input type="file" id="import-file" accept=".csv" style="display:none" />
+        </div>
+        <div id="header-info"></div>
+        <div id="divisions" style="user-select:none;"></div>
+      </section>
+    </aside>
+    <div id="map"></div>
+  </div>
+
+  <script>
+    window.divisionsAndGroups = [
+      { type: "group", name: "Inner Metro", divisions: ["Adelaide", "Hindmarsh", "Sturt"] },
+      { type: "division", name: "Adelaide" },
+      { type: "division", name: "Hindmarsh" },
+      { type: "division", name: "Sturt" },
+      { type: "group", name: "Outer Metro", divisions: ["Boothby", "Kingston", "Makin", "Spence"] },
+      { type: "division", name: "Boothby" },
+      { type: "division", name: "Kingston" },
+      { type: "division", name: "Makin" },
+      { type: "division", name: "Spence" },
+      { type: "group", name: "Rural", divisions: ["Barker","Grey","Mayo"] },
+      { type: "division", name: "Barker" },
+      { type: "division", name: "Grey" },
+      { type: "division", name: "Mayo" }
+    ];
+    window.EVENT_NAME = 'fed_sa_2025';
+    window.NUM_DIVISIONS = 10;
+    window.STATE_STARTING_TOTAL = 1132238;
+    window.STATE_PROJECTED_TOTAL = 1256000;
+    window.PROJECTION_THRESHOLD = 0.035;
+    window.DEFAULT_STARTING_COORDS = [-34.45164504028529, 138.67163395483473];
+    window.DEFAULT_STARTING_ZOOM = 7;
+  </script>
+  <script src="data/sa1_2021_sa.js"></script>
+  <script src="data/fed_sa_2018.js"></script>
+  <script src="data/sa1_2021_fed_sa_2018.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    showTab('header-tab');
+    initSharedApp();
+  </script>
+</body>
+</html>

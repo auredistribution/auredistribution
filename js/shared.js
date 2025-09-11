@@ -3,6 +3,7 @@
 // CONFIG CONSTANTS (can be overridden per event page before including this file if needed)
 window.EVENT_NAME = window.EVENT_NAME || 'redistribution';
 window.DEFAULT_STARTING_COORDS = window.DEFAULT_STARTING_COORDS || [-21.5, 146.5];
+window.DEFAULT_STARTING_ZOOM = window.DEFAULT_STARTING_ZOOM || 6;
 window.NUM_DIVISIONS = window.NUM_DIVISIONS || 93;
 window.STATE_STARTING_TOTAL = window.STATE_STARTING_TOTAL || 3744585;
 window.STATE_PROJECTED_TOTAL = window.STATE_PROJECTED_TOTAL || 4155112;
@@ -16,6 +17,17 @@ let selectedDivision = "";
 let newDivisionCount = 0;
 let useProjectedThresholds = false;
 let divisionsAndGroups = window.divisionsAndGroups || [];
+
+// Unsaved changes tracking
+let _unsavedChanges = false; // private flag
+window._markUnsaved = () => { _unsavedChanges = true; };
+window._clearUnsaved = () => { _unsavedChanges = false; };
+// Warn user if navigating away with unsaved work (assignments / new divisions)
+window.addEventListener('beforeunload', e => {
+  if (!_unsavedChanges) return; // no flag -> allow silent leave
+  e.preventDefault();
+  e.returnValue = '';
+});
 
 function _syncDivisionsAndGroups() {
   if (Array.isArray(window.divisionsAndGroups) && window.divisionsAndGroups.length && divisionsAndGroups !== window.divisionsAndGroups) {
@@ -42,50 +54,68 @@ function getColor(division) { // same mapping as original
     case "Cook":
     case "Moggill":
     case "Leichhardt":
+    case "Bass":
       return { color: "sienna" };
     case "Barron River":
     case "Ipswich West":
     case "Dawson":
+    case "Braddon":
       return { color: "seagreen" };
     case "Cairns":
     case "Ipswich":
     case "Flynn":
+    case "Adelaide":
+    case "Lyons":
+    case "Bean":
       return { color: "midnightblue" };
     case "Mulgrave":
     case "Bundamba":
     case "Hinkler":
+    case "Hindmarsh":
+    case "Clark":
+    case "Canberra":
       return { color: "darkred" };
     case "Hill":
     case "Jordan":
     case "Wide Bay":
+    case "Sturt":
+    case "Franklin":
+    case "Fenner":
       return { color: "olive" };
     case "Hinchinbrook":
     case "Inala":
     case "Groom":
+    case "Boothby":
       return { color: "lightslategray" };
     case "Thuringowa":
     case "Mount Ommaney":
     case "Maranoa":
+    case "Kingston":
       return { color: "green" };
     case "Townsville":
     case "Miller":
     case "Wright":
+    case "Makin":
       return { color: "rosybrown" };
     case "Mundingburra":
     case "South Brisbane":
     case "Fisher":
+    case "Spence":
       return { color: "teal" };
     case "Burdekin":
     case "Greenslopes":
     case "Fairfax":
+    case "Barker":
       return { color: "darkkhaki" };
     case "Whitsunday":
     case "Bulimba":
     case "Dickson":
+    case "Grey":
       return { color: "peru" };
     case "Mackay":
     case "Lytton":
     case "Longman":
+    case "Mayo":
       return { color: "steelblue" };
     case "Mirani":
     case "Chatsworth":
@@ -265,7 +295,7 @@ function initSharedApp() {
   // Map setup
   // Performance: prefer Canvas rendering (faster for thousands of polygons, esp. Safari)
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  const map = L.map("map", { preferCanvas: true }).setView(window.DEFAULT_STARTING_COORDS, 6);
+  const map = L.map("map", { preferCanvas: true }).setView(window.DEFAULT_STARTING_COORDS, window.DEFAULT_STARTING_ZOOM);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: "&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>"
@@ -275,7 +305,24 @@ function initSharedApp() {
   const sharedCanvasRenderer = L.canvas({ padding: 0.5 });
   const current_boundaries = new L.GeoJSON(current_boundaries_data, { renderer: sharedCanvasRenderer, style: () => ({ weight: 1.2, color: '#2b62c6' }), onEachFeature: onEachElectorate });
   const overlayMaps = { "Current Boundaries": current_boundaries };
-  const current_boundaries_search = new L.Control.Search({ layer: current_boundaries, propertyName: 'name', position: 'bottomleft' });
+  const current_boundaries_search = new L.Control.Search({
+    layer: current_boundaries,
+    propertyName: 'name',
+    position: 'bottomleft',
+    zoom: false,
+    firstTipSubmit: true,
+    marker: false,
+    moveToLocation: function (latlng, title, mapRef) {
+      const layer = current_boundaries.getLayers().find(l => l.feature && l.feature.properties && l.feature.properties.name === title);
+      if (layer) {
+        mapRef.fitBounds(layer.getBounds(), { padding: [20, 20] });
+        layer.fire('mouseover');
+        setTimeout(() => layer.fire('mouseout'), 600);
+      } else {
+        mapRef.setView(latlng, 11);
+      }
+    }
+  });
   L.control.layers(null, overlayMaps, { collapsed: false, position: 'bottomleft' }).addTo(map);
   map.on('overlayadd', e => { if (e.layer === current_boundaries && !current_boundaries_search._map) map.addControl(current_boundaries_search); });
   map.on('overlayremove', e => { if (e.layer === current_boundaries && current_boundaries_search._map) map.removeControl(current_boundaries_search); });
@@ -299,13 +346,14 @@ function initSharedApp() {
         layer.feature.properties.division = selectedDivision; data[sa1Name].currentDivision = selectedDivision; layer.setStyle({ fillColor: getColor(selectedDivision).color, fillOpacity: (selectedDivision == originalDivision) ? 0.5 : 0.75 });
       }
     });
+  if(layers.length) window._markUnsaved();
     renderDivisionList();
   }
   function highlightFeature(e) { const layer = e.target; infoPanel.update(layer.feature.properties); layer.setStyle({ weight: 2, color: '#000' }); }
   function unhighlightFeature(e) { const layer = e.target; infoPanel.update(null); layer.setStyle({ weight: 0.5, color: '#333' }); }
   function onEachFeature(feature, layer) { layer.on({ click: clickFeature, mouseover: highlightFeature, mouseout: unhighlightFeature }); }
-  function highlightElectorate(e) { const layer = e.target; layer.setStyle({ weight: 4, color: 'green' }); if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) layer.bringToFront(); info.update(layer.feature.properties); }
-  function resetHighlight(e) { e.target.setStyle({ weight: 2, color: 'blue' }); }
+  function highlightElectorate(e) { const layer = e.target; layer.setStyle({ weight: 4, color: 'green' }); if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) layer.bringToFront(); }
+  function resetHighlight(e) { e.target.setStyle({ weight: 1.2, color: '#2b62c6' }); }
   function zoomToFeature(e) { map.fitBounds(e.target.getBounds()); }
   function onEachElectorate(feature, layer) { layer.on({ mouseover: highlightElectorate, mouseout: resetHighlight, click: zoomToFeature }); if(!isSafari){ layer.bindTooltip(feature.properties.name, { permanent: true, direction: 'center', className: 'countryLabel' }); } }
 
@@ -331,7 +379,7 @@ function initSharedApp() {
     const idx = divisionsAndGroups.findIndex(e => e.name == groupName);
     divisionsAndGroups.splice(idx + divisionsAndGroups[idx].divisions.length + 1, 0, { type: 'division', name: `(new ${newDivisionCount + 1})` });
     divisionsAndGroups[idx].divisions.push(`(new ${newDivisionCount + 1})`);
-    newDivisionCount++; renderDivisionList();
+  newDivisionCount++; window._markUnsaved(); renderDivisionList();
   }
   window.createNewDivision = createNewDivision;
   window.resetDivisions = function () {
@@ -340,7 +388,8 @@ function initSharedApp() {
     });
     divisionsAndGroups = divisionsAndGroups.filter(e => e.name.slice(0, 4) !== '(new');
     divisionsAndGroups.forEach(e => { if (e.type == 'group') e.divisions = e.divisions.filter(d => d.slice(0, 4) !== '(new'); });
-    renderDivisionList();
+  window._clearUnsaved();
+  renderDivisionList();
   };
   window.toggleProjectedThresholds = function () { useProjectedThresholds = !useProjectedThresholds; renderDivisionList(); };
 
@@ -594,6 +643,77 @@ function initSharedApp() {
     }
 
 
-// Simple tab show helper (can be reused)
+// Simple tab show helper
 function showTab(tabId) { document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');['tab-header-btn', 'tab-divisions-btn'].forEach(id => { const b = document.getElementById(id); if (b) b.classList.remove('button-grey'); }); const target = document.getElementById(tabId); if (target) target.style.display = ''; if (tabId === 'header-tab') { const btn = document.getElementById('tab-header-btn'); if (btn) btn.classList.add('button-grey'); } if (tabId === 'divisions-tab') { const btn = document.getElementById('tab-divisions-btn'); if (btn) btn.classList.add('button-grey'); } }
 window.showTab = showTab;
+
+// Leave session modal
+(function setupLeaveSessionModal(){
+  const homeLink = document.getElementById('home-nav-link');
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.style.display = 'none';
+  overlay.innerHTML = `
+    <div class="modal modal-danger" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
+      <header>
+        <h2 id="leave-modal-title">Leave this session?</h2>
+        <p>Unsaved changes will be lost</p>
+      </header>
+      <div class="modal-body">
+        <p>You have unsaved redistribution edits. Export before leaving if you want to keep them.</p>
+      </div>
+      <footer>
+        <button type="button" class="button button-outline" id="leave-cancel-btn">Stay</button>
+        <button type="button" class="button button-red" id="leave-confirm-btn">Leave Anyway</button>
+      </footer>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  let pendingNav = null; // url or 'reload'
+
+  function hasUnsaved(){
+    if(_unsavedChanges) return true;
+    try {
+      if(Array.isArray(window.divisionsAndGroups) && window.divisionsAndGroups.some(d=>d.type==='division' && /^\(new /.test(d.name))) return true;
+      if(window.data && window._sharedMapCtx){
+        for(const layer of window._sharedMapCtx.features.getLayers()) {
+          const code = layer.feature.properties['SA1_CODE21'];
+          const rec = window.data[code];
+          if(rec && rec.currentDivision !== rec.previousDivision) return true;
+        }
+      }
+    } catch(e){ return true; }
+    return false;
+  }
+
+  function openModal(targetUrl){ pendingNav = targetUrl || null; overlay.style.display='flex'; document.addEventListener('keydown', escListener); }
+  function closeModal(){ overlay.style.display='none'; document.removeEventListener('keydown', escListener); pendingNav=null; }
+  function escListener(e){ if(e.key==='Escape') closeModal(); }
+
+  function attemptNav(url){ if(!hasUnsaved()) { if(url==='reload') location.reload(); else if(url) location.href=url; return; } openModal(url); }
+
+  if(homeLink){ homeLink.addEventListener('click', e => { e.preventDefault(); attemptNav(homeLink.href); }); }
+
+  // Intercept same-origin anchor clicks (capture phase)
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a');
+    if(!a) return;
+    if(a.target==='_blank' || a.download) return;
+    const href = a.getAttribute('href');
+    if(!href || href.startsWith('#')) return;
+    if(a.origin === location.origin && a !== homeLink){ e.preventDefault(); attemptNav(a.href); }
+  });
+
+  // Intercept reload shortcuts
+  document.addEventListener('keydown', e => {
+    const reloadKey = (e.key==='F5') || ((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='r');
+    if(reloadKey){ if(hasUnsaved()){ e.preventDefault(); attemptNav('reload'); } }
+  });
+
+  overlay.addEventListener('click', e => { if(e.target===overlay) closeModal(); });
+  overlay.querySelector('#leave-cancel-btn').addEventListener('click', closeModal);
+  overlay.querySelector('#leave-confirm-btn').addEventListener('click', () => {
+    if(typeof window._clearUnsaved === 'function') window._clearUnsaved();
+    if(pendingNav === 'reload') location.reload(); else if(pendingNav) location.href = pendingNav; else location.href='index.html';
+  });
+})();

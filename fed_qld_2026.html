@@ -15,6 +15,7 @@
       <ul id="tab-nav" style="list-style:none;display:flex;margin:0;">
         <li><button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button></li>
         <li><button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button></li>
+        <li style="margin-left:auto;"><a id="home-nav-link" href="index.html" class="button" style="text-decoration:none; display:inline-block;">Home</a></li>
       </ul>
       <section id="header-tab" class="tab-content">
         <div class="header">
@@ -103,7 +104,6 @@
   <script src="data/sa1_2021_fed_qld_2018.js"></script>
   <script src="js/shared.js"></script>
   <script>
-    const current_boundaries_data = fed_qld_2018;
     showTab('header-tab');
     initSharedApp();
   </script>

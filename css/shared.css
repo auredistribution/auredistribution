@@ -152,6 +152,26 @@ body > div {
   width: 100%;
 }
 
+/* ----------------------------- */
+/* Generic modal (for Home warn) */
+/* ----------------------------- */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); display: none; align-items: center; justify-content: center; z-index: 1200; padding: 20px; }
+.modal { background: #ffffff; border: 1px solid var(--panel-border); border-radius: var(--radius-md); width: 420px; max-width: 100%; box-shadow: var(--shadow-md); display: flex; flex-direction: column; }
+.modal header { padding: 18px 22px 8px; }
+.modal header h2 { margin: 0 0 4px; font-size: 18px; letter-spacing: -.3px; }
+.modal header p { margin: 0; font-size: 13px; color: var(--text-muted); }
+.modal .modal-body { padding: 0 22px 4px; font-size: 13px; line-height: 1.45; }
+.modal .modal-body p { margin: 0 0 10px; }
+.modal footer { padding: 14px 18px 16px; display: flex; gap: 8px; justify-content: flex-end; background: #f7f9fb; border-top: 1px solid var(--panel-border-soft); border-bottom-left-radius: var(--radius-md); border-bottom-right-radius: var(--radius-md); }
+.modal footer .button { font-size: 12.5px; padding: 7px 14px; }
+.modal-danger { border-left: 5px solid var(--danger); }
+.modal-danger header h2 { color: var(--danger); }
+.modal a { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .modal { width: 100%; }
+}
+
 /* Map hover info */
 .info-panel {
   padding: 8px 10px;
