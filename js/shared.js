@@ -522,6 +522,7 @@ function initSharedApp() {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      window._clearUnsaved();
     }
 
     //=================================//
@@ -673,16 +674,16 @@ window.showTab = showTab;
 
   function hasUnsaved(){
     if(_unsavedChanges) return true;
-    try {
-      if(Array.isArray(window.divisionsAndGroups) && window.divisionsAndGroups.some(d=>d.type==='division' && /^\(new /.test(d.name))) return true;
-      if(window.data && window._sharedMapCtx){
-        for(const layer of window._sharedMapCtx.features.getLayers()) {
-          const code = layer.feature.properties['SA1_CODE21'];
-          const rec = window.data[code];
-          if(rec && rec.currentDivision !== rec.previousDivision) return true;
-        }
-      }
-    } catch(e){ return true; }
+    // try {
+    //   if(Array.isArray(window.divisionsAndGroups) && window.divisionsAndGroups.some(d=>d.type==='division' && /^\(new /.test(d.name))) return true;
+    //   if(window.data && window._sharedMapCtx){
+    //     for(const layer of window._sharedMapCtx.features.getLayers()) {
+    //       const code = layer.feature.properties['SA1_CODE21'];
+    //       const rec = window.data[code];
+    //       if(rec && rec.currentDivision !== rec.previousDivision) return true;
+    //     }
+    //   }
+    // } catch(e){ return true; }
     return false;
   }
 
