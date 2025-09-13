@@ -25,16 +25,9 @@
           <p>The Redistribution Commission will also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2032 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
           <p>The ABS divides the ACT into 134 named Statistical Areas Level 2 (SA2s) which are divided into 1,227 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
           <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
-          <h3>Instructions</h3>
-          <p>1. Click any district in the left panel (within the Divisions tab) to select or unselect it</p>
-          <p>2. Click on any SA1 on the map to transfer it into the selected district</p>
-          <p>3. Click on any transferred SA1s to return them to their original district</p>
-          <p>4. Shift-click can be used to transfer or return whole SA2s</p>
-          <p>5. New divisions can be created by clicking the 'New' button next to a group label</p>
-          <h3>Disclaimer</h3>
-          <p>This tool presents raw data provided by official sources. Calculations use published enrolment data; aggregated results are provided without warranty. No guarantee is made that aggregate enrolment calculations will be error-free. The tool is offered as-is, and any usage of the tool is made at the user's own risk.</p>
-          <h3>Attribution</h3>
-          <p>The original idea and project was developed by Angas, available <a href="https://auredistribution.neocities.org/" target="_blank" rel="noopener">here</a> and <a href="https://github.com/auredistribution/qld-state-redistribution" target="_blank" rel="noopener">on GitHub</a>.</p>
+          <div id="shared-instructions"></div>
+          <div id="shared-disclaimer"></div>
+          <div id="shared-attribution"></div>
         </div>
       </section>
       <section id="divisions-tab" class="tab-content" style="display:none; padding:14px 14px 60px;">
@@ -71,6 +64,7 @@
   <script src="data/sa1_2021_act.js"></script>
   <script src="data/fed_act_2018.js"></script>
   <script src="data/sa1_2021_fed_act_2018.js"></script>
+  <script src="js/snippets.js"></script>
   <script src="js/shared.js"></script>
   <script>
     showTab('header-tab');

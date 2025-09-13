@@ -256,6 +256,25 @@ function formatNumber(number) {
 
 function initSharedApp() {
 
+  // Inject shared Instructions / Disclaimer / Attribution content if placeholders & snippets present
+  (function injectSharedSnippets(){
+    if(!window.REDIST_SHARED_SNIPPETS) return; // snippets.js not loaded
+    const { instructions, disclaimer, attribution, headings } = window.REDIST_SHARED_SNIPPETS;
+    const mkHeading = (text) => `<h3>${text}</h3>`;
+    const instContainer = document.getElementById('shared-instructions');
+    if(instContainer && Array.isArray(instructions)){
+      instContainer.innerHTML = mkHeading(headings?.instructions || 'Instructions') + instructions.map(line => `<p>${line}</p>`).join('');
+    }
+    const disclaimerEl = document.getElementById('shared-disclaimer');
+    if(disclaimerEl && disclaimer){
+      disclaimerEl.innerHTML = mkHeading(headings?.disclaimer || 'Disclaimer') + `<p>${disclaimer}</p>`;
+    }
+    const attribEl = document.getElementById('shared-attribution');
+    if(attribEl && attribution){
+      attribEl.innerHTML = mkHeading(headings?.attribution || 'Attribution') + `<p>${attribution}</p>`;
+    }
+  })();
+
       // Populate dynamic text placeholders once DOM & globals are ready
     (function populateContextLine(){
       if(typeof window.NUM_DIVISIONS === 'undefined' || typeof window.STATE_STARTING_TOTAL === 'undefined') return;
@@ -351,7 +370,22 @@ function initSharedApp() {
   }
   function highlightFeature(e) { const layer = e.target; infoPanel.update(layer.feature.properties); layer.setStyle({ weight: 2, color: '#000' }); }
   function unhighlightFeature(e) { const layer = e.target; infoPanel.update(null); layer.setStyle({ weight: 0.5, color: '#333' }); }
-  function onEachFeature(feature, layer) { layer.on({ click: clickFeature, mouseover: highlightFeature, mouseout: unhighlightFeature }); }
+  function selectDivisionFromFeature(e){
+    const layer = e.target;
+    const div = layer.feature && layer.feature.properties && layer.feature.properties.division;
+    if(div){
+      if(selectedDivision !== div){
+        selectedDivision = div;
+        renderDivisionList();
+      } else if (selectedDivision === div) {
+        selectedDivision = null;
+        renderDivisionList();
+      }
+      // prevent browser context menu so the action feels intentional
+      if(e.originalEvent && typeof e.originalEvent.preventDefault === 'function') e.originalEvent.preventDefault();
+    }
+  }
+  function onEachFeature(feature, layer) { layer.on({ click: clickFeature, mouseover: highlightFeature, mouseout: unhighlightFeature, contextmenu: selectDivisionFromFeature }); }
   function highlightElectorate(e) { const layer = e.target; layer.setStyle({ weight: 4, color: 'green' }); if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) layer.bringToFront(); }
   function resetHighlight(e) { e.target.setStyle({ weight: 1.2, color: '#2b62c6' }); }
   function zoomToFeature(e) { map.fitBounds(e.target.getBounds()); }
@@ -382,14 +416,36 @@ function initSharedApp() {
   newDivisionCount++; window._markUnsaved(); renderDivisionList();
   }
   window.createNewDivision = createNewDivision;
-  window.resetDivisions = function () {
+  // Internal helper that actually performs the reset logic.
+  function _performDivisionReset(){
     features.getLayers().forEach(layer => {
-      const code = layer.feature.properties["SA1_CODE21"]; const original = data[code].previousDivision; layer.feature.properties.division = original; data[code].currentDivision = original; layer.setStyle({ fillColor: getColor(original).color, fillOpacity: 0.5 });
+      const code = layer.feature.properties["SA1_CODE21"];
+      const original = data[code].previousDivision;
+      layer.feature.properties.division = original;
+      data[code].currentDivision = original;
+      layer.setStyle({ fillColor: getColor(original).color, fillOpacity: 0.5 });
     });
+    // Remove any newly created divisions from grouping structure
     divisionsAndGroups = divisionsAndGroups.filter(e => e.name.slice(0, 4) !== '(new');
-    divisionsAndGroups.forEach(e => { if (e.type == 'group') e.divisions = e.divisions.filter(d => d.slice(0, 4) !== '(new'); });
-  window._clearUnsaved();
-  renderDivisionList();
+    divisionsAndGroups.forEach(e => {
+      if (e.type == 'group') {
+        e.divisions = e.divisions.filter(d => d.slice(0, 4) !== '(new');
+      }
+    });
+    if(typeof window._clearUnsaved === 'function') window._clearUnsaved();
+    renderDivisionList();
+  }
+  window._performDivisionReset = _performDivisionReset;
+
+  // Public API: always route through modal for a consistent destructive-action confirmation UX.
+  window.resetDivisions = function () {
+    if(typeof window.showLeaveSessionModal === 'function' && _unsavedChanges){
+      // Use sentinel so modal confirm handler knows to execute a reset instead of navigation.
+      window.showLeaveSessionModal('__RESET__');
+    } else {
+      // Fallback (should not normally happen if modal script loaded before this point)
+      _performDivisionReset();
+    }
   };
   window.toggleProjectedThresholds = function () { useProjectedThresholds = !useProjectedThresholds; renderDivisionList(); };
 
@@ -648,73 +704,111 @@ function initSharedApp() {
 function showTab(tabId) { document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');['tab-header-btn', 'tab-divisions-btn'].forEach(id => { const b = document.getElementById(id); if (b) b.classList.remove('button-grey'); }); const target = document.getElementById(tabId); if (target) target.style.display = ''; if (tabId === 'header-tab') { const btn = document.getElementById('tab-header-btn'); if (btn) btn.classList.add('button-grey'); } if (tabId === 'divisions-tab') { const btn = document.getElementById('tab-divisions-btn'); if (btn) btn.classList.add('button-grey'); } }
 window.showTab = showTab;
 
-// Leave session modal
-(function setupLeaveSessionModal(){
-  const homeLink = document.getElementById('home-nav-link');
-  const overlay = document.createElement('div');
-  overlay.className = 'modal-overlay';
-  overlay.style.display = 'none';
-  overlay.innerHTML = `
-    <div class="modal modal-danger" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
-      <header>
-        <h2 id="leave-modal-title">Leave this session?</h2>
-        <p>Unsaved changes will be lost</p>
-      </header>
-      <div class="modal-body">
-        <p>You have unsaved redistribution edits. Export before leaving if you want to keep them.</p>
-      </div>
-      <footer>
-        <button type="button" class="button button-outline" id="leave-cancel-btn">Stay</button>
-        <button type="button" class="button button-red" id="leave-confirm-btn">Leave Anyway</button>
-      </footer>
-    </div>`;
-  document.body.appendChild(overlay);
-
+// Leave session modal (split into init + callable functions)
+(function(){
+  let overlay = null;
   let pendingNav = null; // url or 'reload'
+  let initialized = false;
+  let homeLink = null;
 
   function hasUnsaved(){
-    if(_unsavedChanges) return true;
-    // try {
-    //   if(Array.isArray(window.divisionsAndGroups) && window.divisionsAndGroups.some(d=>d.type==='division' && /^\(new /.test(d.name))) return true;
-    //   if(window.data && window._sharedMapCtx){
-    //     for(const layer of window._sharedMapCtx.features.getLayers()) {
-    //       const code = layer.feature.properties['SA1_CODE21'];
-    //       const rec = window.data[code];
-    //       if(rec && rec.currentDivision !== rec.previousDivision) return true;
-    //     }
-    //   }
-    // } catch(e){ return true; }
-    return false;
+    return !!_unsavedChanges; // primary simple flag
   }
 
-  function openModal(targetUrl){ pendingNav = targetUrl || null; overlay.style.display='flex'; document.addEventListener('keydown', escListener); }
-  function closeModal(){ overlay.style.display='none'; document.removeEventListener('keydown', escListener); pendingNav=null; }
+  function buildOverlay(){
+    overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.style.display = 'none';
+    overlay.innerHTML = `
+      <div class="modal modal-danger" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
+        <header>
+          <h2 id="leave-modal-title">Leave this session?</h2>
+          <p>Unsaved changes will be lost</p>
+        </header>
+        <div class="modal-body">
+          <p>You have unsaved redistribution edits. Export before leaving if you want to keep them.</p>
+        </div>
+        <footer>
+          <button type="button" class="button button-outline" id="leave-cancel-btn">Stay</button>
+          <button type="button" class="button button-red" id="leave-confirm-btn">Leave Anyway</button>
+        </footer>
+      </div>`;
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', e => { if(e.target===overlay) closeModal(); });
+    overlay.querySelector('#leave-cancel-btn').addEventListener('click', closeModal);
+    overlay.querySelector('#leave-confirm-btn').addEventListener('click', () => {
+      if(pendingNav === '__RESET__'){
+        // Perform in-app destructive reset instead of navigating
+        if(typeof window._performDivisionReset === 'function') window._performDivisionReset();
+        closeModal();
+        return;
+      }
+      if(typeof window._clearUnsaved === 'function') window._clearUnsaved();
+      if(pendingNav === 'reload') location.reload(); else if(pendingNav) location.href = pendingNav; else location.href='index.html';
+    });
+  }
+
+  function openModal(targetUrl){
+    pendingNav = targetUrl || null;
+    if(!overlay) buildOverlay();
+    // Configure dynamic text if this is a reset request
+    const titleEl = overlay.querySelector('#leave-modal-title');
+    const bodyEl = overlay.querySelector('.modal-body p');
+    const confirmBtn = overlay.querySelector('#leave-confirm-btn');
+    const subHeader = overlay.querySelector('header p');
+    if(pendingNav === '__RESET__'){
+      if(titleEl) titleEl.textContent = 'Reset all divisions?';
+      if(subHeader) subHeader.textContent = 'This cannot be undone';
+      if(bodyEl) bodyEl.textContent = 'All reassigned SA1s will revert to their original divisions and any newly created divisions will be removed.';
+      if(confirmBtn) confirmBtn.textContent = 'Reset Anyway';
+    } else {
+      if(titleEl) titleEl.textContent = 'Leave this session?';
+      if(subHeader) subHeader.textContent = 'Unsaved changes will be lost';
+      if(bodyEl) bodyEl.textContent = 'You have unsaved redistribution edits. Export before leaving if you want to keep them.';
+      if(confirmBtn) confirmBtn.textContent = 'Leave Anyway';
+    }
+    overlay.style.display='flex';
+    document.addEventListener('keydown', escListener);
+  }
+  function closeModal(){ if(!overlay) return; overlay.style.display='none'; document.removeEventListener('keydown', escListener); pendingNav=null; }
   function escListener(e){ if(e.key==='Escape') closeModal(); }
 
-  function attemptNav(url){ if(!hasUnsaved()) { if(url==='reload') location.reload(); else if(url) location.href=url; return; } openModal(url); }
+  function attemptNav(url){
+    if(!hasUnsaved()){ if(url==='reload') location.reload(); else if(url) location.href=url; return; }
+    openModal(url);
+  }
 
-  if(homeLink){ homeLink.addEventListener('click', e => { e.preventDefault(); attemptNav(homeLink.href); }); }
+  function interceptAnchors(){
+    document.addEventListener('click', e => {
+      const a = e.target.closest && e.target.closest('a');
+      if(!a) return;
+      if(a.target==='_blank' || a.download) return;
+      const href = a.getAttribute('href');
+      if(!href || href.startsWith('#')) return;
+      if(a.origin === location.origin && a !== homeLink){ e.preventDefault(); attemptNav(a.href); }
+    });
+  }
+  function interceptReloadKeys(){
+    document.addEventListener('keydown', e => {
+      const reloadKey = (e.key==='F5') || ((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='r');
+      if(reloadKey && hasUnsaved()){ e.preventDefault(); attemptNav('reload'); }
+    });
+  }
 
-  // Intercept same-origin anchor clicks (capture phase)
-  document.addEventListener('click', e => {
-    const a = e.target.closest && e.target.closest('a');
-    if(!a) return;
-    if(a.target==='_blank' || a.download) return;
-    const href = a.getAttribute('href');
-    if(!href || href.startsWith('#')) return;
-    if(a.origin === location.origin && a !== homeLink){ e.preventDefault(); attemptNav(a.href); }
-  });
+  function initLeaveSessionModal(){
+    if(initialized) return;
+    initialized = true;
+    homeLink = document.getElementById('home-nav-link');
+    if(homeLink){ homeLink.addEventListener('click', e => { e.preventDefault(); attemptNav(homeLink.href); }); }
+    interceptAnchors();
+    interceptReloadKeys();
+  }
 
-  // Intercept reload shortcuts
-  document.addEventListener('keydown', e => {
-    const reloadKey = (e.key==='F5') || ((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='r');
-    if(reloadKey){ if(hasUnsaved()){ e.preventDefault(); attemptNav('reload'); } }
-  });
+  // Expose global callable helpers
+  window.initLeaveSessionModal = initLeaveSessionModal;
+  window.showLeaveSessionModal = function(targetUrl){ initLeaveSessionModal(); openModal(targetUrl || location.href); };
+  window.navigateWithUnsavedCheck = function(targetUrl){ initLeaveSessionModal(); attemptNav(targetUrl); };
 
-  overlay.addEventListener('click', e => { if(e.target===overlay) closeModal(); });
-  overlay.querySelector('#leave-cancel-btn').addEventListener('click', closeModal);
-  overlay.querySelector('#leave-confirm-btn').addEventListener('click', () => {
-    if(typeof window._clearUnsaved === 'function') window._clearUnsaved();
-    if(pendingNav === 'reload') location.reload(); else if(pendingNav) location.href = pendingNav; else location.href='index.html';
-  });
+  // Auto-init (maintain existing behavior)
+  initLeaveSessionModal();
 })();
