@@ -1,4 +1,4 @@
-const current_boundaries_data = {
+const fed_act_2018 = {
 "type": "FeatureCollection",
 "name": "fed_act_2018",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4283" } },

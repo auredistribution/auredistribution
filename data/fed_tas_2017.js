@@ -1,4 +1,4 @@
-const current_boundaries_data = {
+const fed_tas_2017 = {
 "type": "FeatureCollection",
 "name": "fed_tas_2017",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4283" } },

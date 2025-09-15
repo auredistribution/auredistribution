@@ -324,29 +324,136 @@ function initSharedApp() {
   map.zoomControl.setPosition('bottomright');
 
   const sharedCanvasRenderer = L.canvas({ padding: 0.5 });
-  const current_boundaries = new L.GeoJSON(current_boundaries_data, { renderer: sharedCanvasRenderer, style: () => ({ weight: 1.2, color: '#2b62c6' }), onEachFeature: onEachElectorate });
-  const overlayMaps = { "Current Boundaries": current_boundaries };
-  const current_boundaries_search = new L.Control.Search({
-    layer: current_boundaries,
-    propertyName: 'name',
-    position: 'bottomleft',
-    zoom: false,
-    firstTipSubmit: true,
-    marker: false,
-    moveToLocation: function (latlng, title, mapRef) {
-      const layer = current_boundaries.getLayers().find(l => l.feature && l.feature.properties && l.feature.properties.name === title);
-      if (layer) {
-        mapRef.fitBounds(layer.getBounds(), { padding: [20, 20] });
-        layer.fire('mouseover');
-        setTimeout(() => layer.fire('mouseout'), 600);
-      } else {
-        mapRef.setView(latlng, 11);
-      }
+  
+  //==============================//
+  // LOAD BOUNDARY OVERLAY MAPS   //
+  //==============================//
+  // Enhanced multi-layer support with optional script injection and explicit variable names.
+  function resolveMapData(entry){
+    if(!entry) return null;
+    const cand = [];
+    if(entry.var) cand.push(entry.var); // explicit variable name if provided in DIVISION_MAPS
+    cand.push(
+      `${entry.id}_data`,      // e.g. fed_qld_2018_data
+      `${entry.id}Data`,       // camel fallback
+      entry.id,                // raw id
+      'current_boundaries_data' // legacy single variable name
+    );
+    const seen = new Set();
+    const candidates = cand.filter(c => { if(!c || seen.has(c)) return false; seen.add(c); return true; });
+    for(const name of candidates){
+      try {
+        const val = Function(`try { return typeof ${name} !== 'undefined' ? ${name} : undefined; } catch(e){ return undefined; }`)();
+        if(val && typeof val === 'object' && val.type === 'FeatureCollection') return val;
+      } catch(e){ /* continue */ }
     }
-  });
-  L.control.layers(null, overlayMaps, { collapsed: false, position: 'bottomleft' }).addTo(map);
-  map.on('overlayadd', e => { if (e.layer === current_boundaries && !current_boundaries_search._map) map.addControl(current_boundaries_search); });
-  map.on('overlayremove', e => { if (e.layer === current_boundaries && current_boundaries_search._map) map.removeControl(current_boundaries_search); });
+    // Heuristic fallback: scan window keys containing the id
+    try {
+      const idFrag = entry.id && entry.id.toLowerCase();
+      if(idFrag){
+        for(const k of Object.getOwnPropertyNames(window)){
+          if(k.toLowerCase().includes(idFrag)){
+            try { const v = window[k]; if(v && v.type === 'FeatureCollection') return v; } catch(_){ /* ignore */ }
+          }
+        }
+      }
+    } catch(e){ /* ignore */ }
+    console.warn('Could not resolve geojson data for DIVISION_MAPS entry', entry);
+    return null;
+  }
+
+  function injectScript(entry){
+    return new Promise(res => {
+      if(!entry.path){ return res(); }
+      // Already loaded?
+      if([ ...document.scripts ].some(s => s.getAttribute('src') === entry.path)) return res();
+      const s = document.createElement('script');
+      s.src = entry.path;
+      s.async = false; // preserve order for potential shared variable names
+      s.onload = () => res();
+      s.onerror = () => { console.warn('Failed to load map script', entry.path); res(); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function loadBoundaryLayers(){
+    const overlayMaps = {};
+    let primaryBoundaryLayer = null;
+    const searchControls = new Map(); // layer -> search control
+    (window.DIVISION_MAPS || []).forEach(entry => {
+      const geo = resolveMapData(entry);
+      if(!geo) return; // skip unresolved
+      const layer = new L.GeoJSON(geo, { renderer: sharedCanvasRenderer, style: () => ({ weight: 1.2, color: '#2b62c6' }), onEachFeature: onEachElectorate });
+      const label = entry.name || entry.id || 'Boundaries';
+      overlayMaps[label] = layer;
+      if(!primaryBoundaryLayer) primaryBoundaryLayer = layer; // first successful becomes primary
+      // Prepare a search control for this specific layer (added only when layer toggled on)
+      const ctrl = new L.Control.Search({
+        layer,
+        propertyName: 'name',
+        position: 'bottomleft',
+        zoom: false,
+        firstTipSubmit: true,
+        marker: false,
+        moveToLocation: function (latlng, title, mapRef) {
+          const lyr = layer.getLayers().find(l => l.feature && l.feature.properties && l.feature.properties.name === title);
+          if (lyr) {
+            mapRef.fitBounds(lyr.getBounds(), { padding: [20, 20] });
+            lyr.fire('mouseover'); setTimeout(() => lyr.fire('mouseout'), 600);
+          } else { mapRef.setView(latlng, 11); }
+        }
+      });
+      searchControls.set(layer, ctrl);
+    });
+
+    // Fallback legacy if nothing resolved
+    if(!primaryBoundaryLayer){
+      try {
+        const legacy = Function('return (typeof current_boundaries_data !== "undefined") ? current_boundaries_data : null;')();
+        if(legacy){
+          primaryBoundaryLayer = new L.GeoJSON(legacy, { renderer: sharedCanvasRenderer, style: () => ({ weight: 1.2, color: '#2b62c6' }), onEachFeature: onEachElectorate });
+          overlayMaps['Current Boundaries'] = primaryBoundaryLayer;
+        }
+      } catch(e){ /* ignore */ }
+    }
+
+  const overlayKeys = Object.keys(overlayMaps);
+  if(!overlayKeys.length) return; // nothing to attach
+  const baseLayers = {};
+  overlayKeys.forEach(k => { baseLayers[k] = overlayMaps[k]; });
+  if(overlayKeys.length > 1){
+    const clearLayer = L.layerGroup(); // empty layer to clear selection
+    baseLayers['Clear Selection'] = clearLayer; // appended last
+    L.control.layers(baseLayers, null, { collapsed: false, position: 'bottomleft' }).addTo(map);
+  } else {
+    // Single overlay only - add as base layer so it's always visible but user can still clear it
+    L.control.layers(null, baseLayers, { collapsed: false, position: 'bottomleft' }).addTo(map);
+  }
+  
+    // Wire up add/remove events so each layer's search control appears only when active.
+      function activateSearchForLayer(layer){
+        // Always remove existing search controls first (supports Clear Selection case)
+        searchControls.forEach(sc => { if(sc._map) map.removeControl(sc); });
+        const ctrl = searchControls.get(layer);
+        if(!ctrl) return; // Clear Selection chosen or unknown layer -> nothing to add
+        map.addControl(ctrl);
+      }
+      // If user is still using overlay (checkbox) style this will still work
+      map.on('overlayadd', e => activateSearchForLayer(e.layer));
+      map.on('overlayremove', e => {
+        const ctrl = searchControls.get(e.layer); if(ctrl && ctrl._map) map.removeControl(ctrl);
+      });
+      // For base layer (radio) changes Leaflet emits 'baselayerchange'
+      map.on('baselayerchange', e => activateSearchForLayer(e.layer));
+  }
+
+  (function initBoundaryLayers(){
+    const entries = Array.isArray(window.DIVISION_MAPS) ? window.DIVISION_MAPS.slice() : [];
+    if(!entries.length){ loadBoundaryLayers(); return; }
+    // Sequentially inject scripts then build layers
+    entries.reduce((p, entry) => p.then(()=>injectScript(entry)), Promise.resolve())
+      .then(() => loadBoundaryLayers());
+  })();
 
   function clickFeature(e) {
     const thisLayer = e.target;
