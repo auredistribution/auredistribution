@@ -17,6 +17,8 @@ let selectedDivision = "";
 let newDivisionCount = 0;
 let useProjectedThresholds = false;
 let divisionsAndGroups = window.divisionsAndGroups || [];
+// Track collapsed group names
+let _collapsedGroups = new Set();
 
 // Unsaved changes tracking
 let _unsavedChanges = false; // private flag
@@ -460,7 +462,7 @@ function initSharedApp() {
 
     let outsideOfQuotaDivisions = 0;
 
-    divisionsAndGroups.forEach(entry => {
+    divisionsAndGroups.forEach((entry) => {
       if (entry.type === 'division') {
         const division = entry.name;
         const divisionSa1s = Object.keys(data).filter(sa1 => (data[sa1].currentDivision === division));
@@ -482,6 +484,9 @@ function initSharedApp() {
           statusClass = 'status-under';
           outsideOfQuotaDivisions++;
         }
+
+        const parentGroup = divisionsAndGroups.find(g => g.type === 'group' && g.divisions.includes(division));
+        if(parentGroup && _collapsedGroups.has(parentGroup.name)) return;
 
         const row = document.createElement('div');
         row.className = 'division-row' + (division === selectedDivision ? ' is-selected' : '');
@@ -513,12 +518,14 @@ function initSharedApp() {
         divisionList.appendChild(row);
       } else if (entry.type === 'group') {
         const groupRow = document.createElement('div');
-        groupRow.className = 'group-row';
+        const isCollapsed = _collapsedGroups.has(entry.name);
+        groupRow.className = 'group-row' + (isCollapsed ? ' is-collapsed' : '');
         const groupStartingTotal = Object.keys(data)
           .filter(sa1 => entry.divisions.includes(data[sa1].currentDivision))
           .map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => a + b, 0);
         const text = document.createElement('p');
-        text.innerHTML = `${entry.name} · ${(groupStartingTotal / (STATE_STARTING_TOTAL / NUM_DIVISIONS)).toFixed(2)} quotas · ${entry.divisions.length} districts`;
+        const icon = isCollapsed ? '&plus;' : '&minus;';
+        text.innerHTML = `<span class="group-toggle" style="display:inline-block; width:18px; font-weight:600;">${icon}</span> ${entry.name} · ${(groupStartingTotal / (STATE_STARTING_TOTAL / NUM_DIVISIONS)).toFixed(2)} quotas · ${entry.divisions.length} districts`;
         groupRow.appendChild(text);
         const newBtn = document.createElement('button');
         newBtn.type = 'button';
@@ -526,6 +533,12 @@ function initSharedApp() {
         newBtn.textContent = '+ New';
         newBtn.onclick = () => createNewDivision(entry.name);
         groupRow.appendChild(newBtn);
+        groupRow.onclick = (e) => {
+          // Ignore clicks on the + New button itself
+            if(e.target === newBtn || newBtn.contains(e.target)) return;
+            if(_collapsedGroups.has(entry.name)) _collapsedGroups.delete(entry.name); else _collapsedGroups.add(entry.name);
+            renderDivisionList();
+        };
         divisionList.appendChild(groupRow);
       }
     });
