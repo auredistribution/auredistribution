@@ -4,45 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Australian Redistribution Tool</title>
-  <style>
-    :root {
-      --bg: #f5f7fa;
-      --panel-bg: #ffffff;
-      --border: #d9e1ea;
-      --text: #1f2d3d;
-      --muted: #5b6b7c;
-      --accent: #005ea5;
-      --accent-hover: #004777;
-      --radius: 12px;
-      --shadow: 0 3px 8px -2px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
-      font-family: Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    body { margin:0; background: var(--bg); color: var(--text); line-height: 1.35; }
-    header { padding: 56px 32px 32px; text-align: center; }
-    header h1 { margin:0 0 12px; font-size: 40px; letter-spacing:-0.5px; }
-    header p.lead { max-width: 820px; margin:0 auto; font-size: 18px; color: var(--muted); }
-    main { max-width: 1200px; margin: 0 auto 80px; padding: 0 32px; }
-    section { margin-top: 48px; }
-    h2 { margin:0 0 16px; font-size: 26px; }
-    h3 { margin:32px 0 8px; font-size: 20px; }
-    p { margin:0 0 12px; }
-    .grid { display:grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .card { background: var(--panel-bg); padding: 20px 20px 18px; border:1px solid var(--border); border-radius: var(--radius); position:relative; display:flex; flex-direction:column; gap:10px; box-shadow: var(--shadow); }
-    .card h3 { margin:0 0 4px; font-size: 18px; text-align:center; }
-    .card a.button-link { margin-top:auto; }
-    .tags { display:flex; flex-wrap:wrap; gap:6px; }
-    .tag { background:#eef3f8; color:#2f506e; padding:4px 8px; font-size:11px; font-weight:600; letter-spacing:.5px; border-radius: 6px; text-transform:uppercase; }
-    a.button-link { display:inline-block; text-decoration:none; background: var(--accent); color:#fff; padding:10px 14px; border-radius: 8px; font-weight:600; font-size:14px; letter-spacing:.3px; transition: background .15s; }
-    a.button-link:hover { background: var(--accent-hover); }
-    .meta { font-size:12px; color: var(--muted); margin-top:auto; }
-    footer { padding: 40px 32px 60px; text-align:center; font-size:13px; color: var(--muted); }
-    .disclaimer { font-size: 13px; background:#fff; border:1px solid var(--border); padding:16px 20px; border-radius: var(--radius); box-shadow: var(--shadow); }
-    .split { display:grid; gap:40px; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); align-items:start; }
-    @media (max-width:700px){ header h1{font-size:32px;} header{padding:48px 20px 24px;} main{padding:0 20px;} }
-  </style>
+  <link rel="stylesheet" href="css/shared.css" />
 </head>
-<body>
+<body class="landing">
   <header>
     <h1>Australian Redistribution Tool</h1>
     <p class="lead">Explore and prototype electoral boundary redistributions. Assess enrolment balance, large district adjustments, and structural impacts across proposed scenarios.</p>
