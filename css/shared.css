@@ -1,11 +1,9 @@
-body {
-  font-family: Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* Ensure padding/borders don't inflate 100% height containers */
+/* ==========================================================
+   BASE & THEME VARIABLES
+   ========================================================== */
+body { font-family: Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
 * { box-sizing: border-box; }
 
-/* Modern palette + layout variables (aligned with index.html aesthetic) */
 :root {
   --app-bg: #f5f7fa;
   --panel-bg: #ffffff;
@@ -25,15 +23,13 @@ body {
   --shadow-md: 0 4px 10px -2px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.08);
 }
 
-html, body {
-  background: var(--app-bg);
-  color: var(--text-color);
-}
+html, body { background: var(--app-bg); color: var(--text-color); height: 100%; margin: 0; padding: 0; overflow: hidden; }
+p { font-size: 14px; }
 
-p {
-  font-size: 14px;
-}
-
+/* ==========================================================
+   LAYOUT: PANELS & STRUCTURE
+   ========================================================== */
+body > div { height: 100%; display: flex; }
 .summary-panel {
   height: 100%;
   padding: 0 0 16px;
@@ -48,21 +44,18 @@ p {
   box-shadow: var(--shadow-sm);
 }
 
-.header {
-  position: relative;
-  background: linear-gradient(135deg,#ffffff,#f1f6fb 65%);
-  padding: 28px 28px 18px;
-  border-bottom: 1px solid var(--panel-border);
-}
+/* ==========================================================
+   HEADER / INTRO CONTENT
+   ========================================================== */
+.header { position: relative; background: linear-gradient(135deg,#ffffff,#f1f6fb 65%); padding: 28px 28px 18px; border-bottom: 1px solid var(--panel-border); }
 .header h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -.5px; }
 .header h3 { margin: 24px 0 8px; font-size: 16px; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); }
 .header p { margin: 0 0 10px; }
+.instructions { margin: 8px 8px 8px 0; }
 
-.instructions {
-  margin: 8px 8px 8px 0;
-}
-
-/* Buttons */
+/* ==========================================================
+   BUTTONS & TOOLBARS
+   ========================================================== */
 .button {
   --btn-bg: var(--accent);
   --btn-bg-hover: var(--accent-hover);
@@ -89,21 +82,15 @@ p {
 .button-red { --btn-bg: #d84343; --btn-bg-hover: #bb2e2e; --btn-border: #b52e2e; }
 .button-outline { --btn-bg: #fff; --btn-bg-hover: #f4f8fb; --btn-color: var(--accent); --btn-border: var(--panel-border); }
 .button-ghost { --btn-bg: #ffffff; --btn-bg-hover: #f2f5f8; --btn-color: var(--text-muted); --btn-border: #d5dde4; }
-
-/* Compact toolbar variant */
-.division-toolbar { gap:4px; }
-.division-toolbar .button { font-size:12px; padding:5px 10px; font-weight:500; }
+.division-toolbar { gap: 4px; }
+.division-toolbar .button { font-size: 12px; padding: 5px 10px; font-weight: 500; }
 .division-toolbar .button-ghost { --btn-color: #4a5a67; }
+.button-red:hover { background-color: #FFDDDD; }
+.button-red:active { background-color: #EEBBBB; }
 
-.button-red:hover {
-  background-color: #FFDDDD;
-}
-
-.button-red:active {
-  background-color: #EEBBBB;
-}
-
-/* Division & group rows */
+/* ==========================================================
+   DIVISION / GROUP LIST
+   ========================================================== */
 .division-row, .group-row { display: flex; align-items: flex-start; gap: 4px; padding: 6px 10px 6px 4px; border-radius: var(--radius-sm); position: relative; }
 .division-row { cursor: pointer; }
 .division-row:hover { background: #fff9d8; }
@@ -119,43 +106,32 @@ p {
 .status-over { background: #ff8a8a; }
 .status-under { background: #8aa6ff; }
 .status-ok { background: #8bd78b; }
-.large-flag { font-size: 10px; background: #ffe7a3; color:#7a5600; padding:2px 5px; border-radius: 4px; margin-left:6px; font-weight:600; letter-spacing:.5px; }
-.quota-metric { font-size: 11px; color: var(--text-muted); font-weight:500; }
+.large-flag { font-size: 10px; background: #ffe7a3; color: #7a5600; padding: 2px 5px; border-radius: 4px; margin-left: 6px; font-weight: 600; letter-spacing: .5px; }
+.quota-metric { font-size: 11px; color: var(--text-muted); font-weight: 500; }
 
-/* Header info metrics */
+/* ==========================================================
+   HEADER INFO METRICS
+   ========================================================== */
 #header-info { padding: 8px 20px 4px; border-top: 1px solid var(--panel-border-soft); margin-top: auto; background: #fafcfe; }
 #header-info p { margin: 4px 0; font-size: 12.5px; }
 
-/* Tab navigation */
-#tab-nav { background:#f1f6fb; border-bottom:1px solid var(--panel-border); padding: 0 12px; }
-#tab-nav li { margin:0; }
-#tab-nav .button { border: none; background: transparent; color: var(--text-muted); font-weight:500; border-bottom: 3px solid transparent; border-radius:0; padding:14px 16px 11px; }
+/* ==========================================================
+   TAB NAVIGATION
+   ========================================================== */
+#tab-nav { background: #f1f6fb; border-bottom: 1px solid var(--panel-border); padding: 0 12px; }
+#tab-nav li { margin: 0; }
+#tab-nav .button { border: none; background: tra  nsparent; color: var(--text-muted); font-weight: 500; border-bottom: 3px solid transparent; border-radius: 0; padding: 14px 16px 11px; }
 #tab-nav .button:hover { background: rgba(255,255,255,0.6); color: var(--text-color); }
 #tab-nav .button.button-grey { color: var(--accent); border-bottom-color: var(--accent); background: #fff; box-shadow: inset 0 1px 0 #fff; }
 
-/* Map container */
-#map { box-shadow: var(--shadow-md); }
+/* ==========================================================
+   MAP CONTAINER
+   ========================================================== */
+#map { box-shadow: var(--shadow-md); height: 100%; width: 100%; }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* prevent tiny vertical scroll gap */
-}
-
-body > div {
-  height: 100%;
-  display: flex;
-}
-
-#map {
-  height: 100%;
-  width: 100%;
-}
-
-/* ----------------------------- */
-/* Generic modal (for Home warn) */
-/* ----------------------------- */
+/* ==========================================================
+   MODAL (LEAVE SESSION / GENERIC)
+   ========================================================== */
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); display: none; align-items: center; justify-content: center; z-index: 1200; padding: 20px; }
 .modal { background: #ffffff; border: 1px solid var(--panel-border); border-radius: var(--radius-md); width: 420px; max-width: 100%; box-shadow: var(--shadow-md); display: flex; flex-direction: column; }
 .modal header { padding: 18px 22px 8px; }
@@ -168,12 +144,11 @@ body > div {
 .modal-danger { border-left: 5px solid var(--danger); }
 .modal-danger header h2 { color: var(--danger); }
 .modal a { color: var(--accent); }
+@media (max-width: 640px) { .modal { width: 100%; } }
 
-@media (max-width: 640px) {
-  .modal { width: 100%; }
-}
-
-/* Map hover info */
+/* ==========================================================
+   MAP HOVER INFO PANEL
+   ========================================================== */
 .info-panel {
   padding: 8px 10px;
   font: 12.5px/15px Segoe UI, Arial, Helvetica, sans-serif;
@@ -183,8 +158,4 @@ body > div {
   border: 1px solid var(--panel-border);
   backdrop-filter: blur(4px);
 }
-
-.info h4 {
-  margin: 0 0 5px;
-  color: #777;
-}
+.info h4 { margin: 0 0 5px; color: #777; }
