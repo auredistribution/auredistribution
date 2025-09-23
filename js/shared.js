@@ -1,5 +1,3 @@
-// Shared utility & rendering logic extracted from index.html
-
 // CONFIG CONSTANTS (can be overridden per event page before including this file if needed)
 window.EVENT_NAME = window.EVENT_NAME || 'redistribution';
 window.DEFAULT_STARTING_COORDS = window.DEFAULT_STARTING_COORDS || [-21.5, 146.5];
@@ -34,239 +32,6 @@ window.addEventListener('beforeunload', e => {
 function _syncDivisionsAndGroups() {
   if (Array.isArray(window.divisionsAndGroups) && window.divisionsAndGroups.length && divisionsAndGroups !== window.divisionsAndGroups) {
     divisionsAndGroups = window.divisionsAndGroups; // adopt latest reference
-  }
-}
-
-function getColor(division) { // same mapping as original
-  switch (division) {
-    case "SPLIT":
-      return { color: "white" };
-    case "Warrego":
-    case "Ferny Grove":
-    case "Capricornia":
-      return { color: "silver" };
-    case "Gregory":
-    case "Cooper":
-    case "Herbert":
-      return { color: "darkslategray" };
-    case "Traeger":
-    case "Maiwar":
-    case "Paddington":
-    case "Kennedy":
-      return { color: "darkolivegreen" };
-    case "Cook":
-    case "Moggill":
-    case "Leichhardt":
-    case "Bracken Ridge":
-    case "Bass":
-      return { color: "sienna" };
-    case "Barron River":
-    case "Ipswich West":
-    case "Dawson":
-    case "Deagon":
-    case "Braddon":
-      return { color: "seagreen" };
-    case "Cairns":
-    case "Ipswich":
-    case "Flynn":
-    case "Adelaide":
-    case "Northgate":
-    case "Lyons":
-    case "Bean":
-      return { color: "midnightblue" };
-    case "Mulgrave":
-    case "Bundamba":
-    case "Hinkler":
-    case "Hindmarsh":
-    case "Hamilton":
-    case "Clark":
-    case "Canberra":
-      return { color: "darkred" };
-    case "Hill":
-    case "Jordan":
-    case "Wide Bay":
-    case "McDowall":
-    case "Sturt":
-    case "Franklin":
-    case "Fenner":
-      return { color: "olive" };
-    case "Hinchinbrook":
-    case "Inala":
-    case "Marchant":
-    case "Groom":
-    case "Boothby":
-      return { color: "lightslategray" };
-    case "Thuringowa":
-    case "Mount Ommaney":
-    case "Enoggera":
-    case "Maranoa":
-    case "Kingston":
-      return { color: "green" };
-    case "Townsville":
-    case "Miller":
-    case "The Gap":
-    case "Wright":
-    case "Makin":
-      return { color: "rosybrown" };
-    case "Mundingburra":
-    case "South Brisbane":
-    case "Fisher":
-    case "Spence":
-      return { color: "teal" };
-    case "Burdekin":
-    case "Greenslopes":
-    case "Central":
-    case "Fairfax":
-    case "Barker":
-      return { color: "darkkhaki" };
-    case "Whitsunday":
-    case "Bulimba":
-    case "Walter Taylor":
-    case "Dickson":
-    case "Grey":
-      return { color: "peru" };
-    case "Mackay":
-    case "Lytton":
-    case "Pullenvale":
-    case "Longman":
-    case "Mayo":
-      return { color: "steelblue" };
-    case "Mirani":
-    case "Chatsworth":
-    case "Jamboree":
-    case "Lilley":
-      return { color: "yellowgreen" };
-    case "Rockhampton":
-    case "Capalaba":
-    case "Brisbane":
-    case "Forest Lake":
-      return { color: "indianred" };
-    case "Keppel":
-    case "Oodgeroo":
-    case "Tennyson":
-    case "Petrie":
-      return { color: "darkblue" };
-    case "Gladstone":
-    case "Redlands":
-    case "Moorooka":
-    case "Ryan":
-      return { color: "limegreen" };
-    case "Callide":
-    case "Morningside":
-    case "Springwood":
-    case "Blair":
-      return { color: "goldenrod" };
-    case "Burnett":
-    case "Mansfield":
-    case "Calamvale":
-    case "Oxley":
-      return { color: "#7f007f" };
-    case "Bundaberg":
-    case "Toohey":
-    case "Runcorn":
-    case "Bonner":
-      return { color: "darkseagreen" };
-    case "Hervey Bay":
-    case "Algester":
-    case "The Gabba":
-    case "Griffith":
-      return { color: "#b03060" };
-    case "Maryborough":
-    case "Stretton":
-    case "Coorparoo":
-    case "Moreton":
-      return { color: "mediumturquoise" };
-    case "Gympie":
-    case "Woodridge":
-    case "Doboy":
-    case "Bowman":
-      return { color: "darkorchid" };
-    case "Noosa":
-    case "Waterford":
-    case "Holland Park":
-    case "Forde":
-      return { color: "red" };
-    case "Nicklin":
-    case "Macalister":
-    case "Macgregor":
-    case "Rankin":
-      return { color: "darkorange" };
-    case "Ninderry":
-    case "Logan":
-    case "Chandler":
-    case "Fadden":
-      return { color: "gold" };
-    case "Maroochydore":
-    case "Coomera":
-      return { color: "yellow" };
-    case "Buderim":
-    case "Theodore":
-    case "Moncrieff":
-      return { color: "mediumblue" };
-    case "Kawana":
-    case "Wynnum-Manly":
-    case "Broadwater":
-      return { color: "lime" };
-    case "Caloundra":
-    case "Bonney":
-      return { color: "springgreen" };
-    case "Glass House":
-    case "Gaven":
-      return { color: "darksalmon" };
-    case "Pumicestone":
-    case "Southport":
-      return { color: "crimson" };
-    case "Morayfield":
-    case "Surfers Paradise":
-      return { color: "deepskyblue" };
-    case "Kurwongbah":
-    case "Mermaid Beach":
-      return { color: "blue" };
-    case "Bancroft":
-    case "Burleigh":
-      return { color: "#a020f0" };
-    case "Murrumba":
-    case "Currumbin":
-      return { color: "greenyellow" };
-    case "Redcliffe":
-    case "Mudgeeraba":
-      return { color: "orchid" };
-    case "Sandgate":
-    case "Scenic Rim":
-    case "McPherson":
-      return { color: "coral" };
-    case "Nudgee":
-    case "Lockyer":
-      return { color: "fuchsia" };
-    case "Clayfield":
-    case "Nanango":
-      return { color: "dodgerblue" };
-    case "McConnel":
-    case "Condamine":
-      return { color: "palevioletred" };
-    case "Stafford":
-    case "Toowoomba North":
-      return { color: "plum" };
-    case "Aspley":
-    case "Toowoomba South":
-      return { color: "skyblue" };
-    case "Pine Rivers":
-    case "Southern Downs":
-      return { color: "deeppink" };
-    case "Everton":
-      return { color: "mediumslateblue" };
-    case "(new 1)":
-      return { color: "wheat" };
-    case "(new 2)":
-      return { color: "palegreen" };
-    case "(new 3)":
-      return { color: "aquamarine" };
-    case "(new 4)":
-      return { color: "hotpink" };
-    case "(new 5)":
-      return { color: "pink" };
-    default:
-      return { color: "black" };
   }
 }
 
@@ -309,6 +74,7 @@ function initSharedApp() {
       const fmt = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       const avg = Math.round(window.STATE_STARTING_TOTAL / window.NUM_DIVISIONS);
       const min = Math.round(avg * (1 - window.ENROLMENT_THRESHOLD));
+      // const lda_min = Math.round(avg * (1 - window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER));
       const max = Math.round(avg * (1 + window.ENROLMENT_THRESHOLD));
       const avgProjected = Math.round(window.STATE_PROJECTED_TOTAL / window.NUM_DIVISIONS);
       const minProjected = Math.round(avgProjected * (1 - window.PROJECTION_THRESHOLD));
@@ -318,6 +84,7 @@ function initSharedApp() {
       document.getElementById('num-divisions').textContent = window.NUM_DIVISIONS;
       document.getElementById('avg-enrol').textContent = fmt(avg);
       document.getElementById('min-enrol').textContent = fmt(min);
+      // document.getElementById('lda-min-enrol').textContent = fmt(lda_min);
       document.getElementById('max-enrol').textContent = fmt(max);
       document.getElementById('avg-projected').textContent = fmt(avgProjected);
       document.getElementById('min-projected').textContent = fmt(minProjected);
@@ -613,7 +380,10 @@ function initSharedApp() {
         } else if (startingDeviation > (ENROLMENT_THRESHOLD * 100) || (useProjectedThresholds && projectedDeviation > (PROJECTION_THRESHOLD * 100))) {
           statusClass = 'status-over';
           outsideOfQuotaDivisions++;
-        } else if (startingDeviation < -(ENROLMENT_THRESHOLD * 100) || (useProjectedThresholds && projectedDeviation < -(PROJECTION_THRESHOLD * 100))) {
+        } else if (isLargeDistrict && LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER > 0 && (startingDeviation < -(LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER * 100))) {
+          statusClass = 'status-under';
+          outsideOfQuotaDivisions++;
+        } else if (LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER === 0 && (startingDeviation < -(ENROLMENT_THRESHOLD * 100) || (useProjectedThresholds && projectedDeviation < -(PROJECTION_THRESHOLD * 100)))) {
           statusClass = 'status-under';
           outsideOfQuotaDivisions++;
         }
@@ -955,6 +725,5 @@ window.showTab = showTab;
   window.showLeaveSessionModal = function(targetUrl){ initLeaveSessionModal(); openModal(targetUrl || location.href); };
   window.navigateWithUnsavedCheck = function(targetUrl){ initLeaveSessionModal(); attemptNav(targetUrl); };
 
-  // Auto-init (maintain existing behavior)
   initLeaveSessionModal();
 })();
