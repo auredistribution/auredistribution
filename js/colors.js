@@ -291,10 +291,3 @@ function getColor(division) { // same mapping as original
       return { color: "black" };
   }
 }
-
-// Export for module systems (if used) or make available globally
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { getColor };
-} else {
-  window.getColor = getColor;
-}
