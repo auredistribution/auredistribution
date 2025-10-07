@@ -1,1004 +1,140 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Queensland State Redistribution Tool</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""/
-    >
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    >
-    </script>
-		<link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.css" />
-  	<script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.js"></script>
-		<script src="sa1_2021.js"></script>
-		<script src="qld_2017.js"></script>
-		<script src="sa1_allocations.js"></script>
-    <style>
-      body {
-        font-family: Segoe UI;
-      }
-
-      p {
-        font-size: 14px;
-      }
-
-      .summary-panel {
-        height: 100%;
-        padding: 8px;
-        overflow-y: scroll;
-        min-width: 600px;
-        flex: 1;
-      }
-
-      .header {
-        position: sticky;
-        top: 0;
-        background: white;
-        margin-right: 8px;
-      }
-
-      .instructions {
-        margin: 8px 8px 8px 0;
-      }
-
-      .button {
-        border-radius: 8px;
-        font: inherit;
-        font-weight: bold;
-        padding: 8px;
-        cursor: pointer;
-      }
-
-      .button-grey {
-        background-color: #CCCCCC;
-        border: 2px solid #BBBBBB;
-      }
-
-      .button-grey:hover {
-        background-color: #DDDDDD;
-      }
-
-      .button-grey:active {
-        background-color: #BBBBBB;
-      }
-
-      .button-red {
-        background-color: #FFCCCC;
-        border: 2px solid #EEBBBB;
-      }
-
-      .button-red:hover {
-        background-color: #FFDDDD;
-      }
-
-      .button-red:active {
-        background-color: #EEBBBB;
-      }
-
-      .division:hover {
-        background-color: #FFFFEE;
-      }
-
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      body > div {
-        height: 100%;
-        display: flex;
-      }
-      #map {
-        height: 100%;
-        width: 100%;
-      }
-
-      .info-panel {
-        padding: 6px 8px;
-        font: 14px/16px Arial, Helvetica, sans-serif;
-        background: white;
-        background: rgba(255,255,255,0.8);
-        box-shadow: 0 0 15px rgba(0,0,0,0.2);
-        border-radius: 5px;
-      }
-
-      .info h4 {
-        margin: 0 0 5px;
-        color: #777;
-      }
-   </style>
-  </head>
-  <body>
-    <div style="display: flex">
-      <div class="summary-panel">
-        <div>
-          <ul id="tab-nav" style="display: flex; list-style: none; padding: 0; margin: 0 0 8px 0; border-bottom: 1px solid #ccc;">
-            <li style="margin-right: 8px;">
-              <button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button>
-            </li>
-            <li>
-              <button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button>
-            </li>
-          </ul>
-        </div>
-        <div id="header-tab" class="tab-content">
-          <div class="header">
-            <h1>Queensland State Redistribution Tool</h1>
-            <h3>Context</h3>
-            <p>Queensland is divided into 93 state electoral districts, which must be drawn within 10% of the average district enrolment of 40,264 (ie. between 36,238 and 44,290).</p>
-            <p>Districts larger than 100,000km<sup>2</sup> are given additional 'virtual' electors equal to 2% of the total area of the district.</p>
-            <p>The Redistribution Commission may also consider projected district enrolments, with an aim for districts to also be within 10% of the average projected district enrolment of 44,679 in 2032 (ie. between 40,211 and 49,147).</p>
-            <p>The ABS divides Queensland into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
-            <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
-            <h3>Instructions</h3>
-            <p>1. Click any district in the left panel (within the Divisions tab) to select or unselect it</p>
-            <p>2. Click on any SA1 on the map to transfer it into the selected district</p>
-            <p>3. Click on any transferred SA1s to return them to their original district</p>
-            <p>4. Shift-click can be used to transfer or return whole SA2s</p>
-            <p>5. New divisions can be created by clicking the '+' symbol next to the group label</p>
-            <h3>Disclaimer</h3>
-            <p>The author of this tool has no political affiliation and has taken effort to ensure that no political bias has been introduced. All calculations are based on SA1 enrolment data provided by the Queensland Redistribution Commission, however no guarantee is made that aggregate enrolment calculations will be error-free. The tool is offered as-is, and any usage of the tool is made at the user's own risk.</p>
-            <h3>Contact</h3>
-            <p>For bug reports, feature suggestions, or other feedback, please send an email to auredistribution@gmail.com</p>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Australian Redistribution Tool</title>
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Redistribution"/>
+</head>
+<body class="landing">
+  <header>
+    <h1>Australian Redistribution Tool</h1>
+    <p class="lead">Explore and prototype electoral boundary redistributions. Assess enrolment balance, large district adjustments, and structural impacts across proposed scenarios.</p>
+  </header>
+  <main>
+    <section aria-labelledby="current-redistributions">
+      <h2 id="current-redistributions">Active Redistribution Workspaces</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Queensland State 2025</h3>
+          <div class="tags">
+            <span class="tag tag-state">STATE</span><span class="tag">QLD</span><span class="tag">2025</span>
           </div>
+          <p>State Redistribution</p>
+          <a class="button-link" href="state_qld_2025.html">Open Workspace</a>
         </div>
-        <div id="divisions-tab" class="tab-content" style="display:none">
-          <div>
-            <button class="button" type="button" onclick="resetDivisions()">Reset Districts</button>
-            <button class="button" type="button" onclick="toggleProjectedThresholds()">Toggle Projected Elector Threshold</button>
+        <div class="card">
+          <h3>South Australia Federal 2025</h3>
+          <div class="tags">
+            <span class="tag">FEDERAL</span><span class="tag">SA</span><span class="tag">2025</span>
           </div>
-          <div>
-            <button class="button" type="button" onclick="exportCSV()">Export SA1 CSV</button>
-            <button class="button" type="button" onclick="exportDivisionTotalsCSV()">Export District Totals CSV</button>
-            <button class="button" type="button" onclick="triggerImport()">Import SA1 CSV</button>
-            <input type="file" id="import-file" accept=".csv" style="display:none" />
-          </div>
-          <div id="header-info" style="font-size: 14px; user-select: none"></div>
-          <div id="divisions" style="font-size: 14px; user-select: none"></div>
+            <p>Upcoming redistribution - all data is preliminary</p>
+          <a class="button-link" href="fed_sa_2025.html">Open Workspace</a>
         </div>
-        <script>
-          function showTab(tabId) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
-            // Remove highlight from all tab buttons
-            document.getElementById('tab-header-btn').classList.remove('button-grey');
-            document.getElementById('tab-divisions-btn').classList.remove('button-grey');
-            // Show selected tab
-            document.getElementById(tabId).style.display = '';
-            // Highlight selected tab button
-            if(tabId === 'header-tab') document.getElementById('tab-header-btn').classList.add('button-grey');
-            if(tabId === 'instructions-tab') document.getElementById('tab-instructions-btn').classList.add('button-grey');
-            if(tabId === 'divisions-tab') document.getElementById('tab-divisions-btn').classList.add('button-grey');
-          }
-          // Show header tab by default
-          showTab('header-tab');
-        </script>
+        <div class="card">
+          <h3>Tasmania Federal 2025</h3>
+          <div class="tags">
+            <span class="tag">FEDERAL</span><span class="tag">TAS</span><span class="tag">2025</span>
+          </div>
+            <p>Upcoming redistribution - all data is preliminary</p>
+          <a class="button-link" href="fed_tas_2025.html">Open Workspace</a>
+        </div>
+        <div class="card">
+          <h3>ACT Federal 2025</h3>
+          <div class="tags">
+            <span class="tag">FEDERAL</span><span class="tag">ACT</span><span class="tag">2025</span>
+          </div>
+            <p>Upcoming redistribution - all data is preliminary</p>
+          <a class="button-link" href="fed_act_2025.html">Open Workspace</a>
+        </div>
       </div>
-      <div id="map"></div>
-    </div>
-    <script>
-
-      //===================//
-      // UTILITY FUNCTIONS //
-      //===================//
-      function getColor(division) {
-        switch(division) {
-          case "SPLIT":
-            return {color: "white"};
-          case "Warrego":
-          case "Ferny Grove":
-            return {color: "silver"};
-          case "Gregory":
-          case "Cooper":
-            return {color: "darkslategray"};
-          case "Traeger":
-          case "Maiwar":
-            return {color: "darkolivegreen"};
-          case "Cook":
-          case "Moggill":
-            return {color: "sienna"};
-          case "Barron River":
-          case "Ipswich West":
-            return {color: "seagreen"};
-          case "Cairns":
-          case "Ipswich":
-            return {color: "midnightblue"};
-          case "Mulgrave":
-          case "Bundamba":
-            return {color: "darkred"};
-          case "Hill":
-          case "Jordan":
-            return {color: "olive"};
-          case "Hinchinbrook":
-          case "Inala":
-            return {color: "lightslategray"};
-          case "Thuringowa":
-          case "Mount Ommaney":
-            return {color: "green"};
-          case "Townsville":
-          case "Miller":
-            return {color: "rosybrown"};
-          case "Mundingburra":
-          case "South Brisbane":
-            return {color: "teal"};
-          case "Burdekin":
-          case "Greenslopes":
-            return {color: "darkkhaki"};
-          case "Whitsunday":
-          case "Bulimba":
-            return {color: "peru"};
-          case "Mackay":
-          case "Lytton":
-            return {color: "steelblue"};
-          case "Mirani":
-          case "Chatsworth":
-            return {color: "yellowgreen"};
-          case "Rockhampton":
-          case "Capalaba":
-            return {color: "indianred"};
-          case "Keppel":
-          case "Oodgeroo":
-            return {color: "darkblue"};
-          case "Gladstone":
-          case "Redlands":
-            return {color: "limegreen"};
-          case "Callide":
-          case "Springwood":
-            return {color: "goldenrod"};
-          case "Burnett":
-          case "Mansfield":
-            return {color: "#7f007f"};
-          case "Bundaberg":
-          case "Toohey":
-            return {color: "darkseagreen"};
-          case "Hervey Bay":
-          case "Algester":
-            return {color: "#b03060"};
-          case "Maryborough":
-          case "Stretton":
-            return {color: "mediumturquoise"};
-          case "Gympie":
-          case "Woodridge":
-            return {color: "darkorchid"};
-          case "Noosa":
-          case "Waterford":
-            return {color: "red"};
-          case "Nicklin":
-          case "Macalister":
-            return {color: "darkorange"};
-          case "Ninderry":
-          case "Logan":
-            return {color: "gold"};
-          case "Maroochydore":
-          case "Coomera":
-            return {color: "yellow"};
-          case "Buderim":
-          case "Theodore":
-            return {color: "mediumblue"};
-          case "Kawana":
-          case "Broadwater":
-            return {color: "lime"};
-          case "Caloundra":
-          case "Bonney":
-            return {color: "springgreen"};
-          case "Glass House":
-          case "Gaven":
-            return {color: "darksalmon"};
-          case "Pumicestone":
-          case "Southport":
-            return {color: "crimson"};
-          case "Morayfield":
-          case "Surfers Paradise":
-            return {color: "deepskyblue"};
-          case "Kurwongbah":
-          case "Mermaid Beach":
-            return {color: "blue"};
-          case "Bancroft":
-          case "Burleigh":
-            return {color: "#a020f0"};
-          case "Murrumba":
-          case "Currumbin":
-            return {color: "greenyellow"};
-          case "Redcliffe":
-          case "Mudgeeraba":
-            return {color: "orchid"};
-          case "Sandgate":
-          case "Scenic Rim":
-            return {color: "coral"};
-          case "Nudgee":
-          case "Lockyer":
-            return {color: "fuchsia"};
-          case "Clayfield":
-          case "Nanango":
-            return {color: "dodgerblue"};
-          case "McConnel":
-          case "Condamine":
-            return {color: "palevioletred"};
-          case "Stafford":
-          case "Toowoomba North":
-            return {color: "plum"};
-          case "Aspley":
-          case "Toowoomba South":
-            return {color: "skyblue"};
-          case "Pine Rivers":
-          case "Southern Downs":
-            return {color: "deeppink"};
-          case "Everton":
-            return {color: "mediumslateblue"};
-          case "(new 1)":
-            return {color: "wheat"};
-          case "(new 2)":
-            return {color: "palegreen"};
-          case "(new 3)":
-            return {color: "aquamarine"};
-          case "(new 4)":
-            return {color: "hotpink"};
-          case "(new 5)":
-            return {color: "pink"};
-          default: return {color: "black"};
-        }
-      }
-
-      function formatNumber(number) {
-        if(number > 1000000) {
-          number = number.toString()
-          return `${number.slice(0, -6)},${number.slice(-6, -3)},${number.slice(-3)}`
-        } else if(number > 1000) {
-          number = number.toString()
-          return `${number.slice(0, -3)},${number.slice(-3)}`
-        } else {
-          return number
-        }
-      }
-
-      //============//
-      // DATA SETUP //
-      //============//
-      const numberOfDivisions = 93
-      const stateStartingTotal = 3744585
-      const stateProjectedTotal = 4155112
-
-      const startingCoordinates = [-21.5, 146.5]
-
-      var divisionOrder = ["Warrego", "Gregory", "Traeger", "Cook", "Barron River", "Cairns", "Mulgrave", "Hill", "Hinchinbook", "Thuringowa", "Townsville", "Mundingburra", "Burdekin", "Whitsunday", "Mackay", "Mirani", "Rockhampton", "Keppel", "Gladstone", "Callide", "Burnett", "Bundaberg", "Hervey Bay", "Maryborough", "Gympie"]
-      var groups = {}
-      var divisionsAndGroups = [
-        { type: "group", name: "LARGE DISTRICTS", divisions: ["Cook", "Traeger",  "Gregory", "Warrego"] },
-        { type: "division", name: "Cook" },
-        { type: "division", name: "Traeger" },
-        { type: "division", name: "Gregory" },
-        { type: "division", name: "Warrego" },
-
-        { type: "group", name: "NORTHERN QUEENSLAND", divisions: ["Barron River", "Cairns", "Mulgrave", "Hill", "Hinchinbrook", "Thuringowa", "Townsville", "Mundingburra"] },
-        { type: "division", name: "Barron River" },
-        { type: "division", name: "Cairns" },
-        { type: "division", name: "Mulgrave" },
-        { type: "division", name: "Hill" },
-        { type: "division", name: "Hinchinbrook" },
-        { type: "division", name: "Thuringowa" },
-        { type: "division", name: "Townsville" },
-        { type: "division", name: "Mundingburra" },
-        { type: "group", name: "CENTRAL QUEENSLAND", divisions: ["Burdekin", "Whitsunday", "Mackay", "Mirani", "Rockhampton", "Keppel", "Gladstone"] },
-        { type: "division", name: "Burdekin" },
-        { type: "division", name: "Whitsunday" },
-        { type: "division", name: "Mackay" },
-        { type: "division", name: "Mirani" },
-        { type: "division", name: "Rockhampton" },
-        { type: "division", name: "Keppel" },
-        { type: "division", name: "Gladstone" },
-        { type: "group", name: "BURNETT & WIDE BAY", divisions: ["Callide", "Burnett", "Bundaberg", "Hervey Bay", "Maryborough", "Gympie", "Nanango"] },
-        { type: "division", name: "Callide" },
-        { type: "division", name: "Burnett" },
-        { type: "division", name: "Bundaberg" },
-        { type: "division", name: "Hervey Bay" },
-        { type: "division", name: "Maryborough" },
-        { type: "division", name: "Gympie" },
-        { type: "division", name: "Nanango" },
-        { type: "group", name: "SOUTHERN QUEENSLAND", divisions: ["Lockyer", "Toowoomba North", "Toowoomba South", "Condamine", "Southern Downs"] },
-        { type: "division", name: "Lockyer" },
-        { type: "division", name: "Toowoomba North" },
-        { type: "division", name: "Toowoomba South" },
-        { type: "division", name: "Condamine" },
-        { type: "division", name: "Southern Downs" },
-
-        { type: "group", name: "SUNSHINE COAST", divisions: ["Noosa", "Nicklin", "Ninderry", "Maroochydore", "Buderim", "Kawana", "Caloundra", "Glass House"] },
-        { type: "division", name: "Noosa" },
-        { type: "division", name: "Nicklin" },
-        { type: "division", name: "Ninderry" },
-        { type: "division", name: "Maroochydore" },
-        { type: "division", name: "Buderim" },
-        { type: "division", name: "Kawana" },
-        { type: "division", name: "Caloundra" },
-        { type: "division", name: "Glass House" },
-        { type: "group", name: "MORETON BAY", divisions: ["Pumicestone", "Morayfield", "Bancroft", "Kurwongbah", "Pine Rivers", "Murrumba", "Redcliffe"] },
-        { type: "division", name: "Pumicestone" },
-        { type: "division", name: "Morayfield" },
-        { type: "division", name: "Bancroft" },
-        { type: "division", name: "Kurwongbah" },
-        { type: "division", name: "Pine Rivers" },
-        { type: "division", name: "Murrumba" },
-        { type: "division", name: "Redcliffe" },
-        { type: "group", name: "BRISBANE CITY - NORTH", divisions: ["Sandgate", "Aspley", "Everton", "Ferny Grove", "Stafford", "Nudgee", "Clayfield", "McConnel", "Cooper", "Maiwar", "Moggill"] },
-        { type: "division", name: "Sandgate" },
-        { type: "division", name: "Aspley" },
-        { type: "division", name: "Everton" },
-        { type: "division", name: "Ferny Grove" },
-        { type: "division", name: "Stafford" },
-        { type: "division", name: "Nudgee" },
-        { type: "division", name: "Clayfield" },
-        { type: "division", name: "McConnel" },
-        { type: "division", name: "Cooper" },
-        { type: "division", name: "Maiwar" },
-        { type: "division", name: "Moggill" },
-        { type: "group", name: "IPSWICH", divisions: ["Ipswich West", "Ipswich", "Bundamba", "Jordan"] },
-        { type: "division", name: "Ipswich West" },
-        { type: "division", name: "Ipswich" },
-        { type: "division", name: "Bundamba" },
-        { type: "division", name: "Jordan" },
-        { type: "group", name: "BRISBANE CITY - SOUTH", divisions: ["Inala", "Mount Ommaney", "Miller", "South Brisbane", "Greenslopes", "Bulimba", "Lytton", "Chatsworth", "Mansfield", "Toohey", "Stretton", "Algester"] },
-        { type: "division", name: "Inala" },
-        { type: "division", name: "Mount Ommaney" },
-        { type: "division", name: "Miller" },
-        { type: "division", name: "South Brisbane" },
-        { type: "division", name: "Greenslopes" },
-        { type: "division", name: "Bulimba" },
-        { type: "division", name: "Lytton" },
-        { type: "division", name: "Chatsworth" },
-        { type: "division", name: "Mansfield" },
-        { type: "division", name: "Toohey" },
-        { type: "division", name: "Stretton" },
-        { type: "division", name: "Algester" },
-        { type: "group", name: "LOGAN & REDLAND", divisions: ["Woodridge", "Waterford", "Springwood", "Capalaba", "Oodgeroo", "Redlands", "Macalister", "Logan", "Scenic Rim"] },
-        { type: "division", name: "Woodridge" },
-        { type: "division", name: "Waterford" },
-        { type: "division", name: "Springwood" },
-        { type: "division", name: "Capalaba" },
-        { type: "division", name: "Oodgeroo" },
-        { type: "division", name: "Redlands" },
-        { type: "division", name: "Macalister" },
-        { type: "division", name: "Logan" },
-        { type: "division", name: "Scenic Rim" },
-        { type: "group", name: "GOLD COAST", divisions: ["Coomera", "Theodore", "Broadwater", "Bonney", "Gaven", "Southport", "Surfers Paradise", "Mudgeeraba", "Mermaid Beach", "Burleigh", "Currumbin"] },
-        { type: "division", name: "Coomera" },
-        { type: "division", name: "Theodore" },
-        { type: "division", name: "Broadwater" },
-        { type: "division", name: "Bonney" },
-        { type: "division", name: "Gaven" },
-        { type: "division", name: "Southport" },
-        { type: "division", name: "Surfers Paradise" },
-        { type: "division", name: "Mudgeeraba" },
-        { type: "division", name: "Mermaid Beach" },
-        { type: "division", name: "Burleigh" },
-        { type: "division", name: "Currumbin" }
-      ]
-
-      //===================//
-      // MAIN CODE SECTION //
-      //===================//
-
-      var selectedDivision = ""
-      var newDivisionCount = 0
-      var useProjectedThresholds = false
-
-      sa1s.forEach(sa1 => {
-        const sa1Name = sa1.properties["SA1_CODE21"]
-        sa1.properties.previousDivision = data[sa1Name].previousDivision
-        sa1.properties.division = data[sa1Name].currentDivision
-      })
-
-      //===========//
-      // MAP SETUP //
-      //===========//
-      var map = L.map("map").setView(startingCoordinates, 6)
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>"
-      }).addTo(map);
-
-			map.zoomControl.setPosition('bottomright');
-
-			var sed_qld_2017 = new L.GeoJSON(qld_2017, { style: function(feature) {
-          return {
-						weight: 2,
-						color: "blue"
-          }
-        }, onEachFeature: onEachElectorate});
-
-			var overlayMaps = {
-				"Qld 2017": sed_qld_2017
-			};
-
-  		var qld_search = new L.Control.Search({layer: sed_qld_2017, propertyName: 'name', position: 'bottomleft'});
-
-      L.control.layers(null, overlayMaps, { collapsed: false, position: 'bottomleft' }).addTo(map);
-
-      // Add / remove the search control only when the electorate layer is toggled on/off
-      map.on('overlayadd', function(e) {
-        if (e.layer === sed_qld_2017) {
-          // Ensure not already added
-          if (!qld_search._map) {
-            map.addControl(qld_search);
-          }
-        }
-      });
-
-      map.on('overlayremove', function(e) {
-        if (e.layer === sed_qld_2017) {
-          if (qld_search._map) {
-            map.removeControl(qld_search);
-          }
-        }
-      });
-
-      function clickFeature(e) {
-        var thisLayer = e.target
-
-        if(selectedDivision) {
-          if(e.originalEvent.shiftKey) {
-            var layers = features.getLayers().filter(otherLayer => (otherLayer.feature.properties["SA2_NAME21"] == thisLayer.feature.properties["SA2_NAME21"] && otherLayer.feature.properties.division == thisLayer.feature.properties.division))
-          } else {
-            var layers = [thisLayer]
-          }
-
-          layers.forEach(layer => {
-
-            const sa1Name = layer.feature.properties["SA1_CODE21"]
-            const originalDivision = data[sa1Name].previousDivision
-            const currentDivision = data[sa1Name].currentDivision
-
-            if(selectedDivision == currentDivision) {
-              if(selectedDivision != originalDivision) {
-                layer.feature.properties.division = originalDivision
-                data[sa1Name].currentDivision = originalDivision
-
-                layer.setStyle({
-                  fillColor: getColor(originalDivision).color,
-                  fillOpacity: 0.5
-                })
-              }
-            } else {
-              layer.feature.properties.division = selectedDivision
-              data[sa1Name].currentDivision = selectedDivision
-
-              layer.setStyle({
-                fillColor: getColor(selectedDivision).color,
-                fillOpacity: (selectedDivision == originalDivision) ? 0.5 : 0.75
-              })
-            }
-          })
-
-          renderDivisionList()
-        }
-      }
-
-      //===============//
-      // GENERATE SA1s //
-      //===============//
-
-      function highlightFeature(e) {
-        var layer = e.target
-        infoPanel.update(layer.feature.properties)
-
-        layer.setStyle({
-          weight: 2,
-    	    color: "#000000"
-        })
-      }
-
-			function highlightElectorate(e) {
-				var layer = e.target;
-
-				layer.setStyle({
-						weight: 4,
-						color: "green"
-				});
-
-				if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-					layer.bringToFront();
-				}
-				info.update(layer.feature.properties);
-			}
-
-      function unhighlightFeature(e) {
-        var layer = e.target
-        infoPanel.update(null)
-
-        layer.setStyle({
-          weight: 0.5,
-    	    color: "#333333"
-        })
-      }
-
-      function onEachFeature(feature, layer) {
-        layer.on({
-          click: clickFeature,
-          mouseover: highlightFeature,
-          mouseout: unhighlightFeature
-        })
-      }
-
-			function onEachElectorate(feature, layer) {
-				layer.on({
-					mouseover: highlightElectorate,
-					mouseout: resetHighlight,
-					click: zoomToFeature
-				});
-
-				layer.bindTooltip(
-					feature.properties.name,
-					{
-						permanent: true,
-						direction: 'center',
-						className: 'countryLabel'
-					}
-				);
-			}
-
-			function resetHighlight(e) {
-				e.target.setStyle({
-						weight: 2,
-						color: "blue"
-        });
-			}
-
-			function zoomToFeature(e) {
-				map.fitBounds(e.target.getBounds());
-			}
-
-      var features = L.geoJSON(sa1s, {
-        style: function(feature) {
-          return {
-            fillColor: getColor(feature.properties.division).color,
-            fillOpacity: 0.5,
-            weight: 0.5,
-    	      color: "#333333"
-          }
-        },
-        onEachFeature: onEachFeature
-      }).addTo(map)
-
-      //============//
-      // INFO PANEL //
-      //============//
-
-      var infoPanel = L.control();
-
-      infoPanel.onAdd = function(map) {
-        this._div = L.DomUtil.create("div", "info-panel")
-        this.update()
-        return this._div
-      }
-
-      infoPanel.update = function(props) {
-        if(props) {
-          this._div.innerHTML = `<b>${props["SA2_NAME21"]}</b><br/><i>${props["SA1_CODE21"]}</i><br/>${props.division}<br/>${data[props["SA1_CODE21"]].startingEnrolment} current electors / ${data[props["SA1_CODE21"]].projectedEnrolment} projected electors`
-        } else {
-          this._div.innerHTML = "Hover over a SA1"
-        }
-      }
-
-      infoPanel.addTo(map)
-
-
-      //=================//
-      // RESET DIVISIONS //
-      //=================//
-      function resetDivisions() {
-
-        features.getLayers().forEach(layer => {
-
-          const sa1Name = layer.feature.properties["SA1_CODE21"]
-          const originalDivision = data[sa1Name].previousDivision
-
-          layer.feature.properties.division = originalDivision
-          data[sa1Name].currentDivision = originalDivision
-
-          layer.setStyle({
-            fillColor: getColor(originalDivision).color,
-            fillOpacity: 0.5
-          })
-
-        })
-
-        divisionsAndGroups = divisionsAndGroups.filter(entry => (entry.name.slice(0, 4) != "(new"))
-        divisionsAndGroups.forEach(entry => {
-          if(entry.type == "group") {
-            entry.divisions = entry.divisions.filter(division => (division.slice(0, 4) != "(new"))
-          }
-        })
-
-        renderDivisionList()
-      }
-
-      function toggleProjectedThresholds() {
-        useProjectedThresholds = !useProjectedThresholds
-        renderDivisionList()
-      }
-
-      //=====================//
-      // CREATE NEW DIVISION //
-      //=====================//
-
-      function createNewDivision(groupName) {
-        console.log(divisionsAndGroups)
-        const index = divisionsAndGroups.findIndex(entry => (entry.name == groupName))
-        console.log(index)
-        divisionsAndGroups.splice(index + divisionsAndGroups[index].divisions.length + 1, 0, { type: "division", name: `(new ${newDivisionCount + 1})`})
-        divisionsAndGroups[index].divisions.push(`(new ${newDivisionCount + 1})`)
-        newDivisionCount++
-        renderDivisionList()
-      }
-
-      //======================//
-      // RENDER DIVISION LIST //
-      //======================//
-      function renderDivisionList() {
-        var divisionList = document.getElementById("divisions")
-
-        divisionList.innerHTML = ""
-
-        outsideOfQuotaDivisions = 0
-
-        divisionsAndGroups.forEach((entry, index) => {
-          if(entry.type == "division") {
-            const division = entry.name
-
-            var sa1s = Object.keys(data).filter(sa1 => (data[sa1].currentDivision == division))
-
-            var area = sa1s.map(sa1 => data[sa1].area).reduce((a, b) => (a + b), 0)
-
-            isLargeDistrict = (area > 100000)
-
-            var startingTotal = sa1s.map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => (a + b), 0) + (isLargeDistrict ? area * 0.02: 0)
-            var startingDeviation = 100 * startingTotal / (stateStartingTotal / numberOfDivisions) - 100
-            var projectedTotal = sa1s.map(sa1 => data[sa1].projectedEnrolment).reduce((a, b) => (a + b), 0)  + (isLargeDistrict ? area * 0.02: 0)
-            var projectedDeviation = 100 * projectedTotal / (stateProjectedTotal / numberOfDivisions) - 100
-
-            var message = ""
-            var backgroundStyle = ""
-            var statusIndicatorStyle = ""
-
-            if(startingTotal == 0 && projectedTotal == 0) {
-              message = "ABOLISHED"
-              statusIndicatorStyle = "height: 16px; width: 16px; margin: 8px; border-radius: 50%;"
-            } else if(startingDeviation > 10 || (useProjectedThresholds && projectedDeviation > 10)) {
-              message = "TOO HIGH"
-              statusIndicatorStyle = "height: 16px; width: 16px; margin: 8px; border-radius: 50%; background-color: #FF9999;"
-              outsideOfQuotaDivisions++
-            } else if(startingDeviation < -10 || (useProjectedThresholds && projectedDeviation < -10)) {
-              message = "TOO LOW"
-              statusIndicatorStyle = "height: 16px; width: 16px; margin: 8px; border-radius: 50%; background-color: #9999FF;"
-              outsideOfQuotaDivisions++
-            } else {
-              message = ""
-              statusIndicatorStyle = "height: 8px; width: 8px; margin: 12px; border-radius: 50%; background-color: #CCFFCC;"
-            }
-
-            message = ""
-
-            var element = document.createElement("div")
-            element.style = `display: flex; align-items: center; line-height: 8px; cursor: pointer; ${((division == selectedDivision) ? " background-color: #FFFFCC; font-weight: bold;" : "")}`
-            element.className = "division"
-
-            var statusIndicator = document.createElement("div")
-            statusIndicator.style = statusIndicatorStyle
-            element.appendChild(statusIndicator)
-
-            var text = document.createElement("p")
-            text.innerHTML = `<b>${division}</b> ${formatNumber(startingTotal.toFixed(0))} current (${startingDeviation.toFixed(2)}%) / ${formatNumber(projectedTotal.toFixed(0))} projected (${projectedDeviation.toFixed(2)}%)${isLargeDistrict ? " <b>[LARGE DISTRICT]</b>" : ""}`
-            text.style = (division.slice(0, 4) != "(new" && startingTotal == 0 && projectedTotal == 0) ? "text-decoration: line-through;" : ""
-            text.onclick = () => {
-              if(selectedDivision == division) {
-                selectedDivision = ""
-              } else {
-                selectedDivision = division
-              }
-              renderDivisionList()
-            }
-            element.appendChild(text)
-
-            divisionList.appendChild(element)
-
-          } else if(entry.type == "group") {
-
-            var element = document.createElement("div")
-            element.style = "display: flex; align-items: center; line-height: 8px;"
-
-            var text = document.createElement("p")
-
-            var groupStartingTotal = Object.keys(data).filter(sa1 => entry.divisions.includes(data[sa1].currentDivision)).map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => (a + b), 0)
-
-            text.innerHTML = `${entry.name} (${(groupStartingTotal / (stateStartingTotal / numberOfDivisions)).toFixed(2)} current quotas / ${entry.divisions.length} districts)`
-            text.style = "line-height: 8px; font-weight: bold;"
-
-            element.appendChild(text)
-
-            var newDivisionButton = document.createElement("button")
-            newDivisionButton.innerHTML = "+"
-            newDivisionButton.className = "button"
-            newDivisionButton.style = "margin: 8px"
-            newDivisionButton.type = "button"
-            newDivisionButton.onclick = () => {
-                createNewDivision(entry.name)
-            }
-
-            element.appendChild(newDivisionButton)
-
-            divisionList.appendChild(element)
-
-          }
-        })
-
-        //====================//
-        // RENDER HEADER INFO //
-        //====================//
-        var headerInfo = document.getElementById("header-info")
-
-        headerInfo.innerHTML = ""
-
-        var divisionsOutOfQuotaDetails = document.createElement("p")
-        divisionsOutOfQuotaDetails.innerHTML = `<b>Districts out of quota:</b> ${outsideOfQuotaDivisions}`
-        headerInfo.appendChild(divisionsOutOfQuotaDetails)
-
-        var electorsMoved = Object.keys(data).filter(sa1 => (data[sa1].currentDivision != data[sa1].previousDivision)).map(sa1 => data[sa1].projectedEnrolment).reduce((a, b) => (a + b), 0)
-
-        var electorsMovedDetails = document.createElement("p")
-        electorsMovedDetails.innerHTML = `<b>Electors moved:</b> ${formatNumber(electorsMoved)} (${(100 * electorsMoved / stateStartingTotal).toFixed(2)}%)`
-        headerInfo.appendChild(electorsMovedDetails)
-
-      }
-
-      renderDivisionList()
-
-			//==================//
-			// EXPORT TO CSV //
-			//==================//
-			function exportCSV() {
-        let csv = "SA1,OriginalDivision,ProposedDivision,CurrentEnrolment,ProjectedEnrolment\n";
-        for (const sa1 in data) {
-          const prev = data[sa1].previousDivision;
-          const curr = data[sa1].currentDivision;
-          const enrolment = data[sa1].startingEnrolment;
-          const projected = data[sa1].projectedEnrolment;
-          csv += `${sa1},${prev},${curr},${enrolment},${projected}\n`;
-        }
-        const blob = new Blob([csv], { type: "text/csv" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        const now = new Date();
-        const pad = n => String(n).padStart(2, '0');
-        const timestamp = `${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
-        a.download = `auredistribution_proposal_${timestamp}.csv`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }
-
-      //=================================//
-      // EXPORT PER-DISTRICT TOTALS TO CSV //
-      //=================================//
-      function exportDivisionTotalsCSV() {
-        // Build a map of division -> { startingTotal, projectedTotal, area }
-        const divisionTotals = {}; // key: division name
-        for (const sa1 in data) {
-          const division = data[sa1].currentDivision;
-          if(!divisionTotals[division]) {
-            divisionTotals[division] = { starting: 0, projected: 0, area: 0 };
-          }
-          divisionTotals[division].starting += data[sa1].startingEnrolment;
-          divisionTotals[division].projected += data[sa1].projectedEnrolment;
-          divisionTotals[division].area += data[sa1].area;
-        }
-
-        // Apply large district virtual electors (2% of area) where relevant (>100,000 km^2)
-        Object.keys(divisionTotals).forEach(div => {
-          const record = divisionTotals[div];
-          if(record.area > 100000) {
-            const adjustment = record.area * 0.02; // as per logic in renderDivisionList
-            record.starting += adjustment;
-            record.projected += adjustment;
-          }
-        });
-
-        let csv = "District,StartingTotal,ProjectedTotal,StartingDeviationPct,ProjectedDeviationPct,AreaKm2,IsLargeDistrict\n";
-        const avgStarting = stateStartingTotal / numberOfDivisions;
-        const avgProjected = stateProjectedTotal / numberOfDivisions;
-        Object.keys(divisionTotals).sort().forEach(div => {
-          const rec = divisionTotals[div];
-          const startingDev = 100 * rec.starting / avgStarting - 100;
-          const projectedDev = 100 * rec.projected / avgProjected - 100;
-          const isLarge = rec.area > 100000 ? "YES" : "NO";
-          csv += `${div},${Math.round(rec.starting)},${Math.round(rec.projected)},${startingDev.toFixed(2)},${projectedDev.toFixed(2)},${rec.area.toFixed(2)},${isLarge}\n`;
-        });
-
-        const blob = new Blob([csv], { type: 'text/csv' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        const now = new Date();
-        const pad = n => String(n).padStart(2, '0');
-        const timestamp = `${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
-        a.href = url;
-        a.download = `auredistribution_district_totals_${timestamp}.csv`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }
-
-      //==================//
-      // IMPORT FROM CSV  //
-      //==================//
-      function triggerImport() {
-        document.getElementById('import-file').click();
-      }
-
-      document.getElementById('import-file').addEventListener('change', handleImport, false);
-
-      function handleImport(evt) {
-        const file = evt.target.files[0];
-        if(!file) return;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          parseDivisionCSV(e.target.result);
-        };
-        reader.readAsText(file);
-        // reset input so same file can be chosen again if needed
-        evt.target.value = "";
-      }
-
-      function parseDivisionCSV(text) {
-        const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
-        if(lines.length < 2) { alert('CSV appears empty'); return; }
-        const header = lines[0].split(',').map(h => h.trim());
-        const sa1Idx = header.indexOf('SA1');
-        // Accept either ProposedDivision, CurrentDivision, Division as the target column name
-        let currIdx = header.indexOf('ProposedDivision');
-        if(currIdx === -1) currIdx = header.indexOf('CurrentDivision');
-        if(currIdx === -1) currIdx = header.indexOf('Division');
-        if(sa1Idx === -1 || currIdx === -1) { alert('Header must include SA1 and either ProposedDivision, CurrentDivision, or Division'); return; }
-
-        const updates = {};
-        for(let i=1;i<lines.length;i++) {
-          const cols = lines[i].split(',');
-          if(cols.length <= currIdx) continue;
-          const sa1 = cols[sa1Idx].trim();
-          const newDiv = cols[currIdx].trim();
-          if(!sa1 || !newDiv) continue;
-          updates[sa1] = newDiv;
-        }
-
-        let applied = 0, skipped = 0;
-        features.getLayers().forEach(layer => {
-          const sa1Name = layer.feature.properties['SA1_CODE21'];
-          if (updates.hasOwnProperty(sa1Name) && data[sa1Name]) {
-            const newDiv = updates[sa1Name];
-            data[sa1Name].currentDivision = newDiv;
-            layer.feature.properties.division = newDiv;
-            const originalDivision = data[sa1Name].previousDivision;
-            layer.setStyle({
-              fillColor: getColor(newDiv).color,
-              fillOpacity: (newDiv == originalDivision) ? 0.5 : 0.75
-            });
-            applied++;
-          } else if (updates.hasOwnProperty(sa1Name)) {
-            skipped++;
-          }
-        });
-
-        // Re-render division list with new totals
-        renderDivisionList();
-        alert(`Import complete: ${applied} SA1s updated${skipped ? ', ' + skipped + ' skipped (not found)' : ''}.`);
-      }
-
-    </script>
-  </body>
+      <h2 id="future-redistributions">Upcoming Redistributions</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Queensland Federal 2026</h3>
+          <div class="tags">
+            <span class="tag">FEDERAL</span><span class="tag">QLD</span><span class="tag">2026</span>
+          </div>
+            <p>Upcoming redistribution - all data is preliminary</p>
+          <a class="button-link" href="fed_qld_2026.html">Open Workspace</a>
+        </div>
+        <div class="card">
+          <h3>Brisbane City Council 2027</h3>
+          <div class="tags">
+            <span class="tag tag-council">COUNCIL</span><span class="tag">QLD</span><span class="tag">2027</span>
+          </div>
+            <p>Upcoming redistribution - all data is preliminary</p>
+          <a class="button-link" href="bcc_2027.html">Open Workspace</a>
+        </div>
+        <div class="card">
+          <h3>Tasmania State 2027</h3>
+          <div class="tags">
+            <span class="tag tag-state">STATE</span><span class="tag">TAS</span><span class="tag">2027</span>
+          </div>
+            <p>Upcoming redistribution</p>
+        </div>
+        <div class="card">
+          <h3>Western Australia State 2027</h3>
+          <div class="tags">
+            <span class="tag tag-state">STATE</span><span class="tag">WA</span><span class="tag">2027</span>
+          </div>
+            <p>Upcoming redistribution - all data is preliminary</p>
+          <a class="button-link" href="state_wa_2027.html">Open Workspace</a>
+        </div>
+        <div class="card">
+          <h3>Northern Territory 2027</h3>
+          <div class="tags">
+            <span class="tag tag-state">STATE</span><span class="tag">NT</span><span class="tag">2027</span>
+          </div>
+            <p>Upcoming redistribution</p>
+        </div>
+        <div class="card">
+          <h3>ACT 2027</h3>
+          <div class="tags">
+            <span class="tag tag-state">STATE</span><span class="tag">ACT</span><span class="tag">2027</span>
+          </div>
+            <p>Upcoming redistribution</p>
+        </div>
+        <div class="card">
+          <h3>South Australia State 2028</h3>
+          <div class="tags">
+            <span class="tag tag-state">STATE</span><span class="tag">SA</span><span class="tag">2028</span>
+          </div>
+            <p>Upcoming redistribution</p>
+        </div>
+        <div class="card">
+          <h3>New South Wales State 2029</h3>
+          <div class="tags">
+            <span class="tag tag-state">STATE</span><span class="tag">NSW</span><span class="tag">2029</span>
+          </div>
+            <p>Upcoming redistribution</p>
+        </div>
+        <div class="card">
+          <h3>Victoria State 2029</h3>
+          <div class="tags">
+            <span class="tag tag-state">STATE</span><span class="tag">VIC</span><span class="tag">2029</span>
+          </div>
+            <p>Upcoming redistribution</p>
+        </div>
+      </div>
+    </section>
+    <section aria-labelledby="about-section">
+      <h2 id="about-section">About</h2>
+      <div class="split">
+        <div>
+          <p>This tool helps illustrate how shifting Statistical Areas (SA1) between districts alters elector totals and compliance with quota thresholds. Large districts automatically receive virtual electors based on area rules.</p>
+        </div>
+        <div class="disclaimer">
+          <strong>Disclaimer</strong><br/>
+          This tool presents raw data provided by official sources. Calculations use published enrolment data; aggregated results are provided without warranty. Use at your own risk.
+          <br/><br/>
+          <strong>Attribution:</strong> The original idea and project was developed by Angas, available <a href="https://auredistribution.neocities.org/">here</a> and <a href="https://github.com/auredistribution/qld-state-redistribution">on GitHub</a>.
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
 </html>

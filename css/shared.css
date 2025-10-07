@@ -1,0 +1,189 @@
+/* ==========================================================
+   BASE & THEME VARIABLES
+   ========================================================== */
+body { font-family: Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+* { box-sizing: border-box; }
+
+:root {
+  --app-bg: #f5f7fa;
+  --panel-bg: #ffffff;
+  --panel-border: #d9e1ea;
+  --panel-border-soft: #e6edf3;
+  --text-color: #1f2d3d;
+  --text-muted: #5b6b7c;
+  --accent: #005ea5;
+  --accent-hover: #004777;
+  --danger: #c62828;
+  --danger-soft: #ffefef;
+  --positive-soft: #e8f9ef;
+  --warning-soft: #fff6e0;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 10px -2px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.08);
+}
+
+html, body { background: var(--app-bg); color: var(--text-color); height: 100%; margin: 0; padding: 0; overflow: hidden; }
+p { font-size: 14px; }
+
+/* ==========================================================
+   LANDING / HOME PAGE
+   ========================================================== */
+body.landing { overflow: auto; line-height: 1.35; }
+body.landing header { padding: 56px 32px 32px; text-align: center; }
+body.landing header h1 { margin:0 0 12px; font-size: 40px; letter-spacing:-0.5px; }
+body.landing header p.lead { max-width: 820px; margin:0 auto; font-size: 18px; color: var(--text-muted); }
+body.landing main { max-width: 1200px; margin: 0 auto 80px; padding: 0 32px; }
+body.landing section { margin-top: 48px; }
+body.landing h2 { margin:0 0 16px; font-size: 26px; }
+body.landing h3 { margin:32px 0 8px; font-size: 20px; }
+body.landing p { font-size: 16px; margin:0 0 12px; }
+body.landing .grid { display:grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+body.landing .card { background: var(--panel-bg); padding: 20px 20px 18px; border:1px solid var(--panel-border); border-radius: 12px; position:relative; display:flex; flex-direction:column; gap:10px; box-shadow: 0 3px 8px -2px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06); }
+body.landing .card h3 { margin:0 0 4px; font-size: 18px; text-align:center; }
+body.landing .card a.button-link { margin-top:auto; }
+body.landing .tags { display:flex; flex-wrap:wrap; gap:6px; }
+body.landing .tag { background:#eef3f8; color:#2f506e; padding:4px 8px; font-size:11px; font-weight:600; letter-spacing:.5px; border-radius: 6px; text-transform:uppercase; }
+body.landing .tag.tag-state { background:#e8f5e8; color:#2d5016; }
+body.landing .tag.tag-council { background:#fff3e0; color:#d97706; }
+body.landing a.button-link { display:inline-block; text-decoration:none; background: var(--accent); color:#fff; padding:10px 14px; border-radius: 8px; font-weight:600; font-size:14px; letter-spacing:.3px; transition: background .15s; }
+body.landing a.button-link:hover { background: var(--accent-hover); }
+body.landing .meta { font-size:12px; color: var(--text-muted); margin-top:auto; }
+body.landing footer { padding: 40px 32px 60px; text-align:center; font-size:13px; color: var(--text-muted); }
+body.landing .disclaimer { font-size: 13px; background:#fff; border:1px solid var(--panel-border); padding:16px 20px; border-radius: 12px; box-shadow: 0 3px 8px -2px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06); }
+body.landing .split { display:grid; gap:40px; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); align-items:start; }
+@media (max-width:700px){ body.landing header h1{font-size:32px;} body.landing header{padding:48px 20px 24px;} body.landing main{padding:0 20px;} }
+
+/* ==========================================================
+   LAYOUT: PANELS & STRUCTURE
+   ========================================================== */
+body > div { height: 100%; display: flex; }
+.summary-panel {
+  height: 100%;
+  padding: 0 0 16px;
+  overflow-y: auto;
+  min-width: 520px;
+  max-width: 620px;
+  flex: 0 0 560px;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg);
+  border-right: 1px solid var(--panel-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================
+   HEADER / INTRO CONTENT
+   ========================================================== */
+.header { position: relative; background: linear-gradient(135deg,#ffffff,#f1f6fb 65%); padding: 28px 28px 18px; border-bottom: 1px solid var(--panel-border); }
+.header h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -.5px; }
+.header h3 { margin: 24px 0 8px; font-size: 16px; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); }
+.header p { margin: 0 0 10px; }
+.instructions { margin: 8px 8px 8px 0; }
+
+/* ==========================================================
+   BUTTONS & TOOLBARS
+   ========================================================== */
+.button {
+  --btn-bg: var(--accent);
+  --btn-bg-hover: var(--accent-hover);
+  --btn-color: #fff;
+  --btn-border: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 14px;
+  cursor: pointer;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  font-size: 13px;
+  letter-spacing: .3px;
+  transition: background .15s, box-shadow .15s;
+}
+.button:hover { background: var(--btn-bg-hover); }
+.button:active { transform: translateY(1px); }
+.button-grey { --btn-bg: #e6ebf0; --btn-bg-hover: #d7dde3; --btn-border: #c9d1d8; --btn-color: #1f2d3d; }
+.button-red { --btn-bg: #d84343; --btn-bg-hover: #bb2e2e; --btn-border: #b52e2e; }
+.button-outline { --btn-bg: #fff; --btn-bg-hover: #f4f8fb; --btn-color: var(--accent); --btn-border: var(--panel-border); }
+.button-ghost { --btn-bg: #ffffff; --btn-bg-hover: #f2f5f8; --btn-color: var(--text-muted); --btn-border: #d5dde4; }
+.division-toolbar { gap: 4px; }
+.division-toolbar .button { font-size: 12px; padding: 5px 10px; font-weight: 500; }
+.division-toolbar .button-ghost { --btn-color: #4a5a67; }
+.button-red:hover { background-color: #FFDDDD; }
+.button-red:active { background-color: #EEBBBB; }
+
+/* ==========================================================
+   DIVISION / GROUP LIST
+   ========================================================== */
+.division-row, .group-row { display: flex; align-items: flex-start; gap: 4px; padding: 6px 10px 6px 4px; border-radius: var(--radius-sm); position: relative; }
+.division-row { cursor: pointer; }
+.division-row:hover { background: #fff9d8; }
+.division-row.is-selected { background: #fff4b3; box-shadow: inset 0 0 0 1px #f0ce4e; font-weight: 600; }
+.division-row p { margin: 0; line-height: 1.3; font-size: 12.5px; }
+.group-row { margin-top: 12px; padding: 4px 4px 4px 2px; border-left: 4px solid var(--accent); background: #f0f6fa; }
+.group-row p { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; color: var(--text-muted); }
+.group-row .button { margin-left: auto; font-size: 12px; padding: 4px 10px; }
+.group-row.is-collapsed { opacity: 0.75; }
+.division-status { flex: 0 0 auto; }
+.status-dot { height: 10px; width: 10px; border-radius: 50%; margin: 6px 6px 0 6px; box-shadow: 0 0 0 2px #fff; }
+.status-empty { height: 16px; width: 16px; margin: 4px 6px 0 4px; background: linear-gradient(135deg,#fafafa,#eef2f5); border: 1px dashed #c2ccd5; border-radius: 50%; }
+.status-over { background: #ff8a8a; }
+.status-under { background: #8aa6ff; }
+.status-ok { background: #8bd78b; }
+.large-flag { font-size: 10px; background: #ffe7a3; color: #7a5600; padding: 2px 5px; border-radius: 4px; margin-left: 6px; font-weight: 600; letter-spacing: .5px; }
+.quota-metric { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+
+/* ==========================================================
+   HEADER INFO METRICS
+   ========================================================== */
+#header-info { padding: 8px 20px 4px; border-top: 1px solid var(--panel-border-soft); margin-top: auto; background: #fafcfe; }
+#header-info p { margin: 4px 0; font-size: 12.5px; }
+
+/* ==========================================================
+   TAB NAVIGATION
+   ========================================================== */
+#tab-nav { background: #f1f6fb; border-bottom: 1px solid var(--panel-border); padding: 0 12px; }
+#tab-nav li { margin: 0; }
+#tab-nav .button { border: none; background: transparent; color: var(--text-muted); font-weight: 500; border-bottom: 3px solid transparent; border-radius: 0; padding: 14px 16px 11px; box-shadow:none; }
+#tab-nav .button:hover { background: rgba(255,255,255,0.6); color: var(--text-color); }
+#tab-nav .button.button-grey { color: var(--accent); border-bottom-color: var(--accent); background: #fff; box-shadow: inset 0 1px 0 #fff; }
+
+/* ==========================================================
+   MAP CONTAINER
+   ========================================================== */
+#map { box-shadow: var(--shadow-md); height: 100%; width: 100%; }
+
+/* ==========================================================
+   MODAL (LEAVE SESSION / GENERIC)
+   ========================================================== */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); display: none; align-items: center; justify-content: center; z-index: 1200; padding: 20px; }
+.modal { background: #ffffff; border: 1px solid var(--panel-border); border-radius: var(--radius-md); width: 420px; max-width: 100%; box-shadow: var(--shadow-md); display: flex; flex-direction: column; }
+.modal header { padding: 18px 22px 8px; }
+.modal header h2 { margin: 0 0 4px; font-size: 18px; letter-spacing: -.3px; }
+.modal header p { margin: 0; font-size: 13px; color: var(--text-muted); }
+.modal .modal-body { padding: 0 22px 4px; font-size: 13px; line-height: 1.45; }
+.modal .modal-body p { margin: 0 0 10px; }
+.modal footer { padding: 14px 18px 16px; display: flex; gap: 8px; justify-content: flex-end; background: #f7f9fb; border-top: 1px solid var(--panel-border-soft); border-bottom-left-radius: var(--radius-md); border-bottom-right-radius: var(--radius-md); }
+.modal footer .button { font-size: 12.5px; padding: 7px 14px; }
+.modal-danger { border-left: 5px solid var(--danger); }
+.modal-danger header h2 { color: var(--danger); }
+.modal a { color: var(--accent); }
+@media (max-width: 640px) { .modal { width: 100%; } }
+
+/* ==========================================================
+   MAP HOVER INFO PANEL
+   ========================================================== */
+.info-panel {
+  padding: 8px 10px;
+  font: 12.5px/15px Segoe UI, Arial, Helvetica, sans-serif;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+  backdrop-filter: blur(4px);
+}
+.info h4 { margin: 0 0 5px; color: #777; }
