@@ -44,6 +44,8 @@ body.landing .card h3 { margin:0 0 4px; font-size: 18px; text-align:center; }
 body.landing .card a.button-link { margin-top:auto; }
 body.landing .tags { display:flex; flex-wrap:wrap; gap:6px; }
 body.landing .tag { background:#eef3f8; color:#2f506e; padding:4px 8px; font-size:11px; font-weight:600; letter-spacing:.5px; border-radius: 6px; text-transform:uppercase; }
+body.landing .tag.tag-state { background:#e8f5e8; color:#2d5016; }
+body.landing .tag.tag-council { background:#fff3e0; color:#d97706; }
 body.landing a.button-link { display:inline-block; text-decoration:none; background: var(--accent); color:#fff; padding:10px 14px; border-radius: 8px; font-weight:600; font-size:14px; letter-spacing:.3px; transition: background .15s; }
 body.landing a.button-link:hover { background: var(--accent-hover); }
 body.landing .meta { font-size:12px; color: var(--text-muted); margin-top:auto; }
