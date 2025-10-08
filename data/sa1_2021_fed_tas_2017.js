@@ -10339,15 +10339,5 @@ var data = {
     "startingEnrolment": 203,
     "projectedEnrolment": 206,
     "area": 1.9373
-  },
-  "� Commonwealth of Australia 2023": {
-    "previousDivision": "",
-    "currentDivision": "",
-    "startingEnrolment": "",
-    "projectedEnrolment": "",
-    "area": ""
   }
 };
-
-if (typeof module !== 'undefined') module.exports = data;
-if (typeof window !== 'undefined') window.data = data;

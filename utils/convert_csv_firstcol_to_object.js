@@ -108,7 +108,7 @@ function writeOutput(outPath, obj) {
   }
   // default JS module
   const varName = 'data';
-  const js = `// Auto-generated from CSV on ${new Date().toISOString()}\n// Keyed by first column\nvar ${varName} = ${JSON.stringify(obj, null, 2)};\n\nif (typeof module !== 'undefined') module.exports = ${varName};\nif (typeof window !== 'undefined') window.${varName} = ${varName};\n`;
+  const js = `// Auto-generated from CSV on ${new Date().toISOString()}\n// Keyed by first column\nvar ${varName} = ${JSON.stringify(obj, null, 2)};\n`;
   fs.writeFileSync(outPath, js);
   return { type: 'js', outPath };
 }
