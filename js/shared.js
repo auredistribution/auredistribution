@@ -103,6 +103,10 @@ function initSharedApp() {
   // Map starting divisions onto feature properties
   sa1s.forEach(sa1 => {
     const sa1Name = sa1.properties["SA1_CODE21"]; // assumes ABS 2021 code property name consistent
+    if (!data[sa1Name]) {
+      console.log('Missing data for SA1:', sa1Name);
+      return;
+    }
     sa1.properties.previousDivision = data[sa1Name].previousDivision;
     sa1.properties.division = data[sa1Name].currentDivision;
   });
