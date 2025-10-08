@@ -1,4 +1,4 @@
-// Auto-generated from CSV on 2025-10-08T12:30:13.084Z
+// Auto-generated from CSV on 2025-10-08T12:32:27.818Z
 // Keyed by first column
 var data = {
   "80103103102": {
@@ -2935,5734 +2935,5734 @@ var data = {
     "area": "#N/A"
   },
   "80101100101": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 195,
     "projectedEnrolment": 192,
     "area": 0.3691
   },
   "80101100102": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 274,
     "projectedEnrolment": 254,
     "area": 0.2487
   },
   "80101100103": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 234,
     "projectedEnrolment": 251,
     "area": 0.1498
   },
   "80101100104": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 359,
     "projectedEnrolment": 358,
     "area": 0.2989
   },
   "80101100105": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 428,
     "projectedEnrolment": 406,
     "area": 0.2633
   },
   "80101100106": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 333,
     "projectedEnrolment": 330,
     "area": 0.2333
   },
   "80101100301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 201,
     "projectedEnrolment": 203,
     "area": 0.091
   },
   "80101100304": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 657,
     "projectedEnrolment": 726,
     "area": 0.1614
   },
   "80101100306": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 262,
     "projectedEnrolment": 246,
     "area": 0.0914
   },
   "80101100307": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 129,
     "projectedEnrolment": 144,
     "area": 0.075
   },
   "80101100308": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 197,
     "projectedEnrolment": 214,
     "area": 1.6311
   },
   "80101100309": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 152,
     "projectedEnrolment": 167,
     "area": 0.0438
   },
   "80101100310": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 141,
     "projectedEnrolment": 152,
     "area": 0.077
   },
   "80101100311": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 192,
     "projectedEnrolment": 224,
     "area": 0.0661
   },
   "80101100312": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 502,
     "projectedEnrolment": 546,
     "area": 0.1733
   },
   "80101100314": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 26,
     "projectedEnrolment": 34,
     "area": 1.8436
   },
   "80101100315": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 270,
     "projectedEnrolment": 290,
     "area": 0.4212
   },
   "80101100316": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 202,
     "projectedEnrolment": 223,
     "area": 0.3382
   },
   "80101100317": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 218,
     "projectedEnrolment": 249,
     "area": 0.0913
   },
   "80101100318": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 214,
     "projectedEnrolment": 239,
     "area": 0.2981
   },
   "80101100319": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 200,
     "projectedEnrolment": 231,
     "area": 0.2243
   },
   "80101100320": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 253,
     "projectedEnrolment": 262,
     "area": 0.0697
   },
   "80101100321": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 251,
     "projectedEnrolment": 265,
     "area": 0.072
   },
   "80101100322": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 205,
     "projectedEnrolment": 220,
     "area": 0.029
   },
   "80101100501": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 214,
     "projectedEnrolment": 222,
     "area": 0.2234
   },
   "80101100502": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 344,
     "projectedEnrolment": 348,
     "area": 0.2111
   },
   "80101100503": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 240,
     "projectedEnrolment": 237,
     "area": 0.1434
   },
   "80101100504": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 284,
     "projectedEnrolment": 280,
     "area": 0.178
   },
   "80101100505": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 306,
     "projectedEnrolment": 293,
     "area": 0.1987
   },
   "80101100506": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 172,
     "projectedEnrolment": 186,
     "area": 0.1822
   },
   "80101100507": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 241,
     "projectedEnrolment": 249,
     "area": 0.1596
   },
   "80101100508": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 165,
     "projectedEnrolment": 173,
     "area": 0.1028
   },
   "80101100509": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 292,
     "projectedEnrolment": 304,
     "area": 0.1839
   },
   "80101101101": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 506,
     "projectedEnrolment": 525,
     "area": 0.5934
   },
   "80101101102": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 258,
     "projectedEnrolment": 257,
     "area": 0.2806
   },
   "80101101103": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 461,
     "projectedEnrolment": 457,
     "area": 0.5112
   },
   "80101101104": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 328,
     "projectedEnrolment": 347,
     "area": 0.2126
   },
   "80101101105": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 210,
     "projectedEnrolment": 204,
     "area": 0.1354
   },
   "80101101106": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 166,
     "projectedEnrolment": 167,
     "area": 0.1048
   },
   "80101101107": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 13,
     "projectedEnrolment": 13,
     "area": 0.2446
   },
   "80101101108": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 143,
     "projectedEnrolment": 140,
     "area": 0.1146
   },
   "80101101109": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 192,
     "projectedEnrolment": 202,
     "area": 0.1457
   },
   "80101101110": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 178,
     "projectedEnrolment": 187,
     "area": 0.1038
   },
   "80101101301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 174,
     "projectedEnrolment": 170,
     "area": 0.0864
   },
   "80101101302": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 298,
     "projectedEnrolment": 288,
     "area": 0.1582
   },
   "80101101303": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 319,
     "projectedEnrolment": 320,
     "area": 0.2615
   },
   "80101101304": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 236,
     "projectedEnrolment": 240,
     "area": 0.1685
   },
   "80101101305": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 314,
     "projectedEnrolment": 309,
     "area": 0.3201
   },
   "80101101306": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 253,
     "projectedEnrolment": 247,
     "area": 0.2187
   },
   "80101101307": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 167,
     "projectedEnrolment": 169,
     "area": 0.075
   },
   "80101101308": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 265,
     "projectedEnrolment": 267,
     "area": 0.1513
   },
   "80101101309": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.3988
   },
   "80101101310": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 203,
     "projectedEnrolment": 194,
     "area": 0.1177
   },
   "80101101601": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 317,
     "projectedEnrolment": 327,
     "area": 0.2307
   },
   "80101101602": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 154,
     "projectedEnrolment": 156,
     "area": 0.2849
   },
   "80101101603": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 359,
     "projectedEnrolment": 362,
     "area": 0.2754
   },
   "80101101604": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 297,
     "projectedEnrolment": 294,
     "area": 0.1823
   },
   "80101101605": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 269,
     "projectedEnrolment": 289,
     "area": 0.1915
   },
   "80101101606": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 374,
     "projectedEnrolment": 376,
     "area": 0.3119
   },
   "80101101607": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 198,
     "projectedEnrolment": 203,
     "area": 0.1967
   },
   "80101101608": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 56,
     "projectedEnrolment": 55,
     "area": 1.5879
   },
   "80101101609": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 322,
     "projectedEnrolment": 322,
     "area": 0.2278
   },
   "80101101610": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 182,
     "projectedEnrolment": 180,
     "area": 0.2146
   },
   "80101101611": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 252,
     "projectedEnrolment": 252,
     "area": 0.154
   },
   "80101101612": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 387,
     "projectedEnrolment": 371,
     "area": 0.2398
   },
   "80101101613": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 361,
     "projectedEnrolment": 346,
     "area": 0.2682
   },
   "80101101614": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 313,
     "projectedEnrolment": 304,
     "area": 0.2005
   },
   "80101101615": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 325,
     "projectedEnrolment": 302,
     "area": 0.1848
   },
   "80101101616": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 373,
     "projectedEnrolment": 380,
     "area": 0.2822
   },
   "80101101617": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 299,
     "projectedEnrolment": 286,
     "area": 0.2813
   },
   "80101101618": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 265,
     "projectedEnrolment": 245,
     "area": 0.3393
   },
   "80101101619": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 332,
     "projectedEnrolment": 347,
     "area": 0.373
   },
   "80101101802": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 2.0268
   },
   "80101101805": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 282,
     "projectedEnrolment": 292,
     "area": 0.696
   },
   "80101101806": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 133,
     "projectedEnrolment": 140,
     "area": 0.0247
   },
   "80101101807": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 308,
     "projectedEnrolment": 305,
     "area": 0.1009
   },
   "80101101808": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 190,
     "projectedEnrolment": 194,
     "area": 0.0672
   },
   "80101101809": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 144,
     "projectedEnrolment": 171,
     "area": 0.1192
   },
   "80101101810": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 220,
     "projectedEnrolment": 229,
     "area": 0.0497
   },
   "80101102001": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 218,
     "projectedEnrolment": 223,
     "area": 0.164
   },
   "80101102002": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 274,
     "projectedEnrolment": 261,
     "area": 0.1678
   },
   "80101102003": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 181,
     "projectedEnrolment": 175,
     "area": 0.1348
   },
   "80101102004": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 179,
     "projectedEnrolment": 187,
     "area": 0.1549
   },
   "80101102005": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 576,
     "projectedEnrolment": 571,
     "area": 0.4774
   },
   "80101102006": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 193,
     "projectedEnrolment": 184,
     "area": 0.1311
   },
   "80101102007": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 256,
     "projectedEnrolment": 256,
     "area": 0.229
   },
   "80101102008": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 318,
     "projectedEnrolment": 355,
     "area": 0.2414
   },
   "80101102601": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 260,
     "projectedEnrolment": 258,
     "area": 0.2431
   },
   "80101102602": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 145,
     "projectedEnrolment": 151,
     "area": 0.2079
   },
   "80101102603": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 302,
     "projectedEnrolment": 308,
     "area": 0.243
   },
   "80101102604": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 372,
     "projectedEnrolment": 376,
     "area": 0.2657
   },
   "80101102605": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 199,
     "projectedEnrolment": 205,
     "area": 0.131
   },
   "80101102606": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 466,
     "projectedEnrolment": 516,
     "area": 0.2979
   },
   "80101102607": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 298,
     "projectedEnrolment": 295,
     "area": 0.1946
   },
   "80103103201": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 15,
     "projectedEnrolment": 15,
     "area": 76.9339
   },
   "80105104901": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 760,
     "projectedEnrolment": 784,
     "area": 1.6458
   },
   "80105104902": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.4618
   },
   "80105104903": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.3153
   },
   "80105104904": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.3145
   },
   "80105105001": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 363,
     "projectedEnrolment": 337,
     "area": 0.2007
   },
   "80105105002": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 249,
     "projectedEnrolment": 256,
     "area": 0.3042
   },
   "80105105003": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.5951
   },
   "80105105004": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 199,
     "projectedEnrolment": 214,
     "area": 0.1335
   },
   "80105105005": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 404,
     "projectedEnrolment": 415,
     "area": 0.214
   },
   "80105105006": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 311,
     "projectedEnrolment": 312,
     "area": 0.2335
   },
   "80105105007": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 241,
     "projectedEnrolment": 245,
     "area": 0.1589
   },
   "80105105008": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 179,
     "projectedEnrolment": 183,
     "area": 0.1184
   },
   "80105105011": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 457,
     "projectedEnrolment": 440,
     "area": 0.3195
   },
   "80105105012": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 316,
     "projectedEnrolment": 313,
     "area": 0.148
   },
   "80105105013": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 405,
     "projectedEnrolment": 407,
     "area": 0.3265
   },
   "80105105014": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 207,
     "projectedEnrolment": 210,
     "area": 0.1723
   },
   "80105105015": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 323,
     "projectedEnrolment": 317,
     "area": 0.1711
   },
   "80105105016": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 143,
     "projectedEnrolment": 141,
     "area": 0.1238
   },
   "80105105017": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 163,
     "projectedEnrolment": 175,
     "area": 0.1977
   },
   "80105105018": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 140,
     "projectedEnrolment": 143,
     "area": 0.1233
   },
   "80105105101": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 466,
     "projectedEnrolment": 569,
     "area": 0.0513
   },
   "80105105102": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 346,
     "projectedEnrolment": 369,
     "area": 0.2251
   },
   "80105105105": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 632,
     "projectedEnrolment": 686,
     "area": 0.0662
   },
   "80105105109": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 496,
     "projectedEnrolment": 548,
     "area": 0.1392
   },
   "80105105110": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 128,
     "projectedEnrolment": 149,
     "area": 0.0875
   },
   "80105105111": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 390,
     "projectedEnrolment": 419,
     "area": 0.0372
   },
   "80105105112": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 198,
     "projectedEnrolment": 246,
     "area": 0.0523
   },
   "80105105113": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 221,
     "projectedEnrolment": 237,
     "area": 0.0395
   },
   "80105105114": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 65,
     "projectedEnrolment": 73,
     "area": 0.0327
   },
   "80105105115": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 380,
     "projectedEnrolment": 443,
     "area": 0.2817
   },
   "80105105116": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 266,
     "projectedEnrolment": 284,
     "area": 0.0333
   },
   "80105105117": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 195,
     "projectedEnrolment": 225,
     "area": 0.1703
   },
   "80105105118": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 203,
     "projectedEnrolment": 217,
     "area": 0.0468
   },
   "80105105119": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 339,
     "projectedEnrolment": 409,
     "area": 0.071
   },
   "80105105120": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 376,
     "projectedEnrolment": 393,
     "area": 0.0737
   },
   "80105105301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 507,
     "projectedEnrolment": 581,
     "area": 0.1207
   },
   "80105105302": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 294,
     "projectedEnrolment": 283,
     "area": 0.3634
   },
   "80105105305": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 25,
     "projectedEnrolment": 26,
     "area": 0.0172
   },
   "80105105306": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 189,
     "projectedEnrolment": 188,
     "area": 0.0258
   },
   "80105105307": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 111,
     "projectedEnrolment": 116,
     "area": 0.0145
   },
   "80105105308": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 68,
     "projectedEnrolment": 69,
     "area": 0.0224
   },
   "80105105311": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 132,
     "projectedEnrolment": 129,
     "area": 0.0599
   },
   "80105105312": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 318,
     "projectedEnrolment": 303,
     "area": 0.4475
   },
   "80105105313": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 172,
     "projectedEnrolment": 172,
     "area": 0.1208
   },
   "80105105314": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 416,
     "projectedEnrolment": 411,
     "area": 0.2387
   },
   "80105105404": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 326,
     "projectedEnrolment": 409,
     "area": 0.2027
   },
   "80105105405": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 107,
     "projectedEnrolment": 140,
     "area": 0.3517
   },
   "80105105406": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 444,
     "projectedEnrolment": 554,
     "area": 0.317
   },
   "80105105407": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 530,
     "projectedEnrolment": 674,
     "area": 0.2359
   },
   "80105105408": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 450,
     "projectedEnrolment": 590,
     "area": 0.1306
   },
   "80105105409": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 741,
     "projectedEnrolment": 907,
     "area": 0.2606
   },
   "80105105410": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 370,
     "projectedEnrolment": 474,
     "area": 0.0795
   },
   "80105105501": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 335,
     "projectedEnrolment": 346,
     "area": 0.1986
   },
   "80105105502": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 220,
     "projectedEnrolment": 233,
     "area": 0.1658
   },
   "80105105503": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 285,
     "projectedEnrolment": 291,
     "area": 0.1518
   },
   "80105105504": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 285,
     "projectedEnrolment": 294,
     "area": 0.1651
   },
   "80105105505": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 411,
     "projectedEnrolment": 434,
     "area": 0.1925
   },
   "80105105506": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 318,
     "projectedEnrolment": 343,
     "area": 0.1681
   },
   "80105105507": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 339,
     "projectedEnrolment": 361,
     "area": 0.2034
   },
   "80105105508": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 412,
     "projectedEnrolment": 438,
     "area": 0.2409
   },
   "80105105509": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 273,
     "projectedEnrolment": 280,
     "area": 0.148
   },
   "80105105601": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 437,
     "projectedEnrolment": 433,
     "area": 0.2577
   },
   "80105105602": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 409,
     "projectedEnrolment": 441,
     "area": 0.3109
   },
   "80105105603": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 323,
     "projectedEnrolment": 329,
     "area": 0.2423
   },
   "80105105604": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 331,
     "projectedEnrolment": 335,
     "area": 0.1793
   },
   "80105105605": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 354,
     "projectedEnrolment": 368,
     "area": 0.4514
   },
   "80105105606": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 163,
     "projectedEnrolment": 179,
     "area": 0.1759
   },
   "80105105607": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 328,
     "projectedEnrolment": 347,
     "area": 0.3323
   },
   "80105105701": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 294,
     "projectedEnrolment": 340,
     "area": 3.1046
   },
   "80105105702": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 172,
     "projectedEnrolment": 176,
     "area": 0.1438
   },
   "80105105703": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 229,
     "projectedEnrolment": 233,
     "area": 0.1516
   },
   "80105105704": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 241,
     "projectedEnrolment": 253,
     "area": 0.2858
   },
   "80105105705": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 377,
     "projectedEnrolment": 405,
     "area": 0.4063
   },
   "80105105706": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 297,
     "projectedEnrolment": 322,
     "area": 0.163
   },
   "80105105708": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 363,
     "projectedEnrolment": 416,
     "area": 0.2388
   },
   "80105105709": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 297,
     "projectedEnrolment": 318,
     "area": 0.3947
   },
   "80105105711": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 582,
     "projectedEnrolment": 658,
     "area": 0.112
   },
   "80105105712": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 411,
     "projectedEnrolment": 464,
     "area": 0.1209
   },
   "80105105713": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 265,
     "projectedEnrolment": 283,
     "area": 0.1218
   },
   "80105105714": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 210,
     "projectedEnrolment": 251,
     "area": 0.11
   },
   "80105105715": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 202,
     "projectedEnrolment": 232,
     "area": 0.1243
   },
   "80105105801": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 421,
     "projectedEnrolment": 431,
     "area": 0.2545
   },
   "80105105802": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 351,
     "projectedEnrolment": 346,
     "area": 0.192
   },
   "80105105803": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 328,
     "projectedEnrolment": 320,
     "area": 0.2053
   },
   "80105105804": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 256,
     "projectedEnrolment": 269,
     "area": 0.2366
   },
   "80105105805": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 174,
     "projectedEnrolment": 188,
     "area": 0.1047
   },
   "80105105806": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 206,
     "projectedEnrolment": 210,
     "area": 0.1304
   },
   "80105105807": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 408,
     "projectedEnrolment": 428,
     "area": 0.2938
   },
   "80105105808": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 420,
     "projectedEnrolment": 432,
     "area": 0.2959
   },
   "80105105809": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 282,
     "projectedEnrolment": 294,
     "area": 0.1469
   },
   "80105105810": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 251,
     "projectedEnrolment": 249,
     "area": 0.1616
   },
   "80105105811": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 406,
     "projectedEnrolment": 397,
     "area": 0.217
   },
   "80105105812": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 292,
     "projectedEnrolment": 284,
     "area": 0.3952
   },
   "80105105813": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 439,
     "projectedEnrolment": 423,
     "area": 0.2611
   },
   "80105105814": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 2.0336
   },
   "80105106003": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 516,
     "projectedEnrolment": 513,
     "area": 0.1942
   },
   "80105106006": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 328,
     "projectedEnrolment": 352,
     "area": 0.468
   },
   "80105106007": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 258,
     "projectedEnrolment": 284,
     "area": 0.23
   },
   "80105106008": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 256,
     "projectedEnrolment": 254,
     "area": 0.0429
   },
   "80105106009": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 1,
     "projectedEnrolment": 1,
     "area": 0.0431
   },
   "80105106010": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 208,
     "projectedEnrolment": 205,
     "area": 0.0435
   },
   "80105106011": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 297,
     "projectedEnrolment": 326,
     "area": 0.1267
   },
   "80105106012": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 361,
     "projectedEnrolment": 366,
     "area": 0.2052
   },
   "80105106013": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 88,
     "projectedEnrolment": 88,
     "area": 0.0912
   },
   "80105106014": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 402,
     "projectedEnrolment": 470,
     "area": 0.0309
   },
   "80105106015": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 381,
     "projectedEnrolment": 380,
     "area": 0.0619
   },
   "80105106101": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 318,
     "projectedEnrolment": 356,
     "area": 0.1733
   },
   "80105106102": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 256,
     "projectedEnrolment": 291,
     "area": 0.1813
   },
   "80105106103": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 309,
     "projectedEnrolment": 338,
     "area": 0.3722
   },
   "80105106106": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 161,
     "projectedEnrolment": 181,
     "area": 0.0963
   },
   "80105106107": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 244,
     "projectedEnrolment": 255,
     "area": 0.2397
   },
   "80105106108": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 359,
     "projectedEnrolment": 411,
     "area": 0.199
   },
   "80105106109": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 301,
     "projectedEnrolment": 308,
     "area": 0.189
   },
   "80105106110": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 270,
     "projectedEnrolment": 272,
     "area": 0.1697
   },
   "80105106111": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 249,
     "projectedEnrolment": 265,
     "area": 0.1819
   },
   "80105106112": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 208,
     "projectedEnrolment": 219,
     "area": 0.2063
   },
   "80105106113": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 174,
     "projectedEnrolment": 177,
     "area": 0.0807
   },
   "80105106114": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 387,
     "projectedEnrolment": 361,
     "area": 0.0751
   },
   "80105106116": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 357,
     "projectedEnrolment": 359,
     "area": 0.1341
   },
   "80105106117": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.2857
   },
   "80105106118": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 2,
     "projectedEnrolment": 2,
     "area": 0.5561
   },
   "80105106119": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 305,
     "projectedEnrolment": 327,
     "area": 0.1702
   },
   "80105106120": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 636,
     "projectedEnrolment": 783,
     "area": 0.2412
   },
   "80105106121": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 218,
     "projectedEnrolment": 261,
     "area": 0.1226
   },
   "80106106201": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 435,
     "projectedEnrolment": 449,
     "area": 0.189
   },
   "80106106202": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 354,
     "projectedEnrolment": 365,
     "area": 0.6216
   },
   "80106106203": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 1.0365
   },
   "80106106204": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 256,
     "projectedEnrolment": 264,
     "area": 0.1767
   },
   "80106106205": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 376,
     "projectedEnrolment": 361,
     "area": 0.2506
   },
   "80106106206": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 195,
     "projectedEnrolment": 190,
     "area": 0.7215
   },
   "80106106207": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 283,
     "projectedEnrolment": 272,
     "area": 0.1557
   },
   "80106106208": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 210,
     "projectedEnrolment": 201,
     "area": 0.14
   },
   "80106106209": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 235,
     "projectedEnrolment": 223,
     "area": 0.2798
   },
   "80106106301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 812,
     "projectedEnrolment": 824,
     "area": 0.5998
   },
   "80106106302": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 205,
     "projectedEnrolment": 220,
     "area": 0.3228
   },
   "80106106303": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 318,
     "projectedEnrolment": 335,
     "area": 0.3541
   },
   "80106106304": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 204,
     "projectedEnrolment": 221,
     "area": 0.3134
   },
   "80106106401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 258,
     "projectedEnrolment": 334,
     "area": 0.0663
   },
   "80106106402": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 443,
     "projectedEnrolment": 562,
     "area": 0.3686
   },
   "80106106403": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 258,
     "projectedEnrolment": 341,
     "area": 0.2131
   },
   "80106106405": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 520,
     "projectedEnrolment": 521,
     "area": 0.3869
   },
   "80106106407": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 200,
     "projectedEnrolment": 272,
     "area": 0.1698
   },
   "80106106409": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.1069
   },
   "80106106410": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 167,
     "projectedEnrolment": 214,
     "area": 0.0512
   },
   "80106106411": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 494,
     "projectedEnrolment": 647,
     "area": 0.1417
   },
   "80106106413": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 302,
     "projectedEnrolment": 416,
     "area": 0.3588
   },
   "80106106414": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 400,
     "projectedEnrolment": 401,
     "area": 0.0869
   },
   "80106106415": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 252,
     "projectedEnrolment": 337,
     "area": 0.1686
   },
   "80106106416": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 274,
     "projectedEnrolment": 341,
     "area": 0.2367
   },
   "80106106417": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 47,
     "projectedEnrolment": 60,
     "area": 0.0648
   },
   "80106106418": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 231,
     "projectedEnrolment": 303,
     "area": 0.3046
   },
   "80106106419": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 227,
     "projectedEnrolment": 294,
     "area": 0.0178
   },
   "80106106420": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 238,
     "projectedEnrolment": 314,
     "area": 0.0132
   },
   "80106106601": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 6.1594
   },
   "80106106701": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 312,
     "projectedEnrolment": 352,
     "area": 0.1761
   },
   "80106106702": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 231,
     "projectedEnrolment": 267,
     "area": 0.1333
   },
   "80106106703": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 224,
     "projectedEnrolment": 241,
     "area": 0.1664
   },
   "80106106704": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 251,
     "projectedEnrolment": 273,
     "area": 0.1928
   },
   "80106106705": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 233,
     "projectedEnrolment": 275,
     "area": 0.1359
   },
   "80106106706": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 319,
     "projectedEnrolment": 364,
     "area": 0.2087
   },
   "80106106707": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 420,
     "projectedEnrolment": 473,
     "area": 0.5496
   },
   "80106106708": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 324,
     "projectedEnrolment": 346,
     "area": 0.1991
   },
   "80106106709": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 241,
     "projectedEnrolment": 226,
     "area": 0.1161
   },
   "80106106710": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 242,
     "projectedEnrolment": 286,
     "area": 0.2315
   },
   "80106106712": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 273,
     "projectedEnrolment": 313,
     "area": 0.1817
   },
   "80106106713": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 279,
     "projectedEnrolment": 309,
     "area": 0.1873
   },
   "80106106714": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 250,
     "projectedEnrolment": 270,
     "area": 0.1341
   },
   "80106106715": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 503,
     "projectedEnrolment": 584,
     "area": 0.2481
   },
   "80106106716": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 213,
     "projectedEnrolment": 219,
     "area": 0.1367
   },
   "80106106717": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 297,
     "projectedEnrolment": 332,
     "area": 0.9376
   },
   "80106106718": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 107,
     "projectedEnrolment": 116,
     "area": 0.0896
   },
   "80106106719": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 311,
     "projectedEnrolment": 340,
     "area": 0.0661
   },
   "80106106801": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 1.8118
   },
   "80106106901": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 240,
     "projectedEnrolment": 318,
     "area": 0.1797
   },
   "80106106902": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 152,
     "projectedEnrolment": 145,
     "area": 0.715
   },
   "80106106903": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 297,
     "projectedEnrolment": 348,
     "area": 0.2431
   },
   "80106106904": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 439,
     "projectedEnrolment": 529,
     "area": 0.1564
   },
   "80106106905": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 432,
     "projectedEnrolment": 515,
     "area": 0.2681
   },
   "80106106906": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 386,
     "projectedEnrolment": 451,
     "area": 0.2986
   },
   "80106106907": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 387,
     "projectedEnrolment": 466,
     "area": 0.257
   },
   "80106106908": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 1,
     "projectedEnrolment": 1,
     "area": 2.4649
   },
   "80106106909": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 310,
     "projectedEnrolment": 371,
     "area": 0.2778
   },
   "80106107001": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 253,
     "projectedEnrolment": 259,
     "area": 0.2854
   },
   "80106107002": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 368,
     "projectedEnrolment": 363,
     "area": 3.5554
   },
   "80106107003": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 372,
     "projectedEnrolment": 357,
     "area": 0.355
   },
   "80106107004": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 269,
     "projectedEnrolment": 285,
     "area": 0.1561
   },
   "80106107005": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 373,
     "projectedEnrolment": 389,
     "area": 0.3982
   },
   "80106107006": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 246,
     "projectedEnrolment": 241,
     "area": 0.2546
   },
   "80106107007": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 413,
     "projectedEnrolment": 390,
     "area": 0.2713
   },
   "80106107008": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 173,
     "projectedEnrolment": 170,
     "area": 1.9345
   },
   "80109110001": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 354,
     "projectedEnrolment": 362,
     "area": 0.7839
   },
   "80109110002": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 301,
     "projectedEnrolment": 315,
     "area": 0.6381
   },
   "80109110003": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 225,
     "projectedEnrolment": 223,
     "area": 0.2464
   },
   "80109110004": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 461,
     "projectedEnrolment": 447,
     "area": 0.4478
   },
   "80109110005": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 425,
     "projectedEnrolment": 419,
     "area": 0.5965
   },
   "80109110006": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 337,
     "projectedEnrolment": 348,
     "area": 0.2092
   },
   "80109110007": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 196,
     "projectedEnrolment": 219,
     "area": 0.0998
   },
   "80109110008": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 462,
     "projectedEnrolment": 468,
     "area": 0.3492
   },
   "80109110010": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 387,
     "projectedEnrolment": 374,
     "area": 0.8038
   },
   "80109110011": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 195,
     "projectedEnrolment": 193,
     "area": 0.1388
   },
   "80109110012": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 353,
     "projectedEnrolment": 349,
     "area": 0.2353
   },
   "80109110013": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 138,
     "projectedEnrolment": 152,
     "area": 0.0695
   },
   "80109110014": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 175,
     "projectedEnrolment": 189,
     "area": 0.1896
   },
   "80109110201": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.7577
   },
   "80109110202": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 431,
     "projectedEnrolment": 427,
     "area": 0.3929
   },
   "80109110203": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 352,
     "projectedEnrolment": 329,
     "area": 0.2009
   },
   "80109110204": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 276,
     "projectedEnrolment": 262,
     "area": 0.2057
   },
   "80109110205": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 204,
     "projectedEnrolment": 191,
     "area": 0.1874
   },
   "80109110206": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 209,
     "projectedEnrolment": 205,
     "area": 0.128
   },
   "80109110207": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 388,
     "projectedEnrolment": 386,
     "area": 0.2442
   },
   "80109110209": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 218,
     "projectedEnrolment": 212,
     "area": 0.138
   },
   "80109110210": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.228
   },
   "80109110211": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 242,
     "projectedEnrolment": 221,
     "area": 0.2137
   },
   "80109110301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 257,
     "projectedEnrolment": 247,
     "area": 0.2008
   },
   "80109110302": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 294,
     "projectedEnrolment": 312,
     "area": 0.2083
   },
   "80109110303": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 279,
     "projectedEnrolment": 283,
     "area": 0.2434
   },
   "80109110304": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 366,
     "projectedEnrolment": 399,
     "area": 0.2833
   },
   "80109110305": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 207,
     "projectedEnrolment": 216,
     "area": 0.1468
   },
   "80109110306": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 367,
     "projectedEnrolment": 348,
     "area": 0.419
   },
   "80109110307": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 349,
     "projectedEnrolment": 365,
     "area": 0.1918
   },
   "80109110308": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 145,
     "projectedEnrolment": 146,
     "area": 0.096
   },
   "80109110501": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.8693
   },
   "80109110502": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 400,
     "projectedEnrolment": 403,
     "area": 0.3309
   },
   "80109110503": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 214,
     "projectedEnrolment": 205,
     "area": 0.1422
   },
   "80109110504": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 463,
     "projectedEnrolment": 465,
     "area": 0.2117
   },
   "80109110505": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 267,
     "projectedEnrolment": 264,
     "area": 0.2084
   },
   "80109110506": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 379,
     "projectedEnrolment": 368,
     "area": 0.2456
   },
   "80109110507": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 337,
     "projectedEnrolment": 345,
     "area": 0.2538
   },
   "80101111101": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 9,
     "projectedEnrolment": 9,
     "area": 24.9139
   },
   "80103111301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 227,
     "projectedEnrolment": 243,
     "area": 0.4085
   },
   "80103111306": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 1,
     "projectedEnrolment": 1,
     "area": 2.1072
   },
   "80103111307": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 154,
     "projectedEnrolment": 160,
     "area": 0.7781
   },
   "80103111401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 36,
     "projectedEnrolment": 36,
     "area": 5.5374
   },
   "80103111501": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "#N/A",
+    "currentDivision": "#N/A",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.8088
   },
   "80103111502": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 79,
     "projectedEnrolment": 62,
     "area": 7.571
   },
   "80103111503": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 3,
     "projectedEnrolment": 2,
     "area": 0.773
   },
   "80103111504": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 21,
     "projectedEnrolment": 17,
     "area": 29.3847
   },
   "80103111505": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 9,
     "projectedEnrolment": 7,
     "area": 17.5077
   },
   "80103111506": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 14,
     "projectedEnrolment": 10,
     "area": 33.3189
   },
   "80103111507": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "#N/A",
+    "currentDivision": "#N/A",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.3267
   },
   "80105112301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 6.7267
   },
   "80105112401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 445,
     "projectedEnrolment": 540,
     "area": 0.5371
   },
   "80105112402": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 312,
     "projectedEnrolment": 375,
     "area": 0.2883
   },
   "80105112403": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 348,
     "projectedEnrolment": 421,
     "area": 0.2067
   },
   "80105112404": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 318,
     "projectedEnrolment": 375,
     "area": 0.1888
   },
   "80105112405": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 300,
     "projectedEnrolment": 360,
     "area": 0.8976
   },
   "80105112406": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 298,
     "projectedEnrolment": 370,
     "area": 0.6043
   },
   "80105112407": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 573,
     "projectedEnrolment": 742,
     "area": 0.2084
   },
   "80105112408": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 198,
     "projectedEnrolment": 251,
     "area": 0.148
   },
   "80105112410": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 532,
     "projectedEnrolment": 517,
     "area": 0.0266
   },
   "80105112411": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 342,
     "projectedEnrolment": 381,
     "area": 0.0535
   },
   "80105112501": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 426,
     "projectedEnrolment": 483,
     "area": 1.8983
   },
   "80105112502": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 852,
     "projectedEnrolment": 992,
     "area": 0.5135
   },
   "80105112601": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 291,
     "projectedEnrolment": 294,
     "area": 0.9188
   },
   "80105112602": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.1788
   },
   "80105112701": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 234,
     "projectedEnrolment": 269,
     "area": 0.1601
   },
   "80105112702": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 592,
     "projectedEnrolment": 695,
     "area": 0.0832
   },
   "80105112703": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 390,
     "projectedEnrolment": 466,
     "area": 0.3943
   },
   "80105112704": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 242,
     "projectedEnrolment": 289,
     "area": 0.2991
   },
   "80105112801": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.4939
   },
   "80106112901": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 523,
     "projectedEnrolment": 498,
     "area": 0.1858
   },
   "80106112902": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 252,
     "projectedEnrolment": 246,
     "area": 0.3562
   },
   "80106112903": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 654,
     "projectedEnrolment": 627,
     "area": 0.6481
   },
   "80106113002": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 5,
     "projectedEnrolment": 5,
     "area": 0.8485
   },
   "80106113003": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 7,
     "projectedEnrolment": 7,
     "area": 0.9145
   },
   "80106113004": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 2,
     "projectedEnrolment": 2,
     "area": 2.2593
   },
   "80106113005": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.5366
   },
   "80106113006": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 1.9989
   },
   "80106113007": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 6,
     "projectedEnrolment": 6,
     "area": 3.2091
   },
   "80106113101": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 286,
     "projectedEnrolment": 307,
     "area": 0.1127
   },
   "80106113103": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 704,
     "projectedEnrolment": 783,
     "area": 0.1228
   },
   "80106113104": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 140,
     "projectedEnrolment": 136,
     "area": 0.0375
   },
   "80106113106": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 488,
     "projectedEnrolment": 497,
     "area": 0.2181
   },
   "80106113107": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 438,
     "projectedEnrolment": 486,
     "area": 0.1372
   },
   "80106113108": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 347,
     "projectedEnrolment": 365,
     "area": 0.0733
   },
   "80106113109": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 340,
     "projectedEnrolment": 347,
     "area": 0.0518
   },
   "80106113111": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 4,
     "projectedEnrolment": 4,
     "area": 0.1833
   },
   "80106113112": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 276,
     "projectedEnrolment": 294,
     "area": 0.1371
   },
   "80106113113": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 385,
     "projectedEnrolment": 398,
     "area": 0.1129
   },
   "80106113114": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 266,
     "projectedEnrolment": 264,
     "area": 0.0223
   },
   "80106113115": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 225,
     "projectedEnrolment": 238,
     "area": 0.0606
   },
   "80106113116": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 156,
     "projectedEnrolment": 169,
     "area": 0.0634
   },
   "80106113117": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 226,
     "projectedEnrolment": 218,
     "area": 0.016
   },
   "80106113118": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 325,
     "projectedEnrolment": 322,
     "area": 0.0326
   },
   "80106113119": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 230,
     "projectedEnrolment": 242,
     "area": 0.0223
   },
   "80110113401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 3,
     "projectedEnrolment": 3,
     "area": 6.0368
   },
   "80101100201": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 284,
     "projectedEnrolment": 288,
     "area": 0.1095
   },
   "80101100202": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 200,
     "projectedEnrolment": 203,
     "area": 0.1605
   },
   "80101100203": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 354,
     "projectedEnrolment": 371,
     "area": 0.0507
   },
   "80101100205": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 1.9497
   },
   "80101100208": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 278,
     "projectedEnrolment": 291,
     "area": 0.1675
   },
   "80101100209": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 164,
     "projectedEnrolment": 166,
     "area": 0.0426
   },
   "80101100210": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 236,
     "projectedEnrolment": 221,
     "area": 0.1336
   },
   "80101100211": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 332,
     "projectedEnrolment": 350,
     "area": 0.1579
   },
   "80101100212": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 394,
     "projectedEnrolment": 419,
     "area": 0.1344
   },
   "80101100213": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 13,
     "projectedEnrolment": 14,
     "area": 0.0491
   },
   "80101100215": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 228,
     "projectedEnrolment": 241,
     "area": 0.0732
   },
   "80101100216": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 658,
     "projectedEnrolment": 718,
     "area": 0.0754
   },
   "80101100217": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 189,
     "projectedEnrolment": 190,
     "area": 0.0505
   },
   "80101100218": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 277,
     "projectedEnrolment": 309,
     "area": 0.026
   },
   "80101100219": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 213,
     "projectedEnrolment": 220,
     "area": 0.054
   },
   "80101100220": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 143,
     "projectedEnrolment": 143,
     "area": 0.0098
   },
   "80101100221": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 176,
     "projectedEnrolment": 267,
     "area": 0.0042
   },
   "80101100222": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 315,
     "projectedEnrolment": 314,
     "area": 0.02
   },
   "80101100223": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 2,
     "projectedEnrolment": 2,
     "area": 1.0756
   },
   "80101100224": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 27,
     "projectedEnrolment": 29,
     "area": 0.0243
   },
   "80101100225": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 208,
     "projectedEnrolment": 209,
     "area": 0.0576
   },
   "80101100401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 183,
     "projectedEnrolment": 184,
     "area": 0.1154
   },
   "80101100402": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 319,
     "projectedEnrolment": 306,
     "area": 0.1935
   },
   "80101100403": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 339,
     "projectedEnrolment": 340,
     "area": 0.1943
   },
   "80101100404": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 256,
     "projectedEnrolment": 252,
     "area": 0.1754
   },
   "80101100405": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 321,
     "projectedEnrolment": 314,
     "area": 0.2326
   },
   "80101100406": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 422,
     "projectedEnrolment": 415,
     "area": 0.467
   },
   "80101100408": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 115,
     "projectedEnrolment": 113,
     "area": 0.263
   },
   "80101100409": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 239,
     "projectedEnrolment": 244,
     "area": 0.2147
   },
   "80101100602": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 132,
     "projectedEnrolment": 136,
     "area": 0.1144
   },
   "80101100604": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 197,
     "projectedEnrolment": 193,
     "area": 0.105
   },
   "80101100605": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 270,
     "projectedEnrolment": 277,
     "area": 0.2739
   },
   "80101100606": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 232,
     "projectedEnrolment": 230,
     "area": 0.0911
   },
   "80101100607": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 299,
     "projectedEnrolment": 301,
     "area": 0.119
   },
   "80101100608": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 333,
     "projectedEnrolment": 305,
     "area": 0.1499
   },
   "80101100609": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 275,
     "projectedEnrolment": 291,
     "area": 0.1273
   },
   "80101100610": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 265,
     "projectedEnrolment": 269,
     "area": 0.1081
   },
   "80101100611": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 306,
     "projectedEnrolment": 329,
     "area": 0.1655
   },
   "80101100612": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 400,
     "projectedEnrolment": 403,
     "area": 0.1782
   },
   "80101100613": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 181,
     "projectedEnrolment": 184,
     "area": 0.0675
   },
   "80101100614": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 252,
     "projectedEnrolment": 240,
     "area": 0.2776
   },
   "80101100615": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 167,
     "projectedEnrolment": 166,
     "area": 0.1496
   },
   "80101100616": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 371,
     "projectedEnrolment": 395,
     "area": 0.171
   },
   "80101100617": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 281,
     "projectedEnrolment": 265,
     "area": 0.1704
   },
   "80101100618": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 239,
     "projectedEnrolment": 257,
     "area": 0.1471
   },
   "80101100619": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 117,
     "projectedEnrolment": 116,
     "area": 0.0602
   },
   "80101100620": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 268,
     "projectedEnrolment": 265,
     "area": 0.1354
   },
   "80101100621": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.7956
   },
   "80101100622": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 181,
     "projectedEnrolment": 186,
     "area": 0.0802
   },
   "80101100623": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 255,
     "projectedEnrolment": 256,
     "area": 0.1184
   },
   "80101100701": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 364,
     "projectedEnrolment": 367,
     "area": 0.5116
   },
   "80101100702": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 196,
     "projectedEnrolment": 207,
     "area": 0.1646
   },
   "80101100703": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 371,
     "projectedEnrolment": 350,
     "area": 0.386
   },
   "80101100704": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 143,
     "projectedEnrolment": 137,
     "area": 0.172
   },
   "80101100705": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 324,
     "projectedEnrolment": 316,
     "area": 0.188
   },
   "80101100706": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 272,
     "projectedEnrolment": 286,
     "area": 0.1624
   },
   "80101100707": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 362,
     "projectedEnrolment": 371,
     "area": 0.2012
   },
   "80101100708": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 213,
     "projectedEnrolment": 212,
     "area": 0.1396
   },
   "80101100709": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 225,
     "projectedEnrolment": 235,
     "area": 0.1625
   },
   "80101100710": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 288,
     "projectedEnrolment": 269,
     "area": 0.1824
   },
   "80101100711": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 408,
     "projectedEnrolment": 433,
     "area": 0.2323
   },
   "80101100712": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 293,
     "projectedEnrolment": 312,
     "area": 0.1701
   },
   "80101100713": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 230,
     "projectedEnrolment": 229,
     "area": 0.2345
   },
   "80101100714": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 197,
     "projectedEnrolment": 206,
     "area": 0.1531
   },
   "80101100801": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 272,
     "projectedEnrolment": 260,
     "area": 0.2979
   },
   "80101100802": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 336,
     "projectedEnrolment": 329,
     "area": 0.2047
   },
   "80101100803": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 294,
     "projectedEnrolment": 306,
     "area": 0.3288
   },
   "80101100804": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 195,
     "projectedEnrolment": 202,
     "area": 0.1304
   },
   "80101100805": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 346,
     "projectedEnrolment": 348,
     "area": 0.2257
   },
   "80101100806": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 268,
     "projectedEnrolment": 266,
     "area": 0.2186
   },
   "80101100807": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 414,
     "projectedEnrolment": 404,
     "area": 0.2114
   },
   "80101100808": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 196,
     "projectedEnrolment": 199,
     "area": 0.1171
   },
   "80101100809": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 391,
     "projectedEnrolment": 392,
     "area": 0.2595
   },
   "80101100810": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 269,
     "projectedEnrolment": 268,
     "area": 0.4994
   },
   "80101100811": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 172,
     "projectedEnrolment": 183,
     "area": 0.0966
   },
   "80101100812": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 289,
     "projectedEnrolment": 280,
     "area": 0.1653
   },
   "80101100901": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 268,
     "projectedEnrolment": 271,
     "area": 0.1691
   },
   "80101100902": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 199,
     "projectedEnrolment": 198,
     "area": 0.1475
   },
   "80101100903": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 309,
     "projectedEnrolment": 309,
     "area": 0.404
   },
   "80101100904": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 278,
     "projectedEnrolment": 287,
     "area": 0.2212
   },
   "80101100905": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 243,
     "projectedEnrolment": 249,
     "area": 0.1514
   },
   "80101100906": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 362,
     "projectedEnrolment": 369,
     "area": 0.1939
   },
   "80101100907": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 191,
     "projectedEnrolment": 186,
     "area": 0.2202
   },
   "80101100908": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 265,
     "projectedEnrolment": 281,
     "area": 0.1805
   },
   "80101100909": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 213,
     "projectedEnrolment": 217,
     "area": 0.1354
   },
   "80101100910": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 255,
     "projectedEnrolment": 261,
     "area": 0.2723
   },
   "80101101001": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 297,
     "projectedEnrolment": 309,
     "area": 0.9411
   },
   "80101101002": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 264,
     "projectedEnrolment": 259,
     "area": 0.1798
   },
   "80101101003": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 343,
     "projectedEnrolment": 329,
     "area": 0.2752
   },
   "80101101004": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 284,
     "projectedEnrolment": 272,
     "area": 0.2095
   },
   "80101101005": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 419,
     "projectedEnrolment": 376,
     "area": 0.8695
   },
   "80101101202": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 3.2097
   },
   "80101101203": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 2,
     "projectedEnrolment": 2,
     "area": 6.7351
   },
   "80101101401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 373,
     "projectedEnrolment": 385,
     "area": 0.2674
   },
   "80101101402": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 361,
     "projectedEnrolment": 371,
     "area": 0.252
   },
   "80101101403": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 444,
     "projectedEnrolment": 482,
     "area": 0.276
   },
   "80101101404": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 371,
     "projectedEnrolment": 363,
     "area": 0.252
   },
   "80101101405": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 291,
     "projectedEnrolment": 293,
     "area": 0.2353
   },
   "80101101406": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 198,
     "projectedEnrolment": 201,
     "area": 0.1114
   },
   "80101101407": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 435,
     "projectedEnrolment": 434,
     "area": 0.2802
   },
   "80101101502": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 201,
     "projectedEnrolment": 215,
     "area": 0.1181
   },
   "80101101503": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 235,
     "projectedEnrolment": 220,
     "area": 0.1549
   },
   "80101101504": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 259,
     "projectedEnrolment": 280,
     "area": 0.2443
   },
   "80101101505": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 395,
     "projectedEnrolment": 440,
     "area": 0.2359
   },
   "80101101506": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 269,
     "projectedEnrolment": 282,
     "area": 0.1685
   },
   "80101101508": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 256,
     "projectedEnrolment": 276,
     "area": 0.1272
   },
   "80101101509": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 285,
     "projectedEnrolment": 326,
     "area": 0.1891
   },
   "80101101510": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 262,
     "projectedEnrolment": 301,
     "area": 0.157
   },
   "80101101511": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 182,
     "projectedEnrolment": 202,
     "area": 0.0994
   },
   "80101101512": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 213,
     "projectedEnrolment": 231,
     "area": 0.1315
   },
   "80101101513": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 187,
     "projectedEnrolment": 198,
     "area": 0.1906
   },
   "80101101514": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.2947
   },
   "80101101515": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 321,
     "projectedEnrolment": 359,
     "area": 0.1545
   },
   "80101101516": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 491,
     "projectedEnrolment": 579,
     "area": 0.1985
   },
   "80101101517": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 514,
     "projectedEnrolment": 555,
     "area": 0.8315
   },
   "80101101701": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 241,
     "projectedEnrolment": 260,
     "area": 0.1625
   },
   "80101101702": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 372,
     "projectedEnrolment": 344,
     "area": 0.2699
   },
   "80101101703": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 466,
     "projectedEnrolment": 452,
     "area": 0.3562
   },
   "80101101704": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 238,
     "projectedEnrolment": 221,
     "area": 0.1672
   },
   "80101101705": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 270,
     "projectedEnrolment": 263,
     "area": 0.5681
   },
   "80101101706": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 437,
     "projectedEnrolment": 439,
     "area": 0.5816
   },
   "80101101707": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 311,
     "projectedEnrolment": 309,
     "area": 0.2925
   },
   "80101101708": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 130,
     "projectedEnrolment": 119,
     "area": 0.1739
   },
   "80101101709": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 259,
     "projectedEnrolment": 250,
     "area": 0.1593
   },
   "80101101902": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 396,
     "projectedEnrolment": 371,
     "area": 0.2011
   },
   "80101101904": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 276,
     "projectedEnrolment": 272,
     "area": 0.1541
   },
   "80101101905": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 322,
     "projectedEnrolment": 324,
     "area": 0.3218
   },
   "80101101906": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 220,
     "projectedEnrolment": 237,
     "area": 0.3636
   },
   "80101101907": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 418,
     "projectedEnrolment": 425,
     "area": 0.2555
   },
   "80101101908": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 384,
     "projectedEnrolment": 390,
     "area": 0.2635
   },
   "80101101909": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 318,
     "projectedEnrolment": 308,
     "area": 0.344
   },
   "80101101910": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 273,
     "projectedEnrolment": 254,
     "area": 0.2732
   },
   "80101101911": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 344,
     "projectedEnrolment": 382,
     "area": 0.2603
   },
   "80101101912": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 264,
     "projectedEnrolment": 252,
     "area": 0.2488
   },
   "80101101913": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 286,
     "projectedEnrolment": 313,
     "area": 0.4101
   },
   "80101101914": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 162,
     "projectedEnrolment": 171,
     "area": 0.0795
   },
   "80101101915": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 198,
     "projectedEnrolment": 219,
     "area": 0.2681
   },
   "80101101916": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 191,
     "projectedEnrolment": 182,
     "area": 0.0976
   },
   "80101101917": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 175,
     "projectedEnrolment": 165,
     "area": 0.1019
   },
   "80101101918": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 177,
     "projectedEnrolment": 173,
     "area": 0.1042
   },
   "80101101919": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 240,
     "projectedEnrolment": 231,
     "area": 0.5276
   },
   "80101102101": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 440,
     "projectedEnrolment": 405,
     "area": 0.2901
   },
   "80101102102": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 278,
     "projectedEnrolment": 261,
     "area": 0.2225
   },
   "80101102103": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 423,
     "projectedEnrolment": 387,
     "area": 0.2544
   },
   "80101102104": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 347,
     "projectedEnrolment": 334,
     "area": 0.191
   },
   "80101102105": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 507,
     "projectedEnrolment": 502,
     "area": 0.456
   },
   "80101102201": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 150,
     "projectedEnrolment": 153,
     "area": 0.1104
   },
   "80101102202": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 240,
     "projectedEnrolment": 260,
     "area": 0.147
   },
   "80101102203": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 346,
     "projectedEnrolment": 315,
     "area": 0.7756
   },
   "80101102204": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 388,
     "projectedEnrolment": 385,
     "area": 0.2631
   },
   "80101102205": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 443,
     "projectedEnrolment": 442,
     "area": 0.2487
   },
   "80101102206": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 229,
     "projectedEnrolment": 230,
     "area": 0.2479
   },
   "80101102207": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 348,
     "projectedEnrolment": 348,
     "area": 0.2806
   },
   "80101102208": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 229,
     "projectedEnrolment": 232,
     "area": 0.234
   },
   "80101102301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 353,
     "projectedEnrolment": 356,
     "area": 0.221
   },
   "80101102302": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 161,
     "projectedEnrolment": 148,
     "area": 0.1158
   },
   "80101102303": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 322,
     "projectedEnrolment": 347,
     "area": 0.1982
   },
   "80101102304": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 324,
     "projectedEnrolment": 322,
     "area": 0.1771
   },
   "80101102305": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 227,
     "projectedEnrolment": 226,
     "area": 0.1944
   },
   "80101102306": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 266,
     "projectedEnrolment": 298,
     "area": 0.1626
   },
   "80101102307": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 365,
     "projectedEnrolment": 366,
     "area": 0.2534
   },
   "80101102401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 185,
     "projectedEnrolment": 173,
     "area": 0.2334
   },
   "80101102402": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 392,
     "projectedEnrolment": 367,
     "area": 0.232
   },
   "80101102403": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 285,
     "projectedEnrolment": 255,
     "area": 0.1928
   },
   "80101102404": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 199,
     "projectedEnrolment": 189,
     "area": 0.1603
   },
   "80101102405": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 196,
     "projectedEnrolment": 173,
     "area": 0.1218
   },
   "80101102406": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 297,
     "projectedEnrolment": 276,
     "area": 0.1731
   },
   "80101102407": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 183,
     "projectedEnrolment": 177,
     "area": 0.1052
   },
   "80101102408": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 337,
     "projectedEnrolment": 329,
     "area": 0.2074
   },
   "80101102501": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 257,
     "projectedEnrolment": 235,
     "area": 0.2142
   },
   "80101102502": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 299,
     "projectedEnrolment": 271,
     "area": 0.2247
   },
   "80101102503": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 409,
     "projectedEnrolment": 372,
     "area": 0.2373
   },
   "80101102504": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 378,
     "projectedEnrolment": 354,
     "area": 0.2395
   },
   "80101102505": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 217,
     "projectedEnrolment": 198,
     "area": 0.2628
   },
   "80101102506": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 435,
     "projectedEnrolment": 429,
     "area": 0.3439
   },
   "80104103401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 280,
     "projectedEnrolment": 250,
     "area": 0.1221
   },
   "80104103402": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 142,
     "projectedEnrolment": 126,
     "area": 0.161
   },
   "80104103403": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 329,
     "projectedEnrolment": 301,
     "area": 0.1446
   },
   "80104103404": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 297,
     "projectedEnrolment": 290,
     "area": 0.1163
   },
   "80104103405": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 309,
     "projectedEnrolment": 294,
     "area": 0.1201
   },
   "80104103406": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 264,
     "projectedEnrolment": 245,
     "area": 0.2007
   },
   "80104103407": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 182,
     "projectedEnrolment": 180,
     "area": 0.1863
   },
   "80104103408": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 550,
     "projectedEnrolment": 531,
     "area": 0.1864
   },
   "80104103409": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 180,
     "projectedEnrolment": 180,
     "area": 0.4697
   },
   "80104103410": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 340,
     "projectedEnrolment": 317,
     "area": 0.1582
   },
   "80104103411": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 387,
     "projectedEnrolment": 387,
     "area": 0.2573
   },
   "80104103412": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 355,
     "projectedEnrolment": 370,
     "area": 0.2753
   },
   "80104103413": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 287,
     "projectedEnrolment": 269,
     "area": 0.1214
   },
   "80104103414": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 162,
     "projectedEnrolment": 154,
     "area": 0.0678
   },
   "80104103501": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 196,
     "projectedEnrolment": 181,
     "area": 0.0856
   },
   "80104103505": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 168,
     "projectedEnrolment": 161,
     "area": 0.0729
   },
   "80104103506": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 243,
     "projectedEnrolment": 245,
     "area": 0.1231
   },
   "80104103507": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 236,
     "projectedEnrolment": 239,
     "area": 0.1489
   },
   "80104103508": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 174,
     "projectedEnrolment": 174,
     "area": 0.0724
   },
   "80104103509": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 243,
     "projectedEnrolment": 240,
     "area": 0.1828
   },
   "80104103510": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 300,
     "projectedEnrolment": 301,
     "area": 0.1543
   },
   "80104103511": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 196,
     "projectedEnrolment": 197,
     "area": 0.0711
   },
   "80104103512": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 317,
     "projectedEnrolment": 363,
     "area": 0.1197
   },
   "80104103513": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 205,
     "projectedEnrolment": 196,
     "area": 0.0906
   },
   "80104103514": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 210,
     "projectedEnrolment": 207,
     "area": 0.1427
   },
   "80104103515": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 228,
     "projectedEnrolment": 225,
     "area": 0.097
   },
   "80104103516": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 302,
     "projectedEnrolment": 313,
     "area": 0.1391
   },
   "80104103517": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 168,
     "projectedEnrolment": 197,
     "area": 0.3361
   },
   "80104103518": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 254,
     "projectedEnrolment": 270,
     "area": 0.1076
   },
   "80104103519": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 185,
     "projectedEnrolment": 196,
     "area": 0.0745
   },
   "80104103520": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 183,
     "projectedEnrolment": 195,
     "area": 0.0781
   },
   "80104103521": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.405
   },
   "80104103522": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 232,
     "projectedEnrolment": 223,
     "area": 0.2544
   },
   "80104103601": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 320,
     "projectedEnrolment": 337,
     "area": 0.1401
   },
   "80104103604": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 350,
     "projectedEnrolment": 423,
     "area": 0.3151
   },
   "80104103605": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 170,
     "projectedEnrolment": 181,
     "area": 0.2684
   },
   "80104103606": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 243,
     "projectedEnrolment": 252,
     "area": 0.11
   },
   "80104103607": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 223,
     "projectedEnrolment": 271,
     "area": 0.3331
   },
   "80104103608": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 361,
     "projectedEnrolment": 372,
     "area": 0.1331
   },
   "80104103609": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 339,
     "projectedEnrolment": 352,
     "area": 0.1265
   },
   "80104103610": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 188,
     "projectedEnrolment": 176,
     "area": 0.071
   },
   "80104103611": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 188,
     "projectedEnrolment": 197,
     "area": 0.1302
   },
   "80104103612": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 125,
     "projectedEnrolment": 133,
     "area": 0.0428
   },
   "80104103613": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 256,
     "projectedEnrolment": 261,
     "area": 0.1073
   },
   "80104103614": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 210,
     "projectedEnrolment": 231,
     "area": 0.0812
   },
   "80104103615": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 369,
     "projectedEnrolment": 416,
     "area": 0.3595
   },
   "80104103616": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 358,
     "projectedEnrolment": 363,
     "area": 0.134
   },
   "80104103617": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 240,
     "projectedEnrolment": 224,
     "area": 0.098
   },
   "80104103618": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 181,
     "projectedEnrolment": 178,
     "area": 0.1722
   },
   "80104103702": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 243,
     "projectedEnrolment": 238,
     "area": 0.0817
   },
   "80104103703": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 250,
     "projectedEnrolment": 248,
     "area": 0.0924
   },
   "80104103704": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 308,
     "projectedEnrolment": 336,
     "area": 0.3113
   },
   "80104103705": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 110,
     "projectedEnrolment": 109,
     "area": 0.0338
   },
   "80104103706": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 188,
     "projectedEnrolment": 190,
     "area": 0.0999
   },
   "80104103707": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 181,
     "projectedEnrolment": 179,
     "area": 0.0515
   },
   "80104103708": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 338,
     "projectedEnrolment": 372,
     "area": 0.2115
   },
   "80104103709": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.0844
   },
   "80104103710": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 260,
     "projectedEnrolment": 265,
     "area": 0.17
   },
   "80104103711": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 368,
     "projectedEnrolment": 386,
     "area": 0.1507
   },
   "80104103712": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 207,
     "projectedEnrolment": 205,
     "area": 0.043
   },
   "80104103713": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 210,
     "projectedEnrolment": 213,
     "area": 0.1364
   },
   "80104103714": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 275,
     "projectedEnrolment": 269,
     "area": 0.1852
   },
   "80104103804": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 296,
     "projectedEnrolment": 277,
     "area": 0.1461
   },
   "80104103805": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 233,
     "projectedEnrolment": 229,
     "area": 0.2098
   },
   "80104103806": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 194,
     "projectedEnrolment": 197,
     "area": 0.1367
   },
   "80104103807": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 212,
     "projectedEnrolment": 193,
     "area": 0.1331
   },
   "80104103808": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 252,
     "projectedEnrolment": 232,
     "area": 0.0992
   },
   "80104103809": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 205,
     "projectedEnrolment": 190,
     "area": 0.0828
   },
   "80104103810": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 227,
     "projectedEnrolment": 214,
     "area": 0.1056
   },
   "80104103811": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 181,
     "projectedEnrolment": 192,
     "area": 0.1444
   },
   "80104103812": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 311,
     "projectedEnrolment": 348,
     "area": 0.1897
   },
   "80104103813": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 235,
     "projectedEnrolment": 219,
     "area": 0.0983
   },
   "80104103814": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 224,
     "projectedEnrolment": 219,
     "area": 0.3253
   },
   "80104103815": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 266,
     "projectedEnrolment": 240,
     "area": 0.2461
   },
   "80104103907": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 139,
     "projectedEnrolment": 137,
     "area": 0.1586
   },
   "80104103908": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 113,
     "projectedEnrolment": 104,
     "area": 0.1311
   },
   "80104103910": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 258,
     "projectedEnrolment": 255,
     "area": 0.1405
   },
   "80104103911": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 93,
     "projectedEnrolment": 91,
     "area": 0.0214
   },
   "80104103912": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 235,
     "projectedEnrolment": 231,
     "area": 0.0884
   },
   "80104103913": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 88,
     "projectedEnrolment": 91,
     "area": 0.0196
   },
   "80104103914": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 279,
     "projectedEnrolment": 288,
     "area": 0.1706
   },
   "80104103915": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 179,
     "projectedEnrolment": 189,
     "area": 0.1885
   },
   "80104103916": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 157,
     "projectedEnrolment": 153,
     "area": 0.0488
   },
   "80104103917": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 75,
     "projectedEnrolment": 73,
     "area": 0.0197
   },
   "80104103918": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 64,
     "projectedEnrolment": 63,
     "area": 0.0281
   },
   "80104103919": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 131,
     "projectedEnrolment": 136,
     "area": 0.2635
   },
   "80104103920": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 98,
     "projectedEnrolment": 89,
     "area": 0.0224
   },
   "80104103921": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 162,
     "projectedEnrolment": 152,
     "area": 0.0316
   },
   "80104103922": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 222,
     "projectedEnrolment": 237,
     "area": 0.1018
   },
   "80104103923": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 276,
     "projectedEnrolment": 290,
     "area": 0.121
   },
   "80104103924": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 222,
     "projectedEnrolment": 233,
     "area": 0.3751
   },
   "80104103925": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 215,
     "projectedEnrolment": 207,
     "area": 0.1206
   },
   "80104103926": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 98,
     "projectedEnrolment": 90,
     "area": 0.0209
   },
   "80104103927": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 300,
     "projectedEnrolment": 299,
     "area": 0.122
   },
   "80104103928": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 173,
     "projectedEnrolment": 183,
     "area": 0.066
   },
   "80104103929": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 120,
     "projectedEnrolment": 131,
     "area": 0.0364
   },
   "80104104001": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 337,
     "projectedEnrolment": 388,
     "area": 0.1006
   },
   "80104104002": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 265,
     "projectedEnrolment": 294,
     "area": 0.1388
   },
   "80104104005": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 252,
     "projectedEnrolment": 268,
     "area": 0.1401
   },
   "80104104006": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 197,
     "projectedEnrolment": 230,
     "area": 0.0812
   },
   "80104104007": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 265,
     "projectedEnrolment": 297,
     "area": 0.1604
   },
   "80104104008": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 339,
     "projectedEnrolment": 395,
     "area": 0.1728
   },
   "80104104011": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 1.5793
   },
   "80104104013": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 189,
     "projectedEnrolment": 221,
     "area": 0.105
   },
   "80104104014": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 213,
     "projectedEnrolment": 263,
     "area": 0.3263
   },
   "80104104015": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 244,
     "projectedEnrolment": 289,
     "area": 0.1022
   },
   "80104104017": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 187,
     "projectedEnrolment": 209,
     "area": 0.1025
   },
   "80104104018": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 127,
     "projectedEnrolment": 153,
     "area": 0.2915
   },
   "80104104019": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 137,
     "projectedEnrolment": 147,
     "area": 0.0793
   },
   "80104104020": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.1282
   },
   "80104104021": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 178,
     "projectedEnrolment": 201,
     "area": 0.2107
   },
   "80104104022": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 102,
     "projectedEnrolment": 111,
     "area": 0.0306
   },
   "80104104023": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.3133
   },
   "80104104024": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 164,
     "projectedEnrolment": 191,
     "area": 0.0938
   },
   "80104104025": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 161,
     "projectedEnrolment": 174,
     "area": 0.0801
   },
   "80104104026": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 293,
     "projectedEnrolment": 331,
     "area": 0.0769
   },
   "80104104027": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 197,
     "projectedEnrolment": 216,
     "area": 0.1552
   },
   "80104104028": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 167,
     "projectedEnrolment": 158,
     "area": 0.0066
   },
   "80104104029": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 161,
     "projectedEnrolment": 191,
     "area": 0.0146
   },
   "80104104030": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 327,
     "projectedEnrolment": 363,
     "area": 0.0143
   },
   "80104104031": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 349,
     "projectedEnrolment": 380,
     "area": 0.025
   },
   "80104104032": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 110,
     "projectedEnrolment": 144,
     "area": 0.0349
   },
   "80104104301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 248,
     "projectedEnrolment": 253,
     "area": 1.7392
   },
   "80104104302": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 1.1326
   },
   "80104104401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 340,
     "projectedEnrolment": 309,
     "area": 0.1531
   },
   "80104104402": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 363,
     "projectedEnrolment": 343,
     "area": 0.2192
   },
   "80104104404": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 366,
     "projectedEnrolment": 352,
     "area": 0.14
   },
   "80104104405": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 289,
     "projectedEnrolment": 255,
     "area": 0.1447
   },
   "80104104409": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 204,
     "projectedEnrolment": 194,
     "area": 0.1588
   },
   "80104104410": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 69,
     "projectedEnrolment": 64,
     "area": 0.0279
   },
   "80104104411": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 206,
     "projectedEnrolment": 183,
     "area": 0.1063
   },
   "80104104412": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 148,
     "projectedEnrolment": 135,
     "area": 0.0676
   },
   "80104104413": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 239,
     "projectedEnrolment": 253,
     "area": 0.1806
   },
   "80104104414": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 142,
     "projectedEnrolment": 144,
     "area": 0.0575
   },
   "80104104415": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 204,
     "projectedEnrolment": 187,
     "area": 0.0915
   },
   "80104104416": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 252,
     "projectedEnrolment": 232,
     "area": 0.1328
   },
   "80104104417": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 225,
     "projectedEnrolment": 230,
     "area": 0.1431
   },
   "80104104418": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 212,
     "projectedEnrolment": 193,
     "area": 0.0875
   },
   "80104104419": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 109,
     "projectedEnrolment": 98,
     "area": 0.0258
   },
   "80104104420": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 285,
     "projectedEnrolment": 244,
     "area": 0.1119
   },
   "80104104421": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 155,
     "projectedEnrolment": 141,
     "area": 0.0238
   },
   "80104104422": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 1,
     "projectedEnrolment": 1,
     "area": 0.3939
   },
   "80104104423": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 219,
     "projectedEnrolment": 211,
     "area": 0.0736
   },
   "80104104424": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 244,
     "projectedEnrolment": 225,
     "area": 0.1372
   },
   "80104104425": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 5,
     "projectedEnrolment": 5,
     "area": 0.3279
   },
   "80104104426": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 234,
     "projectedEnrolment": 208,
     "area": 0.1121
   },
   "80104104502": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 3.9829
   },
   "80104104503": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 1.1807
   },
   "80104104504": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 1,
     "projectedEnrolment": 1,
     "area": 2.2211
   },
   "80104104601": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 162,
     "projectedEnrolment": 171,
     "area": 0.0828
   },
   "80104104602": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 262,
     "projectedEnrolment": 264,
     "area": 0.0603
   },
   "80104104603": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 182,
     "projectedEnrolment": 198,
     "area": 0.0947
   },
   "80104104604": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 191,
     "projectedEnrolment": 187,
     "area": 0.1806
   },
   "80104104605": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 192,
     "projectedEnrolment": 187,
     "area": 0.0649
   },
   "80104104606": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 232,
     "projectedEnrolment": 254,
     "area": 0.1055
   },
   "80104104607": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 151,
     "projectedEnrolment": 151,
     "area": 0.052
   },
   "80104104609": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 193,
     "projectedEnrolment": 185,
     "area": 0.0945
   },
   "80104104612": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 150,
     "projectedEnrolment": 170,
     "area": 0.0561
   },
   "80104104613": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 240,
     "projectedEnrolment": 251,
     "area": 0.1285
   },
   "80104104614": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 214,
     "projectedEnrolment": 229,
     "area": 0.1016
   },
   "80104104616": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 138,
     "projectedEnrolment": 149,
     "area": 0.0975
   },
   "80104104617": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 362,
     "projectedEnrolment": 366,
     "area": 0.1425
   },
   "80104104618": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 251,
     "projectedEnrolment": 257,
     "area": 0.1291
   },
   "80104104619": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 246,
     "projectedEnrolment": 243,
     "area": 0.1022
   },
   "80104104620": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 228,
     "projectedEnrolment": 259,
     "area": 0.0897
   },
   "80104104621": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 235,
     "projectedEnrolment": 252,
     "area": 0.1267
   },
   "80104104622": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 231,
     "projectedEnrolment": 256,
     "area": 0.1583
   },
   "80104104623": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 374,
     "projectedEnrolment": 374,
     "area": 0.1917
   },
   "80104104624": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.5664
   },
   "80104104625": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 298,
     "projectedEnrolment": 311,
     "area": 0.1406
   },
   "80104104626": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 237,
     "projectedEnrolment": 251,
     "area": 0.1804
   },
   "80104104627": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 242,
     "projectedEnrolment": 250,
     "area": 0.1051
   },
   "80104104628": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 221,
     "projectedEnrolment": 221,
     "area": 0.0904
   },
   "80104104629": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 221,
     "projectedEnrolment": 219,
     "area": 0.1302
   },
   "80104104630": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 216,
     "projectedEnrolment": 231,
     "area": 0.1097
   },
   "80104104631": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 184,
     "projectedEnrolment": 205,
     "area": 0.1351
   },
   "80104104632": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 312,
     "projectedEnrolment": 302,
     "area": 0.1406
   },
   "80104104633": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 248,
     "projectedEnrolment": 259,
     "area": 0.1305
   },
   "80104104634": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 228,
     "projectedEnrolment": 245,
     "area": 0.1166
   },
   "80104104635": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 183,
     "projectedEnrolment": 201,
     "area": 0.0883
   },
   "80104104636": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 205,
     "projectedEnrolment": 199,
     "area": 0.0913
   },
   "80104104637": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 221,
     "projectedEnrolment": 221,
     "area": 0.0747
   },
   "80104104701": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 207,
     "projectedEnrolment": 198,
     "area": 0.1249
   },
   "80104104702": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 305,
     "projectedEnrolment": 281,
     "area": 0.1591
   },
   "80104104703": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 345,
     "projectedEnrolment": 326,
     "area": 0.1758
   },
   "80104104704": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 176,
     "projectedEnrolment": 166,
     "area": 0.0902
   },
   "80104104705": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 309,
     "projectedEnrolment": 297,
     "area": 0.1433
   },
   "80104104706": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 243,
     "projectedEnrolment": 233,
     "area": 0.7606
   },
   "80104104707": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 156,
     "projectedEnrolment": 159,
     "area": 0.2421
   },
   "80104104708": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 243,
     "projectedEnrolment": 225,
     "area": 1.0237
   },
   "80104104709": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 196,
     "projectedEnrolment": 192,
     "area": 0.7925
   },
   "80104104710": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 319,
     "projectedEnrolment": 292,
     "area": 0.1442
   },
   "80104104711": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 325,
     "projectedEnrolment": 288,
     "area": 0.1595
   },
   "80104104712": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 189,
     "projectedEnrolment": 180,
     "area": 0.1044
   },
   "80104104713": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 321,
     "projectedEnrolment": 306,
     "area": 0.1973
   },
   "80104104714": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.677
   },
   "80104104715": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 213,
     "projectedEnrolment": 198,
     "area": 0.2266
   },
   "80104104716": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 324,
     "projectedEnrolment": 325,
     "area": 0.1572
   },
   "80104104717": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 412,
     "projectedEnrolment": 393,
     "area": 0.616
   },
   "80104104718": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 364,
     "projectedEnrolment": 366,
     "area": 0.734
   },
   "80104104719": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 333,
     "projectedEnrolment": 321,
     "area": 0.1732
   },
   "80104104801": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 231,
     "projectedEnrolment": 254,
     "area": 0.0946
   },
   "80104104802": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 351,
     "projectedEnrolment": 359,
     "area": 0.1584
   },
   "80104104803": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 212,
     "projectedEnrolment": 229,
     "area": 0.0784
   },
   "80104104804": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 236,
     "projectedEnrolment": 244,
     "area": 0.1607
   },
   "80104104805": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 337,
     "projectedEnrolment": 335,
     "area": 0.1512
   },
   "80104104806": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 223,
     "projectedEnrolment": 240,
     "area": 0.1227
   },
   "80104104807": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 229,
     "projectedEnrolment": 242,
     "area": 0.1187
   },
   "80104104808": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 243,
     "projectedEnrolment": 233,
     "area": 0.1555
   },
   "80104104809": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 352,
     "projectedEnrolment": 361,
     "area": 0.1782
   },
   "80104104810": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 242,
     "projectedEnrolment": 248,
     "area": 0.1457
   },
   "80104104811": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 256,
     "projectedEnrolment": 267,
     "area": 0.1226
   },
   "80104104812": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 373,
     "projectedEnrolment": 366,
     "area": 0.1714
   },
   "80104104813": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 191,
     "projectedEnrolment": 197,
     "area": 0.1107
   },
   "80104104814": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 397,
     "projectedEnrolment": 411,
     "area": 0.1793
   },
   "80104111601": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 17.2009
   },
   "80104111702": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 13.7405
   },
   "80104111801": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 358,
     "projectedEnrolment": 346,
     "area": 0.1716
   },
   "80104111803": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 11,
     "projectedEnrolment": 11,
     "area": 2.7382
   },
   "80104111901": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 5,
     "projectedEnrolment": 5,
     "area": 6.1708
   },
   "80104112001": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 216,
     "projectedEnrolment": 277,
     "area": 0.2039
   },
   "80104112003": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 304,
     "projectedEnrolment": 389,
     "area": 0.1749
   },
   "80104112005": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 204,
     "projectedEnrolment": 233,
     "area": 0.078
   },
   "80104112006": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 248,
     "projectedEnrolment": 284,
     "area": 0.0888
   },
   "80104112007": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 231,
     "projectedEnrolment": 267,
     "area": 0.0814
   },
   "80104112008": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 204,
     "projectedEnrolment": 226,
     "area": 0.1458
   },
   "80104112009": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 192,
     "projectedEnrolment": 239,
     "area": 0.0418
   },
   "80104112010": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 279,
     "projectedEnrolment": 324,
     "area": 0.1311
   },
   "80104112011": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 216,
     "projectedEnrolment": 259,
     "area": 0.0764
   },
   "80104112012": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 272,
     "projectedEnrolment": 303,
     "area": 0.1285
   },
   "80104112013": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 243,
     "projectedEnrolment": 267,
     "area": 0.1996
   },
   "80104112014": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.3951
   },
   "80104112015": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 230,
     "projectedEnrolment": 276,
     "area": 0.1719
   },
   "80104112102": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 249,
     "projectedEnrolment": 328,
     "area": 0.1898
   },
   "80104112103": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 251,
     "projectedEnrolment": 660,
     "area": 0.3871
   },
   "80104112104": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 173,
     "projectedEnrolment": 369,
     "area": 1.1566
   },
   "80104112105": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 238,
     "projectedEnrolment": 507,
     "area": 0.2507
   },
   "80104112106": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 189,
     "projectedEnrolment": 403,
     "area": 0.2095
   },
   "80104112107": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 336,
     "projectedEnrolment": 443,
     "area": 0.1458
   },
   "80104112108": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 259,
     "projectedEnrolment": 342,
     "area": 0.2183
   },
   "80104112109": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 168,
     "projectedEnrolment": 358,
     "area": 0.1624
   },
   "80104112110": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 510,
     "projectedEnrolment": 1476,
     "area": 0.4748
   },
   "80104112111": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 212,
     "projectedEnrolment": 452,
     "area": 0.1553
   },
   "80104112112": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.3034
   },
   "80104112113": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 180,
     "projectedEnrolment": 384,
     "area": 0.1322
   },
   "80104112114": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 268,
     "projectedEnrolment": 353,
     "area": 0.1151
   },
   "80104112115": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 392,
     "projectedEnrolment": 517,
     "area": 0.1811
   },
   "80104112202": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 295,
     "projectedEnrolment": 403,
     "area": 0.4676
   },
   "80104112203": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 180,
     "projectedEnrolment": 246,
     "area": 0.0963
   },
   "80104112204": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 225,
     "projectedEnrolment": 316,
     "area": 0.1799
   },
   "80104112205": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 178,
     "projectedEnrolment": 252,
     "area": 0.1328
   },
   "80104112206": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 189,
     "projectedEnrolment": 253,
     "area": 0.1654
   },
   "80104112207": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 176,
     "projectedEnrolment": 246,
     "area": 0.1408
   },
   "80104112208": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 262,
     "projectedEnrolment": 373,
     "area": 0.1475
   },
   "80104112209": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 241,
     "projectedEnrolment": 340,
     "area": 0.1489
   },
   "80101114201": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 20,
     "projectedEnrolment": 20,
     "area": 4.2096
   },
   "80101114301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 852,
     "projectedEnrolment": 1917,
     "area": 3.9932
   },
   "80101114302": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 462,
     "projectedEnrolment": 472,
     "area": 0.2025
   },
   "80101114401": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 3,
     "projectedEnrolment": 3,
     "area": 3.0161
   },
   "90103100301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 102,
     "projectedEnrolment": 103,
     "area": 5.7341
   },
   "90103100302": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 122,
     "projectedEnrolment": 122,
     "area": 4.3368
   },
   "90103100303": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 3,
     "projectedEnrolment": 3,
     "area": 27.6524
   },
   "90103100304": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
     "startingEnrolment": 2,
     "projectedEnrolment": 2,
     "area": 29.5063
