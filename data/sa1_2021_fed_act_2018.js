@@ -1,4 +1,4 @@
-// Auto-generated from CSV on 2025-10-08T12:13:12.841Z
+// Auto-generated from CSV on 2025-10-08T12:30:13.084Z
 // Keyed by first column
 var data = {
   "80103103102": {
@@ -5230,6 +5230,13 @@ var data = {
     "projectedEnrolment": 36,
     "area": 5.5374
   },
+  "80103111501": {
+    "previousDivision": "Bean",
+    "currentDivision": "Bean",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": 0.8088
+  },
   "80103111502": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
@@ -5264,6 +5271,13 @@ var data = {
     "startingEnrolment": 14,
     "projectedEnrolment": 10,
     "area": 33.3189
+  },
+  "80103111507": {
+    "previousDivision": "Bean",
+    "currentDivision": "Bean",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": 0.3267
   },
   "80105112301": {
     "previousDivision": "Bean",
@@ -8630,28 +8644,28 @@ var data = {
     "currentDivision": "Bean",
     "startingEnrolment": 102,
     "projectedEnrolment": 103,
-    "area": "#N/A"
+    "area": 5.7341
   },
   "90103100302": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
     "startingEnrolment": 122,
     "projectedEnrolment": 122,
-    "area": "#N/A"
+    "area": 4.3368
   },
   "90103100303": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
     "startingEnrolment": 3,
     "projectedEnrolment": 3,
-    "area": "#N/A"
+    "area": 27.6524
   },
   "90103100304": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
     "startingEnrolment": 2,
     "projectedEnrolment": 2,
-    "area": "#N/A"
+    "area": 29.5063
   },
   "� Commonwealth of Australia 2023": {
     "previousDivision": "",
