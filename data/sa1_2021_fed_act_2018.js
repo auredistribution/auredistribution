@@ -2601,8 +2601,8 @@ var data = {
   "80103111305": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
+    "startingEnrolment": 27,
+    "projectedEnrolment": 27,
     "area": 1.9305
   },
   "80103111308": {
@@ -2634,8 +2634,8 @@ var data = {
     "area": 3.5001
   },
   "80108113301": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 77,
     "projectedEnrolment": 78,
     "area": 1.5532
@@ -5196,10 +5196,10 @@ var data = {
     "area": 0.2538
   },
   "80101111101": {
-    "previousDivision": "Canberra",
-    "currentDivision": "Canberra",
-    "startingEnrolment": 9,
-    "projectedEnrolment": 9,
+    "previousDivision": "Fenner",
+    "currentDivision": "Fenner",
+    "startingEnrolment": 12,
+    "projectedEnrolment": 12,
     "area": 24.9139
   },
   "80103111301": {
