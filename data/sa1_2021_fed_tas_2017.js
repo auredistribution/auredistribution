@@ -1388,10 +1388,10 @@ var data = {
     "area": 0.2863
   },
   "60201105202": {
-    "previousDivision": "Lyons",
-    "currentDivision": "Lyons",
-    "startingEnrolment": 3,
-    "projectedEnrolment": 3,
+    "previousDivision": "Bass",
+    "currentDivision": "Bass",
+    "startingEnrolment": 287,
+    "projectedEnrolment": 297,
     "area": 3.855
   },
   "60201105203": {
@@ -1619,10 +1619,10 @@ var data = {
     "area": 37.4975
   },
   "60202105510": {
-    "previousDivision": "Lyons",
-    "currentDivision": "Lyons",
-    "startingEnrolment": 1,
-    "projectedEnrolment": 1,
+    "previousDivision": "Bass",
+    "currentDivision": "Bass",
+    "startingEnrolment": 134,
+    "projectedEnrolment": 130,
     "area": 80.2931
   },
   "60202105511": {
@@ -1663,8 +1663,8 @@ var data = {
   "60202105710": {
     "previousDivision": "Lyons",
     "currentDivision": "Lyons",
-    "startingEnrolment": 279,
-    "projectedEnrolment": 283,
+    "startingEnrolment": 308,
+    "projectedEnrolment": 312,
     "area": 128.794
   },
   "60203105801": {
@@ -1689,10 +1689,10 @@ var data = {
     "area": 261.273
   },
   "60203105804": {
-    "previousDivision": "Lyons",
-    "currentDivision": "Lyons",
-    "startingEnrolment": 14,
-    "projectedEnrolment": 14,
+    "previousDivision": "Bass",
+    "currentDivision": "Bass",
+    "startingEnrolment": 295,
+    "projectedEnrolment": 283,
     "area": 383.602
   },
   "60203105805": {
@@ -1941,10 +1941,10 @@ var data = {
     "area": 20.1928
   },
   "60203110001": {
-    "previousDivision": "Lyons",
-    "currentDivision": "Lyons",
-    "startingEnrolment": 12,
-    "projectedEnrolment": 12,
+    "previousDivision": "Bass",
+    "currentDivision": "Bass",
+    "startingEnrolment": 283,
+    "projectedEnrolment": 286,
     "area": 1202.05
   },
   "60203110002": {
@@ -3819,8 +3819,8 @@ var data = {
   "60402109109": {
     "previousDivision": "Lyons",
     "currentDivision": "Lyons",
-    "startingEnrolment": 272,
-    "projectedEnrolment": 271,
+    "startingEnrolment": 283,
+    "projectedEnrolment": 282,
     "area": 104.385
   },
   "60402109201": {
@@ -3866,10 +3866,10 @@ var data = {
     "area": 28.2813
   },
   "60402109207": {
-    "previousDivision": "Lyons",
-    "currentDivision": "Lyons",
-    "startingEnrolment": 7,
-    "projectedEnrolment": 7,
+    "previousDivision": "Braddon",
+    "currentDivision": "Braddon",
+    "startingEnrolment": 269,
+    "projectedEnrolment": 275,
     "area": 42.6354
   },
   "60402109208": {
@@ -4351,8 +4351,8 @@ var data = {
   "60103101303": {
     "previousDivision": "Lyons",
     "currentDivision": "Lyons",
-    "startingEnrolment": 325,
-    "projectedEnrolment": 352,
+    "startingEnrolment": 597,
+    "projectedEnrolment": 647,
     "area": 23.9141
   },
   "60103101304": {
@@ -4636,10 +4636,10 @@ var data = {
     "area": 0.2627
   },
   "60103101514": {
-    "previousDivision": "Lyons",
-    "currentDivision": "Lyons",
-    "startingEnrolment": 5,
-    "projectedEnrolment": 5,
+    "previousDivision": "Clark",
+    "currentDivision": "Clark",
+    "startingEnrolment": 244,
+    "projectedEnrolment": 269,
     "area": 12.4966
   },
   "60103101515": {
@@ -5231,10 +5231,10 @@ var data = {
     "area": 0.3124
   },
   "60104102206": {
-    "previousDivision": "Franklin",
-    "currentDivision": "Franklin",
-    "startingEnrolment": 91,
-    "projectedEnrolment": 98,
+    "previousDivision": "Clark",
+    "currentDivision": "Clark",
+    "startingEnrolment": 515,
+    "projectedEnrolment": 555,
     "area": 9.0736
   },
   "60104102209": {
@@ -5261,8 +5261,8 @@ var data = {
   "60104102221": {
     "previousDivision": "Franklin",
     "currentDivision": "Franklin",
-    "startingEnrolment": 169,
-    "projectedEnrolment": 174,
+    "startingEnrolment": 279,
+    "projectedEnrolment": 287,
     "area": 0.8067
   },
   "60104102222": {
@@ -5273,17 +5273,17 @@ var data = {
     "area": 8.3323
   },
   "60104102223": {
-    "previousDivision": "Franklin",
-    "currentDivision": "Franklin",
-    "startingEnrolment": 3,
-    "projectedEnrolment": 3,
+    "previousDivision": "Clark",
+    "currentDivision": "Clark",
+    "startingEnrolment": 311,
+    "projectedEnrolment": 365,
     "area": 13.0613
   },
   "60104102403": {
-    "previousDivision": "Franklin",
-    "currentDivision": "Franklin",
-    "startingEnrolment": 78,
-    "projectedEnrolment": 72,
+    "previousDivision": "Clark",
+    "currentDivision": "Clark",
+    "startingEnrolment": 161,
+    "projectedEnrolment": 149,
     "area": 10.6302
   },
   "60104102413": {
@@ -7835,10 +7835,10 @@ var data = {
     "area": 0.2086
   },
   "60301106612": {
-    "previousDivision": "Lyons",
-    "currentDivision": "Lyons",
-    "startingEnrolment": 1,
-    "projectedEnrolment": 1,
+    "previousDivision": "Franklin",
+    "currentDivision": "Franklin",
+    "startingEnrolment": 3,
+    "projectedEnrolment": 3,
     "area": 91.2315
   },
   "60302106901": {
