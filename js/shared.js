@@ -464,7 +464,7 @@ function initSharedApp() {
 
     var electorsMoved = Object.keys(data)
       .filter(sa1 => data[sa1].currentDivision != data[sa1].previousDivision)
-      .map(sa1 => useProjectedThresholds ? data[sa1].projectedEnrolment : data[sa1].startingEnrolment)
+      .map(sa1 => data[sa1].startingEnrolment)
       .reduce((a, b) => a + b, 0);
 
     var electorsMovedDetails = document.createElement("p")
