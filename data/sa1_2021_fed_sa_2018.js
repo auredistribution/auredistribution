@@ -3084,15 +3084,15 @@ var data = {
   "40201102501": {
     "previousDivision": "Grey",
     "currentDivision": "Grey",
-    "startingEnrolment": 358,
-    "projectedEnrolment": 389,
+    "startingEnrolment": 359,
+    "projectedEnrolment": 390,
     "area": 1.2628
   },
   "40201102503": {
-    "previousDivision": "Spence",
-    "currentDivision": "Spence",
-    "startingEnrolment": 1,
-    "projectedEnrolment": 1,
+    "previousDivision": "Grey",
+    "currentDivision": "Grey",
+    "startingEnrolment": 413,
+    "projectedEnrolment": 433,
     "area": 73.1964
   },
   "40501111001": {
@@ -3362,17 +3362,17 @@ var data = {
     "area": 70.2271
   },
   "40501111125": {
-    "previousDivision": "Grey",
-    "currentDivision": "Grey",
-    "startingEnrolment": 9,
-    "projectedEnrolment": 10,
+    "previousDivision": "Barker",
+    "currentDivision": "Barker",
+    "startingEnrolment": 220,
+    "projectedEnrolment": 233,
     "area": 203.46
   },
   "40501111126": {
     "previousDivision": "Grey",
     "currentDivision": "Grey",
-    "startingEnrolment": 316,
-    "projectedEnrolment": 330,
+    "startingEnrolment": 334,
+    "projectedEnrolment": 349,
     "area": 236.698
   },
   "40501111128": {
@@ -3693,8 +3693,8 @@ var data = {
   "40602114110": {
     "previousDivision": "Grey",
     "currentDivision": "Grey",
-    "startingEnrolment": 248,
-    "projectedEnrolment": 222,
+    "startingEnrolment": 260,
+    "projectedEnrolment": 233,
     "area": 62947.5
   },
   "40702115001": {
@@ -6883,10 +6883,10 @@ var data = {
     "area": 0.1411
   },
   "40301105718": {
-    "previousDivision": "Hindmarsh",
-    "currentDivision": "Hindmarsh",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
+    "previousDivision": "Boothby",
+    "currentDivision": "Boothby",
+    "startingEnrolment": 335,
+    "projectedEnrolment": 338,
     "area": 0.2512
   },
   "40301105719": {
@@ -7340,8 +7340,8 @@ var data = {
   "40302105923": {
     "previousDivision": "Kingston",
     "currentDivision": "Kingston",
-    "startingEnrolment": 238,
-    "projectedEnrolment": 242,
+    "startingEnrolment": 297,
+    "projectedEnrolment": 302,
     "area": 0.2626
   },
   "40302106001": {
@@ -16137,10 +16137,10 @@ var data = {
     "area": 0.2598
   },
   "40304107111": {
-    "previousDivision": "Mayo",
-    "currentDivision": "Mayo",
-    "startingEnrolment": 85,
-    "projectedEnrolment": 91,
+    "previousDivision": "Kingston",
+    "currentDivision": "Kingston",
+    "startingEnrolment": 207,
+    "projectedEnrolment": 222,
     "area": 7.7959
   },
   "40304107112": {
@@ -16643,15 +16643,15 @@ var data = {
   "40304107608": {
     "previousDivision": "Mayo",
     "currentDivision": "Mayo",
-    "startingEnrolment": 220,
-    "projectedEnrolment": 226,
+    "startingEnrolment": 264,
+    "projectedEnrolment": 271,
     "area": 0.2708
   },
   "40304107609": {
     "previousDivision": "Mayo",
     "currentDivision": "Mayo",
-    "startingEnrolment": 276,
-    "projectedEnrolment": 276,
+    "startingEnrolment": 306,
+    "projectedEnrolment": 306,
     "area": 0.6682
   },
   "40304107701": {
@@ -22759,17 +22759,17 @@ var data = {
     "area": 10.2028
   },
   "40102101002": {
-    "previousDivision": "Sturt",
-    "currentDivision": "Sturt",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
+    "previousDivision": "Mayo",
+    "currentDivision": "Mayo",
+    "startingEnrolment": 2,
+    "projectedEnrolment": 2,
     "area": 9.3961
   },
   "40102101005": {
-    "previousDivision": "Sturt",
-    "currentDivision": "Sturt",
-    "startingEnrolment": 4,
-    "projectedEnrolment": 4,
+    "previousDivision": "Mayo",
+    "currentDivision": "Mayo",
+    "startingEnrolment": 330,
+    "projectedEnrolment": 361,
     "area": 3.7167
   },
   "40102101006": {
