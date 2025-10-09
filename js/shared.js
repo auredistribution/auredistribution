@@ -258,7 +258,7 @@ function initSharedApp() {
     if (!selectedDivision) return;
     let layers;
     if (e.originalEvent.shiftKey) {
-      layers = features.getLayers().filter(l => (l.feature.properties["SA2_NAME21"] == thisLayer.feature.properties["SA2_NAME21"] && l.feature.properties.division == thisLayer.feature.properties.division));
+      layers = features.getLayers().filter(l => (l.feature.properties["SA2_NAME21"] == thisLayer.feature.properties["SA2_NAME21"])); // <Limits the Shift Click to one electorate> && l.feature.properties.division == thisLayer.feature.properties.division));
     } else {
       layers = [thisLayer];
     }
