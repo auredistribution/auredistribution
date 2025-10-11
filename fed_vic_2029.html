@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Victoria Federal Redistribution 2029</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.css" />
+  <script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.js"></script>
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Redistribution"/>
+</head>
+<body>
+  <div style="display:flex; height:100%; width:100%;">
+    <aside class="summary-panel">
+      <ul id="tab-nav" style="list-style:none;display:flex;margin:0;">
+        <li><button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button></li>
+        <li><button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button></li>
+        <li style="margin-left:auto;"><a id="home-nav-link" href="index.html" class="button" style="text-decoration:none; display:inline-block;">Home</a></li>
+      </ul>
+      <section id="header-tab" class="tab-content">
+        <div class="header">
+          <h1>Victoria Federal Redistribution 2029</h1>
+          <h3>Context</h3>
+          <p>Victoria is divided into <span id="num-divisions"></span> federal electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
+          <p>The Redistribution Commission will also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2030 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
+          <p>The ABS divides Victoria into 524 named Statistical Areas Level 2 (SA2s) which are divided into 15,482 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+          <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
+          <div id="shared-instructions"></div>
+          <div id="shared-disclaimer"></div>
+          <div id="shared-attribution"></div>
+        </div>
+      </section>
+      <section id="divisions-tab" class="tab-content" style="display:none; padding:14px 14px 60px;">
+        <div class="division-toolbar" style="display:flex; flex-wrap:wrap; margin-bottom:6px;">
+          <button class="button button-ghost" type="button" onclick="resetDivisions()" title="Reset all districts to original configuration">Reset SA1s</button>
+          <button class="button button-ghost" type="button" onclick="toggleProjectedThresholds()" title="Toggle projected enrolment quota highlighting">Toggle Projected</button>
+          <button class="button button-ghost" type="button" onclick="exportCSV()" title="Download per-SA1 allocation CSV">Export SA1s</button>
+          <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
+          <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import</button>
+          <input type="file" id="import-file" accept=".csv" style="display:none" />
+        </div>
+        <div id="header-info"></div>
+        <div id="divisions" style="user-select:none;"></div>
+      </section>
+    </aside>
+    <div id="map"></div>
+  </div>
+
+  <script>
+    window.divisionsAndGroups = [
+      { type: "group", name: "Provincial", divisions: ["Ballarat", "Bendigo", "Corangamite", "Corio", "Hawke", "La Trobe"] },
+      { type: "division", name: "Ballarat" },
+      { type: "division", name: "Bendigo" },
+      { type: "division", name: "Corangamite" },
+      { type: "division", name: "Corio" },
+      { type: "division", name: "Hawke" },
+      { type: "division", name: "La Trobe" },
+      { type: "group", name: "Rural", divisions: ["Casey", "Flinders", "Gippsland", "Indi", "Mallee", "McEwen", "Monash", "Nicholls", "Wannon", ] },
+      { type: "division", name: "Casey" },
+      { type: "division", name: "Flinders" },
+      { type: "division", name: "Gippsland" },
+      { type: "division", name: "Indi" },
+      { type: "division", name: "Mallee" },
+      { type: "division", name: "McEwen" },
+      { type: "division", name: "Monash" },
+      { type: "division", name: "Nicholls" },
+      { type: "division", name: "Wannon" },
+      { type: "group", name: "Inner Metro", divisions: ["Chisholm", "Cooper", "Fraser", "Gellibrand", "Goldstein", "Hotham", "Kooyong", "Macnamara", "Maribyrnong", "Melbourne", "Wills"] },
+      { type: "division", name: "Chisholm" },
+      { type: "division", name: "Cooper" },
+      { type: "division", name: "Fraser" },
+      { type: "division", name: "Gellibrand" },
+      { type: "division", name: "Goldstein" },
+      { type: "division", name: "Hotham" },
+      { type: "division", name: "Kooyong" },
+      { type: "division", name: "Macnamara" },
+      { type: "division", name: "Maribyrnong" },
+      { type: "division", name: "Melbourne" },
+      { type: "division", name: "Wills" },
+      { type: "group", name: "Outer Metro", divisions: ["Aston", "Bruce", "Calwell", "Deakin", "Dunkley", "Gorton", "Holt", "Isaacs", "Jagajaga", "Lalor", "Menzies", "Scullin"] },
+      { type: "division", name: "Aston" },
+      { type: "division", name: "Bruce" },
+      { type: "division", name: "Calwell" },
+      { type: "division", name: "Deakin" },
+      { type: "division", name: "Dunkley" },
+      { type: "division", name: "Gorton" },
+      { type: "division", name: "Holt" },
+      { type: "division", name: "Isaacs" },
+      { type: "division", name: "Jagajaga" },
+      { type: "division", name: "Lalor" },
+      { type: "division", name: "Menzies" },
+      { type: "division", name: "Scullin" }
+    ];
+    window.EVENT_NAME = 'fed_vic_2029';
+    window.NUM_DIVISIONS = 38;
+    window.STATE_STARTING_TOTAL = 4235812;
+    window.STATE_PROJECTED_TOTAL = 4701793;
+    window.PROJECTION_THRESHOLD = 0.035;
+    window.DEFAULT_STARTING_COORDS = [-37.23, 145.028];
+    window.DEFAULT_STARTING_ZOOM = 8;
+    window.DIVISION_MAPS = [
+      {
+        "id": "fed_vic_2024",
+        "path": "data/fed_vic_2024.js",
+        "name": "Current Boundaries"
+      }
+    ];
+  </script>
+  <script src="data/sa1_2021_vic.js"></script>
+  <script src="data/sa1_2021_fed_vic_2024.js"></script>
+  <script src="js/snippets.js"></script>
+  <script src="js/colors.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    showTab('header-tab');
+    initSharedApp();
+  </script>
+</body>
+</html>

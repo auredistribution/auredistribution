@@ -11,7 +11,6 @@ window.LARGE_DISTRICT_AREA_THRESHOLD = window.LARGE_DISTRICT_AREA_THRESHOLD || 0
 window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER = window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER || 0;
 window.LARGE_DISTRICT_VIRTUAL_ELECTOR_RATE = window.LARGE_DISTRICT_VIRTUAL_ELECTOR_RATE || 0.02; // per km2
 
-// Global state containers (event pages should supply `data`, `sa1s`, `qld_2017` before calling initSharedApp)
 let selectedDivision = "";
 let newDivisionCount = 0;
 let useProjectedThresholds = false;
@@ -258,7 +257,7 @@ function initSharedApp() {
     if (!selectedDivision) return;
     let layers;
     if (e.originalEvent.shiftKey) {
-      layers = features.getLayers().filter(l => (l.feature.properties["SA2_NAME21"] == thisLayer.feature.properties["SA2_NAME21"])); // <Limits the Shift Click to one electorate> && l.feature.properties.division == thisLayer.feature.properties.division));
+      layers = features.getLayers().filter(l => (l.feature.properties["SA2_NAME21"] == thisLayer.feature.properties["SA2_NAME21"]));
     } else {
       layers = [thisLayer];
     }
