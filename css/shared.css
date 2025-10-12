@@ -62,9 +62,9 @@ body > div { height: 100%; display: flex; }
   height: 100%;
   padding: 0 0 16px;
   overflow-y: auto;
-  min-width: 520px;
-  max-width: 620px;
-  flex: 0 0 560px;
+  min-width: 480px;
+  max-width: 580px;
+  flex: 0 0 520px;
   display: flex;
   flex-direction: column;
   background: var(--panel-bg);
@@ -111,7 +111,7 @@ body > div { height: 100%; display: flex; }
 .button-outline { --btn-bg: #fff; --btn-bg-hover: #f4f8fb; --btn-color: var(--accent); --btn-border: var(--panel-border); }
 .button-ghost { --btn-bg: #ffffff; --btn-bg-hover: #f2f5f8; --btn-color: var(--text-muted); --btn-border: #d5dde4; }
 .division-toolbar { gap: 4px; }
-.division-toolbar .button { font-size: 12px; padding: 5px 10px; font-weight: 500; }
+.division-toolbar .button { font-size: 12px; padding: 5px 10px; font-weight: 500; justify-content: center; }
 .division-toolbar .button-ghost { --btn-color: #4a5a67; }
 .button-red:hover { background-color: #FFDDDD; }
 .button-red:active { background-color: #EEBBBB; }

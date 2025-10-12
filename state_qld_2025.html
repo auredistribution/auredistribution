@@ -35,9 +35,10 @@
         </div>
       </section>
       <section id="divisions-tab" class="tab-content" style="display:none; padding:14px 14px 60px;">
-        <div class="division-toolbar" style="display:flex; flex-wrap:wrap; margin-bottom:6px;">
+        <div class="division-toolbar" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:4px; margin-bottom:6px;">
           <button class="button button-ghost" type="button" onclick="resetDivisions()" title="Reset all districts to original configuration">Reset SA1s</button>
           <button class="button button-ghost" type="button" onclick="toggleProjectedThresholds()" title="Toggle projected enrolment quota highlighting">Toggle Projected</button>
+          <button class="button button-ghost" type="button" onclick="toggleSpotlight()" id="spotlight-btn" title="Highlight only the selected division">Spotlight</button>
           <button class="button button-ghost" type="button" onclick="exportCSV()" title="Download per-SA1 allocation CSV">Export SA1s</button>
           <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
           <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import</button>

@@ -113,7 +113,7 @@ function initSharedApp() {
   // Map setup
   // Performance: prefer Canvas rendering (faster for thousands of polygons, esp. Safari)
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  const map = L.map("map", { preferCanvas: true }).setView(window.DEFAULT_STARTING_COORDS, window.DEFAULT_STARTING_ZOOM);
+  const map = L.map("map", { preferCanvas: true, zoomSnap: 0.5 }).setView(window.DEFAULT_STARTING_COORDS, window.DEFAULT_STARTING_ZOOM);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: "&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>"
@@ -265,10 +265,14 @@ function initSharedApp() {
       const sa1Name = layer.feature.properties["SA1_CODE21"]; const originalDivision = data[sa1Name].previousDivision; const currentDivision = data[sa1Name].currentDivision;
       if (selectedDivision == currentDivision) {
         if (selectedDivision != originalDivision) {
-          layer.feature.properties.division = originalDivision; data[sa1Name].currentDivision = originalDivision; layer.setStyle({ fillColor: getColor(originalDivision).color, fillOpacity: 0.5 });
+          layer.feature.properties.division = originalDivision;
+          data[sa1Name].currentDivision = originalDivision;
+          layer.setStyle({ fillColor: getColor(originalDivision).color, fillOpacity: 0.5 });
         }
       } else {
-        layer.feature.properties.division = selectedDivision; data[sa1Name].currentDivision = selectedDivision; layer.setStyle({ fillColor: getColor(selectedDivision).color, fillOpacity: (selectedDivision == originalDivision) ? 0.5 : 0.75 });
+        layer.feature.properties.division = selectedDivision;
+        data[sa1Name].currentDivision = selectedDivision;
+        layer.setStyle({ fillColor: getColor(selectedDivision).color, fillOpacity: (selectedDivision == originalDivision) ? 0.5 : 0.75 });
       }
     });
   if(layers.length) window._markUnsaved();
@@ -276,16 +280,20 @@ function initSharedApp() {
   }
   function highlightFeature(e) { const layer = e.target; infoPanel.update(layer.feature.properties); layer.setStyle({ weight: 2, color: '#000' }); }
   function unhighlightFeature(e) { const layer = e.target; infoPanel.update(null); layer.setStyle({ weight: 0.5, color: '#333' }); }
-  function selectDivisionFromFeature(e){
+    function selectDivisionFromFeature(e){
     const layer = e.target;
     const div = layer.feature && layer.feature.properties && layer.feature.properties.division;
     if(div){
       if(selectedDivision !== div){
         selectedDivision = div;
         renderDivisionList();
-      } else if (selectedDivision === div) {
-        selectedDivision = null;
+        // Refresh spotlight if active
+        refreshSpotlight();
+      } else {
+        selectedDivision = "";
         renderDivisionList();
+        // Refresh spotlight if active
+        refreshSpotlight();
       }
       // prevent browser context menu so the action feels intentional
       if(e.originalEvent && typeof e.originalEvent.preventDefault === 'function') e.originalEvent.preventDefault();
@@ -355,6 +363,91 @@ function initSharedApp() {
   };
   window.toggleProjectedThresholds = function () { useProjectedThresholds = !useProjectedThresholds; renderDivisionList(); };
 
+  //====================//
+  // SPOTLIGHT FUNCTION //
+  //====================//
+  let spotlightMode = false;
+  
+  function refreshSpotlight() {
+    if (!spotlightMode) return; // Only refresh if spotlight is currently active
+    
+    const layerCollection = window._featuresLayer || (window._sharedMapCtx && window._sharedMapCtx.features);
+    if (!layerCollection) return;
+    
+    layerCollection.getLayers().forEach(layer => {
+      const sa1Name = layer.feature.properties["SA1_CODE21"];
+      const division = data[sa1Name].currentDivision;
+      const originalDivision = data[sa1Name].previousDivision;
+      
+      if (selectedDivision && division === selectedDivision) {
+        // Keep selected division with normal color
+        layer.setStyle({
+          fillColor: getColor(division).color,
+          fillOpacity: (division === originalDivision) ? 0.5 : 0.75,
+          weight: 0.4,
+          color: '#333'
+        });
+      } else {
+        // Dim all other divisions to light grey
+        layer.setStyle({
+          fillColor: '#d3d3d3',
+          fillOpacity: 0.3,
+          weight: 0.5,
+          color: '#333'
+        });
+      }
+    });
+  }
+  
+  window.toggleSpotlight = function () {
+    spotlightMode = !spotlightMode;
+    
+    const layerCollection = window._featuresLayer || (window._sharedMapCtx && window._sharedMapCtx.features);
+    if (!layerCollection) return;
+    
+    layerCollection.getLayers().forEach(layer => {
+      const sa1Name = layer.feature.properties["SA1_CODE21"];
+      const division = data[sa1Name].currentDivision;
+      const originalDivision = data[sa1Name].previousDivision;
+      
+      if (spotlightMode) {
+        // In spotlight mode: dim all except selected division
+        if (selectedDivision && division === selectedDivision) {
+          // Keep selected division with normal color
+          layer.setStyle({
+            fillColor: getColor(division).color,
+            fillOpacity: (division === originalDivision) ? 0.5 : 0.75,
+            weight: 0.4,
+            color: '#333'
+          });
+        } else {
+          // Dim all other divisions to light grey
+          layer.setStyle({
+            fillColor: '#d3d3d3',
+            fillOpacity: 0.3,
+            weight: 0.2,
+            color: '#999'
+          });
+        }
+      } else {
+        // Normal mode: restore original colors
+        layer.setStyle({
+          fillColor: getColor(division).color,
+          fillOpacity: (division === originalDivision) ? 0.5 : 0.75,
+          weight: 0.4,
+          color: '#333'
+        });
+      }
+    });
+    
+    // Update button text to reflect state
+    const spotlightBtn = document.getElementById('spotlight-btn');
+    if (spotlightBtn) {
+      spotlightBtn.textContent = spotlightMode ? 'Exit Spotlight' : 'Spotlight';
+      spotlightBtn.title = spotlightMode ? 'Exit spotlight mode' : 'Highlight only the selected division';
+    }
+  };
+
   //======================//
   // RENDER DIVISION LIST //
   //======================//
@@ -420,6 +513,8 @@ function initSharedApp() {
         row.onclick = () => {
           selectedDivision = (selectedDivision === division) ? '' : division;
           renderDivisionList();
+          // Refresh spotlight if active
+          refreshSpotlight();
         };
 
         divisionList.appendChild(row);
