@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Victoria State Redistribution 2029</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.css" />
+  <script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.js"></script>
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Redistribution"/>
+</head>
+<body>
+  <div style="display:flex; height:100%; width:100%;">
+    <aside class="summary-panel">
+      <ul id="tab-nav" style="list-style:none;display:flex;margin:0;">
+        <li><button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button></li>
+        <li><button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button></li>
+        <li style="margin-left:auto;"><a id="home-nav-link" href="index.html" class="button" style="text-decoration:none; display:inline-block;">Home</a></li>
+      </ul>
+      <section id="header-tab" class="tab-content">
+        <div class="header">
+          <h1>Victoria State Redistribution 2029</h1>
+          <h3>Context</h3>
+          <p>Victoria is divided into <span id="num-divisions"></span> electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
+          <p>The Redistribution Commission will also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2030 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
+          <p>The ABS divides Victoria into 524 named Statistical Areas Level 2 (SA2s) which are divided into 15,482 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+          <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
+          <div id="shared-instructions"></div>
+          <div id="shared-disclaimer"></div>
+          <div id="shared-attribution"></div>
+        </div>
+      </section>
+      <section id="divisions-tab" class="tab-content" style="display:none; padding:14px 14px 60px;">
+        <div class="division-toolbar" style="display:flex; flex-wrap:wrap; margin-bottom:6px;">
+          <button class="button button-ghost" type="button" onclick="resetDivisions()" title="Reset all districts to original configuration">Reset SA1s</button>
+          <button class="button button-ghost" type="button" onclick="toggleProjectedThresholds()" title="Toggle projected enrolment quota highlighting">Toggle Projected</button>
+          <button class="button button-ghost" type="button" onclick="exportCSV()" title="Download per-SA1 allocation CSV">Export SA1s</button>
+          <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
+          <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import</button>
+          <input type="file" id="import-file" accept=".csv" style="display:none" />
+        </div>
+        <div id="header-info"></div>
+        <div id="divisions" style="user-select:none;"></div>
+      </section>
+    </aside>
+    <div id="map"></div>
+  </div>
+
+  <script>
+    window.divisionsAndGroups = [
+      { type: "group", name: "Eastern Victoria", divisions: ["Bass", "Evelyn", "Gippsland East", "Gippsland South", "Hastings", "Monbulk", "Mornington", "Morwell", "Narracan", "Nepean", "Pakenham"] },
+      { type: "division", name: "Bass" },
+      { type: "division", name: "Evelyn" },
+      { type: "division", name: "Gippsland East" },
+      { type: "division", name: "Gippsland South" },
+      { type: "division", name: "Hastings" },
+      { type: "division", name: "Monbulk" },
+      { type: "division", name: "Mornington" },
+      { type: "division", name: "Morwell" },
+      { type: "division", name: "Narracan" },
+      { type: "division", name: "Nepean" },
+      { type: "division", name: "Pakenham" },
+      { type: "group", name: "North-Eastern Metropolitan", divisions: ["Bayswater", "Box Hill", "Bulleen", "Bundoora", "Croydon", "Eltham", "Glen Waverley", "Ivanhoe", "Mill Park", "Ringwood", "Warrandyte"] },
+      { type: "division", name: "Bayswater" },
+      { type: "division", name: "Box Hill" },
+      { type: "division", name: "Bulleen" },
+      { type: "division", name: "Bundoora" },
+      { type: "division", name: "Croydon" },
+      { type: "division", name: "Eltham" },
+      { type: "division", name: "Glen Waverley" },
+      { type: "division", name: "Ivanhoe" },
+      { type: "division", name: "Mill Park" },
+      { type: "division", name: "Ringwood" },
+      { type: "division", name: "Warrandyte" },
+      { type: "group", name: "Northern Metropolitan", divisions: ["Broadmeadows", "Brunswick", "Essendon", "Greenvale", "Kalkallo", "Melbourne", "Northcote", "Pascoe Vale", "Preston", "Richmond", "Thomastown"] },
+      { type: "division", name: "Broadmeadows" },
+      { type: "division", name: "Brunswick" },
+      { type: "division", name: "Essendon" },
+      { type: "division", name: "Greenvale" },
+      { type: "division", name: "Kalkallo" },
+      { type: "division", name: "Melbourne" },
+      { type: "division", name: "Northcote" },
+      { type: "division", name: "Pascoe Vale" },
+      { type: "division", name: "Preston" },
+      { type: "division", name: "Richmond" },
+      { type: "division", name: "Thomastown" },
+      { type: "group", name: "Northern Victoria", divisions: ["Benambra", "Bendigo East", "Bendigo West", "Eildon", "Euroa", "Macedon", "Mildura", "Murray Plains", "Ovens Valley", "Shepparton", "Yan Yean"] },
+      { type: "division", name: "Benambra" },
+      { type: "division", name: "Bendigo East" },
+      { type: "division", name: "Bendigo West" },
+      { type: "division", name: "Eildon" },
+      { type: "division", name: "Euroa" },
+      { type: "division", name: "Macedon" },
+      { type: "division", name: "Mildura" },
+      { type: "division", name: "Murray Plains" },
+      { type: "division", name: "Ovens Valley" },
+      { type: "division", name: "Shepparton" },
+      { type: "division", name: "Yan Yean" },
+      { type: "group", name: "South-Eastern Metropolitan", divisions: ["Berwick", "Carrum", "Clarinda", "Cranbourne", "Dandenong", "Frankston", "Mordialloc", "Mulgrave", "Narre Warren North", "Narre Warren South", "Rowville"] },
+      { type: "division", name: "Berwick" },
+      { type: "division", name: "Carrum" },
+      { type: "division", name: "Clarinda" },
+      { type: "division", name: "Cranbourne" },
+      { type: "division", name: "Dandenong" },
+      { type: "division", name: "Frankston" },
+      { type: "division", name: "Mordialloc" },
+      { type: "division", name: "Mulgrave" },
+      { type: "division", name: "Narre Warren North" },
+      { type: "division", name: "Narre Warren South" },
+      { type: "division", name: "Rowville" },
+      { type: "group", name: "Southern Metropolitan", divisions: ["Albert Park", "Ashwood", "Bentleigh", "Brighton", "Caulfield", "Hawthorn", "Kew", "Malvern", "Oakleigh", "Prahran", "Sandringham"] },
+      { type: "division", name: "Albert Park" },
+      { type: "division", name: "Ashwood" },
+      { type: "division", name: "Bentleigh" },
+      { type: "division", name: "Brighton" },
+      { type: "division", name: "Caulfield" },
+      { type: "division", name: "Hawthorn" },
+      { type: "division", name: "Kew" },
+      { type: "division", name: "Malvern" },
+      { type: "division", name: "Oakleigh" },
+      { type: "division", name: "Prahran" },
+      { type: "division", name: "Sandringham" },
+      { type: "group", name: "Western Metropolitan", divisions: ["Footscray", "Kororoit", "Laverton", "Niddrie", "Point Cook", "St Albans", "Sunbury", "Sydenham", "Tarneit", "Werribee", "Williamstown"] },
+      { type: "division", name: "Footscray" },
+      { type: "division", name: "Kororoit" },
+      { type: "division", name: "Laverton" },
+      { type: "division", name: "Niddrie" },
+      { type: "division", name: "Point Cook" },
+      { type: "division", name: "St Albans" },
+      { type: "division", name: "Sunbury" },
+      { type: "division", name: "Sydenham" },
+      { type: "division", name: "Tarneit" },
+      { type: "division", name: "Werribee" },
+      { type: "division", name: "Williamstown" },
+      { type: "group", name: "Western Victoria", divisions: ["Bellarine", "Eureka", "Geelong", "Lara", "Lowan", "Melton", "Polwarth", "Ripon", "South Barwon", "South-West Coast", "Wendouree"] },
+      { type: "division", name: "Bellarine" },
+      { type: "division", name: "Eureka" },
+      { type: "division", name: "Geelong" },
+      { type: "division", name: "Lara" },
+      { type: "division", name: "Lowan" },
+      { type: "division", name: "Melton" },
+      { type: "division", name: "Polwarth" },
+      { type: "division", name: "Ripon" },
+      { type: "division", name: "South Barwon" },
+      { type: "division", name: "South-West Coast" },
+      { type: "division", name: "Wendouree" }
+    ];
+    window.EVENT_NAME = 'vic_2029';
+    window.NUM_DIVISIONS = 88;
+    window.STATE_STARTING_TOTAL = 4235812;
+    window.STATE_PROJECTED_TOTAL = 4701793;
+    window.DEFAULT_STARTING_COORDS = [-37.23, 145.028];
+    window.DEFAULT_STARTING_ZOOM = 8;
+    window.DIVISION_MAPS = [
+      {
+        "id": "vic_2021",
+        "path": "data/vic_2021.js",
+        "name": "Current Boundaries"
+      },
+      {
+        "id": "lga_2025_vic",
+        "path": "data/lga_2025_vic.js",
+        "name": "LGA Boundaries"
+      }
+    ];
+  </script>
+  <script src="data/sa1_2021_vic.js"></script>
+  <script src="data/sa1_2021_vic_2021.js"></script>
+  <script src="js/snippets.js"></script>
+  <script src="js/colors.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    showTab('header-tab');
+    initSharedApp();
+  </script>
+</body>
+</html>
