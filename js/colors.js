@@ -142,7 +142,6 @@ function getColor(division) { // same mapping as original
     case "Kimberley":
     case "Corangamite":
     case "Berwick":
-    case "Narre Warren North":
     case "Murchison":
     case "Cessnock":
     case "Charlestown":
@@ -192,7 +191,6 @@ function getColor(division) { // same mapping as original
     case "Mayo":
     case "Carine":
     case "Flinders":
-    case "Brunswick":
     case "Northcote":
     case "Rosevears":
     case "Drummoyne":
@@ -216,7 +214,6 @@ function getColor(division) { // same mapping as original
     case "Forest Lake":
     case "Churchlands":
     case "Gellibrand":
-    case "Bundoora":
     case "Ovens Valley":
     case "Windermere":
     case "Fairfield":
@@ -305,8 +302,6 @@ function getColor(division) { // same mapping as original
     case "Bowman":
     case "Geraldton":
     case "Isaacs":
-    case "Eltham":
-    case "Ringwood":
     case "Lismore":
     case "Kellyville":
     case "Liverpool":
@@ -371,6 +366,7 @@ function getColor(division) { // same mapping as original
     case "Mallee":
     case "Frankston":
     case "Croydon":
+    case "Greenvale":
     case "South-West Coast":
     case "Newcastle":
       return { color: "lime" };
@@ -394,6 +390,7 @@ function getColor(division) { // same mapping as original
     case "Pumicestone":
     case "Southport":
     case "Maylands":
+    case "Eltham":
     case "Melbourne":
     case "Gippsland South":
     case "Sydenham":
@@ -403,6 +400,7 @@ function getColor(division) { // same mapping as original
     case "Surfers Paradise":
     case "Midland":
     case "Menzies":
+    case "Bundoora":
     case "Glen Waverley":
     case "Cranbourne":
     case "Sunbury":
@@ -414,7 +412,6 @@ function getColor(division) { // same mapping as original
     case "Mermaid Beach":
     case "Girrawheen":
     case "Monash":
-    case "Greenvale":
     case "Thomastown":
     case "Pittwater":
     case "Port Macquarie":
@@ -432,6 +429,7 @@ function getColor(division) { // same mapping as original
     case "Currumbin":
     case "Mount Lawley":
     case "Scullin":
+    case "Brunswick":
     case "Hawthorn":
     case "Wendouree":
     case "Riverstone":
@@ -453,6 +451,7 @@ function getColor(division) { // same mapping as original
     case "Nedlands":
     case "Wills":
     case "Kalkallo":
+    case "Ringwood":
     case "Williamstown":
     case "South Coast":
     case "Strathfield":
@@ -461,6 +460,7 @@ function getColor(division) { // same mapping as original
     case "Lockyer":
     case "Oakford":
     case "Kew":
+    case "Narre Warren North":
     case "Essendon":
     case "Yan Yean":
     case "Summer Hill":
