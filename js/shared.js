@@ -301,9 +301,12 @@ function initSharedApp() {
   }
   function onEachFeature(feature, layer) { layer.on({ click: clickFeature, mouseover: highlightFeature, mouseout: unhighlightFeature, contextmenu: selectDivisionFromFeature }); }
   function highlightElectorate(e) { const layer = e.target; layer.setStyle({ weight: 4, color: 'green' }); if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) layer.bringToFront(); }
-  function resetHighlight(e) { e.target.setStyle({ weight: 1.2, color: '#2b62c6' }); }
+  function resetHighlight(e) { e.target.setStyle({ weight: 2, color: '#2b62c6' }); }
   function zoomToFeature(e) { map.fitBounds(e.target.getBounds()); }
-  function onEachElectorate(feature, layer) { layer.on({ mouseover: highlightElectorate, mouseout: resetHighlight, click: zoomToFeature }); if(!isSafari){ layer.bindTooltip(feature.properties.name, { permanent: true, direction: 'center', className: 'countryLabel' }); } }
+  function onEachElectorate(feature, layer) {
+    layer.on({ mouseover: highlightElectorate, mouseout: resetHighlight, click: zoomToFeature });
+    layer.bindTooltip(feature.properties.name, { permanent: true, direction: 'center', className: 'countryLabel' });
+  }
 
   const features = L.geoJSON(sa1s, {
     renderer: sharedCanvasRenderer,
