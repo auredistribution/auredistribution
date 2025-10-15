@@ -303,8 +303,9 @@ function initSharedApp() {
         layer.setStyle({ fillColor: getColor(selectedDivision).color, fillOpacity: (selectedDivision == originalDivision) ? 0.5 : 0.75 });
       }
     });
-  if(layers.length) window._markUnsaved();
-    renderDivisionList();
+    if(layers.length) window._markUnsaved();
+      renderDivisionList();
+      updateDivisionInfoPanel();
   }
   function highlightFeature(e) { const layer = e.target; infoPanel.update(layer.feature.properties); layer.setStyle({ weight: 2, color: '#000' }); }
   function unhighlightFeature(e) { const layer = e.target; infoPanel.update(null); layer.setStyle({ weight: 0.5, color: '#333' }); }
@@ -315,11 +316,15 @@ function initSharedApp() {
       if(selectedDivision !== div){
         selectedDivision = div;
         renderDivisionList();
+        // Update division info panel
+        updateDivisionInfoPanel();
         // Refresh spotlight if active
         refreshSpotlight();
       } else {
         selectedDivision = "";
         renderDivisionList();
+        // Update division info panel
+        updateDivisionInfoPanel();
         // Refresh spotlight if active
         refreshSpotlight();
       }
@@ -344,15 +349,72 @@ function initSharedApp() {
   // Expose for external helpers (import routine defined outside init)
   window._featuresLayer = features;
 
-  // Info panel control
+  // Info panel control (for SA1 hover)
   const infoPanel = L.control();
   infoPanel.onAdd = function () { this._div = L.DomUtil.create('div', 'info-panel'); this.update(); return this._div; };
   infoPanel.update = function (props) { if (props) { const code = props["SA1_CODE21"]; this._div.innerHTML = `<b>${props["SA2_NAME21"]}</b><br/><i>${code}</i><br/>${props.division}<br/>${data[code].startingEnrolment} current electors / ${data[code].projectedEnrolment} projected electors`; } else { this._div.innerHTML = 'Hover over a SA1'; } };
   infoPanel.addTo(map);
 
+  // Division info panel control (for selected division)
+  const divisionInfoPanel = L.control({ position: 'topleft' });
+  divisionInfoPanel.onAdd = function () { 
+    this._div = L.DomUtil.create('div', 'info-panel division-info-panel'); 
+    this.update(); 
+    return this._div; 
+  };
+  divisionInfoPanel.update = function (divisionName) { 
+    if (divisionName) {
+      // Calculate division statistics
+      const divisionSa1s = Object.keys(data).filter(sa1 => data[sa1].currentDivision === divisionName);
+      const area = divisionSa1s.map(sa1 => data[sa1].area).reduce((a, b) => a + b, 0);
+      const isLargeDistrict = (LARGE_DISTRICT_AREA_THRESHOLD > 0) && (area > LARGE_DISTRICT_AREA_THRESHOLD);
+      const largeAdj = isLargeDistrict ? area * LARGE_DISTRICT_VIRTUAL_ELECTOR_RATE : 0;
+      const startingTotal = divisionSa1s.map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => a + b, 0) + largeAdj;
+      const projectedTotal = divisionSa1s.map(sa1 => data[sa1].projectedEnrolment).reduce((a, b) => a + b, 0) + largeAdj;
+      const startingDeviation = 100 * startingTotal / (STATE_STARTING_TOTAL / NUM_DIVISIONS) - 100;
+      const projectedDeviation = 100 * projectedTotal / (STATE_PROJECTED_TOTAL / NUM_DIVISIONS) - 100;
+      
+      const startDevStr = `${startingDeviation.toFixed(2)}%`;
+      const projDevStr = `${projectedDeviation.toFixed(2)}%`;
+      const formattedStarting = formatNumber(startingTotal.toFixed(0));
+      const formattedProjected = formatNumber(projectedTotal.toFixed(0));
+      
+      // Add custom color indicator if present
+      const hasCustomColor = _customDivisionColors[divisionName];
+      const colorIndicator = hasCustomColor ? `<span class="custom-color-indicator" style="background-color: ${_customDivisionColors[divisionName]};" title="Custom color applied"></span>` : '';
+      
+      this._div.innerHTML = `Selected Division: <b>${colorIndicator}${divisionName}</b><br/><br/>
+        Population: <b>${formattedStarting}</b> <span class="quota-metric">(${startDevStr})</span><br/>
+        Projected: <b>${formattedProjected}</b> <span class="quota-metric">(${projDevStr})</span>`;
+    } else {
+      this._div.innerHTML = 'No division selected';
+    }
+  };
+  // Don't add to map initially - will be added when division is selected
+
   // Expose for event pages needing operations
-  window._sharedMapCtx = { map, features, infoPanel };
+  window._sharedMapCtx = { map, features, infoPanel, divisionInfoPanel };
   window.renderDivisionList = renderDivisionList; // attach for reuse
+
+  // Helper function to update division info panel
+  function updateDivisionInfoPanel() {
+    const sharedCtx = window._sharedMapCtx;
+    if (sharedCtx && sharedCtx.divisionInfoPanel) {
+      if (selectedDivision) {
+        // Show panel if division is selected
+        if (!sharedCtx.divisionInfoPanel._map) {
+          sharedCtx.divisionInfoPanel.addTo(sharedCtx.map);
+        }
+        sharedCtx.divisionInfoPanel.update(selectedDivision);
+      } else {
+        // Hide panel if no division selected
+        if (sharedCtx.divisionInfoPanel._map) {
+          sharedCtx.map.removeControl(sharedCtx.divisionInfoPanel);
+        }
+      }
+    }
+  }
+  window.updateDivisionInfoPanel = updateDivisionInfoPanel;
 
   function createNewDivision(groupName) {
     const idx = divisionsAndGroups.findIndex(e => e.name == groupName);
@@ -700,6 +762,8 @@ function initSharedApp() {
             e.stopPropagation();
             _renamingDivision = null;
             renderDivisionList();
+            // Update division info panel after cancel
+            updateDivisionInfoPanel();
           };
           
           // Save rename and color
@@ -735,6 +799,8 @@ function initSharedApp() {
             
             _renamingDivision = null;
             renderDivisionList();
+            // Update division info panel after rename
+            updateDivisionInfoPanel();
           };
           
           saveBtn.onclick = saveChanges;
@@ -747,6 +813,8 @@ function initSharedApp() {
               e.stopPropagation();
               _renamingDivision = null;
               renderDivisionList();
+              // Update division info panel after escape
+              updateDivisionInfoPanel();
             }
           };
           
@@ -783,6 +851,8 @@ function initSharedApp() {
           row.onclick = () => {
             selectedDivision = (selectedDivision === division) ? '' : division;
             renderDivisionList();
+            // Update division info panel
+            updateDivisionInfoPanel();
             // Refresh spotlight if active
             refreshSpotlight();
           };
@@ -845,6 +915,7 @@ function initSharedApp() {
   }
   window.renderDivisionList = renderDivisionList;
   renderDivisionList();
+  // Division info panel will be shown when a division is selected
 }
 
     //==================//

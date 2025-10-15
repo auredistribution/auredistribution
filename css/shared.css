@@ -276,3 +276,24 @@ body > div { height: 100%; display: flex; }
   border: 1px solid rgba(0,0,0,0.2);
   vertical-align: middle;
 }
+
+.division-info-panel {
+  background: rgba(255, 255, 255, 0.95);
+  /* border: 2px solid var(--accent); */
+  min-width: 200px;
+}
+
+.division-info-panel .quota-metric {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.division-info-panel .large-flag {
+  background: #ff9800;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
