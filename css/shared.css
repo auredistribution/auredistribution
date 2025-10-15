@@ -187,3 +187,92 @@ body > div { height: 100%; display: flex; }
   backdrop-filter: blur(4px);
 }
 .info h4 { margin: 0 0 5px; color: #777; }
+
+/* Division rename functionality */
+.division-row.is-renaming {
+  background: #e8f4fd !important;
+  border: 1px solid #2196F3;
+}
+
+.division-rename-input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 12.5px;
+  font-family: inherit;
+}
+
+.division-rename-input:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+.division-rename-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  min-width: 24px;
+  transition: background-color 0.2s;
+}
+
+.division-rename-btn.cancel {
+  background: #f44336;
+}
+
+.division-rename-btn:hover {
+  opacity: 0.9;
+}
+
+.division-rename-btn.cancel:hover {
+  background: #d32f2f;
+}
+
+.division-rename-btn:hover:not(.cancel) {
+  background: #45a049;
+}
+
+.division-color-picker {
+  width: 32px;
+  height: 24px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.division-color-picker::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+
+.division-color-picker::-webkit-color-swatch {
+  border: none;
+  border-radius: 2px;
+}
+
+.division-rename-btn.reset-color {
+  background: #ff9800;
+  color: white;
+  font-size: 14px;
+  min-width: 28px;
+}
+
+.division-rename-btn.reset-color:hover {
+  background: #f57c00;
+}
+
+.custom-color-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 6px;
+  border: 1px solid rgba(0,0,0,0.2);
+  vertical-align: middle;
+}
