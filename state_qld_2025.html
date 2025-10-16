@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Queensland State Redistribution 2025</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.css" />
+  <script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.js"></script>
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Redistribution"/>
+</head>
+<body>
+  <div style="display:flex; height:100%; width:100%;">
+    <aside class="summary-panel">
+      <ul id="tab-nav" style="list-style:none;display:flex;margin:0;">
+        <li><button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button></li>
+        <li><button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button></li>
+        <li style="margin-left:auto;"><a id="home-nav-link" href="index.html" class="button" style="text-decoration:none; display:inline-block;">Home</a></li>
+      </ul>
+      <section id="header-tab" class="tab-content">
+        <div class="header">
+          <h1>Queensland State Redistribution 2025</h1>
+          <h3>Context</h3>
+          <p>Queensland is divided into <span id="num-divisions"></span> state electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
+          <p>Districts larger than 100,000km<sup>2</sup> are given additional 'virtual' electors equal to 2% of the total area of the district.</p>
+          <p>The Redistribution Commission may also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2032 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
+          <p>The ABS divides Queensland into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+          <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
+          <div id="shared-instructions"></div>
+          <div id="shared-disclaimer"></div>
+          <div id="shared-attribution"></div>
+        </div>
+      </section>
+      <section id="divisions-tab" class="tab-content" style="display:none; padding:14px 14px 60px;">
+        <div class="division-toolbar" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:4px; margin-bottom:6px;">
+          <button class="button button-ghost" type="button" onclick="resetDivisions()" title="Reset all districts to original configuration">Reset SA1s</button>
+          <button class="button button-ghost" type="button" onclick="toggleProjectedThresholds()" title="Toggle projected enrolment quota highlighting">Toggle Projected</button>
+          <button class="button button-ghost" type="button" onclick="toggleSpotlight()" id="spotlight-btn" title="Highlight only the selected division">Spotlight</button>
+          <button class="button button-ghost" type="button" onclick="exportCSV()" title="Download per-SA1 allocation CSV">Export SA1s</button>
+          <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
+          <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import</button>
+          <input type="file" id="import-file" accept=".csv" style="display:none" />
+        </div>
+        <div id="header-info"></div>
+        <div id="divisions" style="user-select:none;"></div>
+      </section>
+    </aside>
+    <div id="map"></div>
+  </div>
+
+  <script>
+    window.divisionsAndGroups = [
+      { type: "group", name: "LARGE DISTRICTS", divisions: ["Cook", "Traeger",  "Gregory", "Warrego"] },
+      { type: "division", name: "Cook" },
+      { type: "division", name: "Traeger" },
+      { type: "division", name: "Gregory" },
+      { type: "division", name: "Warrego" },
+      { type: "group", name: "NORTHERN QUEENSLAND", divisions: ["Barron River", "Cairns", "Mulgrave", "Hill", "Hinchinbrook", "Thuringowa", "Townsville", "Mundingburra"] },
+      { type: "division", name: "Barron River" },
+      { type: "division", name: "Cairns" },
+      { type: "division", name: "Mulgrave" },
+      { type: "division", name: "Hill" },
+      { type: "division", name: "Hinchinbrook" },
+      { type: "division", name: "Thuringowa" },
+      { type: "division", name: "Townsville" },
+      { type: "division", name: "Mundingburra" },
+      { type: "group", name: "CENTRAL QUEENSLAND", divisions: ["Burdekin", "Whitsunday", "Mackay", "Mirani", "Rockhampton", "Keppel", "Gladstone"] },
+      { type: "division", name: "Burdekin" },
+      { type: "division", name: "Whitsunday" },
+      { type: "division", name: "Mackay" },
+      { type: "division", name: "Mirani" },
+      { type: "division", name: "Rockhampton" },
+      { type: "division", name: "Keppel" },
+      { type: "division", name: "Gladstone" },
+      { type: "group", name: "BURNETT & WIDE BAY", divisions: ["Callide", "Burnett", "Bundaberg", "Hervey Bay", "Maryborough", "Gympie", "Nanango"] },
+      { type: "division", name: "Callide" },
+      { type: "division", name: "Burnett" },
+      { type: "division", name: "Bundaberg" },
+      { type: "division", name: "Hervey Bay" },
+      { type: "division", name: "Maryborough" },
+      { type: "division", name: "Gympie" },
+      { type: "division", name: "Nanango" },
+      { type: "group", name: "SOUTHERN QUEENSLAND", divisions: ["Lockyer", "Toowoomba North", "Toowoomba South", "Condamine", "Southern Downs"] },
+      { type: "division", name: "Lockyer" },
+      { type: "division", name: "Toowoomba North" },
+      { type: "division", name: "Toowoomba South" },
+      { type: "division", name: "Condamine" },
+      { type: "division", name: "Southern Downs" },
+      { type: "group", name: "SUNSHINE COAST", divisions: ["Noosa", "Nicklin", "Ninderry", "Maroochydore", "Buderim", "Kawana", "Caloundra", "Glass House"] },
+      { type: "division", name: "Noosa" },
+      { type: "division", name: "Nicklin" },
+      { type: "division", name: "Ninderry" },
+      { type: "division", name: "Maroochydore" },
+      { type: "division", name: "Buderim" },
+      { type: "division", name: "Kawana" },
+      { type: "division", name: "Caloundra" },
+      { type: "division", name: "Glass House" },
+      { type: "group", name: "MORETON BAY", divisions: ["Pumicestone", "Morayfield", "Bancroft", "Kurwongbah", "Pine Rivers", "Murrumba", "Redcliffe"] },
+      { type: "division", name: "Pumicestone" },
+      { type: "division", name: "Morayfield" },
+      { type: "division", name: "Bancroft" },
+      { type: "division", name: "Kurwongbah" },
+      { type: "division", name: "Pine Rivers" },
+      { type: "division", name: "Murrumba" },
+      { type: "division", name: "Redcliffe" },
+      { type: "group", name: "BRISBANE CITY - NORTH", divisions: ["Sandgate", "Aspley", "Everton", "Ferny Grove", "Stafford", "Nudgee", "Clayfield", "McConnel", "Cooper", "Maiwar", "Moggill"] },
+      { type: "division", name: "Sandgate" },
+      { type: "division", name: "Aspley" },
+      { type: "division", name: "Everton" },
+      { type: "division", name: "Ferny Grove" },
+      { type: "division", name: "Stafford" },
+      { type: "division", name: "Nudgee" },
+      { type: "division", name: "Clayfield" },
+      { type: "division", name: "McConnel" },
+      { type: "division", name: "Cooper" },
+      { type: "division", name: "Maiwar" },
+      { type: "division", name: "Moggill" },
+      { type: "group", name: "IPSWICH", divisions: ["Ipswich West", "Ipswich", "Bundamba", "Jordan"] },
+      { type: "division", name: "Ipswich West" },
+      { type: "division", name: "Ipswich" },
+      { type: "division", name: "Bundamba" },
+      { type: "division", name: "Jordan" },
+      { type: "group", name: "BRISBANE CITY - SOUTH", divisions: ["Inala", "Mount Ommaney", "Miller", "South Brisbane", "Greenslopes", "Bulimba", "Lytton", "Chatsworth", "Mansfield", "Toohey", "Stretton", "Algester"] },
+      { type: "division", name: "Inala" },
+      { type: "division", name: "Mount Ommaney" },
+      { type: "division", name: "Miller" },
+      { type: "division", name: "South Brisbane" },
+      { type: "division", name: "Greenslopes" },
+      { type: "division", name: "Bulimba" },
+      { type: "division", name: "Lytton" },
+      { type: "division", name: "Chatsworth" },
+      { type: "division", name: "Mansfield" },
+      { type: "division", name: "Toohey" },
+      { type: "division", name: "Stretton" },
+      { type: "division", name: "Algester" },
+      { type: "group", name: "LOGAN & REDLAND", divisions: ["Woodridge", "Waterford", "Springwood", "Capalaba", "Oodgeroo", "Redlands", "Macalister", "Logan", "Scenic Rim"] },
+      { type: "division", name: "Woodridge" },
+      { type: "division", name: "Waterford" },
+      { type: "division", name: "Springwood" },
+      { type: "division", name: "Capalaba" },
+      { type: "division", name: "Oodgeroo" },
+      { type: "division", name: "Redlands" },
+      { type: "division", name: "Macalister" },
+      { type: "division", name: "Logan" },
+      { type: "division", name: "Scenic Rim" },
+      { type: "group", name: "GOLD COAST", divisions: ["Coomera", "Theodore", "Broadwater", "Bonney", "Gaven", "Southport", "Surfers Paradise", "Mudgeeraba", "Mermaid Beach", "Burleigh", "Currumbin"] },
+      { type: "division", name: "Coomera" },
+      { type: "division", name: "Theodore" },
+      { type: "division", name: "Broadwater" },
+      { type: "division", name: "Bonney" },
+      { type: "division", name: "Gaven" },
+      { type: "division", name: "Southport" },
+      { type: "division", name: "Surfers Paradise" },
+      { type: "division", name: "Mudgeeraba" },
+      { type: "division", name: "Mermaid Beach" },
+      { type: "division", name: "Burleigh" },
+      { type: "division", name: "Currumbin" }
+    ];
+    window.EVENT_NAME = 'state_qld_2025';
+    window.NUM_DIVISIONS = 93;
+    window.STATE_STARTING_TOTAL = 3744585;
+    window.STATE_PROJECTED_TOTAL = 4155112;
+    window.LARGE_DISTRICT_AREA_THRESHOLD = 100000; // km2
+    window.LARGE_DISTRICT_VIRTUAL_ELECTOR_RATE = 0.02; // per km2
+    window.DIVISION_MAPS = [
+      {
+        "id": "qld_2017",
+        "path": "data/qld_2017.js",
+        "name": "Current Boundaries"
+      },
+      {
+        "id": "lga_2025_qld",
+        "path": "data/lga_2025_qld.js",
+        "name": "LGA Boundaries"
+      }
+    ];
+  </script>
+  <script src="data/sa1_2021_qld.js"></script>
+  <script src="data/sa1_2021_qld_2017.js"></script>
+  <script src="js/snippets.js"></script>
+  <script src="js/colors.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    showTab('header-tab');
+    initSharedApp();
+  </script>
+</body>
+</html>

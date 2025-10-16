@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Western Australia State Redistribution 2027</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.css" />
+  <script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.src.js"></script>
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Redistribution"/>
+</head>
+<body>
+  <div style="display:flex; height:100%; width:100%;">
+    <aside class="summary-panel">
+      <ul id="tab-nav" style="list-style:none;display:flex;margin:0;">
+        <li><button type="button" class="button button-grey" onclick="showTab('header-tab')" id="tab-header-btn">Information</button></li>
+        <li><button type="button" class="button button-grey" onclick="showTab('divisions-tab')" id="tab-divisions-btn">Divisions</button></li>
+        <li style="margin-left:auto;"><a id="home-nav-link" href="index.html" class="button" style="text-decoration:none; display:inline-block;">Home</a></li>
+      </ul>
+      <section id="header-tab" class="tab-content">
+        <div class="header">
+          <h1>Western Australia State Redistribution 2027</h1>
+          <h3>Context</h3>
+          <p>Western Australia is divided into <span id="num-divisions"></span> state electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
+          <p>Districts larger than 100,000km<sup>2</sup> are given additional 'virtual' electors equal to 2% of the total area of the district.</p>
+          <p>The Redistribution Commission may also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2032 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
+          <p>The ABS divides Western Australia into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+          <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
+          <div id="shared-instructions"></div>
+          <div id="shared-disclaimer"></div>
+          <div id="shared-attribution"></div>
+        </div>
+      </section>
+      <section id="divisions-tab" class="tab-content" style="display:none; padding:14px 14px 60px;">
+        <div class="division-toolbar" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:4px; margin-bottom:6px;">
+          <button class="button button-ghost" type="button" onclick="resetDivisions()" title="Reset all districts to original configuration">Reset SA1s</button>
+          <button class="button button-ghost" type="button" onclick="toggleProjectedThresholds()" title="Toggle projected enrolment quota highlighting">Toggle Projected</button>
+          <button class="button button-ghost" type="button" onclick="toggleSpotlight()" id="spotlight-btn" title="Highlight only the selected division">Spotlight</button>
+          <button class="button button-ghost" type="button" onclick="exportCSV()" title="Download per-SA1 allocation CSV">Export SA1s</button>
+          <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
+          <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import</button>
+          <input type="file" id="import-file" accept=".csv" style="display:none" />
+        </div>
+        <div id="header-info"></div>
+        <div id="divisions" style="user-select:none;"></div>
+      </section>
+    </aside>
+    <div id="map"></div>
+  </div>
+
+  <script>
+    window.divisionsAndGroups = [
+      { type: "group", name: "LARGE DISTRICTS", divisions: ["Kalgoorlie", "Kimberley", "Mid-West", "Pilbara", "Roe"] },
+      { type: "division", name: "Kalgoorlie" },
+      { type: "division", name: "Kimberley" },
+      { type: "division", name: "Mid-West" },
+      { type: "division", name: "Pilbara" },
+      { type: "division", name: "Roe" },
+      { type: "group", name: "NON-METROPOLITAN", divisions: ["Albany", "Bunbury", "Central Wheatbelt", "Collie-Preston", "Dawesville", "Geraldton", "Mandurah", "Murray-Wellington", "Vasse", "Warren-Blackwood"] },
+      { type: "division", name: "Albany" },
+      { type: "division", name: "Bunbury" },
+      { type: "division", name: "Central Wheatbelt" },
+      { type: "division", name: "Collie-Preston" },
+      { type: "division", name: "Dawesville" },
+      { type: "division", name: "Geraldton" },
+      { type: "division", name: "Mandurah" },
+      { type: "division", name: "Murray-Wellington" },
+      { type: "division", name: "Vasse" },
+      { type: "division", name: "Warren-Blackwood" },
+      { type: "group", name: "METROPOLITAN", divisions: ["Armadale", "Balcatta", "Baldivis", "Bassendean", "Bateman", "Belmont", "Bibra Lake", "Bicton", "Butler", "Cannington", "Carine", "Churchlands", "Cockburn", "Cottesloe", "Darling Range", "Forrestfield", "Fremantle", "Girrawheen", "Hillarys", "Jandakot", "Joondalup", "Kalamunda", "Kingsley", "Kwinana", "Landsdale", "Maylands", "Midland", "Mindarie", "Morley", "Mount Lawley", "Nedlands", "Oakford", "Perth", "Riverton", "Rockingham", "Scarborough", "Secret Harbour", "South Perth", "Southern River", "Swan Hills", "Thornlie", "Victoria Park", "Wanneroo", "West Swan"] },
+      { type: "division", name: "Armadale" },
+      { type: "division", name: "Balcatta" },
+      { type: "division", name: "Baldivis" },
+      { type: "division", name: "Bassendean" },
+      { type: "division", name: "Bateman" },
+      { type: "division", name: "Belmont" },
+      { type: "division", name: "Bibra Lake" },
+      { type: "division", name: "Bicton" },
+      { type: "division", name: "Butler" },
+      { type: "division", name: "Cannington" },
+      { type: "division", name: "Carine" },
+      { type: "division", name: "Churchlands" },
+      { type: "division", name: "Cockburn" },
+      { type: "division", name: "Cottesloe" },
+      { type: "division", name: "Darling Range" },
+      { type: "division", name: "Forrestfield" },
+      { type: "division", name: "Fremantle" },
+      { type: "division", name: "Girrawheen" },
+      { type: "division", name: "Hillarys" },
+      { type: "division", name: "Jandakot" },
+      { type: "division", name: "Joondalup" },
+      { type: "division", name: "Kalamunda" },
+      { type: "division", name: "Kingsley" },
+      { type: "division", name: "Kwinana" },
+      { type: "division", name: "Landsdale" },
+      { type: "division", name: "Maylands" },
+      { type: "division", name: "Midland" },
+      { type: "division", name: "Mindarie" },
+      { type: "division", name: "Morley" },
+      { type: "division", name: "Mount Lawley" },
+      { type: "division", name: "Nedlands" },
+      { type: "division", name: "Oakford" },
+      { type: "division", name: "Perth" },
+      { type: "division", name: "Riverton" },
+      { type: "division", name: "Rockingham" },
+      { type: "division", name: "Scarborough" },
+      { type: "division", name: "Secret Harbour" },
+      { type: "division", name: "South Perth" },
+      { type: "division", name: "Southern River" },
+      { type: "division", name: "Swan Hills" },
+      { type: "division", name: "Thornlie" },
+      { type: "division", name: "Victoria Park" },
+      { type: "division", name: "Wanneroo" },
+      { type: "division", name: "West Swan" }
+    ];
+    window.EVENT_NAME = 'state_wa_2027';
+    window.NUM_DIVISIONS = 59;
+    window.STATE_STARTING_TOTAL = 1665174;
+    window.STATE_PROJECTED_TOTAL = 1848374;
+    window.LARGE_DISTRICT_AREA_THRESHOLD = 100000; // km2
+    window.LARGE_DISTRICT_VIRTUAL_ELECTOR_RATE = 0.015; // per km2
+    window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER = 0.20; // 20% below average
+    window.DEFAULT_STARTING_COORDS = [-27.528, 119.885];
+    window.DEFAULT_STARTING_ZOOM = 6;
+    window.DIVISION_MAPS = [
+      {
+        "id": "wa_2023",
+        "path": "data/wa_2023.js",
+        "name": "Current Boundaries"
+      },
+      {
+        "id": "lga_2025_wa",
+        "path": "data/lga_2025_wa.js",
+        "name": "LGA Boundaries"
+      }
+    ];
+  </script>
+  <script src="data/sa1_2021_wa.js"></script>
+  <script src="data/sa1_2021_wa_2023.js"></script>
+  <script src="js/snippets.js"></script>
+  <script src="js/colors.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    showTab('header-tab');
+    initSharedApp();
+  </script>
+</body>
+</html>
