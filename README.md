@@ -1,11 +1,4 @@
-A tool for facilitating submissions for Redistributions throughout Australia, utilising the Leaflet mapping library, OpenStreetMap and enrolment figures provided by relevent electoral Commissions.
-
-To get started locally:
-1. Download the repository
-2. Unzip the folder
-3. Open index.html in a web browser
-
-**WARNING: The application files are over 50mb as it contains all of the necessary shape and enrolment data. Ensure that your browser has enough free memory before opening.**
+A tool for facilitating submissions for redistributions throughout Australia, utilising the Leaflet mapping library, OpenStreetMap and enrolment figures provided by relevent electoral commissions.
 
 ============================================================
 
@@ -24,7 +17,3 @@ To get started locally:
 **Disclaimer**
 
 This tool presents raw data provided by official sources. Calculations use published enrolment data; aggregated results are provided without warranty. Use at your own risk.
-
-**Attribution**
-
-The original idea and project was developed by Angas, available [here](https://auredistribution.neocities.org/) and [on GitHub](https://github.com/auredistribution/qld-state-redistribution).
