@@ -2890,49 +2890,56 @@ var data = {
     "currentDivision": "Bean",
     "startingEnrolment": 225,
     "projectedEnrolment": 228,
-    "area": "#N/A"
+    "area": 5.6052
   },
   "90104100402": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
     "startingEnrolment": 189,
     "projectedEnrolment": 189,
-    "area": "#N/A"
+    "area": 2.9923
   },
   "90104100403": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
     "startingEnrolment": 323,
     "projectedEnrolment": 323,
-    "area": "#N/A"
+    "area": 6.0243
   },
   "90104100404": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
     "startingEnrolment": 256,
     "projectedEnrolment": 256,
-    "area": "#N/A"
+    "area": 4.8623
   },
   "90104100405": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
-    "area": "#N/A"
+    "area": 1.2368
   },
   "90104100406": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
-    "area": "#N/A"
+    "area": 4.9544
   },
   "90104100407": {
     "previousDivision": "Bean",
     "currentDivision": "Bean",
     "startingEnrolment": 257,
     "projectedEnrolment": 257,
-    "area": "#N/A"
+    "area": 10.5956
+  },
+  "90104100408": {
+    "previousDivision": "Bean",
+    "currentDivision": "Bean",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": 2.3801
   },
   "80101100101": {
     "previousDivision": "Canberra",
@@ -5231,8 +5238,8 @@ var data = {
     "area": 5.5374
   },
   "80103111501": {
-    "previousDivision": "#N/A",
-    "currentDivision": "#N/A",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.8088
@@ -5273,8 +5280,8 @@ var data = {
     "area": 33.3189
   },
   "80103111507": {
-    "previousDivision": "#N/A",
-    "currentDivision": "#N/A",
+    "previousDivision": "Canberra",
+    "currentDivision": "Canberra",
     "startingEnrolment": 0,
     "projectedEnrolment": 0,
     "area": 0.3267
