@@ -6,6 +6,11 @@ function getColor(division) { // same mapping as original
     return { color: window._customDivisionColors[division] };
   }
   
+  // Handle unallocated/null divisions
+  if (division === null || division === undefined || division === '') {
+    return { color: "#cccccc" }; // Light gray for unallocated
+  }
+  
   switch (division) {
     case "SPLIT":
       return { color: "white" };

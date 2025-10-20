@@ -478,6 +478,27 @@ function initSharedApp() {
   }
   window._performDivisionReset = _performDivisionReset;
 
+  // Internal helper that unallocates all SA1s from their divisions
+  function _performDivisionUnallocate(){
+    features.getLayers().forEach(layer => {
+      const code = layer.feature.properties["SA1_CODE21"];
+      // Set division to null/empty to indicate unallocated
+      layer.feature.properties.division = null;
+      data[code].currentDivision = null;
+      // Set to a neutral gray color for unallocated areas
+      layer.setStyle({ fillColor: '#cccccc', fillOpacity: 0.3 });
+    });
+    
+    // Clear selected division since all are now unallocated
+    selectedDivision = "";
+    
+    // Mark as unsaved and refresh display
+    window._markUnsaved();
+    renderDivisionList();
+    updateDivisionInfoPanel();
+  }
+  window._performDivisionUnallocate = _performDivisionUnallocate;
+
   // Reset all division names to their original names
   function _performDivisionNameReset() {
     // Check if there are any renamed divisions
@@ -576,6 +597,17 @@ function initSharedApp() {
   // Public API: reset all division names to their original names
   window.resetDivisionNames = function () {
     _performDivisionNameReset();
+  };
+
+  // Public API: unallocate all SA1s from their divisions
+  window.unallocateDivisions = function () {
+    if(typeof window.showLeaveSessionModal === 'function'){
+      // Use sentinel so modal confirm handler knows to execute a clear instead of navigation.
+      window.showLeaveSessionModal('__CLEAR__');
+    } else {
+      // Fallback (should not normally happen if modal script loaded before this point)
+      _performDivisionUnallocate();
+    }
   };
   window.toggleProjectedThresholds = function () { useProjectedThresholds = !useProjectedThresholds; renderDivisionList(); };
 
@@ -1025,6 +1057,34 @@ function initSharedApp() {
       }
     });
 
+    // Show unallocated SA1s as a special entry
+    const unallocatedSa1s = Object.keys(data).filter(sa1 => 
+      data[sa1].currentDivision === null || 
+      data[sa1].currentDivision === undefined || 
+      data[sa1].currentDivision === ''
+    );
+    
+    if (unallocatedSa1s.length > 0) {
+      const unallocatedStartingTotal = unallocatedSa1s.map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => a + b, 0);
+      const unallocatedProjectedTotal = unallocatedSa1s.map(sa1 => data[sa1].projectedEnrolment).reduce((a, b) => a + b, 0);
+      
+      const row = document.createElement('div');
+      row.className = 'division-row unallocated-row';
+      row.style.cssText = 'background-color: #f5f5f5; border-left: 4px solid #cccccc;';
+
+      // Status indicator for unallocated
+      const status = document.createElement('div');
+      status.className = 'status-dot status-unallocated';
+      status.style.cssText = 'background-color: #cccccc;';
+      row.appendChild(status);
+
+      const text = document.createElement('p');
+      text.innerHTML = `<b>UNALLOCATED</b> ${formatNumber(unallocatedStartingTotal.toFixed(0))} current / ${formatNumber(unallocatedProjectedTotal.toFixed(0))} projected <em>(${unallocatedSa1s.length} SA1s)</em>`;
+      row.appendChild(text);
+
+      divisionList.appendChild(row);
+    }
+
     //====================//
     // RENDER HEADER INFO //
     //====================//
@@ -1242,6 +1302,12 @@ window.showTab = showTab;
         closeModal();
         return;
       }
+      if(pendingNav === '__CLEAR__'){
+        // Perform in-app destructive unallocate instead of navigating
+        if(typeof window._performDivisionUnallocate === 'function') window._performDivisionUnallocate();
+        closeModal();
+        return;
+      }
       if(typeof window._clearUnsaved === 'function') window._clearUnsaved();
       if(pendingNav === 'reload') location.reload(); else if(pendingNav) location.href = pendingNav; else location.href='index.html';
     });
@@ -1260,6 +1326,16 @@ window.showTab = showTab;
       if(subHeader) subHeader.textContent = 'This cannot be undone';
       if(bodyEl) bodyEl.textContent = 'All reassigned SA1s will revert to their original divisions and any newly created divisions will be removed.';
       if(confirmBtn) confirmBtn.textContent = 'Reset Anyway';
+    } else if (pendingNav === '__RESET_NAMES__') {
+      if(titleEl) titleEl.textContent = 'Reset all division names?';
+      if(subHeader) subHeader.textContent = 'This cannot be undone';
+      if(bodyEl) bodyEl.textContent = 'All renamed divisions will revert to their original names.';
+      if(confirmBtn) confirmBtn.textContent = 'Reset Names Anyway';
+    } else if (pendingNav === '__CLEAR__') {
+      if(titleEl) titleEl.textContent = 'Clear all divisions?';
+      if(subHeader) subHeader.textContent = 'Any progress may be lost';
+      if(bodyEl) bodyEl.textContent = 'All SA1s will be unassigned from their current divisions.';
+      if(confirmBtn) confirmBtn.textContent = 'Clear Anyway';
     } else {
       if(titleEl) titleEl.textContent = 'Leave this session?';
       if(subHeader) subHeader.textContent = 'Unsaved changes will be lost';
