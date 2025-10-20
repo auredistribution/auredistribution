@@ -21,6 +21,8 @@ let _collapsedGroups = new Set();
 let _renamingDivision = null;
 // Track custom division colors
 let _customDivisionColors = {};
+// Track original division names for reset functionality
+let _originalDivisionNames = {};
 
 // Expose custom division colors globally
 window._customDivisionColors = _customDivisionColors;
@@ -444,6 +446,90 @@ function initSharedApp() {
   }
   window._performDivisionReset = _performDivisionReset;
 
+  // Reset all division names to their original names
+  function _performDivisionNameReset() {
+    // Check if there are any renamed divisions
+    if (Object.keys(_originalDivisionNames).length === 0) {
+      alert('No renamed divisions to reset.');
+      return;
+    }
+
+    if (!confirm('Are you sure you want to reset all division names to their original names? This cannot be undone.')) {
+      return;
+    }
+
+    // Create a map of current names to original names
+    const namesToReset = {};
+    Object.keys(_originalDivisionNames).forEach(currentName => {
+      namesToReset[currentName] = _originalDivisionNames[currentName];
+    });
+
+    // Reset names in divisionsAndGroups structure
+    divisionsAndGroups.forEach(entry => {
+      if (entry.type === 'division' && namesToReset[entry.name]) {
+        entry.name = namesToReset[entry.name];
+      } else if (entry.type === 'group') {
+        entry.divisions.forEach((divName, index) => {
+          if (namesToReset[divName]) {
+            entry.divisions[index] = namesToReset[divName];
+          }
+        });
+      }
+    });
+
+    // Reset all SA1 data references
+    Object.keys(data).forEach(sa1 => {
+      if (namesToReset[data[sa1].currentDivision]) {
+        data[sa1].currentDivision = namesToReset[data[sa1].currentDivision];
+      }
+      if (namesToReset[data[sa1].previousDivision]) {
+        data[sa1].previousDivision = namesToReset[data[sa1].previousDivision];
+      }
+    });
+
+    // Reset map features
+    const layerCollection = window._featuresLayer || (window._sharedMapCtx && window._sharedMapCtx.features);
+    if (layerCollection) {
+      layerCollection.getLayers().forEach(layer => {
+        if (layer.feature && layer.feature.properties) {
+          if (namesToReset[layer.feature.properties.division]) {
+            layer.feature.properties.division = namesToReset[layer.feature.properties.division];
+          }
+          if (namesToReset[layer.feature.properties.previousDivision]) {
+            layer.feature.properties.previousDivision = namesToReset[layer.feature.properties.previousDivision];
+          }
+        }
+      });
+    }
+
+    // Reset selected division if it was renamed
+    if (selectedDivision && namesToReset[selectedDivision]) {
+      selectedDivision = namesToReset[selectedDivision];
+    }
+
+    // Transfer custom colors back to original names
+    Object.keys(namesToReset).forEach(currentName => {
+      const originalName = namesToReset[currentName];
+      if (_customDivisionColors[currentName]) {
+        _customDivisionColors[originalName] = _customDivisionColors[currentName];
+        delete _customDivisionColors[currentName];
+      }
+    });
+
+    // Clear the original names tracking
+    _originalDivisionNames = {};
+
+    // Save custom colors and update display
+    saveCustomColors();
+    updateMapColors();
+    renderDivisionList();
+    updateDivisionInfoPanel();
+
+    // Mark as unsaved
+    window._markUnsaved();
+  }
+  window._performDivisionNameReset = _performDivisionNameReset;
+
   // Public API: always route through modal for a consistent destructive-action confirmation UX.
   window.resetDivisions = function () {
     if(typeof window.showLeaveSessionModal === 'function' && _unsavedChanges){
@@ -453,6 +539,11 @@ function initSharedApp() {
       // Fallback (should not normally happen if modal script loaded before this point)
       _performDivisionReset();
     }
+  };
+
+  // Public API: reset all division names to their original names
+  window.resetDivisionNames = function () {
+    _performDivisionNameReset();
   };
   window.toggleProjectedThresholds = function () { useProjectedThresholds = !useProjectedThresholds; renderDivisionList(); };
 
@@ -581,6 +672,15 @@ function initSharedApp() {
       alert(`Division "${newName}" already exists. Please choose a different name.`);
       return false;
     }
+
+    // Track original name if this is the first rename for this division
+    if (!_originalDivisionNames[oldName]) {
+      _originalDivisionNames[oldName] = oldName;
+    }
+    // If the old name is already a renamed division, keep its original name
+    const originalName = _originalDivisionNames[oldName];
+    _originalDivisionNames[newName] = originalName;
+    delete _originalDivisionNames[oldName];
 
     // Update divisionsAndGroups structure
     divisionsAndGroups.forEach(entry => {
