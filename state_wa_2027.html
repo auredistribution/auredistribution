@@ -27,7 +27,7 @@
           <p>Western Australia is divided into <span id="num-divisions"></span> state electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
           <p>Districts larger than 100,000km<sup>2</sup> are given additional 'virtual' electors equal to 2% of the total area of the district.</p>
           <p>The Redistribution Commission may also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2032 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
-          <p>The ABS divides Western Australia into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+          <p>The ABS divides Western Australia into 267 named Statistical Areas Level 2 (SA2s) which are divided into 6,352 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
           <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
           <div id="shared-instructions"></div>
           <div id="shared-disclaimer"></div>
@@ -35,13 +35,14 @@
         </div>
       </section>
       <section id="divisions-tab" class="tab-content" style="display:none; padding:14px 14px 60px;">
-        <div class="division-toolbar" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:4px; margin-bottom:6px;">
+        <div class="division-toolbar" style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:4px; margin-bottom:6px;">
           <button class="button button-ghost" type="button" onclick="resetDivisions()" title="Reset all districts to original configuration">Reset SA1s</button>
-          <button class="button button-ghost" type="button" onclick="toggleProjectedThresholds()" title="Toggle projected enrolment quota highlighting">Toggle Projected</button>
+          <button class="button button-ghost" type="button" onclick="resetDivisionNames()" title="Reset the division names to original configuration">Reset Divisions</button>
+          <button class="button button-ghost" type="button" onclick="toggleProjectedThresholds()" title="Toggle projected enrolment quota highlighting">Toggle Stats</button>
           <button class="button button-ghost" type="button" onclick="toggleSpotlight()" id="spotlight-btn" title="Highlight only the selected division">Spotlight</button>
           <button class="button button-ghost" type="button" onclick="exportCSV()" title="Download per-SA1 allocation CSV">Export SA1s</button>
+          <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import SA1s</button>
           <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
-          <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import</button>
           <input type="file" id="import-file" accept=".csv" style="display:none" />
         </div>
         <div id="header-info"></div>

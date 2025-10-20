@@ -17,11 +17,38 @@ let useProjectedThresholds = false;
 let divisionsAndGroups = window.divisionsAndGroups || [];
 // Track collapsed group names
 let _collapsedGroups = new Set();
+// Track division being renamed
+let _renamingDivision = null;
+// Track custom division colors
+let _customDivisionColors = {};
+// Track original division names for reset functionality
+let _originalDivisionNames = {};
+
+// Expose custom division colors globally
+window._customDivisionColors = _customDivisionColors;
 
 // Unsaved changes tracking
 let _unsavedChanges = false; // private flag
 window._markUnsaved = () => { _unsavedChanges = true; };
 window._clearUnsaved = () => { _unsavedChanges = false; };
+
+// Custom color persistence functions
+function saveCustomColors() {
+  localStorage.setItem(`customColors_${window.EVENT_NAME}`, JSON.stringify(_customDivisionColors));
+}
+
+function loadCustomColors() {
+  const saved = localStorage.getItem(`customColors_${window.EVENT_NAME}`);
+  if (saved) {
+    try {
+      const colors = JSON.parse(saved);
+      Object.assign(_customDivisionColors, colors);
+      window._customDivisionColors = _customDivisionColors;
+    } catch (e) {
+      console.warn('Failed to load custom colors:', e);
+    }
+  }
+}
 // Warn user if navigating away with unsaved work (assignments / new divisions)
 window.addEventListener('beforeunload', e => {
   if (!_unsavedChanges) return; // no flag -> allow silent leave
@@ -48,6 +75,9 @@ function formatNumber(number) {
 }
 
 function initSharedApp() {
+
+  // Load saved custom colors
+  loadCustomColors();
 
   // Inject shared Instructions / Disclaimer / Attribution content if placeholders & snippets present
   (function injectSharedSnippets(){
@@ -275,8 +305,9 @@ function initSharedApp() {
         layer.setStyle({ fillColor: getColor(selectedDivision).color, fillOpacity: (selectedDivision == originalDivision) ? 0.5 : 0.75 });
       }
     });
-  if(layers.length) window._markUnsaved();
-    renderDivisionList();
+    if(layers.length) window._markUnsaved();
+      renderDivisionList();
+      updateDivisionInfoPanel();
   }
   function highlightFeature(e) { const layer = e.target; infoPanel.update(layer.feature.properties); layer.setStyle({ weight: 2, color: '#000' }); }
   function unhighlightFeature(e) { const layer = e.target; infoPanel.update(null); layer.setStyle({ weight: 0.5, color: '#333' }); }
@@ -287,11 +318,15 @@ function initSharedApp() {
       if(selectedDivision !== div){
         selectedDivision = div;
         renderDivisionList();
+        // Update division info panel
+        updateDivisionInfoPanel();
         // Refresh spotlight if active
         refreshSpotlight();
       } else {
         selectedDivision = "";
         renderDivisionList();
+        // Update division info panel
+        updateDivisionInfoPanel();
         // Refresh spotlight if active
         refreshSpotlight();
       }
@@ -301,9 +336,12 @@ function initSharedApp() {
   }
   function onEachFeature(feature, layer) { layer.on({ click: clickFeature, mouseover: highlightFeature, mouseout: unhighlightFeature, contextmenu: selectDivisionFromFeature }); }
   function highlightElectorate(e) { const layer = e.target; layer.setStyle({ weight: 4, color: 'green' }); if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) layer.bringToFront(); }
-  function resetHighlight(e) { e.target.setStyle({ weight: 1.2, color: '#2b62c6' }); }
+  function resetHighlight(e) { e.target.setStyle({ weight: 2, color: '#2b62c6' }); }
   function zoomToFeature(e) { map.fitBounds(e.target.getBounds()); }
-  function onEachElectorate(feature, layer) { layer.on({ mouseover: highlightElectorate, mouseout: resetHighlight, click: zoomToFeature }); if(!isSafari){ layer.bindTooltip(feature.properties.name, { permanent: true, direction: 'center', className: 'countryLabel' }); } }
+  function onEachElectorate(feature, layer) {
+    layer.on({ mouseover: highlightElectorate, mouseout: resetHighlight, click: zoomToFeature });
+    layer.bindTooltip(feature.properties.name, { permanent: true, direction: 'center', className: 'countryLabel' });
+  }
 
   const features = L.geoJSON(sa1s, {
     renderer: sharedCanvasRenderer,
@@ -313,15 +351,72 @@ function initSharedApp() {
   // Expose for external helpers (import routine defined outside init)
   window._featuresLayer = features;
 
-  // Info panel control
+  // Info panel control (for SA1 hover)
   const infoPanel = L.control();
   infoPanel.onAdd = function () { this._div = L.DomUtil.create('div', 'info-panel'); this.update(); return this._div; };
   infoPanel.update = function (props) { if (props) { const code = props["SA1_CODE21"]; this._div.innerHTML = `<b>${props["SA2_NAME21"]}</b><br/><i>${code}</i><br/>${props.division}<br/>${data[code].startingEnrolment} current electors / ${data[code].projectedEnrolment} projected electors`; } else { this._div.innerHTML = 'Hover over a SA1'; } };
   infoPanel.addTo(map);
 
+  // Division info panel control (for selected division)
+  const divisionInfoPanel = L.control({ position: 'topleft' });
+  divisionInfoPanel.onAdd = function () { 
+    this._div = L.DomUtil.create('div', 'info-panel division-info-panel'); 
+    this.update(); 
+    return this._div; 
+  };
+  divisionInfoPanel.update = function (divisionName) { 
+    if (divisionName) {
+      // Calculate division statistics
+      const divisionSa1s = Object.keys(data).filter(sa1 => data[sa1].currentDivision === divisionName);
+      const area = divisionSa1s.map(sa1 => data[sa1].area).reduce((a, b) => a + b, 0);
+      const isLargeDistrict = (LARGE_DISTRICT_AREA_THRESHOLD > 0) && (area > LARGE_DISTRICT_AREA_THRESHOLD);
+      const largeAdj = isLargeDistrict ? area * LARGE_DISTRICT_VIRTUAL_ELECTOR_RATE : 0;
+      const startingTotal = divisionSa1s.map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => a + b, 0) + largeAdj;
+      const projectedTotal = divisionSa1s.map(sa1 => data[sa1].projectedEnrolment).reduce((a, b) => a + b, 0) + largeAdj;
+      const startingDeviation = 100 * startingTotal / (STATE_STARTING_TOTAL / NUM_DIVISIONS) - 100;
+      const projectedDeviation = 100 * projectedTotal / (STATE_PROJECTED_TOTAL / NUM_DIVISIONS) - 100;
+      
+      const startDevStr = `${startingDeviation.toFixed(2)}%`;
+      const projDevStr = `${projectedDeviation.toFixed(2)}%`;
+      const formattedStarting = formatNumber(startingTotal.toFixed(0));
+      const formattedProjected = formatNumber(projectedTotal.toFixed(0));
+      
+      // Add custom color indicator if present
+      const hasCustomColor = _customDivisionColors[divisionName];
+      const colorIndicator = hasCustomColor ? `<span class="custom-color-indicator" style="background-color: ${_customDivisionColors[divisionName]};" title="Custom color applied"></span>` : '';
+      
+      this._div.innerHTML = `Selected Division: <b>${colorIndicator}${divisionName}</b><br/><br/>
+        Population: <b>${formattedStarting}</b> <span class="quota-metric">(${startDevStr})</span><br/>
+        Projected: <b>${formattedProjected}</b> <span class="quota-metric">(${projDevStr})</span>`;
+    } else {
+      this._div.innerHTML = 'No division selected';
+    }
+  };
+  // Don't add to map initially - will be added when division is selected
+
   // Expose for event pages needing operations
-  window._sharedMapCtx = { map, features, infoPanel };
+  window._sharedMapCtx = { map, features, infoPanel, divisionInfoPanel };
   window.renderDivisionList = renderDivisionList; // attach for reuse
+
+  // Helper function to update division info panel
+  function updateDivisionInfoPanel() {
+    const sharedCtx = window._sharedMapCtx;
+    if (sharedCtx && sharedCtx.divisionInfoPanel) {
+      if (selectedDivision) {
+        // Show panel if division is selected
+        if (!sharedCtx.divisionInfoPanel._map) {
+          sharedCtx.divisionInfoPanel.addTo(sharedCtx.map);
+        }
+        sharedCtx.divisionInfoPanel.update(selectedDivision);
+      } else {
+        // Hide panel if no division selected
+        if (sharedCtx.divisionInfoPanel._map) {
+          sharedCtx.map.removeControl(sharedCtx.divisionInfoPanel);
+        }
+      }
+    }
+  }
+  window.updateDivisionInfoPanel = updateDivisionInfoPanel;
 
   function createNewDivision(groupName) {
     const idx = divisionsAndGroups.findIndex(e => e.name == groupName);
@@ -351,6 +446,90 @@ function initSharedApp() {
   }
   window._performDivisionReset = _performDivisionReset;
 
+  // Reset all division names to their original names
+  function _performDivisionNameReset() {
+    // Check if there are any renamed divisions
+    if (Object.keys(_originalDivisionNames).length === 0) {
+      alert('No renamed divisions to reset.');
+      return;
+    }
+
+    if (!confirm('Are you sure you want to reset all division names to their original names? This cannot be undone.')) {
+      return;
+    }
+
+    // Create a map of current names to original names
+    const namesToReset = {};
+    Object.keys(_originalDivisionNames).forEach(currentName => {
+      namesToReset[currentName] = _originalDivisionNames[currentName];
+    });
+
+    // Reset names in divisionsAndGroups structure
+    divisionsAndGroups.forEach(entry => {
+      if (entry.type === 'division' && namesToReset[entry.name]) {
+        entry.name = namesToReset[entry.name];
+      } else if (entry.type === 'group') {
+        entry.divisions.forEach((divName, index) => {
+          if (namesToReset[divName]) {
+            entry.divisions[index] = namesToReset[divName];
+          }
+        });
+      }
+    });
+
+    // Reset all SA1 data references
+    Object.keys(data).forEach(sa1 => {
+      if (namesToReset[data[sa1].currentDivision]) {
+        data[sa1].currentDivision = namesToReset[data[sa1].currentDivision];
+      }
+      if (namesToReset[data[sa1].previousDivision]) {
+        data[sa1].previousDivision = namesToReset[data[sa1].previousDivision];
+      }
+    });
+
+    // Reset map features
+    const layerCollection = window._featuresLayer || (window._sharedMapCtx && window._sharedMapCtx.features);
+    if (layerCollection) {
+      layerCollection.getLayers().forEach(layer => {
+        if (layer.feature && layer.feature.properties) {
+          if (namesToReset[layer.feature.properties.division]) {
+            layer.feature.properties.division = namesToReset[layer.feature.properties.division];
+          }
+          if (namesToReset[layer.feature.properties.previousDivision]) {
+            layer.feature.properties.previousDivision = namesToReset[layer.feature.properties.previousDivision];
+          }
+        }
+      });
+    }
+
+    // Reset selected division if it was renamed
+    if (selectedDivision && namesToReset[selectedDivision]) {
+      selectedDivision = namesToReset[selectedDivision];
+    }
+
+    // Transfer custom colors back to original names
+    Object.keys(namesToReset).forEach(currentName => {
+      const originalName = namesToReset[currentName];
+      if (_customDivisionColors[currentName]) {
+        _customDivisionColors[originalName] = _customDivisionColors[currentName];
+        delete _customDivisionColors[currentName];
+      }
+    });
+
+    // Clear the original names tracking
+    _originalDivisionNames = {};
+
+    // Save custom colors and update display
+    saveCustomColors();
+    updateMapColors();
+    renderDivisionList();
+    updateDivisionInfoPanel();
+
+    // Mark as unsaved
+    window._markUnsaved();
+  }
+  window._performDivisionNameReset = _performDivisionNameReset;
+
   // Public API: always route through modal for a consistent destructive-action confirmation UX.
   window.resetDivisions = function () {
     if(typeof window.showLeaveSessionModal === 'function' && _unsavedChanges){
@@ -360,6 +539,11 @@ function initSharedApp() {
       // Fallback (should not normally happen if modal script loaded before this point)
       _performDivisionReset();
     }
+  };
+
+  // Public API: reset all division names to their original names
+  window.resetDivisionNames = function () {
+    _performDivisionNameReset();
   };
   window.toggleProjectedThresholds = function () { useProjectedThresholds = !useProjectedThresholds; renderDivisionList(); };
 
@@ -448,6 +632,112 @@ function initSharedApp() {
     }
   };
 
+  //====================//
+  // RENAME DIVISION    //
+  //====================//
+  function updateMapColors() {
+    // Update map feature colors when custom colors change
+    const layerCollection = window._featuresLayer || (window._sharedMapCtx && window._sharedMapCtx.features);
+    if (layerCollection) {
+      layerCollection.getLayers().forEach(layer => {
+        if (layer.feature && layer.feature.properties && layer.feature.properties.division) {
+          const division = layer.feature.properties.division;
+          const originalDivision = layer.feature.properties.previousDivision || division;
+          layer.setStyle({
+            fillColor: getColor(division).color,
+            fillOpacity: (division === originalDivision) ? 0.5 : 0.75
+          });
+        }
+      });
+    }
+  }
+
+  function renameDivision(oldName, newName) {
+    // Validate new name
+    if (!newName || newName.trim() === '') {
+      alert('Division name cannot be empty.');
+      return false;
+    }
+    
+    newName = newName.trim();
+    
+    // Check if new name is the same as old name
+    if (newName === oldName) {
+      return true; // No change needed
+    }
+    
+    // Check if new name already exists
+    const existingDivision = divisionsAndGroups.find(e => e.type === 'division' && e.name === newName);
+    if (existingDivision) {
+      alert(`Division "${newName}" already exists. Please choose a different name.`);
+      return false;
+    }
+
+    // Track original name if this is the first rename for this division
+    if (!_originalDivisionNames[oldName]) {
+      _originalDivisionNames[oldName] = oldName;
+    }
+    // If the old name is already a renamed division, keep its original name
+    const originalName = _originalDivisionNames[oldName];
+    _originalDivisionNames[newName] = originalName;
+    delete _originalDivisionNames[oldName];
+
+    // Update divisionsAndGroups structure
+    divisionsAndGroups.forEach(entry => {
+      if (entry.type === 'division' && entry.name === oldName) {
+        entry.name = newName;
+      } else if (entry.type === 'group') {
+        const divIndex = entry.divisions.indexOf(oldName);
+        if (divIndex !== -1) {
+          entry.divisions[divIndex] = newName;
+        }
+      }
+    });
+
+    // Update all SA1 data references
+    Object.keys(data).forEach(sa1 => {
+      if (data[sa1].currentDivision === oldName) {
+        data[sa1].currentDivision = newName;
+      }
+      if (data[sa1].previousDivision === oldName) {
+        data[sa1].previousDivision = newName;
+      }
+    });
+
+    // Update map features
+    const layerCollection = window._featuresLayer || (window._sharedMapCtx && window._sharedMapCtx.features);
+    if (layerCollection) {
+      layerCollection.getLayers().forEach(layer => {
+        if (layer.feature && layer.feature.properties && layer.feature.properties.division === oldName) {
+          layer.feature.properties.division = newName;
+        }
+        if (layer.feature && layer.feature.properties && layer.feature.properties.previousDivision === oldName) {
+          layer.feature.properties.previousDivision = newName;
+        }
+      });
+    }
+
+    // Update selected division if it was the renamed one
+    if (selectedDivision === oldName) {
+      selectedDivision = newName;
+    }
+
+    // Transfer custom color if it exists
+    if (_customDivisionColors[oldName]) {
+      _customDivisionColors[newName] = _customDivisionColors[oldName];
+      delete _customDivisionColors[oldName];
+      saveCustomColors(); // Persist to localStorage
+    }
+
+    // Update map colors
+    updateMapColors();
+
+    // Mark as unsaved
+    window._markUnsaved();
+    
+    return true;
+  }
+
   //======================//
   // RENDER DIVISION LIST //
   //======================//
@@ -489,7 +779,7 @@ function initSharedApp() {
         if(parentGroup && _collapsedGroups.has(parentGroup.name)) return;
 
         const row = document.createElement('div');
-        row.className = 'division-row' + (division === selectedDivision ? ' is-selected' : '');
+        row.className = 'division-row' + (division === selectedDivision ? ' is-selected' : '') + (_renamingDivision === division ? ' is-renaming' : '');
 
         // Status indicator
         const status = document.createElement('div');
@@ -500,22 +790,180 @@ function initSharedApp() {
         }
         row.appendChild(status);
 
-        // Text block
-        const text = document.createElement('p');
-        const startDevStr = `${startingDeviation.toFixed(2)}%`;
-        const projDevStr = `${projectedDeviation.toFixed(2)}%`;
-        const labelLarge = isLargeDistrict ? '<span class="large-flag">LARGE</span>' : '';
-        const strikeStyle = (division.slice(0, 4) !== '(new' && startingTotal === 0 && projectedTotal === 0) ? 'text-decoration:line-through;' : '';
-        text.style = strikeStyle;
-        text.innerHTML = `<b>${division}</b> ${formatNumber(startingTotal.toFixed(0))} current <span class="quota-metric">(${startDevStr})</span> / ${formatNumber(projectedTotal.toFixed(0))} projected <span class="quota-metric">(${projDevStr})</span> ${labelLarge}`;
-        row.appendChild(text);
+        // Check if this division is being renamed
+        if (_renamingDivision === division) {
+          // Edit mode: input field with color picker, cancel and save buttons
+          const editContainer = document.createElement('div');
+          editContainer.style.cssText = 'display: flex; align-items: center; flex: 1; gap: 8px;';
+          
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.value = division;
+          input.className = 'division-rename-input';
+          input.style.cssText = 'flex: 1;';
+          
+          // Color picker
+          const colorPicker = document.createElement('input');
+          colorPicker.type = 'color';
+          colorPicker.className = 'division-color-picker';
+          colorPicker.title = 'Choose custom color';
+          
+          // Set current color (custom or default)
+          const currentColor = _customDivisionColors[division] || getColor(division).color;
+          // Convert named colors to hex if possible, or use a default
+          const colorToHex = (colorName) => {
+            if (colorName.startsWith('#')) return colorName;
+            const tempDiv = document.createElement('div');
+            tempDiv.style.color = colorName;
+            document.body.appendChild(tempDiv);
+            const computedColor = window.getComputedStyle(tempDiv).color;
+            document.body.removeChild(tempDiv);
+            
+            // Convert rgb(r,g,b) to hex
+            const match = computedColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+            if (match) {
+              const r = parseInt(match[1]).toString(16).padStart(2, '0');
+              const g = parseInt(match[2]).toString(16).padStart(2, '0');
+              const b = parseInt(match[3]).toString(16).padStart(2, '0');
+              return `#${r}${g}${b}`;
+            }
+            return '#888888'; // fallback gray
+          };
+          
+          colorPicker.value = colorToHex(currentColor);
+          
+          // Reset color button (use default)
+          const resetColorBtn = document.createElement('button');
+          resetColorBtn.textContent = '⟲';
+          resetColorBtn.title = 'Reset to default color';
+          resetColorBtn.className = 'division-rename-btn reset-color';
+          
+          const cancelBtn = document.createElement('button');
+          cancelBtn.textContent = '×';
+          cancelBtn.title = 'Cancel rename';
+          cancelBtn.className = 'division-rename-btn cancel';
+          
+          const saveBtn = document.createElement('button');
+          saveBtn.textContent = '✓';
+          saveBtn.title = 'Save changes';
+          saveBtn.className = 'division-rename-btn';
+          
+          // Reset color to default
+          resetColorBtn.onclick = (e) => {
+            e.stopPropagation();
+            delete _customDivisionColors[division];
+            saveCustomColors(); // Persist to localStorage
+            const defaultColor = getColor(division).color;
+            colorPicker.value = colorToHex(defaultColor);
+          };
+          
+          // Cancel rename
+          cancelBtn.onclick = (e) => {
+            e.stopPropagation();
+            _renamingDivision = null;
+            renderDivisionList();
+            // Update division info panel after cancel
+            updateDivisionInfoPanel();
+          };
+          
+          // Save rename and color
+          const saveChanges = (e) => {
+            e.stopPropagation();
+            const newName = input.value.trim();
+            const newColor = colorPicker.value;
+            
+            // Handle rename if name changed
+            if (newName && newName !== division) {
+              if (!renameDivision(division, newName)) {
+                return; // Rename failed, don't proceed
+              }
+            }
+            
+            // Handle color change (use the new name if renamed, otherwise original)
+            const targetDivision = (newName && newName !== division) ? newName : division;
+            const defaultColor = getColor(targetDivision).color;
+            const defaultColorHex = colorToHex(defaultColor);
+            
+            if (newColor !== defaultColorHex) {
+              _customDivisionColors[targetDivision] = newColor;
+              saveCustomColors(); // Persist to localStorage
+              window._markUnsaved();
+            } else {
+              // If color matches default, remove custom color
+              delete _customDivisionColors[targetDivision];
+              saveCustomColors(); // Persist to localStorage
+            }
+            
+            // Update map colors
+            updateMapColors();
+            
+            _renamingDivision = null;
+            renderDivisionList();
+            // Update division info panel after rename
+            updateDivisionInfoPanel();
+          };
+          
+          saveBtn.onclick = saveChanges;
+          
+          // Save on Enter key
+          input.onkeydown = (e) => {
+            if (e.key === 'Enter') {
+              saveChanges(e);
+            } else if (e.key === 'Escape') {
+              e.stopPropagation();
+              _renamingDivision = null;
+              renderDivisionList();
+              // Update division info panel after escape
+              updateDivisionInfoPanel();
+            }
+          };
+          
+          editContainer.appendChild(input);
+          editContainer.appendChild(colorPicker);
+          editContainer.appendChild(resetColorBtn);
+          editContainer.appendChild(cancelBtn);
+          editContainer.appendChild(saveBtn);
+          row.appendChild(editContainer);
+          
+          // Auto-focus and select the input
+          setTimeout(() => {
+            input.focus();
+            input.select();
+          }, 0);
+          
+        } else {
+          // Normal mode: display division info
+          const text = document.createElement('p');
+          const startDevStr = `${startingDeviation.toFixed(2)}%`;
+          const projDevStr = `${projectedDeviation.toFixed(2)}%`;
+          const labelLarge = isLargeDistrict ? '<span class="large-flag">LARGE</span>' : '';
+          const strikeStyle = (division.slice(0, 4) !== '(new' && startingTotal === 0 && projectedTotal === 0) ? 'text-decoration:line-through;' : '';
+          
+          // Add color indicator if custom color is set
+          const hasCustomColor = _customDivisionColors[division];
+          const colorIndicator = hasCustomColor ? `<span class="custom-color-indicator" style="background-color: ${_customDivisionColors[division]};" title="Custom color applied"></span>` : '';
+          
+          text.style = strikeStyle;
+          text.innerHTML = `<b>${division}</b> ${colorIndicator}${formatNumber(startingTotal.toFixed(0))} current <span class="quota-metric">(${startDevStr})</span> / ${formatNumber(projectedTotal.toFixed(0))} projected <span class="quota-metric">(${projDevStr})</span> ${labelLarge}`;
+          row.appendChild(text);
 
-        row.onclick = () => {
-          selectedDivision = (selectedDivision === division) ? '' : division;
-          renderDivisionList();
-          // Refresh spotlight if active
-          refreshSpotlight();
-        };
+          // Left click: select division
+          row.onclick = () => {
+            selectedDivision = (selectedDivision === division) ? '' : division;
+            renderDivisionList();
+            // Update division info panel
+            updateDivisionInfoPanel();
+            // Refresh spotlight if active
+            refreshSpotlight();
+          };
+
+          // Right click: enter rename mode
+          row.oncontextmenu = (e) => {
+            e.preventDefault();
+            _renamingDivision = division;
+            renderDivisionList();
+          };
+        }
 
         divisionList.appendChild(row);
       } else if (entry.type === 'group') {
@@ -567,6 +1015,7 @@ function initSharedApp() {
   }
   window.renderDivisionList = renderDivisionList;
   renderDivisionList();
+  // Division info panel will be shown when a division is selected
 }
 
     //==================//

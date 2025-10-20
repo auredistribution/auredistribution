@@ -1,6 +1,11 @@
 // Division color mapping for Australian redistribution tool
 
 function getColor(division) { // same mapping as original
+  // Check for custom color first
+  if (window._customDivisionColors && window._customDivisionColors[division]) {
+    return { color: window._customDivisionColors[division] };
+  }
+  
   switch (division) {
     case "SPLIT":
       return { color: "white" };
