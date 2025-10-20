@@ -2,7 +2,6 @@
 window.EVENT_NAME = window.EVENT_NAME || 'redistribution';
 window.DEFAULT_STARTING_COORDS = window.DEFAULT_STARTING_COORDS || [-21.5, 146.5];
 window.DEFAULT_STARTING_ZOOM = window.DEFAULT_STARTING_ZOOM || 6;
-window.NUM_DIVISIONS = window.NUM_DIVISIONS || 93;
 window.STATE_STARTING_TOTAL = window.STATE_STARTING_TOTAL || 3744585;
 window.STATE_PROJECTED_TOTAL = window.STATE_PROJECTED_TOTAL || 4155112;
 window.ENROLMENT_THRESHOLD = window.ENROLMENT_THRESHOLD || 0.1;
@@ -62,6 +61,35 @@ function _syncDivisionsAndGroups() {
   }
 }
 
+function _calculateNumDivisions() {
+  _syncDivisionsAndGroups();
+  return divisionsAndGroups.filter(entry => entry.type === 'division').length;
+}
+
+// Define NUM_DIVISIONS as a dynamic getter if not already set by the HTML page
+if (typeof window.NUM_DIVISIONS === 'undefined') {
+  Object.defineProperty(window, 'NUM_DIVISIONS', {
+    get: function() {
+      return _calculateNumDivisions();
+    },
+    configurable: true
+  });
+}
+
+// Helper function to switch to dynamic NUM_DIVISIONS calculation
+window._enableDynamicNumDivisions = function() {
+  if (window.hasOwnProperty('NUM_DIVISIONS')) {
+    delete window.NUM_DIVISIONS;
+  }
+  Object.defineProperty(window, 'NUM_DIVISIONS', {
+    get: function() {
+      return _calculateNumDivisions();
+    },
+    configurable: true
+  });
+  populateContextLine(); // Update context line with new dynamic value
+};
+
 function formatNumber(number) {
   if (number > 1000000) {
     number = number.toString();
@@ -98,31 +126,34 @@ function initSharedApp() {
     }
   })();
 
-      // Populate dynamic text placeholders once DOM & globals are ready
-    (function populateContextLine(){
-      if(typeof window.NUM_DIVISIONS === 'undefined' || typeof window.STATE_STARTING_TOTAL === 'undefined') return;
-      const fmt = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      const avg = Math.round(window.STATE_STARTING_TOTAL / window.NUM_DIVISIONS);
-      const min = Math.round(avg * (1 - window.ENROLMENT_THRESHOLD));
-      // const lda_min = Math.round(avg * (1 - window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER));
-      const max = Math.round(avg * (1 + window.ENROLMENT_THRESHOLD));
-      const avgProjected = Math.round(window.STATE_PROJECTED_TOTAL / window.NUM_DIVISIONS);
-      const minProjected = Math.round(avgProjected * (1 - window.PROJECTION_THRESHOLD));
-      const maxProjected = Math.round(avgProjected * (1 + window.PROJECTION_THRESHOLD));
-      const nd = document.getElementById('num-divisions');
-      if(!nd) return; // safety
-      document.getElementById('num-divisions').textContent = window.NUM_DIVISIONS;
-      document.getElementById('avg-enrol').textContent = fmt(avg);
-      document.getElementById('min-enrol').textContent = fmt(min);
-      // document.getElementById('lda-min-enrol').textContent = fmt(lda_min);
-      document.getElementById('max-enrol').textContent = fmt(max);
-      document.getElementById('avg-projected').textContent = fmt(avgProjected);
-      document.getElementById('min-projected').textContent = fmt(minProjected);
-      document.getElementById('max-projected').textContent = fmt(maxProjected);
-      document.getElementById('proj-threshold').textContent =
-        (window.PROJECTION_THRESHOLD) === 0 ? '0' :
-        (window.PROJECTION_THRESHOLD * 100 % 1 === 0 ? (window.PROJECTION_THRESHOLD * 100).toFixed(0) : (window.PROJECTION_THRESHOLD * 100).toFixed(1));
-    })();
+  // Function to populate dynamic text placeholders
+  function populateContextLine(){
+    if(window.NUM_DIVISIONS === 0 || typeof window.STATE_STARTING_TOTAL === 'undefined') return;
+    const fmt = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const avg = Math.round(window.STATE_STARTING_TOTAL / window.NUM_DIVISIONS);
+    const min = Math.round(avg * (1 - window.ENROLMENT_THRESHOLD));
+    // const lda_min = Math.round(avg * (1 - window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER));
+    const max = Math.round(avg * (1 + window.ENROLMENT_THRESHOLD));
+    const avgProjected = Math.round(window.STATE_PROJECTED_TOTAL / window.NUM_DIVISIONS);
+    const minProjected = Math.round(avgProjected * (1 - window.PROJECTION_THRESHOLD));
+    const maxProjected = Math.round(avgProjected * (1 + window.PROJECTION_THRESHOLD));
+    const nd = document.getElementById('num-divisions');
+    if(!nd) return; // safety
+    document.getElementById('num-divisions').textContent = window.NUM_DIVISIONS;
+    document.getElementById('avg-enrol').textContent = fmt(avg);
+    document.getElementById('min-enrol').textContent = fmt(min);
+    // document.getElementById('lda-min-enrol').textContent = fmt(lda_min);
+    document.getElementById('max-enrol').textContent = fmt(max);
+    document.getElementById('avg-projected').textContent = fmt(avgProjected);
+    document.getElementById('min-projected').textContent = fmt(minProjected);
+    document.getElementById('max-projected').textContent = fmt(maxProjected);
+    document.getElementById('proj-threshold').textContent =
+      (window.PROJECTION_THRESHOLD) === 0 ? '0' :
+      (window.PROJECTION_THRESHOLD * 100 % 1 === 0 ? (window.PROJECTION_THRESHOLD * 100).toFixed(0) : (window.PROJECTION_THRESHOLD * 100).toFixed(1));
+  }
+
+  // Initialize context line when DOM & globals are ready
+  populateContextLine();
 
   _syncDivisionsAndGroups();
   if (typeof sa1s === 'undefined' || typeof data === 'undefined') {
@@ -422,7 +453,8 @@ function initSharedApp() {
     const idx = divisionsAndGroups.findIndex(e => e.name == groupName);
     divisionsAndGroups.splice(idx + divisionsAndGroups[idx].divisions.length + 1, 0, { type: 'division', name: `(new ${newDivisionCount + 1})` });
     divisionsAndGroups[idx].divisions.push(`(new ${newDivisionCount + 1})`);
-  newDivisionCount++; window._markUnsaved(); renderDivisionList();
+    newDivisionCount++; window._markUnsaved();
+    renderDivisionList();
   }
   window.createNewDivision = createNewDivision;
   // Internal helper that actually performs the reset logic.
@@ -1012,6 +1044,9 @@ function initSharedApp() {
     var electorsMovedDetails = document.createElement("p")
     electorsMovedDetails.innerHTML = `<b>Electors moved:</b> ${formatNumber(electorsMoved)} (${(100 * electorsMoved / STATE_STARTING_TOTAL).toFixed(2)}%)`
     headerInfo.appendChild(electorsMovedDetails)
+    
+    // Update context line with current division count
+    populateContextLine();
   }
   window.renderDivisionList = renderDivisionList;
   renderDivisionList();
