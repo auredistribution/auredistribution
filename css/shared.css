@@ -134,6 +134,8 @@ body > div { height: 100%; display: flex; }
 .status-over { background: #ff8a8a; }
 .status-under { background: #8aa6ff; }
 .status-ok { background: #8bd78b; }
+.status-unallocated { background: #cccccc; }
+.unallocated-row { background-color: #f5f5f5; border-left: 4px solid #cccccc; }
 .large-flag { font-size: 10px; background: #ffe7a3; color: #7a5600; padding: 2px 5px; border-radius: 4px; margin-left: 6px; font-weight: 600; letter-spacing: .5px; }
 .quota-metric { font-size: 11px; color: var(--text-muted); font-weight: 500; }
 

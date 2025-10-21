@@ -43,6 +43,7 @@
           <button class="button button-ghost" type="button" onclick="exportCSV()" title="Download per-SA1 allocation CSV">Export SA1s</button>
           <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import SA1s</button>
           <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
+          <button class="button button-ghost" type="button" onclick="unallocateDivisions()" title="Clear all districts from every SA1">Clear Divisions</button>
           <input type="file" id="import-file" accept=".csv" style="display:none" />
         </div>
         <div id="header-info"></div>
@@ -118,7 +119,6 @@
       { type: "division", name: "West Swan" }
     ];
     window.EVENT_NAME = 'state_wa_2027';
-    window.NUM_DIVISIONS = 59;
     window.STATE_STARTING_TOTAL = 1665174;
     window.STATE_PROJECTED_TOTAL = 1848374;
     window.LARGE_DISTRICT_AREA_THRESHOLD = 100000; // km2

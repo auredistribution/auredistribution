@@ -2,7 +2,6 @@
 window.EVENT_NAME = window.EVENT_NAME || 'redistribution';
 window.DEFAULT_STARTING_COORDS = window.DEFAULT_STARTING_COORDS || [-21.5, 146.5];
 window.DEFAULT_STARTING_ZOOM = window.DEFAULT_STARTING_ZOOM || 6;
-window.NUM_DIVISIONS = window.NUM_DIVISIONS || 93;
 window.STATE_STARTING_TOTAL = window.STATE_STARTING_TOTAL || 3744585;
 window.STATE_PROJECTED_TOTAL = window.STATE_PROJECTED_TOTAL || 4155112;
 window.ENROLMENT_THRESHOLD = window.ENROLMENT_THRESHOLD || 0.1;
@@ -62,6 +61,35 @@ function _syncDivisionsAndGroups() {
   }
 }
 
+function _calculateNumDivisions() {
+  _syncDivisionsAndGroups();
+  return divisionsAndGroups.filter(entry => entry.type === 'division').length;
+}
+
+// Define NUM_DIVISIONS as a dynamic getter if not already set by the HTML page
+if (typeof window.NUM_DIVISIONS === 'undefined') {
+  Object.defineProperty(window, 'NUM_DIVISIONS', {
+    get: function() {
+      return _calculateNumDivisions();
+    },
+    configurable: true
+  });
+}
+
+// Helper function to switch to dynamic NUM_DIVISIONS calculation
+window._enableDynamicNumDivisions = function() {
+  if (window.hasOwnProperty('NUM_DIVISIONS')) {
+    delete window.NUM_DIVISIONS;
+  }
+  Object.defineProperty(window, 'NUM_DIVISIONS', {
+    get: function() {
+      return _calculateNumDivisions();
+    },
+    configurable: true
+  });
+  populateContextLine(); // Update context line with new dynamic value
+};
+
 function formatNumber(number) {
   if (number > 1000000) {
     number = number.toString();
@@ -98,31 +126,34 @@ function initSharedApp() {
     }
   })();
 
-      // Populate dynamic text placeholders once DOM & globals are ready
-    (function populateContextLine(){
-      if(typeof window.NUM_DIVISIONS === 'undefined' || typeof window.STATE_STARTING_TOTAL === 'undefined') return;
-      const fmt = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      const avg = Math.round(window.STATE_STARTING_TOTAL / window.NUM_DIVISIONS);
-      const min = Math.round(avg * (1 - window.ENROLMENT_THRESHOLD));
-      // const lda_min = Math.round(avg * (1 - window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER));
-      const max = Math.round(avg * (1 + window.ENROLMENT_THRESHOLD));
-      const avgProjected = Math.round(window.STATE_PROJECTED_TOTAL / window.NUM_DIVISIONS);
-      const minProjected = Math.round(avgProjected * (1 - window.PROJECTION_THRESHOLD));
-      const maxProjected = Math.round(avgProjected * (1 + window.PROJECTION_THRESHOLD));
-      const nd = document.getElementById('num-divisions');
-      if(!nd) return; // safety
-      document.getElementById('num-divisions').textContent = window.NUM_DIVISIONS;
-      document.getElementById('avg-enrol').textContent = fmt(avg);
-      document.getElementById('min-enrol').textContent = fmt(min);
-      // document.getElementById('lda-min-enrol').textContent = fmt(lda_min);
-      document.getElementById('max-enrol').textContent = fmt(max);
-      document.getElementById('avg-projected').textContent = fmt(avgProjected);
-      document.getElementById('min-projected').textContent = fmt(minProjected);
-      document.getElementById('max-projected').textContent = fmt(maxProjected);
-      document.getElementById('proj-threshold').textContent =
-        (window.PROJECTION_THRESHOLD) === 0 ? '0' :
-        (window.PROJECTION_THRESHOLD * 100 % 1 === 0 ? (window.PROJECTION_THRESHOLD * 100).toFixed(0) : (window.PROJECTION_THRESHOLD * 100).toFixed(1));
-    })();
+  // Function to populate dynamic text placeholders
+  function populateContextLine(){
+    if(window.NUM_DIVISIONS === 0 || typeof window.STATE_STARTING_TOTAL === 'undefined') return;
+    const fmt = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const avg = Math.round(window.STATE_STARTING_TOTAL / window.NUM_DIVISIONS);
+    const min = Math.round(avg * (1 - window.ENROLMENT_THRESHOLD));
+    // const lda_min = Math.round(avg * (1 - window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER));
+    const max = Math.round(avg * (1 + window.ENROLMENT_THRESHOLD));
+    const avgProjected = Math.round(window.STATE_PROJECTED_TOTAL / window.NUM_DIVISIONS);
+    const minProjected = Math.round(avgProjected * (1 - window.PROJECTION_THRESHOLD));
+    const maxProjected = Math.round(avgProjected * (1 + window.PROJECTION_THRESHOLD));
+    const nd = document.getElementById('num-divisions');
+    if(!nd) return; // safety
+    document.getElementById('num-divisions').textContent = window.NUM_DIVISIONS;
+    document.getElementById('avg-enrol').textContent = fmt(avg);
+    document.getElementById('min-enrol').textContent = fmt(min);
+    // document.getElementById('lda-min-enrol').textContent = fmt(lda_min);
+    document.getElementById('max-enrol').textContent = fmt(max);
+    document.getElementById('avg-projected').textContent = fmt(avgProjected);
+    document.getElementById('min-projected').textContent = fmt(minProjected);
+    document.getElementById('max-projected').textContent = fmt(maxProjected);
+    document.getElementById('proj-threshold').textContent =
+      (window.PROJECTION_THRESHOLD) === 0 ? '0' :
+      (window.PROJECTION_THRESHOLD * 100 % 1 === 0 ? (window.PROJECTION_THRESHOLD * 100).toFixed(0) : (window.PROJECTION_THRESHOLD * 100).toFixed(1));
+  }
+
+  // Initialize context line when DOM & globals are ready
+  populateContextLine();
 
   _syncDivisionsAndGroups();
   if (typeof sa1s === 'undefined' || typeof data === 'undefined') {
@@ -422,7 +453,8 @@ function initSharedApp() {
     const idx = divisionsAndGroups.findIndex(e => e.name == groupName);
     divisionsAndGroups.splice(idx + divisionsAndGroups[idx].divisions.length + 1, 0, { type: 'division', name: `(new ${newDivisionCount + 1})` });
     divisionsAndGroups[idx].divisions.push(`(new ${newDivisionCount + 1})`);
-  newDivisionCount++; window._markUnsaved(); renderDivisionList();
+    newDivisionCount++; window._markUnsaved();
+    renderDivisionList();
   }
   window.createNewDivision = createNewDivision;
   // Internal helper that actually performs the reset logic.
@@ -445,6 +477,27 @@ function initSharedApp() {
     renderDivisionList();
   }
   window._performDivisionReset = _performDivisionReset;
+
+  // Internal helper that unallocates all SA1s from their divisions
+  function _performDivisionUnallocate(){
+    features.getLayers().forEach(layer => {
+      const code = layer.feature.properties["SA1_CODE21"];
+      // Set division to null/empty to indicate unallocated
+      layer.feature.properties.division = null;
+      data[code].currentDivision = null;
+      // Set to a neutral gray color for unallocated areas
+      layer.setStyle({ fillColor: '#cccccc', fillOpacity: 0.3 });
+    });
+    
+    // Clear selected division since all are now unallocated
+    selectedDivision = "";
+    
+    // Mark as unsaved and refresh display
+    window._markUnsaved();
+    renderDivisionList();
+    updateDivisionInfoPanel();
+  }
+  window._performDivisionUnallocate = _performDivisionUnallocate;
 
   // Reset all division names to their original names
   function _performDivisionNameReset() {
@@ -544,6 +597,17 @@ function initSharedApp() {
   // Public API: reset all division names to their original names
   window.resetDivisionNames = function () {
     _performDivisionNameReset();
+  };
+
+  // Public API: unallocate all SA1s from their divisions
+  window.unallocateDivisions = function () {
+    if(typeof window.showLeaveSessionModal === 'function'){
+      // Use sentinel so modal confirm handler knows to execute a clear instead of navigation.
+      window.showLeaveSessionModal('__CLEAR__');
+    } else {
+      // Fallback (should not normally happen if modal script loaded before this point)
+      _performDivisionUnallocate();
+    }
   };
   window.toggleProjectedThresholds = function () { useProjectedThresholds = !useProjectedThresholds; renderDivisionList(); };
 
@@ -993,6 +1057,34 @@ function initSharedApp() {
       }
     });
 
+    // Show unallocated SA1s as a special entry
+    const unallocatedSa1s = Object.keys(data).filter(sa1 => 
+      data[sa1].currentDivision === null || 
+      data[sa1].currentDivision === undefined || 
+      data[sa1].currentDivision === ''
+    );
+    
+    if (unallocatedSa1s.length > 0) {
+      const unallocatedStartingTotal = unallocatedSa1s.map(sa1 => data[sa1].startingEnrolment).reduce((a, b) => a + b, 0);
+      const unallocatedProjectedTotal = unallocatedSa1s.map(sa1 => data[sa1].projectedEnrolment).reduce((a, b) => a + b, 0);
+      
+      const row = document.createElement('div');
+      row.className = 'division-row unallocated-row';
+      row.style.cssText = 'background-color: #f5f5f5; border-left: 4px solid #cccccc;';
+
+      // Status indicator for unallocated
+      const status = document.createElement('div');
+      status.className = 'status-dot status-unallocated';
+      status.style.cssText = 'background-color: #cccccc;';
+      row.appendChild(status);
+
+      const text = document.createElement('p');
+      text.innerHTML = `<b>UNALLOCATED</b> ${formatNumber(unallocatedStartingTotal.toFixed(0))} current / ${formatNumber(unallocatedProjectedTotal.toFixed(0))} projected <em>(${unallocatedSa1s.length} SA1s)</em>`;
+      row.appendChild(text);
+
+      divisionList.appendChild(row);
+    }
+
     //====================//
     // RENDER HEADER INFO //
     //====================//
@@ -1012,6 +1104,9 @@ function initSharedApp() {
     var electorsMovedDetails = document.createElement("p")
     electorsMovedDetails.innerHTML = `<b>Electors moved:</b> ${formatNumber(electorsMoved)} (${(100 * electorsMoved / STATE_STARTING_TOTAL).toFixed(2)}%)`
     headerInfo.appendChild(electorsMovedDetails)
+    
+    // Update context line with current division count
+    populateContextLine();
   }
   window.renderDivisionList = renderDivisionList;
   renderDivisionList();
@@ -1207,6 +1302,12 @@ window.showTab = showTab;
         closeModal();
         return;
       }
+      if(pendingNav === '__CLEAR__'){
+        // Perform in-app destructive unallocate instead of navigating
+        if(typeof window._performDivisionUnallocate === 'function') window._performDivisionUnallocate();
+        closeModal();
+        return;
+      }
       if(typeof window._clearUnsaved === 'function') window._clearUnsaved();
       if(pendingNav === 'reload') location.reload(); else if(pendingNav) location.href = pendingNav; else location.href='index.html';
     });
@@ -1225,6 +1326,16 @@ window.showTab = showTab;
       if(subHeader) subHeader.textContent = 'This cannot be undone';
       if(bodyEl) bodyEl.textContent = 'All reassigned SA1s will revert to their original divisions and any newly created divisions will be removed.';
       if(confirmBtn) confirmBtn.textContent = 'Reset Anyway';
+    } else if (pendingNav === '__RESET_NAMES__') {
+      if(titleEl) titleEl.textContent = 'Reset all division names?';
+      if(subHeader) subHeader.textContent = 'This cannot be undone';
+      if(bodyEl) bodyEl.textContent = 'All renamed divisions will revert to their original names.';
+      if(confirmBtn) confirmBtn.textContent = 'Reset Names Anyway';
+    } else if (pendingNav === '__CLEAR__') {
+      if(titleEl) titleEl.textContent = 'Clear all divisions?';
+      if(subHeader) subHeader.textContent = 'Any progress may be lost';
+      if(bodyEl) bodyEl.textContent = 'All SA1s will be unassigned from their current divisions.';
+      if(confirmBtn) confirmBtn.textContent = 'Clear Anyway';
     } else {
       if(titleEl) titleEl.textContent = 'Leave this session?';
       if(subHeader) subHeader.textContent = 'Unsaved changes will be lost';
