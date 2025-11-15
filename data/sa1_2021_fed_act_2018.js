@@ -2934,13 +2934,6 @@ var data = {
     "projectedEnrolment": 257,
     "area": 10.5956
   },
-  "90104100408": {
-    "previousDivision": "Bean",
-    "currentDivision": "Bean",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
-    "area": 2.3801
-  },
   "80101100101": {
     "previousDivision": "Canberra",
     "currentDivision": "Canberra",

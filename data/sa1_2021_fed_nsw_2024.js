@@ -138222,33 +138222,5 @@ var data = {
     "startingEnrolment": 418,
     "projectedEnrolment": 464,
     "area": 0.119
-  },
-  "19999949999": {
-    "previousDivision": "",
-    "currentDivision": "",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
-    "area": ""
-  },
-  "19797979991": {
-    "previousDivision": "",
-    "currentDivision": "",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
-    "area": ""
-  },
-  "19797979992": {
-    "previousDivision": "",
-    "currentDivision": "",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
-    "area": ""
-  },
-  "19797979993": {
-    "previousDivision": "",
-    "currentDivision": "",
-    "startingEnrolment": 5,
-    "projectedEnrolment": 6,
-    "area": ""
   }
 };
