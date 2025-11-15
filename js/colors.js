@@ -56,6 +56,7 @@ function getColor(division) { // same mapping as original
     case "Badgerys Creek":
     case "Ballina":
     case "Barton":
+    case "Bullwinkel":
       return { color: "sienna" };
     case "Barron River":
     case "Ipswich West":
@@ -72,6 +73,7 @@ function getColor(division) { // same mapping as original
     case "Balmain":
     case "Bankstown":
     case "Bennelong":
+    case "Burt":
       return { color: "seagreen" };
     case "Cairns":
     case "Ipswich":
@@ -88,6 +90,7 @@ function getColor(division) { // same mapping as original
     case "Barwon":
     case "Bathurst":
     case "Berowra":
+    case "Canning":
       return { color: "midnightblue" };
     case "Mulgrave":
     case "Bundamba":
@@ -104,6 +107,8 @@ function getColor(division) { // same mapping as original
     case "Bega":
     case "Blacktown":
     case "Blaxland":
+    case "Cowan":
+    case "Brand":
       return { color: "darkred" };
     case "Hill":
     case "Jordan":
@@ -121,6 +126,7 @@ function getColor(division) { // same mapping as original
     case "Blue Mountains":
     case "Camden":
     case "Cabramatta":
+    case "Curtin":
       return { color: "olive" };
     case "Hinchinbrook":
     case "Inala":
@@ -134,6 +140,7 @@ function getColor(division) { // same mapping as original
     case "Mersey":
     case "Campbelltown":
     case "Calare":
+    case "Durack":
       return { color: "lightslategray" };
     case "Thuringowa":
     case "Mount Ommaney":
@@ -149,6 +156,7 @@ function getColor(division) { // same mapping as original
     case "Canterbury":
     case "Castle Hill":
     case "Chifley":
+    case "Forrest":
       return { color: "green" };
     case "Townsville":
     case "Miller":
@@ -176,6 +184,7 @@ function getColor(division) { // same mapping as original
     case "Clarence":
     case "Coffs Harbour":
     case "Cunningham":
+    case "Moore":
       return { color: "teal" };
     case "Burdekin":
     case "Greenslopes":
@@ -190,6 +199,7 @@ function getColor(division) { // same mapping as original
     case "Coogee":
     case "Cootamundra":
     case "Dobell":
+    case "O'Connor":
       return { color: "darkkhaki" };
     case "Whitsunday":
     case "Bulimba":
@@ -204,6 +214,7 @@ function getColor(division) { // same mapping as original
     case "Cronulla":
     case "Davidson":
     case "Eden-Monaro":
+    case "Pearce":
       return { color: "peru" };
     case "Mackay":
     case "Lytton":
@@ -217,6 +228,7 @@ function getColor(division) { // same mapping as original
     case "Drummoyne":
     case "Dubbo":
     case "Farrer":
+    case "Swan":
       return { color: "steelblue" };
     case "Mirani":
     case "Chatsworth":
@@ -230,6 +242,7 @@ function getColor(division) { // same mapping as original
     case "East Hills":
     case "Epping":
     case "Fowler":
+    case "Tangney":
       return { color: "yellowgreen" };
     case "Rockhampton":
     case "Capalaba":
@@ -326,6 +339,7 @@ function getColor(division) { // same mapping as original
     case "Lane Cove":
     case "Leppington":
     case "Lindsay":
+    case "Hasluck":
       return { color: "mediumturquoise" };
     case "Gympie":
     case "Woodridge":
