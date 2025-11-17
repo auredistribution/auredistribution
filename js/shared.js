@@ -31,6 +31,269 @@ let _unsavedChanges = false; // private flag
 window._markUnsaved = () => { _unsavedChanges = true; };
 window._clearUnsaved = () => { _unsavedChanges = false; };
 
+//==============================================//
+// ARCGIS DYNAMIC SA1 LOADING                   //
+//==============================================//
+
+/**
+ * Maps state/territory abbreviations to ArcGIS STE_CODE21 values
+ */
+const STATE_CODES = {
+  'NSW': '1',
+  'VIC': '2',
+  'QLD': '3',
+  'SA': '4',
+  'WA': '5',
+  'TAS': '6',
+  'NT': '7',
+  'ACT': '8',
+  'OT': '9' // Other Territories
+};
+
+/**
+ * Loads SA1 boundaries from ArcGIS REST API
+ * @param {Object} config - Configuration object
+ * @param {string} config.state - State code for filtering (e.g., '3' for QLD)
+ * @param {string} [config.cacheKey] - localStorage cache key (defaults to EVENT_NAME)
+ * @param {boolean} [config.useCache=true] - Whether to use localStorage caching
+ * @param {number} [config.maxRecords=2000] - Records per request (ArcGIS limit)
+ * @param {number} [config.maxRetries=3] - Maximum retry attempts on failure
+ * @param {number} [config.retryDelay=1000] - Delay between retries in ms
+ * @returns {Promise<Array>} Array of GeoJSON features
+ */
+async function loadSA1sFromArcGIS(config = {}) {
+  const {
+    state,
+    cacheKey = window.EVENT_NAME,
+    useCache = true,
+    maxRecords = 2000,
+    maxRetries = 3,
+    retryDelay = 1000
+  } = config;
+
+  if (!state) {
+    throw new Error('State code is required for ArcGIS SA1 loading');
+  }
+
+  const fullCacheKey = `arcgis_sa1s_${cacheKey}`;
+  console.log(`ArcGIS loading config:`, { state, cacheKey, fullCacheKey, useCache });
+
+  // Check cache first
+  if (useCache) {
+    const cached = localStorage.getItem(fullCacheKey);
+    console.log(`Cache check for '${fullCacheKey}':`, cached ? `${cached.length} bytes found` : 'not found');
+    if (cached) {
+      try {
+        const parsed = JSON.parse(cached);
+        console.log(`✓ Loaded ${parsed.length} SA1s from cache`);
+        if (parsed.length > 0) {
+          return parsed;
+        } else {
+          console.warn('Cache contained 0 SA1s, removing and fetching fresh data');
+          localStorage.removeItem(fullCacheKey);
+        }
+      } catch (e) {
+        console.warn('Cache parse error, fetching from API:', e);
+        localStorage.removeItem(fullCacheKey);
+      }
+    } else {
+      console.log('No cache found, will fetch from ArcGIS');
+    }
+  }
+
+  const baseUrl = 'https://geo.abs.gov.au/arcgis/rest/services/ASGS2021/SA1/MapServer/0/query';
+  const allFeatures = [];
+  let offset = 0;
+  let hasMore = true;
+
+  console.log(`Fetching SA1s from ArcGIS for state ${state}...`);
+
+  /**
+   * Fetch with retry logic
+   */
+  async function fetchWithRetry(url, attempt = 1) {
+    try {
+      console.log(`Fetching URL (attempt ${attempt}): ${url.substring(0, 200)}...`);
+      const response = await fetch(url);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      
+      const json = await response.json();
+      console.log(`Fetch successful, received ${json.features?.length || 0} features`);
+      return json;
+    } catch (error) {
+      if (attempt < maxRetries) {
+        console.warn(`Fetch attempt ${attempt} failed, retrying in ${retryDelay}ms...`, error.message);
+        updateSA1LoadingProgress(`Retry ${attempt}/${maxRetries - 1} - ${error.message}`);
+        await new Promise(resolve => setTimeout(resolve, retryDelay * attempt));
+        return fetchWithRetry(url, attempt + 1);
+      }
+      throw error;
+    }
+  }
+
+  try {
+    while (hasMore) {
+      const params = new URLSearchParams({
+        where: `state_code_2021='${state}'`,
+        outFields: 'sa1_code_2021,sa2_code_2021,sa2_name_2021',
+        f: 'geojson',
+        resultOffset: offset,
+        resultRecordCount: maxRecords,
+        geometryPrecision: 5, // Reduced from 6 to save space
+        outSR: 4326
+      });
+
+      const geojson = await fetchWithRetry(`${baseUrl}?${params}`);
+      
+      console.log(`API Response:`, geojson); // Debug logging
+      
+      if (!geojson.features || geojson.features.length === 0) {
+        hasMore = false;
+        break;
+      }
+
+      // Convert GeoJSON to match expected format (Feature with properties and geometry)
+      // ArcGIS returns lowercase with underscores, we need uppercase without underscores
+      const features = geojson.features.map(feature => ({
+        type: 'Feature',
+        properties: {
+          SA1_CODE21: feature.properties.sa1_code_2021,
+          SA2_CODE21: feature.properties.sa2_code_2021,
+          SA2_NAME21: feature.properties.sa2_name_2021
+        },
+        geometry: feature.geometry
+      }));
+
+      allFeatures.push(...features);
+      offset += maxRecords;
+
+      console.log(`Fetched ${allFeatures.length} SA1s so far...`);
+      updateSA1LoadingProgress(`Loaded ${allFeatures.length} SA1s...`);
+
+      // Check if we got fewer records than requested (means we're done)
+      if (geojson.features.length < maxRecords) {
+        hasMore = false;
+      }
+    }
+
+    if (allFeatures.length === 0) {
+      throw new Error(`No SA1s found for state code '${state}'. Please check the state code is correct.`);
+    }
+
+    console.log(`Successfully loaded ${allFeatures.length} SA1s from ArcGIS`);
+
+    // Cache the results - try localStorage first, fall back to not caching if quota exceeded
+    if (useCache) {
+      try {
+        const serialized = JSON.stringify(allFeatures);
+        const sizeKB = (serialized.length / 1024).toFixed(0);
+        
+        // Warn if size is large
+        if (serialized.length > 5000000) { // 5MB
+          console.warn(`Large dataset: ${sizeKB} KB - localStorage may fail`);
+        }
+        
+        localStorage.setItem(fullCacheKey, serialized);
+        console.log(`✓ Cached ${allFeatures.length} SA1s to localStorage (${sizeKB} KB) with key: ${fullCacheKey}`);
+      } catch (e) {
+        if (e.name === 'QuotaExceededError') {
+          console.warn(`⚠️ localStorage quota exceeded (dataset too large). SA1s will be fetched from ArcGIS each time.`);
+          console.warn(`💡 Tip: This is normal for large states. The data will still work, just won't be cached.`);
+          // Don't throw - just continue without caching
+        } else {
+          console.warn('Failed to cache SA1s:', e);
+        }
+      }
+    }
+
+    return allFeatures;
+
+  } catch (error) {
+    console.error('Failed to load SA1s from ArcGIS:', error);
+    throw error;
+  }
+}
+
+/**
+ * Shows a loading overlay while SA1s are being fetched
+ */
+function showSA1LoadingOverlay(message = 'Loading SA1 boundaries...') {
+  const overlay = document.createElement('div');
+  overlay.id = 'sa1-loading-overlay';
+  overlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    color: white;
+    font-family: system-ui, -apple-system, sans-serif;
+  `;
+  
+  overlay.innerHTML = `
+    <div style="text-align: center;">
+      <div style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+      <div style="font-size: 18px; font-weight: 500;">${message}</div>
+      <div id="sa1-loading-progress" style="font-size: 14px; margin-top: 10px; opacity: 0.8;"></div>
+    </div>
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  `;
+  
+  document.body.appendChild(overlay);
+}
+
+/**
+ * Updates loading overlay progress message
+ */
+function updateSA1LoadingProgress(message) {
+  const progressEl = document.getElementById('sa1-loading-progress');
+  if (progressEl) {
+    progressEl.textContent = message;
+  }
+}
+
+/**
+ * Hides the loading overlay
+ */
+function hideSA1LoadingOverlay() {
+  const overlay = document.getElementById('sa1-loading-overlay');
+  if (overlay) {
+    overlay.remove();
+  }
+}
+
+// Expose loading functions globally for use in HTML pages
+window.loadSA1sFromArcGIS = loadSA1sFromArcGIS;
+window.showSA1LoadingOverlay = showSA1LoadingOverlay;
+window.updateSA1LoadingProgress = updateSA1LoadingProgress;
+window.hideSA1LoadingOverlay = hideSA1LoadingOverlay;
+
+/**
+ * Clears cached SA1 data for the current event
+ */
+function clearSA1Cache() {
+  const cacheKey = `arcgis_sa1s_${window.EVENT_NAME}`;
+  localStorage.removeItem(cacheKey);
+  console.log(`Cleared SA1 cache for ${window.EVENT_NAME}`);
+  alert('SA1 cache cleared. The page will reload to fetch fresh data.');
+  location.reload();
+}
+window.clearSA1Cache = clearSA1Cache;
+
 // Custom color persistence functions
 function saveCustomColors() {
   localStorage.setItem(`customColors_${window.EVENT_NAME}`, JSON.stringify(_customDivisionColors));
@@ -102,7 +365,7 @@ function formatNumber(number) {
   }
 }
 
-function initSharedApp() {
+async function initSharedApp() {
 
   // Load saved custom colors
   loadCustomColors();
@@ -156,7 +419,46 @@ function initSharedApp() {
   populateContextLine();
 
   _syncDivisionsAndGroups();
-  if (typeof sa1s === 'undefined' || typeof data === 'undefined') {
+  
+  // Support dynamic SA1 loading from ArcGIS if not already loaded
+  let sa1s;
+  
+  console.log('Checking SA1 loading conditions:', {
+    'window.sa1s': typeof window.sa1s,
+    'globalThis.sa1s': typeof globalThis.sa1s,
+    'window.ARCGIS_STATE_CODE': window.ARCGIS_STATE_CODE
+  });
+  
+  if (!window.sa1s && typeof globalThis.sa1s === 'undefined' && window.ARCGIS_STATE_CODE) {
+    console.log('Starting dynamic SA1 loading from ArcGIS...');
+    try {
+      showSA1LoadingOverlay();
+      updateSA1LoadingProgress('Fetching SA1 boundaries from ArcGIS...');
+      
+      const loadedSA1s = await loadSA1sFromArcGIS({
+        state: window.ARCGIS_STATE_CODE,
+        cacheKey: window.EVENT_NAME
+      });
+      
+      // Set both window.sa1s and local variable
+      window.sa1s = loadedSA1s;
+      sa1s = loadedSA1s;
+      
+      hideSA1LoadingOverlay();
+      console.log(`Loaded ${loadedSA1s.length} SA1s dynamically from ArcGIS`);
+    } catch (error) {
+      hideSA1LoadingOverlay();
+      alert(`Failed to load SA1 boundaries: ${error.message}\n\nPlease refresh the page to try again.`);
+      console.error('SA1 loading error:', error);
+      return;
+    }
+  } else {
+    console.log('Using existing SA1 data (not fetching from ArcGIS)');
+    // Use window.sa1s if available (for dynamic loading), otherwise fall back to global
+    sa1s = window.sa1s || globalThis.sa1s;
+  }
+  
+  if (!sa1s || typeof data === 'undefined') {
     console.error('Shared init aborted: expected globals `sa1s` and `data` are missing.');
     return;
   }
