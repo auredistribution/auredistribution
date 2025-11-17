@@ -63,20 +63,7 @@ function _syncDivisionsAndGroups() {
 
 function _calculateNumDivisions() {
   _syncDivisionsAndGroups();
-  return divisionsAndGroups.filter(entry => {
-    if (entry.type !== 'division') return false;
-    
-    // Always count new divisions (even if empty)
-    if (entry.name.slice(0, 4) === '(new') return true;
-    
-    // For existing divisions, only count if they have at least one SA1 assigned
-    if (typeof data !== 'undefined') {
-      return Object.keys(data).some(sa1 => data[sa1].currentDivision === entry.name);
-    }
-    
-    // Fallback: count the division if data not available
-    return true;
-  }).length;
+  return divisionsAndGroups.filter(entry => entry.type === 'division').length;
 }
 
 // Define NUM_DIVISIONS as a dynamic getter if not already set by the HTML page
@@ -474,8 +461,6 @@ function initSharedApp() {
   function _performDivisionReset(){
     features.getLayers().forEach(layer => {
       const code = layer.feature.properties["SA1_CODE21"];
-      if (!code || !data[code]) return; // Skip if no code or data entry
-      
       const original = data[code].previousDivision;
       layer.feature.properties.division = original;
       data[code].currentDivision = original;
@@ -497,8 +482,6 @@ function initSharedApp() {
   function _performDivisionUnallocate(){
     features.getLayers().forEach(layer => {
       const code = layer.feature.properties["SA1_CODE21"];
-      if (!code || !data[code]) return; // Skip if no code or data entry
-      
       // Set division to null/empty to indicate unallocated
       layer.feature.properties.division = null;
       data[code].currentDivision = null;
@@ -919,16 +902,6 @@ function initSharedApp() {
           resetColorBtn.title = 'Reset to default color';
           resetColorBtn.className = 'division-rename-btn reset-color';
           
-          // Delete button (only for new divisions)
-          let deleteBtn = null;
-          if (division.slice(0, 4) === '(new') {
-            deleteBtn = document.createElement('button');
-            deleteBtn.textContent = '🗑';
-            deleteBtn.title = 'Delete this division';
-            deleteBtn.className = 'division-rename-btn delete';
-            deleteBtn.style.cssText = 'color: #d32f2f;';
-          }
-          
           const cancelBtn = document.createElement('button');
           cancelBtn.textContent = '×';
           cancelBtn.title = 'Cancel rename';
@@ -947,61 +920,6 @@ function initSharedApp() {
             const defaultColor = getColor(division).color;
             colorPicker.value = colorToHex(defaultColor);
           };
-          
-          // Delete division (only for new divisions)
-          if (deleteBtn) {
-            deleteBtn.onclick = (e) => {
-              e.stopPropagation();
-              
-              if (!confirm(`Are you sure you want to delete "${division}"? All SA1s in this division will be unallocated.`)) {
-                return;
-              }
-              
-              // Unallocate all SA1s from this division
-              const layerCollection = window._featuresLayer || (window._sharedMapCtx && window._sharedMapCtx.features);
-              if (layerCollection) {
-                layerCollection.getLayers().forEach(layer => {
-                  if (layer.feature && layer.feature.properties && layer.feature.properties.division === division) {
-                    const code = layer.feature.properties["SA1_CODE21"];
-                    if (code && data[code]) {
-                      layer.feature.properties.division = null;
-                      data[code].currentDivision = null;
-                      layer.setStyle({ fillColor: '#cccccc', fillOpacity: 0.3 });
-                    }
-                  }
-                });
-              }
-              
-              // Remove division from divisionsAndGroups
-              divisionsAndGroups = divisionsAndGroups.filter(e => !(e.type === 'division' && e.name === division));
-              
-              // Remove from group's divisions array
-              divisionsAndGroups.forEach(e => {
-                if (e.type === 'group' && e.divisions.includes(division)) {
-                  e.divisions = e.divisions.filter(d => d !== division);
-                }
-              });
-              
-              // Update window.divisionsAndGroups to match
-              window.divisionsAndGroups = divisionsAndGroups;
-              
-              // Remove custom color if exists
-              if (_customDivisionColors[division]) {
-                delete _customDivisionColors[division];
-                saveCustomColors();
-              }
-              
-              // Clear selected division if it was the deleted one
-              if (selectedDivision === division) {
-                selectedDivision = "";
-              }
-              
-              _renamingDivision = null;
-              window._markUnsaved();
-              renderDivisionList();
-              updateDivisionInfoPanel();
-            };
-          }
           
           // Cancel rename
           cancelBtn.onclick = (e) => {
@@ -1067,9 +985,6 @@ function initSharedApp() {
           editContainer.appendChild(input);
           editContainer.appendChild(colorPicker);
           editContainer.appendChild(resetColorBtn);
-          if (deleteBtn) {
-            editContainer.appendChild(deleteBtn);
-          }
           editContainer.appendChild(cancelBtn);
           editContainer.appendChild(saveBtn);
           row.appendChild(editContainer);
@@ -1176,22 +1091,6 @@ function initSharedApp() {
     var headerInfo = document.getElementById("header-info")
 
     headerInfo.innerHTML = ""
-
-    // Calculate current number of electorates (divisions with at least one SA1)
-    const currentElectorateCount = divisionsAndGroups
-      .filter(e => e.type === 'division')
-      .filter(div => Object.keys(data).some(sa1 => data[sa1].currentDivision === div.name))
-      .length;
-
-    var electorateCountDetails = document.createElement("p")
-    electorateCountDetails.innerHTML = `<b>Current Electorates:</b> ${NUM_DIVISIONS}`
-    headerInfo.appendChild(electorateCountDetails)
-
-    // Calculate and display quota
-    const quota = STATE_STARTING_TOTAL / NUM_DIVISIONS;
-    var quotaDetails = document.createElement("p")
-    quotaDetails.innerHTML = `<b>Quota:</b> ${formatNumber(Math.round(quota))}`
-    headerInfo.appendChild(quotaDetails)
 
     var divisionsOutOfQuotaDetails = document.createElement("p")
     divisionsOutOfQuotaDetails.innerHTML = `<b>Districts out of quota:</b> ${outsideOfQuotaDivisions} (${useProjectedThresholds ? "Projected Enrolment" : "Current Enrolment"})`
