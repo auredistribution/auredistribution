@@ -1092,6 +1092,16 @@ function initSharedApp() {
 
     headerInfo.innerHTML = ""
 
+    var electorateCountDetails = document.createElement("p")
+    electorateCountDetails.innerHTML = `<b>Current Electorates:</b> ${NUM_DIVISIONS}`
+    headerInfo.appendChild(electorateCountDetails)
+
+    // Calculate and display quota
+    const quota = STATE_STARTING_TOTAL / NUM_DIVISIONS;
+    var quotaDetails = document.createElement("p")
+    quotaDetails.innerHTML = `<b>Quota:</b> ${formatNumber(Math.round(quota))}`
+    headerInfo.appendChild(quotaDetails)
+
     var divisionsOutOfQuotaDetails = document.createElement("p")
     divisionsOutOfQuotaDetails.innerHTML = `<b>Districts out of quota:</b> ${outsideOfQuotaDivisions} (${useProjectedThresholds ? "Projected Enrolment" : "Current Enrolment"})`
     headerInfo.appendChild(divisionsOutOfQuotaDetails)
