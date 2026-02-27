@@ -269,6 +269,14 @@ body > div { height: 100%; display: flex; }
   background: #f57c00;
 }
 
+.division-rename-btn.delete {
+  background: #fdfcfc;
+}
+
+.division-rename-btn.delete:hover {
+  background: #c62828;
+}
+
 .custom-color-indicator {
   display: inline-block;
   width: 12px;

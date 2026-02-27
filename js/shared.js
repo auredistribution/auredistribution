@@ -457,6 +457,53 @@ function initSharedApp() {
     renderDivisionList();
   }
   window.createNewDivision = createNewDivision;
+
+  function deleteDivision(divisionName) {
+    // Unallocate all SA1s assigned to this division
+    Object.keys(data).forEach(sa1 => {
+      if (data[sa1].currentDivision === divisionName) {
+        data[sa1].currentDivision = null;
+      }
+    });
+
+    // Mirror on map features
+    features.getLayers().forEach(layer => {
+      if (layer.feature && layer.feature.properties.division === divisionName) {
+        layer.feature.properties.division = null;
+        layer.setStyle({ fillColor: '#cccccc', fillOpacity: 0.3 });
+      }
+    });
+
+    // Remove division entry from divisionsAndGroups
+    const idx = divisionsAndGroups.findIndex(e => e.type === 'division' && e.name === divisionName);
+    if (idx !== -1) divisionsAndGroups.splice(idx, 1);
+
+    // Remove from parent group's divisions array
+    divisionsAndGroups.forEach(e => {
+      if (e.type === 'group' && Array.isArray(e.divisions)) {
+        e.divisions = e.divisions.filter(d => d !== divisionName);
+      }
+    });
+
+    // Clean up custom color
+    if (_customDivisionColors[divisionName]) {
+      delete _customDivisionColors[divisionName];
+      saveCustomColors();
+    }
+
+    // Clear selection if deleted division was selected
+    if (selectedDivision === divisionName) selectedDivision = '';
+
+    // Clear renaming state
+    _renamingDivision = null;
+
+    updateMapColors();
+    window._markUnsaved();
+    renderDivisionList();
+    updateDivisionInfoPanel();
+  }
+  window.deleteDivision = deleteDivision;
+
   // Internal helper that actually performs the reset logic.
   function _performDivisionReset(){
     features.getLayers().forEach(layer => {
@@ -982,10 +1029,21 @@ function initSharedApp() {
             }
           };
           
+          // Delete division button
+          const deleteBtn = document.createElement('button');
+          deleteBtn.textContent = '🗑';
+          deleteBtn.title = 'Delete division (unallocates all SA1s)';
+          deleteBtn.className = 'division-rename-btn delete';
+          deleteBtn.onclick = (e) => {
+            e.stopPropagation();
+            deleteDivision(division);
+          };
+
           editContainer.appendChild(input);
           editContainer.appendChild(colorPicker);
           editContainer.appendChild(resetColorBtn);
           editContainer.appendChild(cancelBtn);
+          editContainer.appendChild(deleteBtn);
           editContainer.appendChild(saveBtn);
           row.appendChild(editContainer);
           
