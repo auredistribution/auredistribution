@@ -525,6 +525,27 @@ function initSharedApp() {
   }
   window._performDivisionReset = _performDivisionReset;
 
+  // Internal helper that resets SA1s to the proposed (draft) divisions.
+  function _performDivisionResetToProposed(){
+    features.getLayers().forEach(layer => {
+      const code = layer.feature.properties["SA1_CODE21"];
+      const proposed = data[code].proposedDivision || data[code].previousDivision;
+      layer.feature.properties.division = proposed;
+      data[code].currentDivision = proposed;
+      layer.setStyle({ fillColor: getColor(proposed).color, fillOpacity: 0.5 });
+    });
+    // Remove any newly created divisions from grouping structure
+    divisionsAndGroups = divisionsAndGroups.filter(e => e.name.slice(0, 4) !== '(new');
+    divisionsAndGroups.forEach(e => {
+      if (e.type == 'group') {
+        e.divisions = e.divisions.filter(d => d.slice(0, 4) !== '(new');
+      }
+    });
+    if(typeof window._clearUnsaved === 'function') window._clearUnsaved();
+    renderDivisionList();
+  }
+  window._performDivisionResetToProposed = _performDivisionResetToProposed;
+
   // Internal helper that unallocates all SA1s from their divisions
   function _performDivisionUnallocate(){
     features.getLayers().forEach(layer => {
@@ -632,6 +653,11 @@ function initSharedApp() {
 
   // Public API: always route through modal for a consistent destructive-action confirmation UX.
   window.resetDivisions = function () {
+    if(window.DRAFT === true){
+      // DRAFT mode: ask user whether to reset to original or proposed boundaries first.
+      if(typeof window.showDraftResetChoiceModal === 'function') window.showDraftResetChoiceModal();
+      return;
+    }
     if(typeof window.showLeaveSessionModal === 'function' && _unsavedChanges){
       // Use sentinel so modal confirm handler knows to execute a reset instead of navigation.
       window.showLeaveSessionModal('__RESET__');
@@ -1370,6 +1396,12 @@ window.showTab = showTab;
         closeModal();
         return;
       }
+      if(pendingNav === '__RESET_PROPOSED__'){
+        // Perform in-app reset to proposed (draft) boundaries
+        if(typeof window._performDivisionResetToProposed === 'function') window._performDivisionResetToProposed();
+        closeModal();
+        return;
+      }
       if(pendingNav === '__CLEAR__'){
         // Perform in-app destructive unallocate instead of navigating
         if(typeof window._performDivisionUnallocate === 'function') window._performDivisionUnallocate();
@@ -1394,6 +1426,11 @@ window.showTab = showTab;
       if(subHeader) subHeader.textContent = 'This cannot be undone';
       if(bodyEl) bodyEl.textContent = 'All reassigned SA1s will revert to their original divisions and any newly created divisions will be removed.';
       if(confirmBtn) confirmBtn.textContent = 'Reset Anyway';
+    } else if (pendingNav === '__RESET_PROPOSED__') {
+      if(titleEl) titleEl.textContent = 'Reset to proposed boundaries?';
+      if(subHeader) subHeader.textContent = 'This cannot be undone';
+      if(bodyEl) bodyEl.textContent = 'All SA1s will revert to the AEC draft proposal boundaries and any newly created divisions will be removed.';
+      if(confirmBtn) confirmBtn.textContent = 'Reset to Proposed';
     } else if (pendingNav === '__RESET_NAMES__') {
       if(titleEl) titleEl.textContent = 'Reset all division names?';
       if(subHeader) subHeader.textContent = 'This cannot be undone';
@@ -1453,4 +1490,63 @@ window.showTab = showTab;
   window.navigateWithUnsavedCheck = function(targetUrl){ initLeaveSessionModal(); attemptNav(targetUrl); };
 
   initLeaveSessionModal();
+})();
+
+// Draft reset choice modal — shown when window.DRAFT === true and user clicks "Reset SA1s".
+// Asks whether to reset to original (previousDivision) or AEC draft proposal (proposedDivision).
+(function(){
+  let choiceOverlay = null;
+
+  function buildChoiceOverlay(){
+    choiceOverlay = document.createElement('div');
+    choiceOverlay.className = 'modal-overlay';
+    choiceOverlay.style.display = 'none';
+    choiceOverlay.innerHTML = `
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="draft-choice-title">
+        <header>
+          <h2 id="draft-choice-title">Reset SA1s</h2>
+          <p>Choose which boundaries to reset to</p>
+        </header>
+        <div class="modal-body">
+          <p>Reset all SA1s to the original (current) electoral boundaries, or to the AEC draft proposal boundaries.</p>
+        </div>
+        <footer>
+          <button type="button" class="button button-outline" id="draft-choice-original-btn">Original Boundaries</button>
+          <button type="button" class="button button-outline" id="draft-choice-proposed-btn">Draft Proposal</button>
+          <button type="button" class="button button-ghost" id="draft-choice-cancel-btn" style="margin-left:auto;">Cancel</button>
+        </footer>
+      </div>`;
+    document.body.appendChild(choiceOverlay);
+    choiceOverlay.addEventListener('click', e => { if(e.target === choiceOverlay) closeChoiceModal(); });
+    choiceOverlay.querySelector('#draft-choice-cancel-btn').addEventListener('click', closeChoiceModal);
+    choiceOverlay.querySelector('#draft-choice-original-btn').addEventListener('click', () => {
+      closeChoiceModal();
+      if(_unsavedChanges && typeof window.showLeaveSessionModal === 'function'){
+        window.showLeaveSessionModal('__RESET__');
+      } else {
+        if(typeof window._performDivisionReset === 'function') window._performDivisionReset();
+      }
+    });
+    choiceOverlay.querySelector('#draft-choice-proposed-btn').addEventListener('click', () => {
+      closeChoiceModal();
+      if(_unsavedChanges && typeof window.showLeaveSessionModal === 'function'){
+        window.showLeaveSessionModal('__RESET_PROPOSED__');
+      } else {
+        if(typeof window._performDivisionResetToProposed === 'function') window._performDivisionResetToProposed();
+      }
+    });
+  }
+
+  function closeChoiceModal(){
+    if(!choiceOverlay) return;
+    choiceOverlay.style.display = 'none';
+    document.removeEventListener('keydown', escChoiceListener);
+  }
+  function escChoiceListener(e){ if(e.key === 'Escape') closeChoiceModal(); }
+
+  window.showDraftResetChoiceModal = function(){
+    if(!choiceOverlay) buildChoiceOverlay();
+    choiceOverlay.style.display = 'flex';
+    document.addEventListener('keydown', escChoiceListener);
+  };
 })();

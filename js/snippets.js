@@ -16,7 +16,8 @@ window.REDIST_SHARED_SNIPPETS = {
     '6. Right-click an SA1 on the map to select the SA1\'s division without transferring it',
     "7. New divisions can be created by clicking the 'New' button next to a group label",
     "8. Clicking a Group Label will collapse that group",
-    "9. Right-click a division to edit its name or alter its colour"
+    "9. Right-click a division to edit its name or alter its colour",
+    "10. To delete a division, right click it, then hit the 'Delete' button"
   ],
   disclaimer: 'This tool presents raw data provided by official sources. Calculations use ' +
     'published enrolment data; aggregated results are provided without warranty. No guarantee is ' +

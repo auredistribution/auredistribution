@@ -27,7 +27,8 @@
           <p>Tasmania is divided into <span id="num-divisions"></span> federal electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
           <p>The Redistribution Commission will also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold"></span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2030 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
           <p>The ABS divides Tasmania into 99 named Statistical Areas Level 2 (SA2s) which are divided into 1,477 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
-          <p>Some SA1s are actually split between multiple districts, however for the purposes of this tool SA1s cannot be split and have been fully placed in the most logical single district. As a result, some districts will have enrolment numbers that slightly differ from the offical figures.</p>
+          <p>Some SA1s are actually split between multiple districts, and these have been approximated within this tool. Enrolment numbers should match those from the official sources.</p>
+          <p>The map will default showing the Proposed boundaries. To revert to the original boundaries, click the 'Reset SA1s' button in the Divisions tab.</p>
           <div id="shared-instructions"></div>
           <div id="shared-disclaimer"></div>
           <div id="shared-attribution"></div>
@@ -70,6 +71,7 @@
     window.PROJECTION_THRESHOLD = 0.035;
     window.DEFAULT_STARTING_COORDS = [-42.02, 146.58];
     window.DEFAULT_STARTING_ZOOM = 8;
+    window.DRAFT = true;
     window.DIVISION_MAPS = [
       {
         "id": "fed_tas_2017",
@@ -88,8 +90,8 @@
       }
     ];
   </script>
-  <script src="data/sa1_2021_tas.js"></script>
-  <script src="data/sa1_2021_fed_tas_2017.js"></script>
+  <script src="data/sa1_2021_tas_splits.js"></script>
+  <script src="data/sa1_2021_tas_2026_draft.js"></script>
   <script src="js/snippets.js"></script>
   <script src="js/colors.js"></script>
   <script src="js/shared.js"></script>
