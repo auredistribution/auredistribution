@@ -4515,33 +4515,5 @@ var data = {
     "startingEnrolment": 49,
     "projectedEnrolment": 54,
     "area": 27280.9
-  },
-  "79999949999": {
-    "previousDivision": "",
-    "currentDivision": "",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
-    "area": ""
-  },
-  "79797979991": {
-    "previousDivision": "",
-    "currentDivision": "",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
-    "area": ""
-  },
-  "79797979992": {
-    "previousDivision": "",
-    "currentDivision": "",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
-    "area": ""
-  },
-  "79797979993": {
-    "previousDivision": "",
-    "currentDivision": "",
-    "startingEnrolment": 0,
-    "projectedEnrolment": 0,
-    "area": ""
   }
 };
