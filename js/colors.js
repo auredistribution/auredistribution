@@ -22,13 +22,16 @@ function getColor(division) { // same mapping as original
       return { color: "silver" };
     case "Gregory":
     case "Cooper":
+    case "Ashgrove":
     case "Herbert":
     case "Swan Hills":
     case "Wollondilly":
     case "Wollongong":
       return { color: "darkslategray" };
     case "Traeger":
+    case "Flinders":
     case "Maiwar":
+    case "Indooroopilly":
     case "Paddington":
     case "Kennedy":
     case "Albany":
@@ -97,6 +100,7 @@ function getColor(division) { // same mapping as original
       return { color: "midnightblue" };
     case "Mulgrave":
     case "Bundamba":
+    case "Redbank":
     case "Hinkler":
     case "Hindmarsh":
     case "Hamilton":
@@ -116,6 +120,7 @@ function getColor(division) { // same mapping as original
       return { color: "darkred" };
     case "Hill":
     case "Jordan":
+    case "Greenbank":
     case "Wide Bay":
     case "McDowall":
     case "Sturt":
@@ -167,6 +172,7 @@ function getColor(division) { // same mapping as original
       return { color: "green" };
     case "Townsville":
     case "Miller":
+    case "Annerley":
     case "The Gap":
     case "Wright":
     case "Makin":
@@ -243,6 +249,7 @@ function getColor(division) { // same mapping as original
       return { color: "steelblue" };
     case "Mirani":
     case "Chatsworth":
+    case "Carindale":
     case "Jamboree":
     case "Lilley":
     case "Central Wheatbelt":
@@ -271,6 +278,7 @@ function getColor(division) { // same mapping as original
       return { color: "indianred" };
     case "Keppel":
     case "Oodgeroo":
+    case "Cleveland":
     case "Tennyson":
     case "Petrie":
     case "Belmont":
@@ -325,6 +333,7 @@ function getColor(division) { // same mapping as original
       return { color: "#7f007f" };
     case "Bundaberg":
     case "Toohey":
+    case "Eight Mile Plains":
     case "Runcorn":
     case "Bonner":
     case "Dawesville":
@@ -374,6 +383,7 @@ function getColor(division) { // same mapping as original
       return { color: "darkorchid" };
     case "Noosa":
     case "Waterford":
+    case "Marsden":
     case "Holland Park":
     case "Forde":
     case "Hillarys":
@@ -386,7 +396,9 @@ function getColor(division) { // same mapping as original
     case "Gwoja":
       return { color: "red" };
     case "Nicklin":
+    case "Nambour":
     case "Macalister":
+    case "Beenleigh":
     case "Macgregor":
     case "Rankin":
     case "Jandakot":
@@ -399,6 +411,7 @@ function getColor(division) { // same mapping as original
     case "Namatjira":
       return { color: "darkorange" };
     case "Ninderry":
+    case "Coolum":
     case "Logan":
     case "Chandler":
     case "Fadden":
@@ -413,6 +426,7 @@ function getColor(division) { // same mapping as original
       return { color: "gold" };
     case "Maroochydore":
     case "Coomera":
+    case "Pimpama":
     case "Kalamunda":
     case "La Trobe":
     case "Evelyn":
@@ -425,6 +439,7 @@ function getColor(division) { // same mapping as original
       return { color: "yellow" };
     case "Buderim":
     case "Theodore":
+    case "Oxenford":
     case "Moncrieff":
     case "Kingsley":
     case "Macnamara":
@@ -448,6 +463,7 @@ function getColor(division) { // same mapping as original
       return { color: "lime" };
     case "Caloundra":
     case "Bonney":
+    case "Labrador":
     case "Landsdale":
     case "Maribyrnong":
     case "Geelong":
@@ -498,6 +514,7 @@ function getColor(division) { // same mapping as original
     case "Reid":
       return { color: "blue" };
     case "Bancroft":
+    case "Deception Bay":
     case "Burleigh":
     case "Morley":
     case "Nicholls":
@@ -531,6 +548,7 @@ function getColor(division) { // same mapping as original
       return { color: "orchid" };
     case "Sandgate":
     case "Scenic Rim":
+    case "Beaudesert":
     case "McPherson":
     case "Nedlands":
     case "Wills":
@@ -562,6 +580,7 @@ function getColor(division) { // same mapping as original
     case "Wentworth":
       return { color: "dodgerblue" };
     case "McConnel":
+    case "Brisbane Central":
     case "Condamine":
     case "Riverton":
     case "Lara":
