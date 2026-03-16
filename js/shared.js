@@ -340,8 +340,42 @@ function initSharedApp() {
       renderDivisionList();
       updateDivisionInfoPanel();
   }
-  function highlightFeature(e) { const layer = e.target; infoPanel.update(layer.feature.properties); layer.setStyle({ weight: 2, color: '#000' }); }
-  function unhighlightFeature(e) { const layer = e.target; infoPanel.update(null); layer.setStyle({ weight: 0.5, color: '#333' }); }
+  let _highlightedSA2Layers = [];
+  function highlightFeature(e) {
+    const layer = e.target;
+    const props = layer.feature.properties;
+    if (e.originalEvent && e.originalEvent.shiftKey) {
+      const sa2Name = props["SA2_NAME21"];
+      _highlightedSA2Layers = features.getLayers().filter(l =>
+        l.feature.properties["SA2_NAME21"] === sa2Name
+      );
+      _highlightedSA2Layers.forEach(l => l.setStyle({ weight: 2, color: '#000' }));
+      // Aggregate SA2 info
+      let totalStarting = 0, totalProjected = 0;
+      const divisions = new Set();
+      _highlightedSA2Layers.forEach(l => {
+        const code = l.feature.properties["SA1_CODE21"];
+        totalStarting += data[code].startingEnrolment;
+        totalProjected += data[code].projectedEnrolment;
+        divisions.add(l.feature.properties.division);
+      });
+      infoPanel.update(null);
+      infoPanel._div.innerHTML = `<b>${sa2Name}</b> (SA2)<br/>${_highlightedSA2Layers.length} SA1s<br/>${[...divisions].join(', ')}<br/>${totalStarting} current electors / ${totalProjected} projected electors`;
+    } else {
+      infoPanel.update(props);
+      layer.setStyle({ weight: 2, color: '#000' });
+    }
+  }
+  function unhighlightFeature(e) {
+    const layer = e.target;
+    infoPanel.update(null);
+    if (_highlightedSA2Layers.length) {
+      _highlightedSA2Layers.forEach(l => l.setStyle({ weight: 0.5, color: '#333' }));
+      _highlightedSA2Layers = [];
+    } else {
+      layer.setStyle({ weight: 0.5, color: '#333' });
+    }
+  }
     function selectDivisionFromFeature(e){
     const layer = e.target;
     const div = layer.feature && layer.feature.properties && layer.feature.properties.division;
