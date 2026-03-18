@@ -1319,6 +1319,88 @@ function initSharedApp() {
       URL.revokeObjectURL(url);
     }
 
+    function exportDivionsAsGeoJSON() {
+      const statusElement = document.getElementById("geojson-export-status");
+
+      const bufferDist = 0.0001;
+
+      const divisions = divisionsAndGroups
+        .filter(entry => entry.type === 'division')
+        .reduce((accum, cur) => { accum[cur.name] = []; return accum; }, {});
+
+      sa1s.forEach((sa1) => divisions[sa1.properties.division].push(sa1));
+
+      const workerFn = function () {
+        self.importScripts('https://unpkg.com/@turf/turf@7/turf.min.js');
+
+        self.onmessage = function (e) {
+          const { divisions, bufferDist } = e.data;
+          const n_divisions = Object.keys(divisions).length;
+
+          Object.keys(divisions).forEach((key, index) => {
+            self.postMessage({ type: 'progress', message: `Processing ${key} (${index + 1}/${n_divisions})...` });
+
+            const features = divisions[key];
+            const featureCollection = turf.featureCollection(features);
+            const bufferedOut = turf.buffer(featureCollection, bufferDist, { units: 'degrees' });
+            const flattened = turf.flatten(bufferedOut);
+            const dissolved = turf.dissolve(flattened);
+            const bufferedIn = turf.buffer(dissolved, -bufferDist, { units: 'degrees' });
+            const combined = turf.combine(bufferedIn);
+            divisions[key] = combined.features[0];
+
+            divisions[key].properties = { name: key };
+          });
+
+          const fc = turf.featureCollection(Object.values(divisions));
+          self.postMessage({ type: 'done', fc });
+        };
+      };
+
+      const blob = new Blob(
+        [`(${workerFn.toString()})()`],
+        { type: 'application/javascript' }
+      );
+      const workerUrl = URL.createObjectURL(blob);
+      const worker = new Worker(workerUrl);
+      URL.revokeObjectURL(workerUrl);
+
+      worker.onmessage = function (e) {
+        const { type, message, fc } = e.data;
+          if (type === 'progress') {
+            statusElement.innerHTML = message;
+            return;
+          }
+
+          if (type === 'done') {
+            statusElement.innerHTML = 'Export complete!';
+            setTimeout(() => statusEl.remove(), 3000);
+            worker.terminate();
+
+            const jsonBlob = new Blob([JSON.stringify(fc)], { type: 'application/json' });
+            const url = URL.createObjectURL(jsonBlob);
+            const a = document.createElement('a');
+            const now = new Date();
+            const pad = n => String(n).padStart(2, '0');
+            const timestamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+            a.href = url;
+            a.download = `${window.EVENT_NAME}_districts_${timestamp}.geojson`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+          }
+      };
+
+      worker.onerror = function (err) {
+        console.error('Worker error:', err);
+        worker.terminate();
+        statusElement.innerHTML = "GeoJSON export failed!";
+      };
+
+      worker.postMessage({ divisions, bufferDist });
+    }
+
     //==================//
     // IMPORT FROM CSV  //
     //==================//
