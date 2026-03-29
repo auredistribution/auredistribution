@@ -2,13 +2,27 @@
 window.EVENT_NAME = window.EVENT_NAME || 'redistribution';
 window.DEFAULT_STARTING_COORDS = window.DEFAULT_STARTING_COORDS || [-21.5, 146.5];
 window.DEFAULT_STARTING_ZOOM = window.DEFAULT_STARTING_ZOOM || 6;
-window.STATE_STARTING_TOTAL = window.STATE_STARTING_TOTAL || 3744585;
-window.STATE_PROJECTED_TOTAL = window.STATE_PROJECTED_TOTAL || 4155112;
 window.ENROLMENT_THRESHOLD = window.ENROLMENT_THRESHOLD || 0.1;
 window.PROJECTION_THRESHOLD = window.PROJECTION_THRESHOLD || 0.1;
 window.LARGE_DISTRICT_AREA_THRESHOLD = window.LARGE_DISTRICT_AREA_THRESHOLD || 0; // km2
 window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER = window.LARGE_DISTRICT_ENROLMENT_THRESHOLD_LOWER || 0;
 window.LARGE_DISTRICT_VIRTUAL_ELECTOR_RATE = window.LARGE_DISTRICT_VIRTUAL_ELECTOR_RATE || 0.02; // per km2
+
+function calculateLoadedStartingTotal(loadedSa1s, sa1Data) {
+  return loadedSa1s.reduce((total, sa1) => {
+    const sa1Name = sa1.properties["SA1_CODE21"];
+    const startingEnrolment = sa1Data[sa1Name] && Number(sa1Data[sa1Name].startingEnrolment);
+    return total + (Number.isFinite(startingEnrolment) ? startingEnrolment : 0);
+  }, 0);
+}
+
+function calculateLoadedProjectedTotal(loadedSa1s, sa1Data) {
+  return loadedSa1s.reduce((total, sa1) => {
+    const sa1Name = sa1.properties["SA1_CODE21"];
+    const projectedEnrolment = sa1Data[sa1Name] && Number(sa1Data[sa1Name].projectedEnrolment);
+    return total + (Number.isFinite(projectedEnrolment) ? projectedEnrolment : 0);
+  }, 0);
+}
 
 let selectedDivision = "";
 let newDivisionCount = 0;
@@ -152,14 +166,18 @@ function initSharedApp() {
       (window.PROJECTION_THRESHOLD * 100 % 1 === 0 ? (window.PROJECTION_THRESHOLD * 100).toFixed(0) : (window.PROJECTION_THRESHOLD * 100).toFixed(1));
   }
 
-  // Initialize context line when DOM & globals are ready
-  populateContextLine();
-
   _syncDivisionsAndGroups();
   if (typeof sa1s === 'undefined' || typeof data === 'undefined') {
     console.error('Shared init aborted: expected globals `sa1s` and `data` are missing.');
     return;
   }
+
+  window.STATE_STARTING_TOTAL = calculateLoadedStartingTotal(sa1s, data);
+  window.STATE_PROJECTED_TOTAL = calculateLoadedProjectedTotal(sa1s, data);
+
+  // Initialize context line when DOM and loaded SA1 data are ready
+  populateContextLine();
+
   // Map starting divisions onto feature properties
   sa1s.forEach(sa1 => {
     const sa1Name = sa1.properties["SA1_CODE21"]; // assumes ABS 2021 code property name consistent
