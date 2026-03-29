@@ -43,6 +43,8 @@
           <button class="button button-ghost" type="button" onclick="triggerImport()" title="Import SA1 allocation CSV">Import SA1s</button>
           <button class="button button-ghost" type="button" onclick="exportDivisionTotalsCSV()" title="Download per-district totals CSV">Export Districts</button>
           <button class="button button-ghost" type="button" onclick="unallocateDivisions()" title="Clear all districts from every SA1">Clear Divisions</button>
+          <button class="button button-ghost" type="button" style="grid-column: span 2;" onclick="exportDivionsAsGeoJSON()" title="Download per-district totals CSV">Export as GeoJSON</button>
+          <p id="geojson-export-status" style="grid-column: span 2; text-align: center; margin: 6px 2px 6px 2px"> Export Not Started</p>
           <input type="file" id="import-file" accept=".csv" style="display:none" />
         </div>
         <div id="header-info"></div>
