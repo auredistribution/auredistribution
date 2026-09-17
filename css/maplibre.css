@@ -1,0 +1,52 @@
+/* V2-only layout and controls; shared colours, buttons and division rows live in shared.css. */
+.maplibre-workspace .workspace { display: flex; height: 100%; }
+.maplibre-workspace #map { position: relative; flex: 1; min-width: 0; }
+.maplibre-workspace #tab-nav { display: flex; flex-shrink: 0; }
+.maplibre-workspace #tab-nav > .button { text-decoration: none; border-radius: 0; }
+.maplibre-workspace #home-nav-link { margin-left: auto; }
+.maplibre-workspace [hidden] { display: none !important; }
+.maplibre-workspace #divisions-tab { padding: 14px 14px 24px; }
+.maplibre-workspace fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.maplibre-workspace .division-toolbar { display: grid; grid-template-columns: repeat(4, 1fr); margin-bottom: 6px; }
+.maplibre-workspace .version-label { color: var(--accent); font-size: 12px; font-weight: 600; }
+.maplibre-workspace #workspace-message { margin: 8px 20px; font-size: 12px; color: var(--text-muted); }
+.maplibre-workspace #map-status { position: absolute; z-index: 3; top: 14px; left: 50%; transform: translateX(-50%); padding: 10px 14px; background: white; border-radius: 8px; box-shadow: var(--shadow-md); max-width: 85%; }
+.maplibre-workspace .maplibregl-ctrl.info-panel { pointer-events: none; max-width: 290px; backdrop-filter: none; }
+.maplibre-workspace .boundary-control { background: white; padding: 10px; border-radius: 8px; box-shadow: var(--shadow-md); width: 220px; font-size: 12px; line-height: 1.4; }
+.boundary-control label { display: block; font-weight: 600; margin-bottom: 5px; }
+.boundary-control select, .boundary-control input { width: 100%; font: inherit; padding: 6px; border: 1px solid var(--panel-border); border-radius: 4px; background: white; }
+.boundary-control input { margin-top: 8px; }
+.boundary-control .boundary-results { max-height: 180px; overflow-y: auto; }
+.boundary-control .boundary-results button { display: block; width: 100%; border: 0; text-align: left; padding: 7px; background: white; cursor: pointer; }
+.boundary-control .boundary-results button:hover, .boundary-control .boundary-results button:focus-visible { background: #eef3f8; }
+.boundary-control .boundary-status { margin: 6px 0 0; }
+.maplibre-workspace .division-select { border: 0; background: transparent; text-align: left; color: inherit; font: inherit; padding: 0; cursor: pointer; flex: 1; }
+.maplibre-workspace .division-edit { border: 0; background: transparent; color: var(--text-muted); padding: 2px 4px; cursor: pointer; }
+.maplibre-workspace .group-toggle-button { border: 0; background: transparent; text-align: left; cursor: pointer; color: var(--text-muted); font-family: inherit; font-size: 12px; font-weight: 600; line-height: 1.4; flex: 1; padding: 0; }
+.maplibre-workspace .modal { display: none; border: 1px solid var(--panel-border); padding: 0; color: var(--text-color); }
+.maplibre-workspace .modal[open] { display: block; }
+.maplibre-workspace .modal::backdrop { background: rgba(0,0,0,.45); }
+.maplibre-workspace .modal label { display: block; font-size: 13px; margin: 10px 0 5px; }
+.maplibre-workspace #division-name { width: 100%; padding: 8px; font: inherit; border: 1px solid var(--panel-border); border-radius: 4px; }
+.maplibre-workspace #division-error { color: var(--danger); }
+.maplibre-workspace .confirmation-dialog { width: min(460px, calc(100vw - 32px)); border-left: 4px solid var(--danger); box-shadow: var(--shadow-md); overflow-wrap: anywhere; }
+.maplibre-workspace .confirmation-dialog::backdrop { background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+.maplibre-workspace .confirmation-dialog header { padding-bottom: 4px; }
+.maplibre-workspace .confirmation-dialog header h2 { color: var(--danger); }
+.maplibre-workspace .confirmation-dialog .modal-body p { line-height: 1.5; }
+.maplibre-workspace #confirmation-hint { color: var(--text-muted); font-size: 13px; margin-bottom: 20px; }
+.maplibre-workspace .confirmation-dialog footer { flex-wrap: wrap; }
+.maplibre-workspace .confirmation-dialog .button-red:hover { background: var(--danger); color: #fff; }
+.maplibre-workspace .button:disabled { opacity: .5; cursor: wait; }
+@media (max-width: 850px) {
+  .maplibre-workspace .summary-panel { min-width: 320px; flex-basis: 360px; }
+  .maplibre-workspace .division-toolbar { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .maplibre-workspace .workspace { flex-direction: column; }
+  .maplibre-workspace .summary-panel { min-width: 0; max-width: none; width: 100%; flex: 0 0 40%; }
+  .maplibre-workspace #map { width: 100%; min-height: 0; }
+  .maplibre-workspace .maplibregl-ctrl.info-panel { min-width: 0; max-width: calc(50vw - 20px); font-size: 11px; }
+  .maplibre-workspace .boundary-control { width: 175px; }
+  .maplibre-workspace .maplibregl-ctrl-bottom-left { bottom: 72px; }
+}

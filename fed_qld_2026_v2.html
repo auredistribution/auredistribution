@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Queensland Federal Redistribution 2026 · MapLibre</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/maplibre.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Redistribution" />
+  <script defer src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+  <script defer src="data/sa1_2021_qld_splits.js"></script>
+  <script defer src="data/sa1_2021_fed_qld_2018.js"></script>
+  <script defer src="js/snippets.js"></script>
+  <script defer src="js/colors.js"></script>
+  <script defer src="js/redistribution-model.js"></script>
+  <script defer src="js/maplibre-app.js"></script>
+</head>
+<body class="maplibre-workspace">
+  <div class="workspace">
+    <aside class="summary-panel">
+      <nav id="tab-nav" aria-label="Workspace">
+        <button type="button" class="button button-grey" data-tab="header-tab" aria-pressed="true">Information</button>
+        <button type="button" class="button" data-tab="divisions-tab" aria-pressed="false">Divisions</button>
+        <a id="home-nav-link" href="index.html" class="button">Home</a>
+      </nav>
+      <section id="header-tab" class="tab-content">
+        <div class="header">
+          <h1>Queensland Federal Redistribution 2026</h1>
+          <p class="version-label">V2 · MapLibre · continuous zoom</p>
+          <h3>Context</h3>
+          <p>Queensland is divided into <span id="num-divisions"></span> federal electoral districts, which must be drawn within 10% of the average district enrolment of <span id="avg-enrol"></span> (ie. between <span id="min-enrol"></span> and <span id="max-enrol"></span>).</p>
+          <p>The Redistribution Commission will also consider projected district enrolments, with an aim for districts to also be within <span id="proj-threshold">3.5</span>% of the average projected district enrolment of <span id="avg-projected"></span> in 2032 (ie. between <span id="min-projected"></span> and <span id="max-projected"></span>).</p>
+          <p>The ABS divides Queensland into 546 named Statistical Areas Level 2 (SA2s) which are divided into 12,545 Statistical Areas Level 1 (SA1s). These are the building blocks used to create electoral districts.</p>
+          <p>Some SA1s are split between multiple districts. This dataset includes split areas where available; each loaded SA1 code is counted once, even when its geometry has multiple pieces. Enrolment numbers may differ slightly from official figures.</p>
+          <div id="shared-instructions"></div>
+          <p>Right-drag or Ctrl-drag the map to tilt and rotate the camera. On touchscreens, drag two fingers together to tilt, or twist them to rotate. Click the compass to return to a north-up, overhead view. A right-click without dragging selects an electorate.</p>
+          <div id="shared-disclaimer"></div>
+          <div id="shared-attribution"></div>
+          <p><a href="fed_qld_2026.html">Open the original Leaflet version</a></p>
+        </div>
+      </section>
+      <section id="divisions-tab" class="tab-content" hidden>
+        <fieldset id="editing-controls" disabled>
+          <div class="division-toolbar">
+            <button class="button button-ghost" type="button" data-action="reset">Reset SA1s</button>
+            <button class="button button-ghost" type="button" data-action="reset-names">Reset Divisions</button>
+            <button class="button button-ghost" type="button" data-action="stats" id="stats-btn" aria-pressed="false">Toggle Stats</button>
+            <button class="button button-ghost" type="button" data-action="spotlight" id="spotlight-btn" aria-pressed="false">Spotlight</button>
+            <button class="button button-ghost" type="button" data-action="export">Export SA1s</button>
+            <button class="button button-ghost" type="button" data-action="import">Import SA1s</button>
+            <button class="button button-ghost" type="button" data-action="totals">Export Totals</button>
+            <button class="button button-ghost" type="button" data-action="clear">Clear Divisions</button>
+            <input type="file" id="import-file" accept=".csv,text/csv" hidden />
+          </div>
+          <div id="header-info"></div>
+          <div id="divisions"></div>
+        </fieldset>
+      </section>
+      <p id="workspace-message" role="status" aria-live="polite"></p>
+    </aside>
+    <main id="map" aria-label="Interactive redistribution map">
+      <div id="map-status" role="status">Loading Queensland map…</div>
+    </main>
+  </div>
+  <dialog id="division-dialog" class="modal">
+    <form id="division-form">
+      <header><h2>Edit division</h2></header>
+      <div class="modal-body">
+        <label for="division-name">Name</label>
+        <input id="division-name" name="name" required />
+        <label for="division-color">Colour</label>
+        <input id="division-color" name="color" type="color" />
+        <button type="button" class="button button-outline" id="default-color">Default colour</button>
+        <p id="division-error" role="alert"></p>
+      </div>
+      <footer>
+        <button type="button" class="button button-red" id="delete-division">Delete</button>
+        <button type="button" class="button button-outline" id="cancel-division">Cancel</button>
+        <button type="submit" class="button">Save</button>
+      </footer>
+    </form>
+  </dialog>
+  <dialog id="confirmation-dialog" class="modal confirmation-dialog" aria-labelledby="confirmation-title" aria-describedby="confirmation-description confirmation-hint">
+    <form method="dialog">
+      <header>
+        <h2 id="confirmation-title"></h2>
+      </header>
+      <div class="modal-body">
+        <p id="confirmation-description"></p>
+        <p id="confirmation-hint">Export your SA1 allocations first if you want to keep a copy of your work.</p>
+      </div>
+      <footer>
+        <button type="submit" class="button button-outline" id="confirmation-cancel" value="cancel" autofocus>Cancel</button>
+        <button type="submit" class="button button-red" id="confirmation-accept" value="confirm"></button>
+      </footer>
+    </form>
+  </dialog>
+  <script>
+    window.EVENT_NAME = 'fed_qld_2026_v2';
+    window.divisionsAndGroups = [
+      { type: 'group', name: 'NORTHERN QUEENSLAND', divisions: ['Dawson', 'Herbert', 'Kennedy', 'Leichhardt'] },
+      { type: 'group', name: 'BURNETT & WIDE BAY', divisions: ['Capricornia', 'Flynn', 'Hinkler', 'Wide Bay'] },
+      { type: 'group', name: 'SOUTHERN QUEENSLAND', divisions: ['Groom', 'Maranoa', 'Wright'] },
+      { type: 'group', name: 'SUNSHINE COAST', divisions: ['Fairfax', 'Fisher'] },
+      { type: 'group', name: 'BRISBANE NORTH', divisions: ['Brisbane', 'Dickson', 'Lilley', 'Longman', 'Petrie', 'Ryan'] },
+      { type: 'group', name: 'BRISBANE SOUTH', divisions: ['Blair', 'Bonner', 'Bowman', 'Forde', 'Griffith', 'Moreton', 'Oxley', 'Rankin'] },
+      { type: 'group', name: 'GOLD COAST', divisions: ['Fadden', 'McPherson', 'Moncrieff'] }
+    ].flatMap(group => [group, ...group.divisions.map(name => ({ type: 'division', name }))]);
+    window.DIVISION_MAPS = [
+      { id: 'fed_qld_2018', path: 'data/fed_qld_2018.js', name: 'Current Boundaries', getData: () => fed_qld_2018 },
+      { id: 'lga_2025_qld', path: 'data/lga_2025_qld.js', name: 'LGA Boundaries', getData: () => lga_2025_qld }
+    ];
+  </script>
+</body>
+</html>
