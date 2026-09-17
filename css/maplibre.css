@@ -47,6 +47,7 @@
   .maplibre-workspace .summary-panel { min-width: 0; max-width: none; width: 100%; flex: 0 0 40%; }
   .maplibre-workspace #map { width: 100%; min-height: 0; }
   .maplibre-workspace .maplibregl-ctrl.info-panel { min-width: 0; max-width: calc(50vw - 20px); font-size: 11px; }
-  .maplibre-workspace .boundary-control { width: 175px; }
-  .maplibre-workspace .maplibregl-ctrl-bottom-left { bottom: 72px; }
+  .maplibre-workspace .boundary-control { display: none; }
+  /* Reserve room beside the 100px scale rather than lifting it above the attribution. */
+  .maplibre-workspace .maplibregl-ctrl-attrib { box-sizing: border-box; max-width: calc(100vw - 130px); }
 }

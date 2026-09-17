@@ -126,7 +126,6 @@
       renderWorldCopies: false, attributionControl: true
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: true, visualizePitch: true }), 'bottom-right');
-    map.addControl(new maplibregl.ScaleControl({ unit: 'metric' }), 'bottom-right');
 
     function addControl(element, position) {
       map.addControl({
@@ -151,6 +150,8 @@
       <input id="boundary-search" type="search" placeholder="Search boundaries…" aria-label="Search reference boundaries" hidden />
       <div class="boundary-results" id="boundary-results"></div><p class="boundary-status" id="boundary-status" role="status"></p>`;
     addControl(boundaryControl, 'bottom-left');
+    // Bottom-positioned controls stack upward in the order they are added.
+    map.addControl(new maplibregl.ScaleControl({ unit: 'metric' }), 'bottom-left');
     (window.DIVISION_MAPS || []).forEach(entry => {
       const option = document.createElement('option');
       option.value = entry.id; option.textContent = entry.name;
@@ -649,6 +650,14 @@
       if (boundary) map.fitBounds(boundary.bounds, { padding: 50, duration: 600 });
     }
     $('boundary-select').addEventListener('change', event => { selectBoundary(event.target.value); });
+    const stackedLayout = window.matchMedia('(max-width: 600px)');
+    stackedLayout.addEventListener('change', event => {
+      if (!event.matches) return;
+      // A hidden selector must not leave a reference layer intercepting SA1 clicks.
+      // This also invalidates any boundary selection still loading in the background.
+      $('boundary-select').value = '';
+      selectBoundary('');
+    });
     $('boundary-search').addEventListener('input', event => {
       $('boundary-results').replaceChildren();
       const query = event.target.value.trim().toLocaleLowerCase();
