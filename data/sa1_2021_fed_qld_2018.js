@@ -17648,6 +17648,13 @@ var data = {
     "projectedEnrolment": 258,
     "area": ""
   },
+  "30501110535": {
+    "previousDivision": "Brisbane",
+    "currentDivision": "Brisbane",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": ""
+  },
   "30501111001": {
     "previousDivision": "Griffith",
     "currentDivision": "Griffith",
@@ -33916,6 +33923,13 @@ var data = {
     "projectedEnrolment": 2,
     "area": ""
   },
+  "30903123530": {
+    "previousDivision": "Fadden",
+    "currentDivision": "Fadden",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": ""
+  },
   "30903123531": {
     "previousDivision": "Fadden",
     "currentDivision": "Fadden",
@@ -42715,6 +42729,13 @@ var data = {
     "projectedEnrolment": 412,
     "area": ""
   },
+  "31003129120": {
+    "previousDivision": "Blair",
+    "currentDivision": "Blair",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": ""
+  },
   "31003129121": {
     "previousDivision": "Blair",
     "currentDivision": "Blair",
@@ -50310,6 +50331,20 @@ var data = {
     "projectedEnrolment": 236,
     "area": ""
   },
+  "31201133838": {
+    "previousDivision": "Capricornia",
+    "currentDivision": "Capricornia",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": ""
+  },
+  "31201133839": {
+    "previousDivision": "Capricornia",
+    "currentDivision": "Capricornia",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": ""
+  },
   "31201133901": {
     "previousDivision": "Capricornia",
     "currentDivision": "Capricornia",
@@ -53768,6 +53803,13 @@ var data = {
     "projectedEnrolment": 550,
     "area": ""
   },
+  "31301136355": {
+    "previousDivision": "Longman",
+    "currentDivision": "Longman",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": ""
+  },
   "31301136356": {
     "previousDivision": "Longman",
     "currentDivision": "Longman",
@@ -53864,6 +53906,13 @@ var data = {
     "currentDivision": "Longman",
     "startingEnrolment": 81,
     "projectedEnrolment": 94,
+    "area": ""
+  },
+  "31302136412": {
+    "previousDivision": "Longman",
+    "currentDivision": "Longman",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
     "area": ""
   },
   "31302136413": {
@@ -64758,6 +64807,13 @@ var data = {
     "projectedEnrolment": 455,
     "area": ""
   },
+  "31606143924": {
+    "previousDivision": "Fisher",
+    "currentDivision": "Fisher",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": ""
+  },
   "31606143925": {
     "previousDivision": "Fisher",
     "currentDivision": "Fisher",
@@ -69201,6 +69257,13 @@ var data = {
     "currentDivision": "Kennedy",
     "startingEnrolment": 57,
     "projectedEnrolment": 61,
+    "area": ""
+  },
+  "31801146415": {
+    "previousDivision": "Kennedy",
+    "currentDivision": "Kennedy",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
     "area": ""
   },
   "31801146416": {
@@ -80340,6 +80403,13 @@ var data = {
     "projectedEnrolment": 297,
     "area": ""
   },
+  "31605154416": {
+    "previousDivision": "Fairfax",
+    "currentDivision": "Fairfax",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": ""
+  },
   "31605154417": {
     "previousDivision": "Fairfax",
     "currentDivision": "Fairfax",
@@ -80373,6 +80443,13 @@ var data = {
     "currentDivision": "Fairfax",
     "startingEnrolment": 507,
     "projectedEnrolment": 565,
+    "area": ""
+  },
+  "31605154422": {
+    "previousDivision": "Fairfax",
+    "currentDivision": "Fairfax",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
     "area": ""
   },
   "31605154423": {
@@ -82272,6 +82349,13 @@ var data = {
     "projectedEnrolment": 553,
     "area": ""
   },
+  "30907155412": {
+    "previousDivision": "Fadden",
+    "currentDivision": "Fadden",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
+    "area": ""
+  },
   "30907155413": {
     "previousDivision": "Fadden",
     "currentDivision": "Fadden",
@@ -82571,6 +82655,13 @@ var data = {
     "currentDivision": "Forde",
     "startingEnrolment": 174,
     "projectedEnrolment": 190,
+    "area": ""
+  },
+  "30907155609": {
+    "previousDivision": "Forde",
+    "currentDivision": "Forde",
+    "startingEnrolment": 0,
+    "projectedEnrolment": 0,
     "area": ""
   },
   "30907155610": {
