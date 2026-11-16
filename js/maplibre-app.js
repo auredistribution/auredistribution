@@ -86,6 +86,9 @@
 
   function start() {
     const model = new RedistributionModel(sa1s, data, window.divisionsAndGroups);
+    const enrolmentThreshold = window.ENROLMENT_THRESHOLD ?? 0.1;
+    const projectionThreshold = window.PROJECTION_THRESHOLD ?? 0.035;
+    $('proj-threshold').textContent = Number((projectionThreshold * 100).toFixed(1));
     const collapsed = new Set();
     const rowElements = new Map();
     const colors = new Map();
@@ -119,9 +122,9 @@
     const map = new maplibregl.Map({
       container: 'map',
       style: 'https://tiles.openfreemap.org/styles/liberty',
-      center: [146.5, -21.5],
-      // MapLibre uses 512px tiles, so zoom 5 matches the original Leaflet zoom 6.
-      zoom: 5, minZoom: 3, maxZoom: 19,
+      center: window.DEFAULT_STARTING_COORDS ? [...window.DEFAULT_STARTING_COORDS].reverse() : [146.5, -21.5],
+      // MapLibre uses 512px tiles, so subtract one from the configured Leaflet zoom.
+      zoom: (window.DEFAULT_STARTING_ZOOM ?? 6) - 1, minZoom: 3, maxZoom: 19,
       dragRotate: true, pitchWithRotate: true, touchPitch: true, boxZoom: false,
       renderWorldCopies: false, attributionControl: true
     });
@@ -390,8 +393,8 @@
         const currentDev = percent(totals.starting, model.startingTotal, count);
         const projectedDev = percent(totals.projected, model.projectedTotal, count);
         const empty = totals.starting === 0 && totals.projected === 0;
-        const over = currentDev > 10 || (projectedThresholds && projectedDev > 3.5);
-        const under = currentDev < -10 || (projectedThresholds && projectedDev < -3.5);
+        const over = currentDev > enrolmentThreshold * 100 || (projectedThresholds && projectedDev > projectionThreshold * 100);
+        const under = currentDev < -enrolmentThreshold * 100 || (projectedThresholds && projectedDev < -projectionThreshold * 100);
         if (!empty && (over || under)) outside++;
         const row = rowElements.get(id);
         if (!row) continue;
@@ -414,7 +417,7 @@
         <p><b>Districts out of quota:</b> ${outside} (${projectedThresholds ? 'Projected Enrolment' : 'Current Enrolment'})</p>
         <p><b>Electors moved:</b> ${fmt(model.movedTotal)} (${(100 * model.movedTotal / model.startingTotal).toFixed(2)}%)</p>`;
       $('num-divisions').textContent = count;
-      for (const [suffix, total, threshold] of [['enrol', model.startingTotal, 0.1], ['projected', model.projectedTotal, 0.035]]) {
+      for (const [suffix, total, threshold] of [['enrol', model.startingTotal, enrolmentThreshold], ['projected', model.projectedTotal, projectionThreshold]]) {
         const average = count ? Math.round(total / count) : 0;
         $('avg-' + suffix).textContent = count ? fmt(average) : '—';
         $('min-' + suffix).textContent = count ? fmt(average * (1 - threshold)) : '—';
